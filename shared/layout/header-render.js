@@ -216,80 +216,11 @@
   'use strict';
 
   /* ----------------------------------------------------------
-     CSS — inject once
+     CSS — now in layout.css, no longer injected
   ---------------------------------------------------------- */
-  var CSS = [
-    '.fns-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9998;opacity:0;pointer-events:none;transition:opacity .25s}',
-    '.fns-overlay.fns-active{opacity:1;pointer-events:all}',
-
-    /* Auth dropdown */
-    '.fns-auth-drop{position:absolute;top:calc(100% + 10px);right:0;width:252px;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);z-index:9999;padding:20px 18px;display:none}',
-    '.fns-auth-drop.fns-open{display:block}',
-    '.fns-auth-drop-hello{font-size:.8rem;color:#999;margin-bottom:2px}',
-    '.fns-auth-drop-name{font-size:1rem;font-weight:700;color:#0b3b46;margin-bottom:14px;word-break:break-word}',
-    '.fns-adb{display:block;width:100%;padding:10px;border-radius:8px;font-size:.88rem;font-weight:600;text-align:center;text-decoration:none;cursor:pointer;border:none;margin-bottom:7px;box-sizing:border-box}',
-    '.fns-adb.p{background:#0b3b46;color:#fff}',
-    '.fns-adb.o{background:transparent;border:1.5px solid #0b3b46;color:#0b3b46}',
-    '.fns-adb.d{background:transparent;border:1.5px solid #c0392b;color:#c0392b;margin-top:4px}',
-    '.fns-auth-links{border-top:1px solid #eee;margin-top:10px;padding-top:10px}',
-    '.fns-auth-links a{display:block;padding:7px 0;color:#444;text-decoration:none;font-size:.85rem;border-bottom:1px solid #f5f5f5}',
-    '.fns-auth-links a:last-child{border-bottom:0}',
-    '.fns-auth-links a:hover{color:#0b3b46;font-weight:600}',
-
-    /* Cart panel */
-    '.fns-cart-panel{position:fixed;top:0;right:-420px;width:390px;max-width:96vw;height:100vh;background:#fff;box-shadow:-6px 0 32px rgba(0,0,0,.16);z-index:9999;transition:right .3s ease;display:flex;flex-direction:column}',
-    '.fns-cart-panel.fns-open{right:0}',
-    '.fns-cart-panel-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;background:#0b3b46;color:#fff}',
-    '.fns-cart-panel-head h2{margin:0;font-size:1.05rem;font-weight:700}',
-    '.fns-cart-panel-close{background:none;border:none;cursor:pointer;color:#fff;font-size:1.5rem;line-height:1;padding:0 4px}',
-    '.fns-cart-panel-body{flex:1;overflow-y:auto;padding:12px 16px}',
-    '.fns-cart-empty-msg{text-align:center;padding:48px 20px;color:#aaa}',
-    '.fns-cart-empty-msg p{margin:12px 0 16px;font-size:.95rem}',
-    '.fns-cart-item-row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #f4f4f4;align-items:center}',
-    '.fns-cart-item-info{flex:1;min-width:0}',
-    '.fns-cart-item-title{font-size:.88rem;font-weight:600;color:#222;margin:0 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
-    '.fns-cart-item-meta{font-size:.82rem;color:#0b3b46;font-weight:700}',
-    '.fns-cart-item-qty{color:#888;font-weight:400;margin-left:6px}',
-    '.fns-cart-rmv{background:none;border:none;cursor:pointer;color:#ccc;padding:2px 6px;font-size:1.2rem;line-height:1;border-radius:4px}',
-    '.fns-cart-rmv:hover{background:#fee;color:#c0392b}',
-    '.fns-cart-panel-foot{padding:14px 18px;border-top:2px solid #eee}',
-    '.fns-cart-subtotal{display:flex;justify-content:space-between;font-size:.95rem;font-weight:700;color:#0b3b46;margin-bottom:14px}',
-    '.fns-cart-cta{display:block;width:100%;padding:12px;border-radius:8px;font-size:.92rem;font-weight:700;text-align:center;text-decoration:none;border:none;cursor:pointer;margin-bottom:8px;box-sizing:border-box}',
-    '.fns-cart-cta.p{background:#0b3b46;color:#fff}',
-    '.fns-cart-cta.o{background:transparent;border:1.5px solid #0b3b46;color:#0b3b46}',
-
-    /* Alerts dropdown */
-    '.fns-alerts-drop{position:absolute;top:calc(100% + 10px);right:0;width:310px;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);z-index:9999;display:none;overflow:hidden}',
-    '.fns-alerts-drop.fns-open{display:block}',
-    '.fns-alerts-drop-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #eee;background:#f7fbfc}',
-    '.fns-alerts-drop-head h3{margin:0;font-size:.92rem;font-weight:700;color:#0b3b46}',
-    '.fns-alerts-drop-head a{font-size:.78rem;color:#1a7d9a;text-decoration:none}',
-    '.fns-alerts-scroller{max-height:280px;overflow-y:auto}',
-    '.fns-alert-row{display:flex;gap:10px;padding:11px 16px;border-bottom:1px solid #f8f8f8;align-items:flex-start;cursor:pointer}',
-    '.fns-alert-row.unread{background:#f0f8fa}',
-    '.fns-alert-row:hover{background:#f0f8fa}',
-    '.fns-alert-dot{width:8px;height:8px;min-width:8px;border-radius:50%;margin-top:5px;background:#0b3b46}',
-    '.fns-alert-dot.read{background:#ddd}',
-    '.fns-alert-txt p{margin:0 0 2px;font-size:.83rem;color:#333;line-height:1.5}',
-    '.fns-alert-txt span{font-size:.75rem;color:#bbb}',
-    '.fns-alerts-none{text-align:center;padding:24px;color:#bbb;font-size:.88rem}',
-    '.fns-alerts-drop-foot{padding:10px;text-align:center;border-top:1px solid #eee}',
-    '.fns-alerts-drop-foot a{color:#1a7d9a;font-size:.82rem;text-decoration:none}',
-
-    /* Avatar initial circle */
-    '.fns-av-init{width:26px;height:26px;border-radius:50%;background:#e8a020;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem}',
-
-    /* Position anchors */
-    '#fldAccountBtn{position:relative}',
-    '#fldAlertsBtn{position:relative}'
-  ].join('');
-
   function injectCSS() {
-    if (document.getElementById('fns-hdr-ui-css')) return;
-    var s = document.createElement('style');
-    s.id = 'fns-hdr-ui-css';
-    s.textContent = CSS;
-    document.head.appendChild(s);
+    // CSS moved to assets/css/layout.css
+    // No longer needed to inject via JS
   }
 
   /* ----------------------------------------------------------
