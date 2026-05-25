@@ -3129,9 +3129,17 @@
 }
 
 /* AUTH PAGE STYLES */
+.auth-page-wrapper {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
 .auth-container {
   max-width: 400px;
-  margin: 60px auto;
+  width: 100%;
   padding: 40px;
   background: var(--fns-white);
   border-radius: var(--fns-radius-lg);
