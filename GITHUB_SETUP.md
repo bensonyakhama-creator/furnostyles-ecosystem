@@ -11,6 +11,8 @@ Your project is now ready for GitHub. Follow these steps to connect:
 5. **DO NOT** initialize with README, .gitignore, or license (we already have these)
 6. Click "Create repository"
 
+Your GitHub username: **bensonyakhama-creator**
+
 ## Option 2: Create Repository via GitHub CLI (if installed)
 
 ```bash
@@ -22,12 +24,10 @@ gh repo create furnostyles-ecosystem --public --description "FURNOSTYLES - Compr
 After creating the repository, run these commands in your project directory:
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/furnostyles-ecosystem.git
+git remote add origin https://github.com/bensonyakhama-creator/furnostyles-ecosystem.git
 git branch -M main
 git push -u origin main
 ```
-
-Replace `YOUR_USERNAME` with your actual GitHub username.
 
 ## Current Status
 
