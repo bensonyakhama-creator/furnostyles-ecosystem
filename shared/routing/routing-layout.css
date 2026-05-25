@@ -1,0 +1,324 @@
+/**
+ * Furnostyles Routing Layout CSS
+ * Unified premium layout style sheets for intelligent service requests, artisan matching, and coordinate interfaces.
+ */
+
+/* ------------------------------------------------------------------ */
+/* FORM LAYOUT                                                           */
+/* ------------------------------------------------------------------ */
+
+.rtg-form-card {
+  background: #fff;
+  border: 1.5px solid #dce4f0;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 800px;
+  margin: 32px auto;
+  box-shadow: 0 4px 20px rgba(11, 59, 70, 0.05);
+}
+
+.rtg-section-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a2540;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rtg-section-sub {
+  font-size: 13px;
+  color: #8090a0;
+  margin: 0 0 24px;
+}
+
+.rtg-group {
+  margin-bottom: 20px;
+}
+
+.rtg-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4c5e80;
+  margin-bottom: 6px;
+}
+
+.rtg-input,
+.rtg-select,
+.rtg-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #dce4f0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #1a2540;
+  background: #fafbfd;
+  transition: all 0.18s;
+  box-sizing: border-box;
+}
+
+.rtg-input:focus,
+.rtg-select:focus,
+.rtg-textarea:focus {
+  outline: none;
+  border-color: #0b3b46;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(11, 59, 70, 0.1);
+}
+
+.rtg-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.rtg-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .rtg-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* COORDINATOR TRUST SECTION                                             */
+/* ------------------------------------------------------------------ */
+
+.rtg-trust-hero {
+  background: linear-gradient(135deg, #0b3b46 0%, #1a2540 100%);
+  color: #fff;
+  padding: 40px 24px;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.rtg-trust-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: #fff;
+}
+
+.rtg-trust-desc {
+  font-size: 14px;
+  color: #dce4f0;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------ */
+/* MULTI-STEP / FLOW PROGRESS                                           */
+/* ------------------------------------------------------------------ */
+
+.rtg-flow-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  position: relative;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rtg-flow-steps::before {
+  content: '';
+  position: absolute;
+  top: 14px; left: 0; right: 0;
+  height: 2px;
+  background: #dce4f0;
+  z-index: 1;
+}
+
+.rtg-flow-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: #fff;
+  padding: 0 8px;
+}
+
+.rtg-step-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #dce4f0;
+  color: #8090a0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 6px;
+  font-size: 13px;
+  transition: all 0.18s;
+}
+
+.rtg-flow-step.active .rtg-step-num {
+  border-color: #0b3b46;
+  background: #0b3b46;
+  color: #fff;
+}
+
+.rtg-flow-step.completed .rtg-step-num {
+  border-color: #c9a227;
+  background: #c9a227;
+  color: #1a2540;
+}
+
+.rtg-step-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8090a0;
+}
+
+.rtg-flow-step.active .rtg-step-label {
+  color: #1a2540;
+}
+
+/* ------------------------------------------------------------------ */
+/* SUCCESS STATE                                                        */
+/* ------------------------------------------------------------------ */
+
+.rtg-success-box {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.rtg-success-icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+
+.rtg-success-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a2540;
+  margin: 0 0 10px;
+}
+
+.rtg-success-desc {
+  font-size: 14px;
+  color: #4c5e80;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto 24px;
+}
+
+.rtg-tracking-card {
+  background: #f8faff;
+  border: 1.5px solid #dce4f0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  max-width: 440px;
+  margin: 0 auto 24px;
+}
+
+.rtg-track-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.rtg-track-row:last-child {
+  border-bottom: none;
+}
+
+.rtg-track-lbl {
+  font-weight: 600;
+  color: #8090a0;
+}
+
+.rtg-track-val {
+  font-weight: 700;
+  color: #1a2540;
+}
+
+/* ------------------------------------------------------------------ */
+/* ARTISAN MATCHING UI / SCORECARD                                       */
+/* ------------------------------------------------------------------ */
+
+.rtg-match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.rtg-match-card {
+  background: #fff;
+  border: 1.5px solid #dce4f0;
+  border-radius: 10px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.rtg-match-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f0f4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.rtg-match-details h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2540;
+  margin: 0 0 4px;
+}
+
+.rtg-match-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.rtg-match-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.rtg-badge-gold { background: #fff8e8; color: #b8901e; border: 1px solid #fce8cd; }
+.rtg-badge-blue { background: #f0f4ff; color: #0b3b46; border: 1px solid #dce4f0; }
+
+.rtg-match-score {
+  text-align: right;
+}
+
+.rtg-score-val {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0b3b46;
+}
+
+.rtg-score-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  color: #8090a0;
+  text-transform: uppercase;
+}

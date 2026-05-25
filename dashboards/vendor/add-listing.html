@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Listing | Vendor Dashboard | Furnostyles</title>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  <link rel="stylesheet" href="../../shared/uploads/upload.css">
+
+  <style>
+    .vd-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .vd-form-full { grid-column: 1 / -1; }
+    .vd-field { display: flex; flex-direction: column; gap: 6px; }
+    .vd-label {
+      font-size: 13px; font-weight: 600; color: #3c4f72;
+    }
+    .vd-label span { color: #cc1a1a; margin-left: 2px; }
+    .vd-input, .vd-select, .vd-textarea {
+      padding: 10px 13px; border: 1.5px solid #dce4f0; border-radius: 7px;
+      font-size: 14px; color: #1a2540; background: #fff;
+      transition: border-color 0.18s;
+      font-family: inherit;
+    }
+    .vd-input:focus, .vd-select:focus, .vd-textarea:focus {
+      outline: none; border-color: #1a2540;
+    }
+    .vd-textarea { resize: vertical; min-height: 100px; }
+    .vd-submit-row {
+      display: flex; align-items: center; gap: 14px;
+      margin-top: 24px; padding-top: 20px;
+      border-top: 1px solid #dce4f0;
+    }
+    .vd-submit-btn {
+      padding: 12px 32px; background: var(--fns-petrol-blue); color: var(--fns-white);
+      border: none; border-radius: 8px; font-size: 15px;
+      font-weight: 700; cursor: pointer; transition: background 0.18s;
+    }
+    .vd-submit-btn:hover { background: #2c3e6b; }
+    .vd-back-link {
+      font-size: 13px; color: #4c5e80; text-decoration: none;
+    }
+    .vd-back-link:hover { color: #1a2540; }
+    @media (max-width: 640px) {
+      .vd-form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles</strong> Personal Luxury. Elevated.</span>
+    <span><b>Kasarani, Nairobi</b> &nbsp; <b>+254 713 639 205</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html" aria-label="Furnostyles Home">
+      <span>Furnostyles</span>
+    </a>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="content-section">
+        <div class="fns-dashboard-container">
+
+          <div class="fns-dashboard-header">
+            <div>
+              <h2 class="fns-dashboard-title">Add New Listing</h2>
+              <div class="fns-dashboard-user-info">
+                Vendor: <strong id="vendorEmail">Loading&hellip;</strong>
+                &nbsp;|&nbsp; ID: <strong id="vendorId">—</strong>
+              </div>
+            </div>
+            <a href="listings.html" class="btn secondary">&larr; My Listings</a>
+          </div>
+
+          <!-- Listing Details Form -->
+          <div class="fns-dashboard-section">
+            <h3 class="fns-dashboard-section-title">Listing Details</h3>
+            <div class="vd-form-grid">
+
+              <div class="vd-field">
+                <label class="vd-label" for="listingType">Listing Type <span>*</span></label>
+                <select id="listingType" class="vd-select">
+                  <option value="">— Select type —</option>
+                  <option value="furniture">Furniture</option>
+                  <option value="material">Material / Supplies</option>
+                  <option value="sourcing">Sourcing / Import</option>
+                  <option value="secondhand">Secondhand / Used</option>
+                </select>
+              </div>
+
+              <div class="vd-field">
+                <label class="vd-label" for="sellerType">Seller Type <span>*</span></label>
+                <select id="sellerType" class="vd-select">
+                  <option value="">— Select —</option>
+                  <option value="individual">Individual</option>
+                  <option value="vendor">Vendor</option>
+                  <option value="manufacturer">Manufacturer</option>
+                  <option value="artisan">Artisan</option>
+                  <option value="importer">Importer</option>
+                </select>
+              </div>
+
+              <div class="vd-field vd-form-full">
+                <label class="vd-label" for="listingTitle">Title <span>*</span></label>
+                <input type="text" id="listingTitle" class="vd-input"
+                  placeholder="e.g. Solid Mahogany 6-Seater Dining Set" maxlength="120">
+              </div>
+
+              <div class="vd-field">
+                <label class="vd-label" for="listingCategory">Category <span>*</span></label>
+                <select id="listingCategory" class="vd-select">
+                  <option value="">— Select listing type first —</option>
+                </select>
+              </div>
+
+              <div class="vd-field">
+                <label class="vd-label" for="listingSubcategory">Subcategory</label>
+                <input type="text" id="listingSubcategory" class="vd-input"
+                  placeholder="e.g. Queen Bed Frame">
+              </div>
+
+              <div class="vd-field">
+                <label class="vd-label" for="listingPrice">Price (KSh) <span>*</span></label>
+                <input type="number" id="listingPrice" class="vd-input"
+                  placeholder="e.g. 45000" min="0">
+              </div>
+
+              <div class="vd-field">
+                <label class="vd-label" for="listingCondition">Condition <span>*</span></label>
+                <select id="listingCondition" class="vd-select">
+                  <option value="">— Select —</option>
+                  <option value="new">New</option>
+                  <option value="like_new">Like New</option>
+                  <option value="used">Used — Good</option>
+                  <option value="refurbished">Refurbished</option>
+                </select>
+              </div>
+
+              <div class="vd-field vd-form-full">
+                <label class="vd-label" for="listingLocation">Location <span>*</span></label>
+                <input type="text" id="listingLocation" class="vd-input"
+                  placeholder="e.g. Westlands, Nairobi">
+              </div>
+
+              <div class="vd-field vd-form-full">
+                <label class="vd-label" for="listingDesc">Description <span>*</span></label>
+                <textarea id="listingDesc" class="vd-textarea"
+                  placeholder="Describe the item — dimensions, materials, condition, any extras..."></textarea>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Upload Widget -->
+          <div class="fns-dashboard-section">
+            <h3 class="fns-dashboard-section-title">
+              Product Images
+              <span style="font-size:12px;font-weight:400;color:#8090a0;margin-left:8px;">Min 3 required</span>
+            </h3>
+            <p style="font-size:13px;color:#4c5e80;margin:0 0 16px;">
+              Upload clear photos from multiple angles. You can mix local files and image URLs.
+            </p>
+            <div id="uploadContainer"></div>
+          </div>
+
+          <!-- Submit -->
+          <div class="vd-submit-row">
+            <button type="button" id="submitListingBtn" class="vd-submit-btn">Submit Listing</button>
+            <a href="listings.html" class="vd-back-link">Cancel</a>
+          </div>
+
+          <!-- Result (filled by FurnostylesListingUI) -->
+          <div id="listingResult" style="display:none;"></div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fld-footer-mount"></div>
+
+  <!-- Firebase -->
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+  <script src="../../shared/firebase/storage-service.js"></script>
+
+  <!-- Auth -->
+  <script src="../../shared/auth/auth-config.js"></script>
+  <script src="../../shared/auth/auth-state.js"></script>
+  <script src="../../shared/auth/auth-guards.js"></script>
+
+  <!-- Upload system -->
+  <script src="../../shared/uploads/upload-config.js"></script>
+  <script src="../../shared/uploads/upload-validation.js"></script>
+  <script src="../../shared/uploads/upload-service.js"></script>
+  <script src="../../shared/uploads/upload-ui.js"></script>
+
+  <!-- Listing system -->
+  <script src="../../shared/listings/listing-config.js"></script>
+  <script src="../../shared/listings/listing-types.js"></script>
+  <script src="../../shared/listings/listing-validation.js"></script>
+  <script src="../../shared/listings/listing-service.js"></script>
+  <script src="../../shared/listings/listing-ui.js"></script>
+
+  <!-- Footer -->
+  <script defer src="../../shared/layout/footer-data.js"></script>
+  <script defer src="../../shared/layout/footer-render.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var CATEGORIES = {
+        furniture:  ['Sofas & Sectionals','Dining & Kitchen','Bedroom','Office','Storage','Outdoor','Decorative','Other'],
+        material:   ['Timber & Wood','Metal & Steel','Fabric & Upholstery','Glass & Mirror','Paint & Finishes','Hardware','Other'],
+        sourcing:   ['Furniture (Import)','Home Appliances','Raw Materials','Textiles','Ceramics & Pottery','Electronics','Other'],
+        secondhand: ['Furniture','Appliances','Electronics','Clothing','Tools','Garden','Books & Media','Other']
+      };
+
+      var uploadAPI  = null;
+      var currentVendorId   = '';
+      var currentVendorRole = 'vendor';
+
+      function getVendorId() {
+        var u = (window.FurnostylesFirebase && window.FurnostylesFirebase.getUser())
+              || (window.FurnostylesAuthState && window.FurnostylesAuthState.getCurrentUser());
+        if (u) {
+          currentVendorId   = u.uid || u.id || 'local_vendor';
+          currentVendorRole = (window.FurnostylesAuthState && window.FurnostylesAuthState.getUserRole()) || 'vendor';
+          var emailEl = document.getElementById('vendorEmail');
+          var idEl    = document.getElementById('vendorId');
+          if (emailEl) emailEl.textContent = u.email || 'Vendor';
+          if (idEl)    idEl.textContent    = currentVendorId;
+        }
+      }
+
+      function updateCategories() {
+        var type = document.getElementById('listingType').value;
+        var sel  = document.getElementById('listingCategory');
+        sel.innerHTML = '<option value="">— Select category —</option>';
+        var cats = CATEGORIES[type] || [];
+        cats.forEach(function (c) {
+          var o = document.createElement('option');
+          o.value = c; o.textContent = c;
+          sel.appendChild(o);
+        });
+      }
+
+      function init() {
+        /* Auth guard */
+        if (window.FurnostylesAuthGuards) window.FurnostylesAuthGuards.requireAuth();
+
+        getVendorId();
+
+        /* Init upload widget */
+        uploadAPI = window.FurnostylesUploadUI.init(
+          document.getElementById('uploadContainer'),
+          {
+            context:     'products',
+            minImages:   3,
+            submitLabel: 'Confirm Images',
+            onChange: function () {
+              var r = document.getElementById('listingResult');
+              window.FurnostylesListingUI && window.FurnostylesListingUI.clearState(r);
+            }
+          }
+        );
+
+        /* Dynamic category options */
+        document.getElementById('listingType').addEventListener('change', updateCategories);
+
+        /* Submit */
+        document.getElementById('submitListingBtn').addEventListener('click', function () {
+          var type       = document.getElementById('listingType').value;
+          var seller     = document.getElementById('sellerType').value;
+          var title      = document.getElementById('listingTitle').value.trim();
+          var category   = document.getElementById('listingCategory').value;
+          var subcategory = document.getElementById('listingSubcategory').value.trim();
+          var price      = document.getElementById('listingPrice').value.trim();
+          var condition  = document.getElementById('listingCondition').value;
+          var location   = document.getElementById('listingLocation').value.trim();
+          var desc       = document.getElementById('listingDesc').value.trim();
+          var resultEl   = document.getElementById('listingResult');
+
+          /* Field validation */
+          var lv = window.FurnostylesListingValidation;
+          if (lv) lv.clearFieldErrors();
+          var fv = lv ? lv.validateListing({
+            title: title, category: category, sellerType: seller,
+            price: price, description: desc
+          }) : { valid: !!title && !!category && !!seller && !!price && !!desc, errors: {} };
+          if (!fv.valid) {
+            if (lv) lv.applyFieldErrors(fv.errors);
+            return;
+          }
+          if (!type)      { alert('Please select a listing type.'); return; }
+          if (!condition) { alert('Please select item condition.'); return; }
+
+          /* Image validation */
+          var imgResult = uploadAPI.validate();
+          if (!imgResult.valid) {
+            uploadAPI.showMessage(imgResult.errors.join(' '), 'error');
+            document.getElementById('uploadContainer').scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+          uploadAPI.clearMessage();
+
+          /* Loading */
+          var listingUI = window.FurnostylesListingUI;
+          if (listingUI) listingUI.showLoading(resultEl, 'Uploading images and saving listing\u2026');
+
+          /* 1. Upload \u2192 2. Save */
+          uploadAPI.uploadAndGetURLs()
+            .then(function (uploadResult) {
+              return window.FurnostylesListingService.submitListing({
+                listingType:  type,
+                title:        title,
+                category:     category,
+                subcategory:  subcategory,
+                price:        Number(price),
+                condition:    condition,
+                description:  desc,
+                sellerType:   seller,
+                location:     location,
+                vendorId:     currentVendorId,
+                vendorRole:   currentVendorRole,
+                sourcePage:   'vendor-add-listing'
+              }, uploadResult);
+            })
+            .then(function (saved) {
+              if (listingUI) listingUI.showSuccess(resultEl, 'Listing submitted for review!', {
+                id:         saved.id,
+                collection: 'listings',
+                status:     saved.status || 'pending',
+                imageCount: saved.images ? saved.images.length : 0,
+                uploadMode: saved.uploadMode
+              });
+              /* Add a "View My Listings" link after success */
+              var link = document.createElement('p');
+              link.style.cssText = 'margin-top:12px;font-size:13px;';
+              link.innerHTML = '<a href="listings.html" style="color:#1a2540;font-weight:700;">&#8592; View My Listings</a>';
+              resultEl.appendChild(link);
+            })
+            .catch(function (err) {
+              if (listingUI) listingUI.showError(resultEl, err.message, function () {
+                document.getElementById('submitListingBtn').click();
+              });
+            });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    }());
+  </script>
+</body>
+</html>

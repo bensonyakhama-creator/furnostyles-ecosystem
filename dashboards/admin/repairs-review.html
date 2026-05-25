@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repairs Review | Admin | Furnostyles</title>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  <link rel="stylesheet" href="../../shared/moderation/moderation.css">
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles Admin</strong> &mdash; Moderation Panel</span>
+    <span><b>Kasarani, Nairobi</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html" aria-label="Furnostyles Home">
+      <span>Furnostyles</span>
+    </a>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="content-section">
+        <div class="fns-dashboard-container">
+
+          <div class="fns-dashboard-header">
+            <div>
+              <h2 class="fns-dashboard-title">Repair Projects Review</h2>
+              <div class="fns-dashboard-user-info">
+                Collection: <strong>repairProjects</strong>
+                &nbsp;|&nbsp; Admin: <strong id="adminEmail">Loading&hellip;</strong>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+              <a href="listings-review.html" class="btn secondary">Listings</a>
+              <a href="properties-review.html" class="btn secondary">Properties</a>
+            </div>
+          </div>
+
+          <!-- Action bar -->
+          <div class="mdr-action-bar">
+            <select id="statusFilter" class="mdr-filter-sel">
+              <option value="pending">Pending Review</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+              <option value="hidden">Hidden</option>
+              <option value="flagged">Flagged</option>
+              <option value="all">All Repairs</option>
+            </select>
+            <button type="button" id="refreshBtn" class="mdr-refresh-btn">&#8635; Refresh</button>
+            <span id="loadLabel" style="font-size:12px;color:#8090a0;"></span>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="mdr-stats-strip" id="statsStrip"></div>
+
+          <!-- Review grid — before/after thumbs shown side-by-side per card -->
+          <div id="reviewGrid"></div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fld-footer-mount"></div>
+
+  <!-- Firebase -->
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+
+  <!-- Auth -->
+  <script src="../../shared/auth/auth-config.js"></script>
+  <script src="../../shared/auth/auth-state.js"></script>
+  <script src="../../shared/auth/auth-guards.js"></script>
+
+  <!-- Moderation system -->
+  <script src="../../shared/moderation/moderation-status.js"></script>
+  <script src="../../shared/moderation/moderation-service.js"></script>
+  <script src="../../shared/moderation/moderation-ui.js"></script>
+
+  <!-- Footer -->
+  <script defer src="../../shared/layout/footer-data.js"></script>
+  <script defer src="../../shared/layout/footer-render.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var COLLECTION = 'repairProjects';
+      var ITEM_TYPE  = 'repair';
+      var currentFilter = 'pending';
+
+      function getAdminInfo() {
+        var u = (window.FurnostylesFirebase && window.FurnostylesFirebase.getUser())
+              || (window.FurnostylesAuthState && window.FurnostylesAuthState.getCurrentUser());
+        var el = document.getElementById('adminEmail');
+        if (el) el.textContent = u ? (u.email || 'Admin') : 'Local mode';
+      }
+
+      function load(filter) {
+        var grid   = document.getElementById('reviewGrid');
+        var stats  = document.getElementById('statsStrip');
+        var label  = document.getElementById('loadLabel');
+        var mdrUI  = window.FurnStylesModerationUI;
+        var mdrSvc = window.FurnostylesModeration;
+
+        if (!mdrUI || !mdrSvc) {
+          if (grid) grid.innerHTML = '<p style="color:#cc1a1a;padding:20px;">Moderation modules not loaded.</p>';
+          return;
+        }
+
+        mdrUI.renderLoadingState(grid);
+        if (label) label.textContent = 'Loading\u2026';
+
+        mdrSvc.getByStatus(COLLECTION, filter)
+          .then(function (items) {
+            if (label) label.textContent = (items ? items.length : 0) + ' item(s) loaded';
+            mdrUI.renderStats(stats, items || []);
+            mdrUI.renderReviewGrid(grid, items || [], COLLECTION, ITEM_TYPE);
+          })
+          .catch(function (err) {
+            if (label) label.textContent = 'Error';
+            mdrUI.renderErrorState(grid, err.message);
+          });
+      }
+
+      function init() {
+        if (window.FurnostylesAuthGuards) {
+          try { window.FurnostylesAuthGuards.requireAuth(); } catch (e) {}
+        }
+
+        getAdminInfo();
+
+        document.getElementById('statusFilter').addEventListener('change', function () {
+          currentFilter = this.value;
+          load(currentFilter);
+        });
+
+        document.getElementById('refreshBtn').addEventListener('click', function () {
+          load(currentFilter);
+        });
+
+        load(currentFilter);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    }());
+  </script>
+</body>
+</html>

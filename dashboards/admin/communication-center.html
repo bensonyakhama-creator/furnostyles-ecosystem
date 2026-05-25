@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecosystem Comm Supervision Desk | Furnostyles Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../../shared/communication/communication-layout.css">
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles Admin</strong> Executive Console</span>
+    <span><b>Secure Session</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html">
+      <span>Furnostyles Coordinating Authority</span>
+    </a>
+    <div style="font-weight:700;color:#c9a227;font-size:13px;">🛡️ Supervised Communications Desk</div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main" style="padding:32px;">
+
+      <div class="comm-split">
+        
+        <!-- Sidebar thread selectors -->
+        <div class="comm-list-panel">
+          <div class="comm-panel-header">📁 Active Platform Rooms</div>
+          <div class="comm-items-container" id="threadsList">
+            <div style="padding:20px;text-align:center;color:#8090a0;font-size:13px;">Loading conversations...</div>
+          </div>
+        </div>
+
+        <!-- Chat Workspace -->
+        <div class="comm-chat-panel">
+          <div class="comm-chat-header">
+            <div>
+              <div class="comm-chat-title" id="chatTitle">Select an Active Platform Room</div>
+              <div class="comm-chat-sub" id="chatSub">All platform messages can be moderated by administrators here.</div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:#cc1a1a;">🛡️ AUDIT ACTIVE</div>
+          </div>
+
+          <div class="comm-messages-wrap" id="messagesArea">
+            <div style="text-align:center;margin:auto;color:#8090a0;font-size:13px;">
+              🛡️ Select a thread to verify transaction communications.
+            </div>
+          </div>
+
+          <div class="comm-chat-footer">
+            <form class="comm-chat-form" id="chatForm">
+              <input type="text" class="comm-chat-input" id="msgInput" placeholder="Injected admin response..." required disabled>
+              <button type="submit" class="btn primary" id="sendBtn" style="background:#cc1a1a;" disabled>Inject Reply</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+  <script src="../../shared/communication/communication-status.js"></script>
+  <script src="../../shared/communication/messaging-service.js"></script>
+  <script src="../../shared/communication/communication-ui.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function () {
+        var b = window.FurnostylesFirebaseBridge;
+        var msgSvc = window.FurnostylesMessagingService;
+        var commUI = window.FurnostylesCommunicationUI;
+
+        if (!b) return;
+
+        var adminId = 'system_coordinator';
+        var selectedConvoId = null;
+
+        function loadThreads() {
+          b.list('conversations').then(function (threads) {
+            var container = document.getElementById('threadsList');
+            if (threads.length === 0) {
+              container.innerHTML = '<div style="padding:20px;text-align:center;color:#8090a0;font-size:12px;">No coordinated platform conversations.</div>';
+              return;
+            }
+
+            container.innerHTML = threads.map(function (t) {
+              var activeClass = t.id === selectedConvoId ? ' active' : '';
+              var snippet = t.lastMessageSnippet || 'No messages yet';
+              return '<a class="comm-item' + activeClass + '" href="#" onclick="window.selectConvo(\'' + t.id + '\',\'' + t.conversationType + '\')">' +
+                '<div class="comm-item-avatar">🏢</div>' +
+                '<div class="comm-item-info">' +
+                  '<div class="comm-item-name">' + (t.conversationType === 'escalation' ? '⚠️ DISPUTE' : '🛠️ Work Thread') + '</div>' +
+                  '<div class="comm-item-msg">' + snippet + '</div>' +
+                '</div>' +
+              '</a>';
+            }).join('');
+          });
+        }
+
+        window.selectConvo = function (convoId, type) {
+          selectedConvoId = convoId;
+          document.getElementById('chatTitle').textContent = type === 'escalation' ? '⚠️ Escalation Interventions' : '🛠️ Coordinate Workspace Chat';
+          document.getElementById('msgInput').removeAttribute('disabled');
+          document.getElementById('sendBtn').removeAttribute('disabled');
+          
+          loadThreads();
+          loadMessages();
+        };
+
+        function loadMessages() {
+          if (!selectedConvoId) return;
+          msgSvc.fetchMessages(selectedConvoId, b).then(function (msgs) {
+            var area = document.getElementById('messagesArea');
+            if (msgs.length === 0) {
+              area.innerHTML = '<div style="text-align:center;margin:auto;color:#8090a0;font-size:12px;">No messages. Write a message below to start platform logging.</div>';
+              return;
+            }
+            area.innerHTML = msgs.map(function (m) {
+              return commUI.renderMessageBubble(m, adminId);
+            }).join('');
+            area.scrollTop = area.scrollHeight;
+          });
+        }
+
+        document.getElementById('chatForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var input = document.getElementById('msgInput');
+          var text = input.value.trim();
+          if (!text || !selectedConvoId) return;
+
+          msgSvc.sendMessage(selectedConvoId, adminId, 'admin', text, b).then(function () {
+            input.value = '';
+            loadMessages();
+            loadThreads();
+          });
+        });
+
+        loadThreads();
+      });
+    }());
+  </script>
+</body>
+</html>

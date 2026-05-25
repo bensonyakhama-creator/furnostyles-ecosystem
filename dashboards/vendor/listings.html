@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Listings | Vendor Dashboard | Furnostyles</title>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../shared/dashboard-layout.css">
+
+  <style>
+    /* Listings grid */
+    .vd-listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .vd-listing-card {
+      background: #fff;
+      border: 1.5px solid #dce4f0;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: box-shadow 0.18s;
+    }
+    .vd-listing-card:hover { box-shadow: 0 4px 16px rgba(26,37,64,0.10); }
+    .vd-card-thumb {
+      width: 100%; height: 160px;
+      object-fit: cover; display: block;
+    }
+    .vd-card-thumb-placeholder {
+      width: 100%; height: 160px;
+      background: #f0f4ff;
+      display: flex; align-items: center;
+      justify-content: center;
+      font-size: 32px; color: #8090a0;
+    }
+    .vd-card-body { padding: 14px 16px 16px; }
+    .vd-card-meta {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 8px;
+    }
+    .vd-card-type {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: #4c5e80; background: #f0f4ff;
+      padding: 3px 8px; border-radius: 20px;
+    }
+    .vd-card-status {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 3px 8px; border-radius: 20px;
+    }
+    .vd-card-title {
+      font-size: 14px; font-weight: 700; color: #1a2540;
+      margin: 0 0 4px; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .vd-card-sub {
+      font-size: 12px; color: #8090a0;
+      margin: 0 0 10px; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .vd-card-footer {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 12px;
+    }
+    .vd-card-price { font-size: 14px; font-weight: 700; color: #1a6e3a; }
+    .vd-card-date  { font-size: 11px; color: #b0b8c8; }
+    .vd-card-actions { display: flex; gap: 8px; }
+    .vd-btn-edit, .vd-btn-del {
+      flex: 1; padding: 7px 0; font-size: 12px;
+      font-weight: 700; border-radius: 6px;
+      border: 1.5px solid #dce4f0; cursor: pointer;
+      font-family: inherit; transition: all 0.15s;
+    }
+    .vd-btn-edit { background: #f0f4ff; color: #1a2540; }
+    .vd-btn-edit:hover { background: #1a2540; color: #fff; border-color: #1a2540; }
+    .vd-btn-del  { background: #fff5f5; color: #cc1a1a; }
+    .vd-btn-del:hover  { background: #cc1a1a; color: #fff; border-color: #cc1a1a; }
+
+    /* Skeleton */
+    .vd-skel-block {
+      background: linear-gradient(90deg, #f0f4ff 25%, #e4eaf5 50%, #f0f4ff 75%);
+      background-size: 200% 100%;
+      animation: vd-skel-anim 1.4s infinite;
+    }
+    .vd-skel-line {
+      background: linear-gradient(90deg, #f0f4ff 25%, #e4eaf5 50%, #f0f4ff 75%);
+      background-size: 200% 100%;
+      animation: vd-skel-anim 1.4s infinite;
+      border-radius: 4px; display: block;
+    }
+    @keyframes vd-skel-anim {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Stats strip */
+    .vd-stats-strip {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .vd-stat-pill {
+      padding: 7px 16px; border-radius: 20px;
+      font-size: 13px; font-weight: 600;
+      border: 1.5px solid #dce4f0;
+      background: #f8faff; color: #3c4f72;
+    }
+    .vd-stat-pill strong { color: #1a2540; }
+
+    /* Action bar */
+    .vd-action-bar {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 20px; gap: 12px;
+      flex-wrap: wrap;
+    }
+    .vd-add-btn {
+      padding: 10px 24px; background: #1a2540; color: #fff;
+      border: none; border-radius: 8px; font-size: 14px;
+      font-weight: 700; cursor: pointer; text-decoration: none;
+      display: inline-block;
+    }
+    .vd-add-btn:hover { background: #2c3e6b; }
+    .vd-filter-sel {
+      padding: 8px 12px; border: 1.5px solid #dce4f0;
+      border-radius: 7px; font-size: 13px; color: #1a2540;
+      background: #fff; font-family: inherit;
+    }
+
+    @media (max-width: 600px) {
+      .vd-listings-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles</strong> Personal Luxury. Elevated.</span>
+    <span><b>Kasarani, Nairobi</b> &nbsp; <b>+254 713 639 205</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html" aria-label="Furnostyles Home">
+      <span>Furnostyles</span>
+    </a>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="content-section">
+        <div class="fns-dashboard-container">
+
+          <div class="fns-dashboard-header">
+            <div>
+              <h2 class="fns-dashboard-title">My Listings</h2>
+              <div class="fns-dashboard-user-info">
+                Vendor: <strong id="vendorEmail">Loading&hellip;</strong>
+              </div>
+            </div>
+            <a href="index.html" class="btn secondary">&larr; Dashboard</a>
+          </div>
+
+          <!-- Action bar -->
+          <div class="vd-action-bar">
+            <a href="add-listing.html" class="vd-add-btn">+ Add New Listing</a>
+            <select id="statusFilter" class="vd-filter-sel">
+              <option value="all">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="active">Active</option>
+              <option value="rejected">Rejected</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="vd-stats-strip" id="statsStrip"></div>
+
+          <!-- Listings grid -->
+          <div id="listingsGrid"></div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fld-footer-mount"></div>
+
+  <!-- Firebase -->
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+
+  <!-- Auth -->
+  <script src="../../shared/auth/auth-config.js"></script>
+  <script src="../../shared/auth/auth-state.js"></script>
+  <script src="../../shared/auth/auth-guards.js"></script>
+
+  <!-- Listing system -->
+  <script src="../../shared/listings/listing-config.js"></script>
+  <script src="../../shared/listings/listing-service.js"></script>
+  <script src="../../shared/listings/listing-ui.js"></script>
+
+  <!-- Footer -->
+  <script defer src="../../shared/layout/footer-data.js"></script>
+  <script defer src="../../shared/layout/footer-render.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var allListings = [];
+      var currentFilter = 'all';
+
+      function getVendorId() {
+        var u = (window.FurnostylesFirebase && window.FurnostylesFirebase.getUser())
+              || (window.FurnostylesAuthState && window.FurnostylesAuthState.getCurrentUser());
+        if (!u) return null;
+        var emailEl = document.getElementById('vendorEmail');
+        if (emailEl) emailEl.textContent = u.email || 'Vendor';
+        return u.uid || u.id || null;
+      }
+
+      function renderStats(listings) {
+        var strip  = document.getElementById('statsStrip');
+        if (!strip) return;
+        var counts = { all: listings.length, pending: 0, active: 0, rejected: 0 };
+        listings.forEach(function (l) {
+          if (counts[l.status] !== undefined) counts[l.status]++;
+        });
+        strip.innerHTML = [
+          ['Total', counts.all],
+          ['Pending', counts.pending],
+          ['Active', counts.active],
+          ['Rejected', counts.rejected]
+        ].map(function (s) {
+          return '<div class="vd-stat-pill"><strong>' + s[1] + '</strong> ' + s[0] + '</div>';
+        }).join('');
+      }
+
+      function applyFilter(listings, filter) {
+        if (filter === 'all') return listings;
+        return listings.filter(function (l) { return l.status === filter; });
+      }
+
+      function renderGrid(filter) {
+        var grid = document.getElementById('listingsGrid');
+        var listingUI = window.FurnostylesListingUI;
+        if (!listingUI || !grid) return;
+        listingUI.renderListingGrid(grid, applyFilter(allListings, filter));
+
+        /* Wire placeholder edit/delete buttons */
+        grid.querySelectorAll('.vd-btn-edit').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            alert('Edit listing ' + btn.getAttribute('data-listing-id') + ' — coming in Phase 20 (admin moderation system).');
+          });
+        });
+        grid.querySelectorAll('.vd-btn-del').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            if (confirm('Delete this listing? (Phase 20 will implement real deletion.)')) {
+              btn.closest('.vd-listing-card').style.opacity = '0.4';
+            }
+          });
+        });
+      }
+
+      function init() {
+        if (window.FurnostylesAuthGuards) window.FurnostylesAuthGuards.requireAuth();
+
+        var vendorId = getVendorId();
+        var grid = document.getElementById('listingsGrid');
+        var listingUI = window.FurnostylesListingUI;
+
+        /* Show skeleton while loading */
+        if (listingUI) listingUI.renderLoadingGrid(grid);
+
+        if (!vendorId) {
+          if (listingUI) listingUI.renderListingGrid(grid, []);
+          return;
+        }
+
+        window.FurnostylesListingService.getVendorListings(vendorId)
+          .then(function (listings) {
+            allListings = listings || [];
+            renderStats(allListings);
+            renderGrid(currentFilter);
+          })
+          .catch(function (err) {
+            console.error('[VendorListings] Load error:', err);
+            if (grid) grid.innerHTML =
+              '<p style="color:#cc1a1a;padding:20px;font-size:14px;">Failed to load listings: ' +
+              err.message + '</p>';
+          });
+
+        /* Filter */
+        document.getElementById('statusFilter').addEventListener('change', function () {
+          currentFilter = this.value;
+          renderGrid(currentFilter);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Health Check | Furnostyles</title>
+  <meta name="description" content="Test page to verify Firebase initialization and health status.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <style>
+    .health-result {
+      background: var(--fns-bg-light);
+      border-radius: var(--fns-radius);
+      padding: 24px;
+      margin: 24px 0;
+      font-family: monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 700px;
+      overflow-x: auto;
+    }
+    .health-result pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .status-ok { color: #28a745; font-weight: bold; }
+    .status-degraded { color: #ffc107; font-weight: bold; }
+    .status-failed { color: #dc3545; font-weight: bold; }
+    .test-actions {
+      display: flex;
+      gap: 12px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles</strong> Personal Luxury. Elevated.</span>
+    <span><b>Kasarani, Nairobi</b><b>+254 713 639 205</b><b>furnostyles@gmail.com</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
+      <span>Furnostyles</span>
+    </a>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="content-section">
+        <div class="section-header">
+          <span>System Check</span>
+          <h2>Firebase Health Check</h2>
+          <p>Verifies Firebase (or local bridge) initialization status.</p>
+        </div>
+
+        <div class="health-result" id="healthResult">
+          <pre>Running health check...</pre>
+        </div>
+
+        <div class="test-actions">
+          <button class="btn primary" onclick="runHealthCheck()">Re-run Check</button>
+          <button class="btn secondary" onclick="testLocalStorage()">Test Local Storage</button>
+          <button class="btn secondary" onclick="clearLocalStorage()">Clear Local Storage</button>
+        </div>
+
+        <div class="health-result" id="storageResult" style="display:none;">
+          <pre></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fld-footer-mount"></div>
+
+  <!-- Firebase Compat SDK (CDN) — loaded before config for Firebase mode testing -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+  <!-- Firebase Config -->
+  <script src="shared/firebase/firebase-config.js"></script>
+
+  <!-- Firebase Bridge (handles both local and Firebase modes) -->
+  <script src="shared/firebase/firebase-bridge.js"></script>
+
+  <!-- Firebase Init (adopted by bridge if already initialized) -->
+  <script src="shared/firebase/firebase-init.js"></script>
+
+  <!-- Health Check -->
+  <script src="shared/firebase/firebase-health-check.js"></script>
+
+  <!-- Footer Render -->
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function displayHealthReport(report) {
+        var resultDiv = document.getElementById('healthResult');
+        var statusClass = 'status-' + report.status;
+        var statusText = report.status.toUpperCase();
+
+        var html = '<div><span class="' + statusClass + '">STATUS: ' + statusText + '</span></div>';
+        html += '<div>Mode: ' + report.mode + '</div>';
+        html += '<div>Timestamp: ' + report.timestamp + '</div>';
+        html += '<hr style="margin: 12px 0; border: none; border-top: 1px solid #ccc;">';
+        html += '<div>Config: ' + (report.config.hasConfig ? 'loaded' : 'missing') +
+                (report.config.isPlaceholder ? ' (placeholder)' : ' (real)') + '</div>';
+        html += '<div>SDK: ' + (report.sdk.loaded ? 'loaded' : 'not loaded') + '</div>';
+        html += '<hr style="margin: 12px 0; border: none; border-top: 1px solid #ccc;">';
+        html += '<div>Services:</div>';
+        html += '<div>  App: ' + (report.services.app.ready ? '✓' : '✗') + '</div>';
+        html += '<div>  DB (Firestore): ' + (report.services.db.ready ? '✓' : '✗') + '</div>';
+        html += '<div>  Auth: ' + (report.services.auth.ready ? '✓' : '✗') + '</div>';
+        html += '<div>  Storage: ' + (report.services.storage.ready ? '✓' : '✗') + '</div>';
+
+        /* Add guidance based on mode and status */
+        html += '<hr style="margin: 12px 0; border: none; border-top: 1px solid #ccc;">';
+        if (report.mode === 'local') {
+          html += '<div style="color:#666;">Running in LOCAL mode (localStorage). Data persists only in this browser.</div>';
+          if (report.config.isPlaceholder) {
+            html += '<div style="color:#666;">To enable Firebase mode: Replace placeholder values in shared/firebase/firebase-config.js with real Firebase project keys.</div>';
+          }
+        } else if (report.mode === 'firebase') {
+          if (report.status === 'ok') {
+            html += '<div style="color:green;">Firebase connected successfully. All services ready.</div>';
+          } else {
+            html += '<div style="color:#dc3545;">Firebase mode active but some services failed to initialize. Check browser console for errors.</div>';
+          }
+        } else {
+          html += '<div style="color:#dc3545;">Unknown mode. Check Firebase SDK and config.</div>';
+        }
+
+        resultDiv.innerHTML = '<pre>' + html + '</pre>';
+      }
+
+      function runHealthCheck() {
+        if (!window.FurnostylesHealthCheck) {
+          document.getElementById('healthResult').innerHTML =
+            '<pre style="color:red;">Health check module not loaded.</pre>';
+          return;
+        }
+
+        window.FurnostylesHealthCheck.run()
+          .then(function (report) {
+            displayHealthReport(report);
+          })
+          .catch(function (error) {
+            document.getElementById('healthResult').innerHTML =
+              '<pre style="color:red;">Health check failed: ' + error.message + '</pre>';
+          });
+      }
+
+      function testLocalStorage() {
+        var resultDiv = document.getElementById('storageResult');
+        resultDiv.style.display = 'block';
+
+        try {
+          var testKey = 'fns_test_' + Date.now();
+          var testValue = 'test_value_' + Math.random();
+          localStorage.setItem(testKey, testValue);
+          var retrieved = localStorage.getItem(testKey);
+          localStorage.removeItem(testKey);
+
+          if (retrieved === testValue) {
+            resultDiv.innerHTML = '<pre style="color:green;">Local storage is working correctly.</pre>';
+          } else {
+            resultDiv.innerHTML = '<pre style="color:red;">Local storage read/write mismatch.</pre>';
+          }
+        } catch (e) {
+          resultDiv.innerHTML = '<pre style="color:red;">Local storage error: ' + e.message + '</pre>';
+        }
+      }
+
+      function clearLocalStorage() {
+        var confirmClear = confirm('Clear all Furnostyles local storage data? This will reset all local-mode data.');
+        if (!confirmClear) return;
+
+        var keysToRemove = [];
+        for (var i = 0; i < localStorage.length; i++) {
+          var key = localStorage.key(i);
+          if (key && key.indexOf('fns_') === 0) {
+            keysToRemove.push(key);
+          }
+        }
+
+        keysToRemove.forEach(function (key) {
+          localStorage.removeItem(key);
+        });
+
+        alert('Cleared ' + keysToRemove.length + ' Furnostyles local storage keys.');
+      }
+
+      /* Expose to window for button clicks */
+      window.runHealthCheck = runHealthCheck;
+      window.testLocalStorage = testLocalStorage;
+      window.clearLocalStorage = clearLocalStorage;
+
+      /* Auto-run on page load */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', runHealthCheck);
+      } else {
+        runHealthCheck();
+      }
+
+    }());
+  </script>
+</body>
+</html>

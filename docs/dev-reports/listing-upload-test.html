@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listing Upload Test | Furnostyles</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/uploads/upload.css">
+  <style>
+    body { background: #f0f2f7; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; color: #1a2540; }
+
+    .ut-page-header {
+      background: #1a2540; color: #fff; padding: 20px 32px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .ut-page-header a { color: #aac4f0; text-decoration: none; font-size: 13px; }
+    .ut-page-header a:hover { text-decoration: underline; }
+    .ut-page-title { font-size: 20px; font-weight: 700; margin: 0; }
+    .ut-page-tag {
+      background: #0055cc; color: #fff; font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    .ut-main { max-width: 960px; margin: 32px auto; padding: 0 20px 60px; }
+
+    .ut-card {
+      background: #fff; border: 1px solid #dde3ef; border-radius: 10px;
+      padding: 28px; margin-bottom: 24px;
+    }
+    .ut-card-title { font-size: 17px; font-weight: 700; color: #1a2540; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid #edf0f7; }
+
+    .ut-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ut-form-grid .ut-full { grid-column: 1 / -1; }
+
+    .ut-field { display: flex; flex-direction: column; gap: 6px; }
+    .ut-label { font-size: 13px; font-weight: 600; color: #3c4f72; }
+    .ut-label span { color: #cc1a1a; margin-left: 2px; }
+    .ut-input, .ut-select, .ut-textarea {
+      padding: 10px 13px; border: 1px solid #d0d7e3; border-radius: 6px;
+      font-size: 14px; color: #1a2540; background: #f9fafc; width: 100%; box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .ut-input:focus, .ut-select:focus, .ut-textarea:focus {
+      outline: none; border-color: #0055cc; background: #fff;
+    }
+    .ut-textarea { resize: vertical; min-height: 100px; }
+    .ut-hint { font-size: 12px; color: #8a95ae; margin-top: 2px; }
+
+    .ut-section-label {
+      font-size: 15px; font-weight: 700; color: #1a2540; margin: 0 0 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ut-section-badge {
+      font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+      background: #dce9ff; color: #0044aa; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    .ut-submit-row { margin-top: 8px; }
+    .ut-submit-btn {
+      padding: 13px 32px; background: #1a2540; color: #fff;
+      border: none; border-radius: 7px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .ut-submit-btn:hover { background: #0055cc; }
+
+    .ut-result {
+      display: none; margin-top: 24px; background: #f0faf4;
+      border: 1px solid #b6dfc6; border-radius: 10px; padding: 22px;
+    }
+    .ut-result-title { font-size: 15px; font-weight: 700; color: #1a6e3a; margin: 0 0 14px; }
+    .ut-result-row { font-size: 13px; color: #1a2540; padding: 5px 0; border-bottom: 1px solid #d4f5e2; display: flex; gap: 10px; }
+    .ut-result-row:last-child { border-bottom: none; }
+    .ut-result-key { font-weight: 600; min-width: 120px; color: #3c4f72; flex-shrink: 0; }
+    .ut-result-val { word-break: break-all; }
+    .ut-firebase-note {
+      margin-top: 14px; padding: 10px 14px; background: #fffbea;
+      border: 1px solid #f0d890; border-radius: 6px; font-size: 12px; color: #8a5d00;
+    }
+
+    @media (max-width: 640px) {
+      .ut-form-grid { grid-template-columns: 1fr; }
+      .ut-form-grid .ut-full { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ut-page-header">
+    <div>
+      <p style="margin:0 0 3px;"><a href="index.html">&larr; Back</a> &nbsp;|&nbsp; <a href="upload-test.html">Upload Widget Test</a></p>
+      <h1 class="ut-page-title">Listing / Product Upload Form</h1>
+    </div>
+    <span class="ut-page-tag">Phase 16 Test</span>
+  </div>
+
+  <div class="ut-main">
+
+    <!-- Form fields -->
+    <div class="ut-card">
+      <h2 class="ut-card-title">Listing Details</h2>
+      <form id="listingForm" novalidate>
+        <div class="ut-form-grid">
+
+          <div class="ut-field ut-full">
+            <label class="ut-label" for="listingTitle">Listing Title <span>*</span></label>
+            <input type="text" id="listingTitle" class="ut-input" placeholder="e.g. Solid Mahogany 6-Seater Dining Set" required>
+          </div>
+
+          <div class="ut-field">
+            <label class="ut-label" for="listingCategory">Category <span>*</span></label>
+            <select id="listingCategory" class="ut-select" required>
+              <option value="">Select category...</option>
+              <option value="furniture">Furniture</option>
+              <option value="materials">Building Materials</option>
+              <option value="secondhand">Secondhand Items</option>
+              <option value="sourcing">Sourcing / Imports</option>
+              <option value="appliances">Appliances</option>
+              <option value="decor">Decor &amp; Accessories</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="ut-field">
+            <label class="ut-label" for="sellerType">Seller Type <span>*</span></label>
+            <select id="sellerType" class="ut-select" required>
+              <option value="">Select seller type...</option>
+              <option value="individual">Individual</option>
+              <option value="vendor">Vendor / Shop</option>
+              <option value="manufacturer">Manufacturer</option>
+              <option value="artisan">Artisan / Craftsman</option>
+              <option value="importer">Importer</option>
+            </select>
+          </div>
+
+          <div class="ut-field">
+            <label class="ut-label" for="listingPrice">Price (KSh) <span>*</span></label>
+            <input type="number" id="listingPrice" class="ut-input" placeholder="e.g. 45000" min="0" required>
+          </div>
+
+          <div class="ut-field">
+            <label class="ut-label" for="listingLocation">Location</label>
+            <input type="text" id="listingLocation" class="ut-input" placeholder="e.g. Westlands, Nairobi">
+          </div>
+
+          <div class="ut-field ut-full">
+            <label class="ut-label" for="listingDesc">Description <span>*</span></label>
+            <textarea id="listingDesc" class="ut-textarea" placeholder="Describe the item — materials, dimensions, condition, features..." required></textarea>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+    <!-- Upload Widget -->
+    <div class="ut-card">
+      <div class="ut-section-label">
+        Product Images
+        <span class="ut-section-badge">Min 3 required</span>
+      </div>
+      <p class="ut-hint" style="margin:0 0 16px;">Upload clear photos from multiple angles. Mix local files and image URLs.</p>
+      <div id="listingUploadContainer"></div>
+    </div>
+
+    <!-- Submit -->
+    <div class="ut-submit-row">
+      <button type="button" id="submitListingBtn" class="ut-submit-btn">Submit Listing</button>
+    </div>
+
+    <!-- Result (filled by FurnostylesListingUI) -->
+    <div id="listingResult" style="display:none;"></div>
+
+  </div>
+
+  <!-- Firebase bridge (no duplicate init) -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-bridge.js"></script>
+  <script src="shared/firebase/storage-service.js"></script>
+
+  <!-- Upload system -->
+  <script src="shared/uploads/upload-config.js"></script>
+  <script src="shared/uploads/upload-validation.js"></script>
+  <script src="shared/uploads/upload-service.js"></script>
+  <script src="shared/uploads/upload-ui.js"></script>
+
+  <!-- Listing system -->
+  <script src="shared/listings/listing-config.js"></script>
+  <script src="shared/listings/listing-types.js"></script>
+  <script src="shared/listings/listing-validation.js"></script>
+  <script src="shared/listings/listing-service.js"></script>
+  <script src="shared/listings/listing-ui.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var uploadAPI = null;
+
+      function init() {
+        /* Init upload widget */
+        uploadAPI = window.FurnostylesUploadUI.init(
+          document.getElementById('listingUploadContainer'),
+          {
+            context:     'products',
+            minImages:   3,
+            submitLabel: 'Confirm Images',
+            onChange: function () {
+              window.FurnostylesListingUI && window.FurnostylesListingUI.clearState(
+                document.getElementById('listingResult')
+              );
+            }
+          }
+        );
+
+        /* Submit handler */
+        document.getElementById('submitListingBtn').addEventListener('click', function () {
+          var title    = document.getElementById('listingTitle').value.trim();
+          var category = document.getElementById('listingCategory').value;
+          var seller   = document.getElementById('sellerType').value;
+          var price    = document.getElementById('listingPrice').value.trim();
+          var location = document.getElementById('listingLocation').value.trim();
+          var desc     = document.getElementById('listingDesc').value.trim();
+          var resultEl = document.getElementById('listingResult');
+
+          /* Field validation via listing-validation.js */
+          var lv = window.FurnostylesListingValidation;
+          if (lv) lv.clearFieldErrors();
+          var fv = lv ? lv.validateListing({
+            title: title, category: category, sellerType: seller,
+            price: price, description: desc
+          }) : { valid: !!title && !!category && !!seller && !!price && !!desc, errors: {} };
+          if (!fv.valid) { if (lv) lv.applyFieldErrors(fv.errors); return; }
+
+          /* Image validation */
+          var imgResult = uploadAPI.validate();
+          if (!imgResult.valid) {
+            uploadAPI.showMessage(imgResult.errors.join(' '), 'error');
+            document.getElementById('listingUploadContainer').scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+          uploadAPI.clearMessage();
+
+          /* Loading state */
+          var listingUI = window.FurnostylesListingUI;
+          if (listingUI) listingUI.showLoading(resultEl, 'Uploading images and saving to Firestore\u2026');
+
+          /* 1. Upload to Storage \u2192 2. Save listing to Firestore */
+          uploadAPI.uploadAndGetURLs()
+            .then(function (uploadResult) {
+              return window.FurnostylesListingService.submitListing({
+                listingType: 'product',
+                title:       title,
+                category:    category,
+                sellerType:  seller,
+                price:       Number(price),
+                description: desc,
+                location:    location,
+                sourcePage:  'listing-upload-test'
+              }, uploadResult);
+            })
+            .then(function (saved) {
+              if (listingUI) listingUI.showSuccess(resultEl, 'Listing submitted!', {
+                id:         saved.id,
+                collection: 'listings',
+                status:     saved.status || 'pending',
+                imageCount: saved.images ? saved.images.length : 0,
+                uploadMode: saved.uploadMode
+              });
+            })
+            .catch(function (err) {
+              if (listingUI) listingUI.showError(resultEl, err.message, function () {
+                document.getElementById('submitListingBtn').click();
+              });
+            });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    }());
+  </script>
+</body>
+</html>

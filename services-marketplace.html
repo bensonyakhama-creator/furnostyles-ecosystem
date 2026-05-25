@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Marketplace | Furnostyles - Home Services in Nairobi</title>
+  <meta name="description" content="Browse interior design, repairs, carpentry, plumbing, electrical, painting, gypsum and renovation services from Furnostyles and verified providers in Nairobi.">
+  <meta name="keywords" content="interior design, home repairs, carpentry, plumbing, electrical, painting, renovations, Nairobi, Kenya">
+  <meta name="author" content="Furnostyles">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://furnostyles.com/services-marketplace.html">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="stylesheet" href="shared/rendering/marketplace.css">
+  <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/furniture-demo.js"></script>
+  <script src="shared/demo-data/materials-demo.js"></script>
+  <script src="shared/demo-data/secondhand-demo.js"></script>
+  <script src="shared/demo-data/property-demo.js"></script>
+  <script src="shared/demo-data/sourcing-demo.js"></script>
+  <script src="shared/demo-data/services-demo.js"></script>
+  <script src="shared/demo-data/vendors-demo.js"></script>
+  <script src="shared/demo-data/marketplace-renderer.js"></script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Furnostyles">
+  <meta property="og:title" content="Services Marketplace | Furnostyles - Home Services in Nairobi">
+  <meta property="og:description" content="Browse interior design, repairs, carpentry, plumbing, electrical, painting, gypsum and renovation services from Furnostyles and verified providers in Nairobi.">
+  <meta property="og:url" content="https://furnostyles.com/services-marketplace.html">
+  <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Services Marketplace | Furnostyles - Home Services in Nairobi">
+  <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
+
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span>Delivery to all major towns in Kenya and beyond.</span>
+    <div class="fld-location-dropdown">
+      <span>Kasarani, Nairobi</span>
+      <div class="fld-location-menu">
+        <h4>Areas We Serve</h4>
+        <ul>
+          <li>Nairobi</li>
+          <li>Mombasa</li>
+          <li>Kisumu</li>
+          <li>Nakuru</li>
+          <li>Eldoret</li>
+          <li>Thika</li>
+          <li>Naivasha</li>
+          <li>Kitengela</li>
+          <li>Rongai</li>
+          <li>Kikuyu</li>
+          <li>Kiambu</li>
+          <li>Ruiru</li>
+          <li>Machakos</li>
+          <li>Athi River</li>
+          <li>Malindi</li>
+          <li>Lamu</li>
+          <li>Nyeri</li>
+          <li>Meru</li>
+          <li>Kakamega</li>
+          <li>Kisii</li>
+        </ul>
+        <p class="fld-location-note">Delivery to all major towns in Kenya and beyond.</p>
+      </div>
+    </div>
+    <span><b>+254 713 639 205</b><b>furnostyles@gmail.com</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
+      <img loading="eager" src="assets/images/logo.png" alt="Furnostyles Logo" onerror="this.remove()">
+      <span>Furnostyles</span>
+    </a>
+
+    <div class="fld-youtube-search" role="search">
+      <input type="search" id="siteSearch" placeholder="Search furniture, services, marketplace..." aria-label="Search Furnostyles">
+      <button type="button" onclick="searchSite()" aria-label="Search">Search</button>
+    </div>
+
+    <div class="fld-icon-actions">
+      <button class="fld-icon-btn" id="fldCartBtn" type="button" title="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+          <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.71l-1.39-1.39a1 1 0 0 0-1.41 0l-1.4 1.4a1 1 0 0 0 0 1.41l.82.82L8.5 14H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/>
+        </svg>
+        <span class="fld-badge" id="fldCartCount" data-cart-count>0</span>
+      </button>
+      <button class="fld-icon-btn" id="fldAlertsBtn" type="button" title="Alerts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span class="fld-badge" id="fldAlertsCount" data-alert-count>0</span>
+      </button>
+      <button class="fld-avatar-btn" id="fldAccountBtn" type="button" data-login-tooltip="Sign up and Log in" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" class="avatar-icon" id="fldAccountAvatar" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="user-name" hidden></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+    <nav class="marketplace-link-strip premium-market-scroll" aria-label="Marketplace Categories">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="furniture-marketplace.html">Furniture</a>
+      <a href="materials-marketplace.html">Materials</a>
+      <a href="services-marketplace.html" class="active">Services</a>
+      <a href="realestate-marketplace.html">Real Estate</a>
+      <a href="secondhand-marketplace.html">Secondhand</a>
+      <a href="sourcing-marketplace.html">Sourcing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- DEALS BANNER -->
+    <div class="mp-deals-banner">
+      <div class="mp-deals-banner-label"><span class="flash-icon">?</span> Featured Services</div>
+      <div class="mp-deals-items">
+        <a href="#categories" class="mp-deals-chip">Interior Design <span class="chip-discount">Free Consult</span></a>
+        <a href="#categories" class="mp-deals-chip">Plumbing Repairs <span class="chip-discount">Same Day</span></a>
+        <a href="#categories" class="mp-deals-chip">Gypsum Ceilings <span class="chip-discount">Best Rates</span></a>
+        <a href="#categories" class="mp-deals-chip">Painting &amp; Finishing <span class="chip-discount">Bundle Deal</span></a>
+        <a href="#categories" class="mp-deals-chip">Kitchen Renovation <span class="chip-discount">Get a Quote</span></a>
+        <a href="contact.html" class="mp-deals-chip">Emergency Services <span class="chip-discount">24/7</span></a>
+      </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <nav class="mp-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="mp-breadcrumb-sep">›</span>
+      <a href="marketplace.html">Marketplace</a>
+      <span class="mp-breadcrumb-sep">›</span>
+      <span class="mp-breadcrumb-current">Home Services</span>
+    </nav>
+
+    <section class="hero-banner fns-hero-services">
+      <div class="hero-content">
+        <span class="hero-badge">Kenya's Home Services Network</span>
+        <h1>Expert Professionals.<br/>Verified Excellence.</h1>
+        <p>Connect with Kenya's most trusted home service professionals. From interior design to full renovations, every provider is verified for quality, licensed, and insured. Transparent pricing, satisfaction guaranteed.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#categories">Browse Services</a>
+          <a class="btn secondary" href="contact.html">Request Quote</a>
+          <a class="btn dark-btn" href="https://wa.me/254713639205" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="mp-trust-strip">
+      <div class="mp-trust-item"><span class="icon">?</span> All Providers Verified</div>
+      <div class="mp-trust-item"><span class="icon">???</span> Licensed &amp; Insured</div>
+      <div class="mp-trust-item"><span class="icon">?</span> Same-Day Response</div>
+      <div class="mp-trust-item"><span class="icon">?</span> 4.8+ Average Rating</div>
+      <div class="mp-trust-item"><span class="icon">??</span> 24/7 Emergency Support</div>
+      <div class="mp-trust-item"><span class="icon">??</span> Transparent Pricing</div>
+    </div>
+
+    <section class="content-section fns-quality-section">
+      <div class="section-header">
+        <span>Our Service Network</span>
+        <h2>Verified Professionals, Guaranteed Quality</h2>
+        <p>Every provider vetted, licensed, and insured for your peace of mind.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>100+</h3>
+          <p>Verified Providers</p>
+        </div>
+        <div>
+          <h3>100%</h3>
+          <p>Quality Guaranteed</p>
+        </div>
+        <div>
+          <h3>Fully</h3>
+          <p>Insured Services</p>
+        </div>
+        <div>
+          <h3>24/7</h3>
+          <p>Support Available</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="marketplace-premium-highlight">
+      <h3>? Verified Professionals You Can Trust</h3>
+      <p>Every service provider in our ecosystem undergoes comprehensive verification—background checks, license validation, skill assessment, and reference reviews. From certified electricians to master interior designers, licensed plumbers to expert carpenters—we connect you with professionals who deliver excellence. Transparent pricing, insured services, and satisfaction guarantees ensure your project is in capable hands.</p>
+      <div class="fns-filter-tags">
+        <span class="marketplace-trust-badge verified">? Background Verified</span>
+        <span class="marketplace-trust-badge verified">? Licensed & Insured</span>
+        <span class="marketplace-trust-badge verified">? Skill Assessed</span>
+        <span class="marketplace-trust-badge verified">? Satisfaction Guaranteed</span>
+      </div>
+    </section>
+
+    <section class="content-section" id="categories">
+      <div class="section-header">
+        <span>Categories</span>
+        <h2>Professional Service Categories</h2>
+        <p>Find the right verified professional for every home improvement need.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design">
+          <div class="premium-product-info">
+            <span>Design</span>
+            <h3>Interior Design</h3>
+            <p>Consultations, space planning, 3D visualization and full project design for sophisticated spaces.</p>
+            <div class="fns-furniture-tags">
+              <span>Verified</span>
+              <span class="gold">Insured</span>
+            </div>
+            <a href="contact.html" class="primary">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Repairs & Maintenance">
+          <div class="premium-product-info">
+            <span>Repairs</span>
+            <h3>Repairs & Maintenance</h3>
+            <p>Plumbing repairs, electrical repairs, general maintenance and emergency services for your home.</p>
+            <div class="fns-furniture-tags">
+              <span>Verified</span>
+              <span class="gold">Insured</span>
+            </div>
+            <a href="contact.html" class="primary">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Carpentry & Joinery">
+          <div class="premium-product-info">
+            <span>Carpentry</span>
+            <h3>Carpentry & Joinery</h3>
+            <p>Custom furniture building, repairs, built-ins and structural carpentry by expert artisans.</p>
+            <div class="fns-furniture-tags">
+              <span>Verified</span>
+              <span class="gold">Insured</span>
+            </div>
+            <a href="contact.html" class="primary">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/repair-plumbing.jpg" alt="Plumbing Services">
+          <div class="premium-product-info">
+            <span>Plumbing</span>
+            <h3>Plumbing Services</h3>
+            <p>Installation, repairs, maintenance, water heaters and drain cleaning by licensed plumbers.</p>
+            <div class="fns-furniture-tags">
+              <span>Verified</span>
+              <span class="gold">Insured</span>
+            </div>
+            <a href="contact.html" class="primary">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Electrical Services">
+          <div class="premium-product-info">
+            <span>Electrical</span>
+            <h3>Electrical Services</h3>
+            <p>Wiring installation, lighting, outlets, panel upgrades and smart home by certified electricians.</p>
+            <div class="fns-furniture-tags">
+              <span>Verified</span>
+              <span class="gold">Insured</span>
+            </div>
+            <a href="contact.html" class="primary">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Painting Services">
+          <div class="premium-product-info">
+            <span>Painting</span>
+            <h3>Painting Services</h3>
+            <p>Interior painting, exterior painting, specialty finishes and wallpaper by expert painters.</p>
+            <a href="contact.html" class="primary">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Gypsum & Ceiling">
+          <div class="premium-product-info">
+            <span>Gypsum</span>
+            <h3>Gypsum & Ceiling</h3>
+            <p>Board installation, ceiling design, suspended ceilings and cornices for modern interiors.</p>
+            <a href="contact.html" class="primary">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card featured">
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Renovations">
+          <div class="premium-product-info">
+            <span>Renovations</span>
+            <h3>Property Renovations</h3>
+            <p>Kitchen renovations, bathroom upgrades, full home renovations and additions by expert teams.</p>
+            <a href="contact.html" class="gold">Request Consultation</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-exclusive-section">
+      <div class="section-header">
+        <span>Furnostyles Services</span>
+        <h2>Premium Furnostyles Services</h2>
+        <p>Expert home services delivered directly by Furnostyles professionals.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Interior Design</h3>
+          <p>Professional interior design consultations and full project management.</p>
+        </div>
+        <div>
+          <h3>Custom Carpentry</h3>
+          <p>Bespoke furniture and built-in cabinetry crafted to your specifications.</p>
+        </div>
+        <div>
+          <h3>Gypsum Ceilings</h3>
+          <p>Elegant gypsum ceiling designs and professional installation.</p>
+        </div>
+        <div>
+          <h3>Full Renovations</h3>
+          <p>Complete home renovations from concept to completion.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Why Choose Us</span>
+        <h2>Why Choose Furnostyles Services</h2>
+        <p>Verified professionals, quality guarantee, and exceptional service for your home.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Verified Professionals</h3>
+          <p>All providers undergo rigorous background and skill verification.</p>
+        </div>
+        <div>
+          <h3>Insurance Coverage</h3>
+          <p>Full insurance coverage for all services to protect your property.</p>
+        </div>
+        <div>
+          <h3>Satisfaction Guarantee</h3>
+          <p>We stand behind our work with comprehensive guarantees.</p>
+        </div>
+        <div>
+          <h3>Transparent Pricing</h3>
+          <p>Clear quotes with no hidden fees or surprise charges.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Service Expertise</span>
+        <h2>Our Service Expertise</h2>
+        <p>Deep knowledge across all home service categories for exceptional results.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design Expertise">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Interior Design</h3>
+            <p>Expert space planning, color consultation, and full project design services.</p>
+            <a href="contact.html">Get Consultation</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Repair Expertise">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Repairs & Maintenance</h3>
+            <p>Expert troubleshooting and repair services for all home systems.</p>
+            <a href="contact.html">Request Repair</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Carpentry Expertise">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Carpentry & Joinery</h3>
+            <p>Skilled carpentry for custom furniture, built-ins, and structural work.</p>
+            <a href="contact.html">View Services</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Renovation Expertise">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Renovation Projects</h3>
+            <p>Full-service renovation management from planning to completion.</p>
+            <a href="contact.html">Start Project</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="trust">
+      <div class="section-header">
+        <span>Trust & Quality</span>
+        <h2>Why Trust Our Service Providers</h2>
+        <p>Every provider on our platform undergoes rigorous verification for your peace of mind.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Verification Process">
+          <div class="premium-product-info">
+            <span>Verification</span>
+            <h3>Rigorous Verification</h3>
+            <p>All providers undergo background checks, skill verification, and reference reviews.</p>
+            <a href="contact.html">Learn More</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Insurance Coverage">
+          <div class="premium-product-info">
+            <span>Insurance</span>
+            <h3>Full Insurance Coverage</h3>
+            <p>All services are insured to protect your property and ensure quality work.</p>
+            <a href="contact.html">View Coverage</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Quality Guarantee">
+          <div class="premium-product-info">
+            <span>Guarantee</span>
+            <h3>Satisfaction Guarantee</h3>
+            <p>We stand behind our work with a comprehensive satisfaction guarantee.</p>
+            <a href="contact.html">View Terms</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Transparent Pricing">
+          <div class="premium-product-info">
+            <span>Pricing</span>
+            <h3>Transparent Pricing</h3>
+            <p>Clear, upfront quotes with no hidden fees or surprise charges.</p>
+            <a href="contact.html">Request Quote</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Featured</span>
+        <h2>Featured Verified Providers</h2>
+        <p>Top-rated service providers from our verified network.</p>
+      </div>
+      <div class="marketplace-grid">
+        <article class="marketplace-service-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design Consultant" class="marketplace-service-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <div class="marketplace-service-info">
+            <div class="marketplace-service-provider">
+              <div class="marketplace-service-avatar">ID</div>
+              <div>
+                <div class="marketplace-service-name">Interior Design Pro</div>
+                <div class="marketplace-service-verified">? Verified Expert</div>
+              </div>
+            </div>
+            <h3 class="marketplace-service-title">Premium Interior Design</h3>
+            <p class="marketplace-service-description">Expert interior design services for luxury homes and offices with modern aesthetics and personalized consultations.</p>
+            <div class="marketplace-service-rating">? 4.9 (127 reviews)</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Book Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Service Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-service-card">
+          <img loading="lazy" src="assets/images/repair-plumbing.jpg" alt="Master Plumber" class="marketplace-service-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <div class="marketplace-service-info">
+            <div class="marketplace-service-provider">
+              <div class="marketplace-service-avatar">MP</div>
+              <div>
+                <div class="marketplace-service-name">Master Plumber</div>
+                <div class="marketplace-service-verified">? Licensed</div>
+              </div>
+            </div>
+            <h3 class="marketplace-service-title">Expert Plumbing Services</h3>
+            <p class="marketplace-service-description">Professional plumbing installation and repair services for residential properties with emergency support available.</p>
+            <div class="marketplace-service-rating">? 4.8 (89 reviews)</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Book Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Service Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-service-card">
+          <img loading="lazy" src="assets/images/repair-electrical.jpg" alt="Electrical Expert" class="marketplace-service-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <div class="marketplace-service-info">
+            <div class="marketplace-service-provider">
+              <div class="marketplace-service-avatar">CE</div>
+              <div>
+                <div class="marketplace-service-name">Certified Electrician</div>
+                <div class="marketplace-service-verified">? Licensed</div>
+              </div>
+            </div>
+            <h3 class="marketplace-service-title">Certified Electrical Services</h3>
+            <p class="marketplace-service-description">Licensed electrical work for residential and commercial properties with safety guarantee and compliance.</p>
+            <div class="marketplace-service-rating">? 4.9 (156 reviews)</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Book Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Service Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-service-card">
+          <img loading="lazy" src="assets/images/repair-painting.jpg" alt="Professional Painter" class="marketplace-service-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <div class="marketplace-service-info">
+            <div class="marketplace-service-provider">
+              <div class="marketplace-service-avatar">PP</div>
+              <div>
+                <div class="marketplace-service-name">Premium Painter</div>
+                <div class="marketplace-service-verified">? Verified</div>
+              </div>
+            </div>
+            <h3 class="marketplace-service-title">Premium Painting Services</h3>
+            <p class="marketplace-service-description">High-quality interior and exterior painting services with premium finishes and color consultation.</p>
+            <div class="marketplace-service-rating">? 4.7 (73 reviews)</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Book Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Service Quote</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>How It Works</span>
+        <h2>Service Request Process</h2>
+        <p>Simple 4-step process to get your home services from verified professionals.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>1. Submit Request</h3>
+          <p>Fill out our service request form with your project details.</p>
+        </div>
+        <div>
+          <h3>2. Get Quotes</h3>
+          <p>Receive quotes from verified service providers.</p>
+        </div>
+        <div>
+          <h3>3. Choose Provider</h3>
+          <p>Select your preferred provider and schedule service.</p>
+        </div>
+        <div>
+          <h3>4. Service Delivered</h3>
+          <p>Professional service delivered to your satisfaction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-section-bg-light">
+      <div class="section-header">
+        <span class="fns-trust-badge">Service Support</span>
+        <h2>Need Ongoing Maintenance or Repairs?</h2>
+        <p>Our comprehensive repair and maintenance services keep your home in perfect condition after service completion.</p>
+      </div>
+      <div class="fns-project-complete-grid">
+        <div class="fns-project-complete-card">
+          <div class="icon">???</div>
+          <h3>Emergency Repairs</h3>
+          <p>24/7 emergency repair services for critical issues like plumbing leaks and electrical faults.</p>
+          <a href="repairs.html">Emergency Support ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Preventive Maintenance</h3>
+          <p>Scheduled maintenance programs to prevent issues before they occur and extend system life.</p>
+          <a href="repairs.html">Schedule Maintenance ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Service Consultation</h3>
+          <p>Not sure which service you need? Our experts can assess and recommend the right solution.</p>
+          <a href="contact.html">Get Assessment ?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span class="fns-trust-badge">Frequently Requested Together</span>
+        <h2>What Our Customers Often Request Together</h2>
+        <p>Complete your project with these complementary services and materials commonly requested together.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Materials">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Materials</h3>
+            <p>Quality construction materials sourced from verified suppliers for your service projects.</p>
+            <a href="materials-marketplace.html">Browse Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Furniture">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Custom Furniture</h3>
+            <p>Bespoke furniture pieces crafted to complement your interior design and renovation work.</p>
+            <a href="furniture-marketplace.html">Explore Furniture</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Property">
+          <div class="premium-product-info">
+            <span>Property</span>
+            <h3>Property Enhancement</h3>
+            <p>Airbnb optimization, staging, and property value enhancement services for investments.</p>
+            <a href="realestate-marketplace.html">Explore Property Services</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Ecosystem</span>
+        <h2>Need Materials for Your Project?</h2>
+        <p>Source premium construction materials from our verified suppliers to complete your service projects.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Gypsum Boards">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Gypsum Boards</h3>
+            <p>Fire-resistant gypsum boards for ceiling and partition installations.</p>
+            <a href="materials-marketplace.html">Browse Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/flooring.jpg" alt="Flooring">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Flooring</h3>
+            <p>Marble tiles, hardwood, and vinyl flooring for premium installations.</p>
+            <a href="materials-marketplace.html">Browse Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Furniture">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Premium Furniture</h3>
+            <p>Handcrafted furniture to complement your interior design and renovation projects.</p>
+            <a href="furniture-marketplace.html">Browse Furniture</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Quality Assurance</span>
+        <h2>Our Service Quality Standards</h2>
+        <p>Every service meets strict quality standards for workmanship and professionalism.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Provider Vetting</h3>
+          <p>All providers verified for licenses, insurance, and expertise.</p>
+        </div>
+        <div>
+          <h3>Workmanship Standards</h3>
+          <p>Strict quality control on all service work.</p>
+        </div>
+        <div>
+          <h3>Customer Satisfaction</h3>
+          <p>Satisfaction guarantee and dispute resolution for all services.</p>
+        </div>
+        <div>
+          <h3>Ongoing Support</h3>
+          <p>Post-service support for warranty claims and follow-up.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-quality-section">
+      <div class="section-header">
+        <span>Verified Excellence</span>
+        <h2>Our Service Quality Promise</h2>
+        <p>Every service provider is verified, licensed, and insured. We guarantee quality, safety, and satisfaction for all projects.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>100+</h3>
+          <p>Verified Providers</p>
+        </div>
+        <div>
+          <h3>100%</h3>
+          <p>Quality Guaranteed</p>
+        </div>
+        <div>
+          <h3>Fully</h3>
+          <p>Insured Services</p>
+        </div>
+        <div>
+          <h3>24/7</h3>
+          <p>Support Available</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-complete-project-section">
+      <div class="section-header">
+        <span>Premium Project Ecosystem</span>
+        <h2>Our Complete Service Network</h2>
+        <p>From consultation to completion—our ecosystem delivers exceptional results for every project with verified professionals.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>100+</h3>
+          <p>Verified Professionals</p>
+        </div>
+        <div>
+          <h3>Full</h3>
+          <p>Project Coordination</p>
+        </div>
+        <div>
+          <h3>Full</h3>
+          <p>Quality Assurance</p>
+        </div>
+        <div>
+          <h3>Full</h3>
+          <p>Satisfaction Guarantee</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-complete-project-section">
+      <div class="section-header">
+        <span>Complete Your Project</span>
+        <h2>Everything You Need for Your Space</h2>
+        <p>From materials and furniture to property support—explore our complete ecosystem for your home improvement projects.</p>
+      </div>
+
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Construction Materials</h3>
+            <p>Building materials, finishing supplies, and bulk supply for your renovation projects.</p>
+            <a href="materials-marketplace.html">Explore Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Furniture Marketplace</h3>
+            <p>Luxury furniture, custom pieces, and premium collections for your finished spaces.</p>
+            <a href="furniture-marketplace.html">Explore Furniture</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Real Estate</span>
+            <h3>Property Support</h3>
+            <p>Properties, Airbnb setup, staging, and property enhancement services.</p>
+            <a href="realestate-marketplace.html">Explore Real Estate</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Secondhand</span>
+            <h3>Pre-Owned Items</h3>
+            <p>Quality pre-owned fixtures, fittings, and materials for budget-friendly projects.</p>
+            <a href="secondhand-marketplace.html">Explore Secondhand</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-exclusive-section">
+      <div class="section-header">
+        <span>Before & After</span>
+        <h2>Transform Your Space</h2>
+        <p>See the difference our professional services can make to your home.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design Transformation">
+          <div class="premium-product-info">
+            <span>Design</span>
+            <h3>Interior Design Makeover</h3>
+            <p>Complete interior design transformation from concept to completion.</p>
+            <a href="contact.html">View Portfolio</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Gypsum Ceiling Before After">
+          <div class="premium-product-info">
+            <span>Gypsum</span>
+            <h3>Ceiling Transformation</h3>
+            <p>Stunning gypsum ceiling installations that elevate any space.</p>
+            <a href="contact.html">View Examples</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Renovation Before After">
+          <div class="premium-product-info">
+            <span>Renovation</span>
+            <h3>Full Home Renovation</h3>
+            <p>Complete renovation projects that transform outdated spaces.</p>
+            <a href="contact.html">View Projects</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Custom Furniture Before After">
+          <div class="premium-product-info">
+            <span>Custom</span>
+            <h3>Custom Furniture Installation</h3>
+            <p>Bespoke furniture pieces that perfectly fit your space.</p>
+            <a href="contact.html">View Gallery</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Provider Partnership</span>
+        <h2>Become a Verified Service Provider</h2>
+        <p>Join our network of verified professionals and reach premium customers across Kenya.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Easy Onboarding</h3>
+          <p>Simple verification process to start receiving service requests.</p>
+        </div>
+        <div>
+          <h3>Quality Leads</h3>
+          <p>Access to high-quality service requests from premium customers.</p>
+        </div>
+        <div>
+          <h3>Flexible Schedule</h3>
+          <p>Accept jobs that fit your schedule and expertise.</p>
+        </div>
+        <div>
+          <h3>Reliable Payments</h3>
+          <p>Timely payments and transparent transaction processing.</p>
+        </div>
+      </div>
+      <div class="fns-cta-buttons">
+        <a class="btn primary" href="contact.html">Apply as Provider</a>
+        <a class="btn secondary" href="contact.html">Learn More</a>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Get Started</span>
+        <h2>Request Your Service Today</h2>
+        <p>Submit your service request and get quotes from verified providers within 24 hours.</p>
+      </div>
+      <div class="fns-cta-buttons">
+        <a class="btn primary" href="contact.html">Request a Quote</a>
+        <a class="btn secondary" href="services.html">View All Services</a>
+        <a class="btn dark-btn" href="contact.html">Become a Provider</a>
+      </div>
+    </section>
+    <!-- Category Tabs -->
+    <section class="content-section">
+      <div id="mpCategoryTabs"></div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">?</span> Featured Services</h2>
+        <p class="mp-browse-section-sub">Top-rated service providers in Kenya.</p>
+      </div>
+      <div id="mpFeaturedGrid"></div>
+    </section>
+
+    <!-- Newest Services -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> New Service Providers</h2>
+        <p class="mp-browse-section-sub">Recently joined service professionals.</p>
+      </div>
+      <div id="mpNewestGrid"></div>
+    </section>
+
+    <!-- Most Viewed Placeholder -->
+    <section class="content-section">
+      <div class="mp-most-viewed">
+        <div class="mp-most-viewed-icon">???</div>
+        <h3>Most Viewed</h3>
+        <p>Popular services trending this week. Coming soon!</p>
+      </div>
+    </section>
+
+    <!-- Recommended by Furnostyles -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Recommended by Furnostyles</h2>
+        <p class="mp-browse-section-sub">Service providers we trust and recommend.</p>
+      </div>
+      <div id="mpRecommendedGrid"></div>
+    </section>
+
+    <!-- Main Shop Layout (Amazon/Alibaba style) -->
+    <section class="content-section" id="live-listings-section" data-marketplace-type="services">
+      <div class="mp-shop-layout">
+
+        <!-- SIDEBAR FILTERS -->
+        <aside class="mp-sidebar" id="mpSidebar" aria-label="Filter services">
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Service Categories</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-sidebar-cats">
+                <li><a href="repair-gypsum.html" class="mp-sidebar-cat">Gypsum &amp; Ceilings <span class="mp-sidebar-cat-count">48</span></a></li>
+                <li><a href="repair-painting.html" class="mp-sidebar-cat">Painting &amp; Finishing <span class="mp-sidebar-cat-count">62</span></a></li>
+                <li><a href="repair-plumbing-leaks.html" class="mp-sidebar-cat">Plumbing Services <span class="mp-sidebar-cat-count">74</span></a></li>
+                <li><a href="repair-wiring.html" class="mp-sidebar-cat">Electrical Work <span class="mp-sidebar-cat-count">56</span></a></li>
+                <li><a href="repair-tile-installation.html" class="mp-sidebar-cat">Tiling &amp; Flooring <span class="mp-sidebar-cat-count">38</span></a></li>
+                <li><a href="repair-furniture-repairs.html" class="mp-sidebar-cat">Furniture Repairs <span class="mp-sidebar-cat-count">44</span></a></li>
+                <li><a href="repair-kitchen-upgrades.html" class="mp-sidebar-cat">Kitchen Renovation <span class="mp-sidebar-cat-count">29</span></a></li>
+                <li><a href="repair-roofing.html" class="mp-sidebar-cat">Roofing Services <span class="mp-sidebar-cat-count">21</span></a></li>
+                <li><a href="repair-waterproofing.html" class="mp-sidebar-cat">Waterproofing <span class="mp-sidebar-cat-count">18</span></a></li>
+                <li><a href="repair-door-repairs.html" class="mp-sidebar-cat">Doors &amp; Windows <span class="mp-sidebar-cat-count">33</span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Budget (KES)</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-check-list">
+                <li class="mp-check-item"><input type="radio" name="budgetQuick" value="0-5000"> Under KES 5,000</li>
+                <li class="mp-check-item"><input type="radio" name="budgetQuick" value="5000-20000"> KES 5K – 20K</li>
+                <li class="mp-check-item"><input type="radio" name="budgetQuick" value="20000-50000"> KES 20K – 50K</li>
+                <li class="mp-check-item"><input type="radio" name="budgetQuick" value="50000-99999999"> Above KES 50K</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Provider Rating</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-rating-list">
+                <li class="mp-rating-item"><input type="checkbox"> <span class="mp-star-icons">?????</span> <span class="mp-rating-count">(86)</span></li>
+                <li class="mp-rating-item"><input type="checkbox"> <span class="mp-star-icons">????</span><span class="mp-stars-grey">?</span> &amp; up <span class="mp-rating-count">(194)</span></li>
+                <li class="mp-rating-item"><input type="checkbox"> <span class="mp-star-icons">???</span><span class="mp-stars-grey">??</span> &amp; up <span class="mp-rating-count">(268)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Availability</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-check-list">
+                <li class="mp-check-item"><input type="checkbox" checked> Available Now</li>
+                <li class="mp-check-item"><input type="checkbox" checked> Book in Advance</li>
+                <li class="mp-check-item"><input type="checkbox"> Emergency (24/7)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Provider Type</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-check-list">
+                <li class="mp-check-item"><input type="checkbox" checked> Furnostyles Team</li>
+                <li class="mp-check-item"><input type="checkbox" checked> Verified Partner</li>
+                <li class="mp-check-item"><input type="checkbox"> Independent Pro</li>
+              </ul>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="mp-content-area">
+
+          <!-- Featured banner -->
+          <div class="mp-featured-row">
+            <span class="mp-featured-row-badge">? Quick Response</span>
+            <div>
+              <div class="mp-featured-row-title">Need Emergency Repairs? We Respond in 2 Hours</div>
+              <div class="mp-featured-row-sub">Plumbing, electrical, roofing — verified pros across Nairobi &amp; beyond.</div>
+            </div>
+            <a href="https://wa.me/254713639205" target="_blank" rel="noopener noreferrer" class="mp-featured-row-cta">WhatsApp Now ?</a>
+          </div>
+
+          <!-- Sort bar -->
+          <div class="mp-sort-bar">
+            <span class="mp-sort-results"><strong id="mpCountEl">Loading...</strong> results</span>
+            <label class="mp-sort-label" for="mpSortSel">Sort:</label>
+            <select id="mpSortSel" class="mp-sort-sel">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="featured">Featured</option>
+            </select>
+            <div class="mp-view-toggle">
+              <button class="mp-view-btn active" id="gridViewBtn" aria-label="Grid view" title="Grid view">?</button>
+              <button class="mp-view-btn" id="listViewBtn" aria-label="List view" title="List view">?</button>
+            </div>
+          </div>
+
+          <div id="mpMainGrid" class="mp-grid-v2"></div>
+
+          <!-- Pagination -->
+          <div class="mp-pagination" id="mpPagination">
+            <button class="mp-page-btn" disabled>‹ Prev</button>
+            <button class="mp-page-btn active">1</button>
+            <button class="mp-page-btn">2</button>
+            <button class="mp-page-btn">3</button>
+            <span class="mp-page-ellipsis">…</span>
+            <button class="mp-page-btn">Next ›</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="content-section" id="mpRecs"></section>
+    </main>
+  </div>
+
+  <a class="cart-float" href="cart.html">Cart <span data-cart-count>0</span></a>
+  <a class="chat-float" href="https://wa.me/254713639205" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+
+  <script>
+    (function () {
+      document.addEventListener('DOMContentLoaded', function () {
+        var gridBtn = document.getElementById('gridViewBtn');
+        var listBtn = document.getElementById('listViewBtn');
+        var grid = document.getElementById('mpMainGrid');
+        if (gridBtn && listBtn && grid) {
+          gridBtn.addEventListener('click', function () {
+            grid.classList.remove('list-view');
+            gridBtn.classList.add('active');
+            listBtn.classList.remove('active');
+          });
+          listBtn.addEventListener('click', function () {
+            grid.classList.add('list-view');
+            listBtn.classList.add('active');
+            gridBtn.classList.remove('active');
+          });
+        }
+      });
+    })();
+  </script>
+
+  <div id="fld-footer-mount"></div>
+
+  <script defer src="js/main.js"></script>
+  <script defer src="shared/firebase/firebase-config.js"></script>
+  <script defer src="shared/firebase/firebase-bridge.js"></script>
+  <script defer src="shared/uploads/upload-bridge.js"></script>
+  <script defer src="shared/rendering/public-filter.js"></script>
+  <script defer src="shared/rendering/marketplace-renderer.js"></script>
+  <script defer src="shared/rendering/property-renderer.js"></script>
+  <script defer src="shared/rendering/repair-renderer.js"></script>
+  <script defer src="shared/rendering/recommendation-renderer.js"></script>
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var allItems = [];
+      function load() {
+        var grid = document.getElementById('mpMainGrid');
+        var R = window.FurnostylesRepairRenderer, F = window.FurnostylesPublicFilter;
+        if (!R || !F) return;
+        R.renderLoadingGrid(grid);
+        F.getApprovedRepairs()
+          .then(function (items) {
+            allItems = items || [];
+            var c = document.getElementById('mpCountEl');
+            if (c) c.textContent = allItems.length + ' showcase' + (allItems.length !== 1 ? 's' : '');
+            R.renderGrid(grid, allItems);
+            var rc = document.getElementById('mpRecs');
+            if (window.FurnostylesRecommendationRenderer && rc) {
+              window.FurnostylesRecommendationRenderer.loadAndRender(rc, [
+                { title: 'Furniture for Your Home', promise: F.getApprovedByType('furniture', null, 6), renderer: 'listing' },
+                { title: 'Real Estate Listings', promise: F.getApprovedProperties(null, 6), renderer: 'property' }
+              ]);
+            }
+          })
+          .catch(function (err) { R.renderError(grid, err.message); });
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var sel = document.getElementById('mpSortSel');
+        if (sel) sel.addEventListener('change', function () {
+          var R = window.FurnostylesRepairRenderer;
+          if (R) R.renderGrid(document.getElementById('mpMainGrid'), allItems);
+        });
+        load();
+      });
+    }());
+  </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase Config & Init -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-init.js"></script>
+  <!-- Firebase Bridge -->
+  <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Auth, Session -->
+  <script src="assets/js/session.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+  <!-- Auth State Manager -->
+  <script src="assets/js/auth-state.js" defer></script>
+</body>
+</html>

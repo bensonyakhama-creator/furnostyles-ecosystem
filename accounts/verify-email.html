@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Email | Furnostyles — Personal Luxury. Elevated.</title>
+  <meta name="description" content="Verify your email address to complete your Furnostyles account registration.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <style>
+    .auth-container {
+      max-width: 480px;
+      margin: 60px auto;
+      padding: 40px;
+      background: var(--fns-bg-light);
+      border-radius: var(--fns-radius);
+      text-align: center;
+    }
+    .verify-icon {
+      font-size: 64px;
+      color: var(--fns-primary);
+      margin-bottom: 20px;
+    }
+    .auth-links {
+      margin-top: 24px;
+    }
+    .auth-links a {
+      color: var(--fns-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .auth-links a:hover {
+      text-decoration: underline;
+    }
+    .status-message {
+      padding: 16px;
+      border-radius: var(--fns-radius);
+      margin-bottom: 20px;
+    }
+    .status-verified {
+      background: #d4edda;
+      color: #155724;
+    }
+    .status-pending {
+      background: #fff3cd;
+      color: #856404;
+    }
+    .status-error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles</strong> Personal Luxury. Elevated.</span>
+    <span><b>Kasarani, Nairobi</b> &nbsp; <b>+254 713 639 205</b> &nbsp; <b>furnostyles@gmail.com</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
+      <span>Furnostyles</span>
+    </a>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="content-section">
+        <div class="section-header">
+          <span>Email Verification</span>
+          <h2>Verify Your Email</h2>
+          <p>Complete your account registration.</p>
+        </div>
+
+        <div class="auth-container">
+          <div class="verify-icon">✓</div>
+
+          <div id="statusMessage" class="status-message status-pending">
+            Checking email verification status...
+          </div>
+
+          <div id="actionArea">
+            <button id="resendBtn" class="btn secondary" style="display:none;">Resend Verification Email</button>
+          </div>
+
+          <div class="auth-links">
+            <a href="login.html">Go to Sign In</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fld-footer-mount"></div>
+
+  <!-- Firebase Config -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-bridge.js"></script>
+  <script src="shared/firebase/firebase-init.js"></script>
+
+  <!-- Auth System -->
+  <script src="shared/auth/auth-config.js"></script>
+  <script src="shared/auth/auth-state.js"></script>
+  <script src="shared/auth/auth-ui.js"></script>
+  <script src="shared/auth/role-router.js"></script>
+  <script src="shared/auth/auth-guards.js"></script>
+
+  <!-- Footer Render -->
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var statusMessage = document.getElementById('statusMessage');
+      var actionArea = document.getElementById('actionArea');
+      var resendBtn = document.getElementById('resendBtn');
+
+      /* Check email verification status */
+      function checkVerificationStatus() {
+        if (!window.FurnostylesAuthState) {
+          statusMessage.className = 'status-message status-error';
+          statusMessage.textContent = 'Auth state not available.';
+          return;
+        }
+
+        var user = window.FurnostylesAuthState.getCurrentUser();
+        if (!user) {
+          statusMessage.className = 'status-message status-error';
+          statusMessage.textContent = 'No user logged in. Please sign in first.';
+          actionArea.innerHTML = '<a href="login.html" class="btn primary">Sign In</a>';
+          return;
+        }
+
+        if (user.emailVerified) {
+          statusMessage.className = 'status-message status-verified';
+          statusMessage.textContent = 'Your email has been verified successfully!';
+          actionArea.innerHTML = '<a href="dashboard-client.html" class="btn primary">Go to Dashboard</a>';
+        } else {
+          statusMessage.className = 'status-message status-pending';
+          statusMessage.textContent = 'Email not verified yet. Please check your inbox and click the verification link.';
+          resendBtn.style.display = 'inline-block';
+        }
+      }
+
+      /* Resend verification email */
+      resendBtn.addEventListener('click', function () {
+        if (!window.FurnostylesAuthService) {
+          alert('Auth service not available.');
+          return;
+        }
+
+        var user = window.FurnostylesAuthState.getCurrentUser();
+        if (!user) {
+          alert('No user logged in.');
+          return;
+        }
+
+        resendBtn.disabled = true;
+        resendBtn.textContent = 'Sending...';
+
+        user.sendEmailVerification()
+          .then(function () {
+            resendBtn.disabled = false;
+            resendBtn.textContent = 'Resend Verification Email';
+            alert('Verification email sent. Please check your inbox.');
+          })
+          .catch(function (error) {
+            resendBtn.disabled = false;
+            resendBtn.textContent = 'Resend Verification Email';
+            alert('Failed to send verification email: ' + error.message);
+          });
+      });
+
+      /* Check status on page load */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', checkVerificationStatus);
+      } else {
+        checkVerificationStatus();
+      }
+
+    }());
+  </script>
+</body>
+</html>

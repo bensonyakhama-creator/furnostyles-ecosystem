@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Furnostyles</title>
+  <meta name="description" content="Your Furnostyles cart — marketplace products, services, sourcing requests and secondhand items.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="canonical" href="https://furnostyles.com/cart.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Furnostyles">
+  <meta property="og:title" content="Cart | Furnostyles">
+  <meta property="og:description" content="Your Furnostyles cart — marketplace products, services, sourcing requests and secondhand items.">
+  <meta property="og:url" content="https://furnostyles.com/cart.html">
+  <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cart | Furnostyles">
+  <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="robots" content="noindex, nofollow">
+
+
+
+</head>
+<body>
+
+  <!-- HEADER MOUNT: rendered by header-render.js -->
+  <div id="fns-header-mount"></div>
+
+  <main class="fns-main">
+    <style>
+      .cart-wrap{max-width:1100px;margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1fr 320px;gap:32px}
+      .cart-main h1{font-size:1.5rem;color:#0b3b46;margin:0 0 24px}
+      .cart-empty{text-align:center;padding:64px 20px;color:#aaa;grid-column:1/-1}
+      .cart-empty svg{margin-bottom:16px;opacity:.35}
+      .cart-empty h2{color:#0b3b46;margin-bottom:8px}
+      .cart-empty p{font-size:.95rem;margin-bottom:20px}
+      .cart-table{width:100%;border-collapse:collapse}
+      .cart-table thead tr{border-bottom:2px solid #e8eef5}
+      .cart-table th{text-align:left;padding:10px 12px;font-size:.82rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+      .cart-table td{padding:14px 12px;border-bottom:1px solid #f4f4f4;vertical-align:middle}
+      .cart-item-name{font-size:.95rem;font-weight:600;color:#222}
+      .cart-item-cat{font-size:.78rem;color:#999;margin-top:2px}
+      .cart-item-price{font-size:.9rem;color:#0b3b46;font-weight:700}
+      .cart-qty-ctrl{display:flex;align-items:center;gap:8px}
+      .cart-qty-ctrl button{width:28px;height:28px;border:1.5px solid #d0e0e8;border-radius:6px;background:#fff;cursor:pointer;font-size:1rem;line-height:1;color:#0b3b46;display:flex;align-items:center;justify-content:center}
+      .cart-qty-ctrl button:hover{background:#0b3b46;color:#fff;border-color:#0b3b46}
+      .cart-qty-val{min-width:28px;text-align:center;font-size:.9rem;font-weight:600;color:#222}
+      .cart-item-total{font-size:.95rem;font-weight:700;color:#0b3b46}
+      .cart-item-rmv{background:none;border:none;cursor:pointer;color:#ccc;font-size:1.3rem;padding:4px;border-radius:4px}
+      .cart-item-rmv:hover{background:#fee;color:#c0392b}
+      .cart-clear-row{padding:12px 0;text-align:right}
+      .cart-clear-btn{background:none;border:none;color:#999;font-size:.85rem;cursor:pointer;text-decoration:underline}
+      .cart-clear-btn:hover{color:#c0392b}
+      /* Summary */
+      .cart-summary{background:#f7fbfc;border-radius:14px;padding:24px;height:fit-content;position:sticky;top:90px}
+      .cart-summary h2{font-size:1.05rem;color:#0b3b46;margin:0 0 20px;font-weight:700}
+      .cart-sum-row{display:flex;justify-content:space-between;font-size:.9rem;color:#555;margin-bottom:10px}
+      .cart-sum-row.total{font-size:1.05rem;font-weight:700;color:#0b3b46;border-top:2px solid #e8eef5;padding-top:14px;margin-top:14px}
+      .cart-sum-note{font-size:.78rem;color:#aaa;margin-bottom:16px;line-height:1.5}
+      .cart-checkout-btn{display:block;width:100%;padding:14px;background:#0b3b46;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;text-align:center;text-decoration:none;cursor:pointer;margin-bottom:10px}
+      .cart-checkout-btn:hover{background:#1a5c6e}
+      .cart-continue-btn{display:block;width:100%;padding:12px;background:transparent;color:#0b3b46;border:1.5px solid #0b3b46;border-radius:10px;font-size:.92rem;font-weight:600;text-align:center;text-decoration:none;cursor:pointer}
+      .cart-promo{margin-top:16px;border-top:1px solid #e8eef5;padding-top:16px}
+      .cart-promo label{font-size:.82rem;color:#555;display:block;margin-bottom:6px}
+      .cart-promo-row{display:flex;gap:8px}
+      .cart-promo-row input{flex:1;padding:9px 12px;border:1.5px solid #d0e0e8;border-radius:8px;font-size:.88rem;outline:none}
+      .cart-promo-row button{padding:9px 14px;background:#e8a020;color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer}
+      .cart-secure{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:.78rem;color:#aaa}
+      @media(max-width:760px){.cart-wrap{grid-template-columns:1fr}.cart-summary{position:static}.cart-table th:nth-child(3){display:none}.cart-table td:nth-child(3){display:none}}
+    </style>
+
+    <div class="cart-wrap" id="cartPageWrap">
+      <!-- Populated by JS -->
+      <div class="cart-empty" id="cartEmptyState" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="72" height="72"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added anything yet. Start exploring!</p>
+        <a href="marketplace.html" style="display:inline-block;background:#0b3b46;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">Browse Marketplace</a>
+      </div>
+
+      <div id="cartContent" style="display:none">
+        <div class="cart-main">
+          <h1>My Cart <span id="cartItemCountLabel" style="font-size:1rem;color:#aaa;font-weight:400"></span></h1>
+          <table class="cart-table">
+            <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr></thead>
+            <tbody id="cartTableBody"></tbody>
+          </table>
+          <div class="cart-clear-row"><button class="cart-clear-btn" id="cartClearBtn">Clear cart</button></div>
+        </div>
+      </div>
+
+      <div class="cart-summary" id="cartSummaryPanel" style="display:none">
+        <h2>Order Summary</h2>
+        <div class="cart-sum-row"><span>Subtotal</span><span id="cartSumSubtotal">KES 0</span></div>
+        <div class="cart-sum-row"><span>Delivery</span><span id="cartSumDelivery">Calculated at checkout</span></div>
+        <div class="cart-sum-row total"><span>Estimated Total</span><span id="cartSumTotal">KES 0</span></div>
+        <p class="cart-sum-note">Delivery fees depend on your location. Free delivery on orders over KES 10,000 within Nairobi.</p>
+        <a href="checkout.html" class="cart-checkout-btn" id="cartCheckoutBtn">Proceed to Checkout</a>
+        <a href="marketplace.html" class="cart-continue-btn">Continue Shopping</a>
+        <div class="cart-promo">
+          <label>Promo / Voucher Code</label>
+          <div class="cart-promo-row">
+            <input type="text" id="promoInput" placeholder="Enter code">
+            <button id="promoApplyBtn">Apply</button>
+          </div>
+        </div>
+        <div class="cart-secure">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Secure checkout &nbsp;&bull;&nbsp; Buyer Protected
+        </div>
+      </div>
+    </div>
+
+    <script>
+    (function () {
+      function cartGet() { try { return JSON.parse(localStorage.getItem('furnostyles_cart') || '[]'); } catch(e) { return []; } }
+      function cartSave(c) { localStorage.setItem('furnostyles_cart', JSON.stringify(c)); }
+      function fmt(n) { return 'KES ' + Number(n).toLocaleString(); }
+
+      function render() {
+        var cart = cartGet();
+        var empty = document.getElementById('cartEmptyState');
+        var content = document.getElementById('cartContent');
+        var summary = document.getElementById('cartSummaryPanel');
+        var tbody = document.getElementById('cartTableBody');
+        var label = document.getElementById('cartItemCountLabel');
+
+        if (!cart.length) {
+          empty.style.display = '';
+          if (content) content.style.display = 'none';
+          if (summary) summary.style.display = 'none';
+          return;
+        }
+        empty.style.display = 'none';
+        if (content) content.style.display = '';
+        if (summary) summary.style.display = '';
+        if (label) label.textContent = '(' + cart.length + ' item' + (cart.length > 1 ? 's' : '') + ')';
+
+        var subtotal = 0;
+        tbody.innerHTML = cart.map(function(item) {
+          var line = Number(item.price || 0) * Number(item.quantity || 1);
+          subtotal += line;
+          return '<tr data-row-id="' + item.id + '">' +
+            '<td><div class="cart-item-name">' + (item.title || 'Item') + '</div><div class="cart-item-cat">' + (item.category || '') + '</div></td>' +
+            '<td class="cart-item-price">' + fmt(item.price) + '</td>' +
+            '<td><div class="cart-qty-ctrl">' +
+              '<button class="qty-minus" data-id="' + item.id + '" data-action="minus">&#8722;</button>' +
+              '<span class="cart-qty-val">' + (item.quantity || 1) + '</span>' +
+              '<button class="qty-plus" data-id="' + item.id + '" data-action="plus">&#43;</button>' +
+            '</div></td>' +
+            '<td class="cart-item-total">' + fmt(line) + '</td>' +
+            '<td><button class="cart-item-rmv" data-id="' + item.id + '" title="Remove">&#215;</button></td>' +
+          '</tr>';
+        }).join('');
+
+        document.getElementById('cartSumSubtotal').textContent = fmt(subtotal);
+        document.getElementById('cartSumTotal').textContent = fmt(subtotal);
+
+        /* Wire qty buttons */
+        tbody.querySelectorAll('[data-action]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var id = btn.getAttribute('data-id');
+            var act = btn.getAttribute('data-action');
+            var c = cartGet();
+            var idx = -1; c.forEach(function(x,i){ if(x.id===id) idx=i; });
+            if (idx < 0) return;
+            if (act === 'plus') c[idx].quantity = (c[idx].quantity || 1) + 1;
+            else { c[idx].quantity = (c[idx].quantity || 1) - 1; if (c[idx].quantity < 1) c.splice(idx, 1); }
+            cartSave(c); render();
+            if (window.FurnostylesCart) { /* badge refresh */ var b=document.getElementById('fldCartCount'); if(b){var tot=c.reduce(function(s,i){return s+(i.quantity||1);},0);b.textContent=tot;} }
+          });
+        });
+        /* Wire remove buttons */
+        tbody.querySelectorAll('.cart-item-rmv').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var id = btn.getAttribute('data-id');
+            cartSave(cartGet().filter(function(i){return i.id!==id;}));
+            render();
+          });
+        });
+      }
+
+      document.getElementById('cartClearBtn').addEventListener('click', function() {
+        if (confirm('Clear all items from your cart?')) { localStorage.removeItem('furnostyles_cart'); render(); }
+      });
+
+      document.getElementById('promoApplyBtn').addEventListener('click', function() {
+        var code = document.getElementById('promoInput').value.trim().toUpperCase();
+        if (code === 'FURNO10') { alert('Promo code FURNO10 applied! 10% discount will be applied at checkout.'); }
+        else { alert('Invalid or expired promo code.'); }
+      });
+
+      render();
+    })();
+    </script>
+  </main>
+
+  <!-- FOOTER MOUNT: rendered by footer-render.js -->
+  <div id="fld-footer-mount"></div>
+
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="shared/layout/header-data.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="shared/layout/footer-data.js" defer></script>
+  <script src="shared/layout/footer-render.js" defer></script>
+</body>
+</html>

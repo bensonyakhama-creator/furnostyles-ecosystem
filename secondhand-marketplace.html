@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secondhand Marketplace | Furnostyles - Used Furniture in Nairobi</title>
+  <meta name="description" content="Browse quality used furniture, appliances, clearance items and renovation leftovers from Furnostyles and verified sellers in Nairobi.">
+  <meta name="keywords" content="secondhand furniture, used appliances, clearance items, renovation leftovers, Nairobi, Kenya">
+  <meta name="author" content="Furnostyles">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://furnostyles.com/secondhand-marketplace.html">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="stylesheet" href="shared/rendering/marketplace.css">
+  <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/furniture-demo.js"></script>
+  <script src="shared/demo-data/materials-demo.js"></script>
+  <script src="shared/demo-data/secondhand-demo.js"></script>
+  <script src="shared/demo-data/property-demo.js"></script>
+  <script src="shared/demo-data/sourcing-demo.js"></script>
+  <script src="shared/demo-data/services-demo.js"></script>
+  <script src="shared/demo-data/vendors-demo.js"></script>
+  <script src="shared/demo-data/marketplace-renderer.js"></script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Furnostyles">
+  <meta property="og:title" content="Secondhand Marketplace | Furnostyles - Used Furniture in Nairobi">
+  <meta property="og:description" content="Browse quality used furniture, appliances, clearance items and renovation leftovers from Furnostyles and verified sellers in Nairobi.">
+  <meta property="og:url" content="https://furnostyles.com/secondhand-marketplace.html">
+  <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Secondhand Marketplace | Furnostyles - Used Furniture in Nairobi">
+  <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
+
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span>Delivery to all major towns in Kenya and beyond.</span>
+    <div class="fld-location-dropdown">
+      <span>Kasarani, Nairobi</span>
+      <div class="fld-location-menu">
+        <h4>Areas We Serve</h4>
+        <ul>
+          <li>Nairobi</li>
+          <li>Mombasa</li>
+          <li>Kisumu</li>
+          <li>Nakuru</li>
+          <li>Eldoret</li>
+          <li>Thika</li>
+          <li>Naivasha</li>
+          <li>Kitengela</li>
+          <li>Rongai</li>
+          <li>Kikuyu</li>
+          <li>Kiambu</li>
+          <li>Ruiru</li>
+          <li>Machakos</li>
+          <li>Athi River</li>
+          <li>Malindi</li>
+          <li>Lamu</li>
+          <li>Nyeri</li>
+          <li>Meru</li>
+          <li>Kakamega</li>
+          <li>Kisii</li>
+        </ul>
+        <p class="fld-location-note">Delivery to all major towns in Kenya and beyond.</p>
+      </div>
+    </div>
+    <span><b>+254 713 639 205</b><b>furnostyles@gmail.com</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
+      <img loading="eager" src="assets/images/logo.png" alt="Furnostyles Logo" onerror="this.remove()">
+      <span>Furnostyles</span>
+    </a>
+
+    <div class="fld-youtube-search" role="search">
+      <input type="search" id="siteSearch" placeholder="Search furniture, services, marketplace..." aria-label="Search Furnostyles">
+      <button type="button" onclick="searchSite()" aria-label="Search">Search</button>
+    </div>
+
+    <div class="fld-icon-actions">
+      <button class="fld-icon-btn" id="fldCartBtn" type="button" title="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+          <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.71l-1.39-1.39a1 1 0 0 0-1.41 0l-1.4 1.4a1 1 0 0 0 0 1.41l.82.82L8.5 14H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/>
+        </svg>
+        <span class="fld-badge" id="fldCartCount" data-cart-count>0</span>
+      </button>
+      <button class="fld-icon-btn" id="fldAlertsBtn" type="button" title="Alerts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span class="fld-badge" id="fldAlertsCount" data-alert-count>0</span>
+      </button>
+      <button class="fld-avatar-btn" id="fldAccountBtn" type="button" data-login-tooltip="Sign up and Log in" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" class="avatar-icon" id="fldAccountAvatar" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="user-name" hidden></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+    <nav class="marketplace-link-strip premium-market-scroll" aria-label="Marketplace Categories">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="furniture-marketplace.html">Furniture</a>
+      <a href="materials-marketplace.html">Materials</a>
+      <a href="services-marketplace.html">Services</a>
+      <a href="realestate-marketplace.html">Real Estate</a>
+      <a href="secondhand-marketplace.html" class="active">Secondhand</a>
+      <a href="sourcing-marketplace.html">Sourcing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="hero-banner fns-hero-secondhand">
+      <div class="hero-content">
+        <span class="hero-badge">Kenya's Trusted Pre-Owned Hub</span>
+        <h1>Quality Pre-Owned.<br/>Exceptional Value.</h1>
+        <p>Discover quality pre-owned furniture, appliances, and clearance items at exceptional prices. Every item inspected for quality, offering premium value while supporting sustainability.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#categories">Browse Secondhand</a>
+          <a class="btn secondary" href="contact.html">Sell Your Items</a>
+          <a class="btn dark-btn" href="#clearance">Clearance Deals</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-quality-section">
+      <div class="section-header">
+        <span>Quality Assurance</span>
+        <h2>Verified Quality, Trusted Value</h2>
+        <p>Every item inspected, graded, and verified for your peace of mind.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>100%</h3>
+          <p>Quality Inspected</p>
+        </div>
+        <div>
+          <h3>50%</h3>
+          <p>Price Savings</p>
+        </div>
+        <div>
+          <h3>Eco</h3>
+          <p>Sustainable Choice</p>
+        </div>
+        <div>
+          <h3>Verified</h3>
+          <p>Trusted Sellers</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="marketplace-premium-highlight">
+      <h3>? Quality Pre-Owned, Exceptional Value</h3>
+      <p>Every pre-owned item in our marketplace undergoes thorough inspection and verification. Our transparent grading system—Excellent, Good, and Fair—provides honest condition assessments so you know exactly what you're getting. From showroom clearance pieces to carefully vetted pre-owned furniture, appliances, and materials, we offer premium quality at exceptional prices. Sustainable shopping that extends product lifecycles while delivering real value.</p>
+      <div class="fns-filter-tags">
+        <span class="marketplace-trust-badge verified">? Quality Inspected</span>
+        <span class="marketplace-trust-badge verified">? Transparent Grading</span>
+        <span class="marketplace-trust-badge verified">? Fair Market Pricing</span>
+        <span class="marketplace-trust-badge verified">? Sustainable Choice</span>
+      </div>
+    </section>
+
+    <section class="content-section" id="categories">
+      <div class="section-header">
+        <span>Categories</span>
+        <h2>Pre-Owned Item Categories</h2>
+        <p>Find quality pre-owned items at exceptional prices across all categories.</p>
+      </div>
+
+      <div class="fns-filter-buttons">
+        <button class="fns-filter-btn active">All Items</button>
+        <button class="fns-filter-btn">Furniture</button>
+        <button class="fns-filter-btn">Appliances</button>
+        <button class="fns-filter-btn">Clearance</button>
+        <button class="fns-filter-btn">Materials</button>
+        <button class="fns-filter-btn">Fittings</button>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Used Furniture">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Used Furniture</h3>
+            <p>Sofas, beds, tables, chairs and cabinets in good condition with quality inspection.</p>
+            <div class="fns-furniture-tags">
+              <span>Inspected</span>
+              <span class="gold">Great Value</span>
+            </div>
+            <a href="#furniture" class="primary">Browse Furniture</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Used Appliances">
+          <div class="premium-product-info">
+            <span>Appliances</span>
+            <h3>Used Appliances</h3>
+            <p>Kitchen appliances, laundry machines and electronics in working condition with warranty.</p>
+            <div class="fns-furniture-tags">
+              <span>Inspected</span>
+              <span class="gold">Great Value</span>
+            </div>
+            <a href="#appliances" class="primary">Browse Appliances</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card featured">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Clearance Items">
+          <div class="premium-product-info">
+            <span>Clearance</span>
+            <h3>Clearance Items</h3>
+            <p>Showroom samples, discontinued items and special clearance deals at exclusive prices.</p>
+            <a href="#clearance" class="gold">Browse Clearance</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/flooring.jpg" alt="Renovation Leftovers">
+          <div class="premium-product-info">
+            <span>Leftovers</span>
+            <h3>Renovation Leftovers</h3>
+            <p>Materials, fixtures and fittings from completed renovation projects at bargain prices.</p>
+            <a href="#leftovers" class="primary">Browse Leftovers</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Used Fittings">
+          <div class="premium-product-info">
+            <span>Fittings</span>
+            <h3>Used Fittings</h3>
+            <p>Hardware, handles, knobs, hinges and other fittings in good condition for upgrades.</p>
+            <a href="#fittings" class="primary">Browse Fittings</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Sell Your Items">
+          <div class="premium-product-info">
+            <span>Sell</span>
+            <h3>Sell Your Items</h3>
+            <p>List your used furniture, appliances and items for sale on our trusted marketplace.</p>
+            <a href="contact.html" class="primary">List Items</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-exclusive-section">
+      <div class="section-header">
+        <span>Furnostyles Clearance</span>
+        <h2>Furnostyles Clearance Items</h2>
+        <p>Quality items from Furnostyles showroom and projects at exclusive discounted prices.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Showroom Samples</h3>
+          <p>Display items from our showroom at clearance prices.</p>
+        </div>
+        <div>
+          <h3>Discontinued Items</h3>
+          <p>Last pieces from discontinued lines at special prices.</p>
+        </div>
+        <div>
+          <h3>Project Leftovers</h3>
+          <p>Materials and fixtures from completed Furnostyles projects.</p>
+        </div>
+        <div>
+          <h3>Quality Assured</h3>
+          <p>All items inspected and verified for quality and condition.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Why Choose Us</span>
+        <h2>Why Choose Furnostyles Secondhand</h2>
+        <p>Quality inspection, verified sellers, and sustainable shopping for your peace of mind.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Quality Inspection</h3>
+          <p>Every item thoroughly inspected for quality, condition, and functionality.</p>
+        </div>
+        <div>
+          <h3>Verified Sellers</h3>
+          <p>All sellers vetted for reliability, honesty, and item accuracy.</p>
+        </div>
+        <div>
+          <h3>Condition Grading</h3>
+          <p>Clear condition ratings so you know exactly what you're buying.</p>
+        </div>
+        <div>
+          <h3>Sustainable Shopping</h3>
+          <p>Support circular economy and reduce environmental waste.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Quality Verification</span>
+        <h2>Our Quality Verification Process</h2>
+        <p>Rigorous inspection and verification standards for every pre-owned item on our marketplace.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Visual Inspection">
+          <div class="premium-product-info">
+            <span>Inspection</span>
+            <h3>Visual Inspection</h3>
+            <p>Thorough visual inspection for wear, damage, and overall condition.</p>
+            <a href="contact.html">Learn More</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Functionality Test">
+          <div class="premium-product-info">
+            <span>Testing</span>
+            <h3>Functionality Testing</h3>
+            <p>All moving parts, electronics, and features tested for proper operation.</p>
+            <a href="contact.html">View Standards</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Condition Grading">
+          <div class="premium-product-info">
+            <span>Grading</span>
+            <h3>Condition Grading</h3>
+            <p>Standardized condition ratings for transparency and buyer confidence.</p>
+            <a href="contact.html">View Grading</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Authenticity Check">
+          <div class="premium-product-info">
+            <span>Authenticity</span>
+            <h3>Authenticity Verification</h3>
+            <p>Verification of brand authenticity and original specifications.</p>
+            <a href="contact.html">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="clearance">
+      <div class="section-header">
+        <span>Clearance Deals</span>
+        <h2>Exclusive Clearance Offers</h2>
+        <p>Limited-time clearance deals on premium items from our showroom and project inventory.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Showroom Clearance">
+          <div class="premium-product-info">
+            <span>Clearance</span>
+            <h3>Showroom Samples</h3>
+            <p>Display items from our showroom in excellent condition at 40-60% off.</p>
+            <a href="#categories">View Clearance</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Project Leftovers">
+          <div class="premium-product-info">
+            <span>Leftovers</span>
+            <h3>Renovation Leftovers</h3>
+            <p>Surplus materials and fixtures from completed renovation projects.</p>
+            <a href="#categories">Browse Leftovers</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Discontinued Items">
+          <div class="premium-product-info">
+            <span>Discontinued</span>
+            <h3>Last Chance Items</h3>
+            <p>Final pieces from discontinued product lines at special clearance prices.</p>
+            <a href="#categories">Shop Discontinued</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Bulk Deals">
+          <div class="premium-product-info">
+            <span>Bulk</span>
+            <h3>Bulk Clearance Deals</h3>
+            <p>Extra savings when you buy multiple clearance items together.</p>
+            <a href="contact.html">Request Bulk Quote</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Featured</span>
+        <h2>Featured Pre-Owned Items</h2>
+        <p>Quality pre-owned items currently available at exceptional prices.</p>
+      </div>
+      <div class="marketplace-grid">
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Used Sofa" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Furniture</span>
+          <span class="marketplace-product-verified">? Verified</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Living Room</span>
+            <h3 class="marketplace-product-title">3-Seater Sofa</h3>
+            <p class="marketplace-product-description">Comfortable 3-seater sofa in excellent condition with minor wear, perfect for modern living spaces.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-condition excellent">? Excellent</span>
+              <span>? 4.7 (12 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 35,000 <span class="fns-original-price">KES 85,000</span></div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Quick Inquiry</button>
+              <button class="marketplace-engagement-btn">?? Schedule Viewing</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/interior-kitchen.jpg" alt="Used Refrigerator" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Appliances</span>
+          <span class="marketplace-product-verified">? Verified</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Kitchen</span>
+            <h3 class="marketplace-product-title">Double Door Refrigerator</h3>
+            <p class="marketplace-product-description">Working double door refrigerator, frost-free, energy efficient with minor cosmetic wear.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-condition good">? Good</span>
+              <span>? 4.5 (8 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 45,000 <span class="fns-original-price">KES 120,000</span></div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Quick Inquiry</button>
+              <button class="marketplace-engagement-btn">?? Schedule Viewing</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Clearance Dining Set" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Clearance</span>
+          <span class="marketplace-product-verified">? Showroom</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Dining Room</span>
+            <h3 class="marketplace-product-title">Showroom Dining Set</h3>
+            <p class="marketplace-product-description">Display dining set from showroom, excellent condition, discounted price for quick sale.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-condition excellent">? Excellent</span>
+              <span>? 4.9 (5 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 55,000 <span class="fns-original-price">KES 130,000</span></div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Quick Inquiry</button>
+              <button class="marketplace-engagement-btn">?? Schedule Viewing</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/interior-office.jpg" alt="Office Chair" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Office</span>
+          <span class="marketplace-product-verified">? Verified</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Office</span>
+            <h3 class="marketplace-product-title">Ergonomic Office Chair</h3>
+            <p class="marketplace-product-description">Premium ergonomic office chair with lumbar support, adjustable height, and mesh back.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-condition good">? Good</span>
+              <span>? 4.6 (7 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 18,000 <span class="fns-original-price">KES 45,000</span></div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Quick Inquiry</button>
+              <button class="marketplace-engagement-btn">?? Schedule Viewing</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Sustainability</span>
+        <h2>Why Buy Pre-Owned?</h2>
+        <p>Quality pre-owned items at great prices while supporting sustainability and circular economy.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Affordable Prices</h3>
+          <p>Get quality items at a fraction of the original price.</p>
+        </div>
+        <div>
+          <h3>Quality Assured</h3>
+          <p>All items inspected and verified for quality and condition.</p>
+        </div>
+        <div>
+          <h3>Sustainable Choice</h3>
+          <p>Reduce waste and extend the lifecycle of quality items.</p>
+        </div>
+        <div>
+          <h3>Quick Availability</h3>
+          <p>Items available immediately, no waiting for delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-section-bg-light">
+      <div class="section-header">
+        <span class="fns-trust-badge">Upgrade Opportunities</span>
+        <h2>Ready to Upgrade?</h2>
+        <p>Trade in your pre-owned items or upgrade to new premium furniture and materials from our ecosystem.</p>
+      </div>
+      <div class="fns-project-complete-grid">
+        <div class="fns-project-complete-card">
+          <div class="icon">???</div>
+          <h3>New Premium Furniture</h3>
+          <p>Upgrade to brand new premium furniture from our exclusive collection and verified vendors.</p>
+          <a href="furniture-marketplace.html">Explore New Furniture ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Refurbishment Services</h3>
+          <p>Professional refurbishment and repair services to restore pre-owned items to like-new condition.</p>
+          <a href="repairs.html">Request Refurbishment ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Trade-In Program</h3>
+          <p>Trade in your pre-owned items for credit toward new purchases from our marketplace.</p>
+          <a href="contact.html">Inquire About Trade-In ?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span class="fns-trust-badge">Frequently Requested Together</span>
+        <h2>What Our Customers Often Explore Together</h2>
+        <p>Complete your space with these complementary products and services commonly requested with pre-owned items.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="New Furniture">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Premium New Furniture</h3>
+            <p>Brand new premium furniture pieces to complement your pre-owned finds and complete your space.</p>
+            <a href="furniture-marketplace.html">Explore New Collection</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Repairs">
+          <div class="premium-product-info">
+            <span>Repairs</span>
+            <h3>Repair & Restoration</h3>
+            <p>Expert repair and restoration services to fix and enhance your pre-owned purchases.</p>
+            <a href="repairs.html">Request Repairs</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Materials">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Materials</h3>
+            <p>Quality materials for DIY projects and renovations to upgrade your space alongside pre-owned items.</p>
+            <a href="materials-marketplace.html">Browse Materials</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Ecosystem</span>
+        <h2>Need Renovation Services?</h2>
+        <p>Transform your space with our verified professionals for repairs, renovations, and installations.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair-painting.jpg" alt="Painting">
+          <div class="premium-product-info">
+            <span>Services</span>
+            <h3>Painting Services</h3>
+            <p>Professional interior and exterior painting to refresh your space.</p>
+            <a href="services-marketplace.html">Book Service</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair-plumbing.jpg" alt="Plumbing">
+          <div class="premium-product-info">
+            <span>Services</span>
+            <h3>Plumbing Repairs</h3>
+            <p>Expert plumbing services for repairs, installations, and maintenance.</p>
+            <a href="services-marketplace.html">Book Service</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Furniture">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Premium Furniture</h3>
+            <p>Complement your pre-owned finds with handcrafted furniture pieces.</p>
+            <a href="furniture-marketplace.html">Browse Furniture</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-quality-section">
+      <div class="section-header">
+        <span>Quality Assured</span>
+        <h2>Trusted Pre-Owned Quality</h2>
+        <p>Every pre-owned item is inspected, verified, and graded for quality. Shop with confidence knowing your purchase meets our strict standards.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>100%</h3>
+          <p>Quality Inspected</p>
+        </div>
+        <div>
+          <h3>50%</h3>
+          <p>Price Savings</p>
+        </div>
+        <div>
+          <h3>Eco</h3>
+          <p>Sustainable Choice</p>
+        </div>
+        <div>
+          <h3>Verified</h3>
+          <p>Trusted Sellers</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-workshop-section">
+      <div class="section-header">
+        <span>Selling Process</span>
+        <h2>How Selling Works</h2>
+        <p>Simple, transparent process to list and sell your quality pre-owned items with our trusted marketplace.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>1</h3>
+          <p>Submit Item</p>
+        </div>
+        <div>
+          <h3>2</h3>
+          <p>Inspection</p>
+        </div>
+        <div>
+          <h3>3</h3>
+          <p>Listing</p>
+        </div>
+        <div>
+          <h3>4</h3>
+          <p>Sale & Payment</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-complete-project-section">
+      <div class="section-header">
+        <span>Complete Your Project</span>
+        <h2>Everything You Need for Your Space</h2>
+        <p>From new furniture and materials to services—explore our complete ecosystem for your home improvement projects.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Furniture Marketplace</h3>
+            <p>Luxury furniture, custom pieces, and premium collections for your finished spaces.</p>
+            <a href="furniture-marketplace.html">Explore Furniture</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Construction Materials</h3>
+            <p>Building materials, finishing supplies, and bulk supply for your renovation projects.</p>
+            <a href="materials-marketplace.html">Explore Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Services</span>
+            <h3>Professional Services</h3>
+            <p>Verified professionals for installation, repairs, renovations, and expert services.</p>
+            <a href="services-marketplace.html">Explore Services</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-ecosystem-card">
+          <div class="premium-product-info">
+            <span>Real Estate</span>
+            <h3>Property Support</h3>
+            <p>Properties, Airbnb setup, staging, and property enhancement services.</p>
+            <a href="realestate-marketplace.html">Explore Real Estate</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-exclusive-section">
+      <div class="section-header">
+        <span>Sell Your Items</span>
+        <h2>Turn Your Items Into Cash</h2>
+        <p>List your quality pre-owned items on our trusted marketplace and reach thousands of buyers.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Free Listing</h3>
+          <p>List your items for free with no upfront costs.</p>
+        </div>
+        <div>
+          <h3>Professional Photos</h3>
+          <p>Optional professional photography to showcase your items.</p>
+        </div>
+        <div>
+          <h3>Secure Payments</h3>
+          <p>Secure payment processing with buyer protection.</p>
+        </div>
+        <div>
+          <h3>Delivery Options</h3>
+          <p>Optional delivery services for buyer convenience.</p>
+        </div>
+      </div>
+      <div class="fns-cta-buttons">
+        <a class="btn primary" href="contact.html">List Your Items</a>
+        <a class="btn secondary" href="contact.html">View Selling Guide</a>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Seller Partnership</span>
+        <h2>Become a Verified Seller</h2>
+        <p>Join our network of trusted sellers and reach premium buyers across Kenya.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Easy Verification</h3>
+          <p>Simple verification process to start selling quickly.</p>
+        </div>
+        <div>
+          <h3>Quality Exposure</h3>
+          <p>Access to our network of premium buyers.</p>
+        </div>
+        <div>
+          <h3>Marketing Support</h3>
+          <p>Promote your items to our premium customer base.</p>
+        </div>
+        <div>
+          <h3>Reliable Payments</h3>
+          <p>Timely payments and transparent transaction processing.</p>
+        </div>
+      </div>
+      <div class="fns-cta-buttons">
+        <a class="btn primary" href="contact.html">Apply as Seller</a>
+        <a class="btn secondary" href="contact.html">Learn More</a>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Get Started</span>
+        <h2>Find Your Perfect Pre-Owned Item</h2>
+        <p>Browse quality pre-owned items or list your items for sale on our trusted marketplace.</p>
+      </div>
+      <div class="fns-cta-buttons">
+        <a class="btn primary" href="#categories">Browse All Secondhand</a>
+        <a class="btn secondary" href="contact.html">Sell Your Items</a>
+        <a class="btn dark-btn" href="contact.html">Become a Seller</a>
+      </div>
+    </section>
+    <!-- Category Tabs -->
+    <section class="content-section">
+      <div id="mpCategoryTabs"></div>
+    </section>
+
+    <!-- Featured Items -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">?</span> Featured Secondhand</h2>
+        <p class="mp-browse-section-sub">Quality pre-owned items in excellent condition.</p>
+      </div>
+      <div id="mpFeaturedGrid"></div>
+    </section>
+
+    <!-- Newest Items -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Fresh Listings</h2>
+        <p class="mp-browse-section-sub">Recently added secondhand items.</p>
+      </div>
+      <div id="mpNewestGrid"></div>
+    </section>
+
+    <!-- Most Viewed Placeholder -->
+    <section class="content-section">
+      <div class="mp-most-viewed">
+        <div class="mp-most-viewed-icon">???</div>
+        <h3>Most Viewed</h3>
+        <p>Popular secondhand items trending this week. Coming soon!</p>
+      </div>
+    </section>
+
+    <!-- Recommended by Furnostyles -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Recommended by Furnostyles</h2>
+        <p class="mp-browse-section-sub">Pre-owned items we've inspected and recommend.</p>
+      </div>
+      <div id="mpRecommendedGrid"></div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Related Services</h2>
+        <p class="mp-browse-section-sub">Refurbishment and repair services for secondhand items.</p>
+      </div>
+      <div id="mpRelatedServicesGrid"></div>
+    </section>
+
+    <!-- Live Listings -->
+    <section class="content-section" id="live-listings-section" data-marketplace-type="secondhand">
+      <div class="mp-section-head">
+        <h2 class="mp-section-title">All Secondhand Listings</h2>
+        <p class="mp-section-sub">Quality pre-owned items, reviewed and approved by Furnostyles.</p>
+      </div>
+      <div class="mp-filter-bar">
+        <span class="mp-filter-label">Sort by:</span>
+        <select id="mpSortSel" class="mp-filter-sel">
+          <option value="newest">Newest First</option>
+          <option value="price_low">Price: Low to High</option>
+          <option value="price_high">Price: High to Low</option>
+        </select>
+        <span class="mp-count" id="mpCountEl"></span>
+      </div>
+      <div id="mpMainGrid" class="fns-product-grid"></div>
+    </section>
+    <section class="content-section" id="mpRecs"></section>
+    </main>
+  </div>
+
+  <a class="cart-float" href="cart.html">Cart <span data-cart-count>0</span></a>
+  <a class="chat-float" href="https://wa.me/254713639205" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+
+  <div id="fld-footer-mount"></div>
+
+  <script defer src="js/main.js"></script>
+  <script defer src="shared/firebase/firebase-config.js"></script>
+  <script defer src="shared/firebase/firebase-bridge.js"></script>
+  <script defer src="shared/uploads/upload-bridge.js"></script>
+  <script defer src="shared/rendering/public-filter.js"></script>
+  <script defer src="shared/rendering/marketplace-renderer.js"></script>
+  <script defer src="shared/rendering/repair-renderer.js"></script>
+  <script defer src="shared/rendering/recommendation-renderer.js"></script>
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var allItems = []; var sortKey = 'newest';
+      function load() {
+        var grid = document.getElementById('mpMainGrid');
+        var R = window.FurnostylesMarketplaceRenderer, F = window.FurnostylesPublicFilter;
+        if (!R || !F) return;
+        R.renderLoadingGrid(grid);
+        F.getApprovedByType('secondhand')
+          .then(function (items) {
+            allItems = items || [];
+            var c = document.getElementById('mpCountEl');
+            if (c) c.textContent = allItems.length + ' listing' + (allItems.length !== 1 ? 's' : '');
+            R.renderGrid(grid, F.sortItems(allItems, sortKey));
+            var rc = document.getElementById('mpRecs');
+            if (window.FurnostylesRecommendationRenderer && rc) {
+              window.FurnostylesRecommendationRenderer.loadAndRender(rc, [
+                { title: 'New Furniture', promise: F.getApprovedByType('furniture', null, 6), renderer: 'listing' },
+                { title: 'Materials &amp; Supplies', promise: F.getApprovedByType('material', null, 6), renderer: 'listing' }
+              ]);
+            }
+          })
+          .catch(function (err) { R.renderError(grid, err.message); });
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var sel = document.getElementById('mpSortSel');
+        if (sel) sel.addEventListener('change', function () {
+          sortKey = this.value;
+          var R = window.FurnostylesMarketplaceRenderer, F = window.FurnostylesPublicFilter;
+          if (R && F) R.renderGrid(document.getElementById('mpMainGrid'), F.sortItems(allItems, sortKey));
+        });
+        load();
+      });
+    }());
+  </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase Config & Init -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-init.js"></script>
+  <!-- Firebase Bridge -->
+  <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Auth, Session -->
+  <script src="assets/js/session.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+  <!-- Auth State Manager -->
+  <script src="assets/js/auth-state.js" defer></script>
+</body>
+</html>

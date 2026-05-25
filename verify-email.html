@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Email | Furnostyles — Personal Luxury. Elevated.</title>
+  <meta name="description" content="Verify your email address to complete your Furnostyles account registration.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+</head>
+<body>
+  <div class="premium-topbar">
+    <span><strong>Furnostyles</strong> Personal Luxury. Elevated.</span>
+    <span><b>Kasarani, Nairobi</b><b>+254 713 639 205</b><b>furnostyles@gmail.com</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
+      <span>Furnostyles</span>
+    </a>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <div class="auth-container">
+        <h1>Verify Your Email</h1>
+        <p id="statusMessage">Checking your email verification status...</p>
+        
+        <div id="actionArea"></div>
+      </div>
+    </main>
+  </div>
+
+  <div id="fld-footer-mount"></div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <!-- Firebase Config & Init -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-init.js"></script>
+  <!-- Firebase Bridge -->
+  <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Auth -->
+  <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+
+  <script>
+    (function() {
+      'use strict';
+      
+      var statusMessage = document.getElementById('statusMessage');
+      var actionArea = document.getElementById('actionArea');
+      
+      // Check URL for action code (from email link)
+      var urlParams = new URLSearchParams(window.location.search);
+      var actionCode = urlParams.get('oobCode');
+      var mode = urlParams.get('mode');
+      
+      if (actionCode && mode === 'verifyEmail') {
+        // Handle email verification from email link
+        if (window.FurnostylesAuth) {
+          window.FurnostylesAuth.applyActionCode(actionCode)
+            .then(function() {
+              statusMessage.textContent = 'Your email has been verified successfully!';
+              actionArea.innerHTML = '<a href="login.html" class="btn primary full-width">Sign In</a>';
+            })
+            .catch(function(error) {
+              statusMessage.textContent = 'Error verifying email: ' + error.message;
+              actionArea.innerHTML = '<a href="login.html" class="btn primary full-width">Back to Login</a>';
+            });
+        } else {
+          statusMessage.textContent = 'Auth system not loaded. Please refresh the page.';
+        }
+      } else {
+        // Check current user's verification status
+        if (window.FurnostylesAuth) {
+          window.FurnostylesAuth.onAuthStateChanged(function(user) {
+            if (user) {
+              if (user.emailVerified) {
+                statusMessage.textContent = 'Your email is already verified!';
+                actionArea.innerHTML = '<a href="client/dashboard.html" class="btn primary full-width">Go to Dashboard</a>';
+              } else {
+                statusMessage.textContent = 'Please verify your email address. Check your inbox for the verification link.';
+                actionArea.innerHTML = '<button id="resendBtn" class="btn primary full-width">Resend Verification Email</button>';
+                
+                document.getElementById('resendBtn').addEventListener('click', function() {
+                  window.FurnostylesAuth.sendEmailVerification()
+                    .then(function() {
+                      statusMessage.textContent = 'Verification email sent! Check your inbox.';
+                    })
+                    .catch(function(error) {
+                      statusMessage.textContent = 'Error: ' + error.message;
+                    });
+                });
+              }
+            } else {
+              statusMessage.textContent = 'Please sign in to verify your email.';
+              actionArea.innerHTML = '<a href="login.html" class="btn primary full-width">Sign In</a>';
+            }
+          });
+        } else {
+          statusMessage.textContent = 'Auth system not loaded. Please refresh the page.';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

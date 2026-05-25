@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquiry Management | Admin | Furnostyles</title>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../shared/dashboard-layout.css">
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles</strong> Personal Luxury. Elevated.</span>
+    <span><b>Kasarani, Nairobi</b> &nbsp; <b>+254 713 639 205</b> &nbsp; <b>furnostyles@gmail.com</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html" aria-label="Furnostyles Home">
+      <span>Furnostyles</span>
+    </a>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="content-section">
+        <div class="fns-dashboard-container">
+
+          <!-- Dashboard Header -->
+          <div class="fns-dashboard-header">
+            <div>
+              <h2 class="fns-dashboard-title">Inquiry Management</h2>
+              <div class="fns-dashboard-user-info">
+                Role: <strong>Admin</strong> &nbsp;|&nbsp; Email: <strong id="userEmail">Loading...</strong>
+              </div>
+            </div>
+            <button id="logoutBtn" class="btn secondary">Sign Out</button>
+          </div>
+
+          <!-- Admin Navigation Tabs -->
+          <nav class="fns-dashboard-nav" aria-label="Admin Dashboard Navigation">
+            <a class="fns-dashboard-nav-link" href="index.html">Overview</a>
+            <a class="fns-dashboard-nav-link active" href="inquiries.html">Inquiries</a>
+            <a class="fns-dashboard-nav-link" href="#" title="Coming Soon">Users</a>
+            <a class="fns-dashboard-nav-link" href="#" title="Coming Soon">Verifications</a>
+            <a class="fns-dashboard-nav-link" href="#" title="Coming Soon">Reports</a>
+            <a class="fns-dashboard-nav-link" href="#" title="Coming Soon">Settings</a>
+          </nav>
+
+          <!-- Inquiry Summary Metrics -->
+          <div class="fns-dashboard-section">
+            <h3 class="fns-dashboard-section-title">Inquiry Overview</h3>
+            <div id="inquirySummaryContainer"></div>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="fns-dashboard-section">
+            <h3 class="fns-dashboard-section-title">Filter Inquiries</h3>
+            <div id="inquiryFilterContainer"></div>
+          </div>
+
+          <!-- Inquiry Table -->
+          <div class="fns-dashboard-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <h3 class="fns-dashboard-section-title" style="margin-bottom:0;">
+                All Inquiries
+                <span id="inquiryCountBadge" class="fns-admin-status-badge status-new" style="font-size:12px; margin-left:8px; vertical-align:middle;"></span>
+              </h3>
+              <p style="font-size:12px; color:var(--fns-text-light);">Showing placeholder data — Firestore integration in next phase.</p>
+            </div>
+            <div id="inquiryTableContainer"></div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fld-footer-mount"></div>
+
+  <!-- Firebase Config -->
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+  <script src="../../shared/firebase/firebase-init.js"></script>
+
+  <!-- Auth System -->
+  <script src="../../shared/auth/auth-config.js"></script>
+  <script src="../../shared/auth/auth-state.js"></script>
+  <script src="../../shared/auth/auth-ui.js"></script>
+  <script src="../../shared/auth/role-router.js"></script>
+  <script src="../../shared/auth/auth-guards.js"></script>
+  <script src="../../shared/auth/user-profile-service.js"></script>
+
+  <!-- Dashboard Shared -->
+  <script src="../shared/dashboard-data.js"></script>
+  <script src="../shared/dashboard-components.js"></script>
+  <script src="../shared/dashboard-actions.js"></script>
+
+  <!-- Inquiry System -->
+  <script src="../../shared/inquiries/inquiry-types.js"></script>
+  <script src="../../shared/inquiries/inquiry-validation.js"></script>
+  <script src="../../shared/inquiries/inquiry-config.js"></script>
+  <script src="../../shared/inquiries/inquiry-service.js"></script>
+  <script src="../../shared/inquiries/inquiry-status.js"></script>
+  <script src="../../shared/inquiries/inquiry-admin-ui.js"></script>
+
+  <!-- Footer Render -->
+  <script defer src="../../shared/layout/footer-data.js"></script>
+  <script defer src="../../shared/layout/footer-render.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var logoutBtn               = document.getElementById('logoutBtn');
+      var userEmailEl             = document.getElementById('userEmail');
+      var inquirySummaryContainer = document.getElementById('inquirySummaryContainer');
+      var inquiryFilterContainer  = document.getElementById('inquiryFilterContainer');
+      var inquiryTableContainer   = document.getElementById('inquiryTableContainer');
+      var countBadge              = document.getElementById('inquiryCountBadge');
+
+      /* Master dataset — updated after each successful load */
+      var currentInquiries = [];
+
+      /* ------------------------------------------------------------------ */
+      /* AUTH GUARD                                                           */
+      /* ------------------------------------------------------------------ */
+      if (window.FurnostylesAuthGuards) {
+        window.FurnostylesAuthGuards.requireAuth();
+      }
+
+      /* ------------------------------------------------------------------ */
+      /* HELPERS                                                             */
+      /* ------------------------------------------------------------------ */
+      function loadUserInfo() {
+        if (window.FurnostylesAuthState) {
+          var user = window.FurnostylesAuthState.getCurrentUser();
+          if (user && userEmailEl) {
+            userEmailEl.textContent = user.email || 'Unknown';
+          }
+        }
+      }
+
+      function updateCountBadge(count) {
+        if (countBadge) {
+          countBadge.textContent = count + ' record' + (count !== 1 ? 's' : '');
+        }
+      }
+
+      function showTableLoading() {
+        if (inquiryTableContainer) {
+          inquiryTableContainer.innerHTML =
+            '<div class="fns-loading-state">' +
+            '<div class="fns-loading-spinner"></div>' +
+            '<div class="fns-loading-message">Loading inquiries...</div>' +
+            '</div>';
+        }
+        updateCountBadge(0);
+      }
+
+      /* ------------------------------------------------------------------ */
+      /* RENDER TABLE + SUMMARY                                              */
+      /* ------------------------------------------------------------------ */
+      function renderTable(inquiries) {
+        window.FurnostylesInquiryAdminUI.renderInquiryTable(inquiryTableContainer, inquiries, {
+          onView: function (inquiry) {
+            window.FurnostylesInquiryAdminUI.showInquiryDetail(inquiry);
+          },
+          onContact: function (inquiry, id) {
+            window.FurnostylesInquiryAdminUI.updateInquiryStatusLive(
+              id, 'contacted',
+              function () { reloadInquiries(); }
+            );
+          },
+          onAssign: function (id) {
+            window.FurnostylesInquiryAdminUI.showActionToast('Assign — coming in next phase.');
+          },
+          onEscalate: function (id) {
+            window.FurnostylesInquiryAdminUI.showActionToast('Escalate — coming in next phase.');
+          },
+          onStatusUpdated: function () { reloadInquiries(); }
+        });
+
+        window.FurnostylesInquiryAdminUI.renderInquirySummary(inquirySummaryContainer, inquiries);
+        updateCountBadge(inquiries.length);
+      }
+
+      /* ------------------------------------------------------------------ */
+      /* FILTER HANDLER (client-side, no reload needed)                     */
+      /* ------------------------------------------------------------------ */
+      function handleFilter(filters) {
+        var hasFilters = false;
+        var keys = Object.keys(filters);
+        for (var k = 0; k < keys.length; k++) {
+          if (filters[keys[k]] && filters[keys[k]] !== '') { hasFilters = true; break; }
+        }
+        var dataset = hasFilters ?
+          window.FurnostylesInquiryAdminUI.filterInquiries(currentInquiries, filters) :
+          currentInquiries;
+        renderTable(dataset);
+      }
+
+      /* ------------------------------------------------------------------ */
+      /* LOAD FROM FIRESTORE (with fallback to local bridge)                */
+      /* ------------------------------------------------------------------ */
+      function reloadInquiries() {
+        window.FurnostylesInquiryAdminUI.loadInquiries({
+          usePlaceholderWhenEmpty: false,
+          onLoading: showTableLoading,
+          onSuccess: function (inquiries) {
+            currentInquiries = inquiries;
+            renderTable(currentInquiries);
+
+            var bridge  = window.FurnostylesFirebase;
+            var isLive  = bridge && typeof bridge.isLive === 'function' && bridge.isLive();
+            if (!isLive) {
+              window.FurnostylesInquiryAdminUI.showActionToast(
+                'LOCAL mode — data stored in localStorage. Add Firebase config for Firestore.'
+              );
+            }
+          },
+          onError: function (error) {
+            console.error('[AdminInquiries] Load error:', error);
+            if (inquiryTableContainer) {
+              inquiryTableContainer.innerHTML =
+                '<div class="fns-error-state">' +
+                '<div class="fns-error-icon">&#9888;&#65039;</div>' +
+                '<div class="fns-error-title">Failed to load inquiries</div>' +
+                '<div class="fns-error-message">' + (error.message || 'Unknown error') + '</div>' +
+                '<button class="fns-error-retry-btn" id="retryLoadBtn">Retry</button>' +
+                '</div>';
+              var retryBtn = document.getElementById('retryLoadBtn');
+              if (retryBtn) { retryBtn.addEventListener('click', reloadInquiries); }
+            }
+            updateCountBadge(0);
+          }
+        });
+      }
+
+      /* ------------------------------------------------------------------ */
+      /* INIT                                                                 */
+      /* ------------------------------------------------------------------ */
+      function init() {
+        if (!window.FurnostylesInquiryAdminUI || !window.FurnostylesInquiryStatus) {
+          if (inquiryTableContainer) {
+            inquiryTableContainer.innerHTML =
+              '<div class="fns-error-state">' +
+              '<div class="fns-error-icon">&#9888;&#65039;</div>' +
+              '<div class="fns-error-title">Inquiry modules not loaded</div>' +
+              '<div class="fns-error-message">Ensure inquiry-status.js and inquiry-admin-ui.js are included.</div>' +
+              '</div>';
+          }
+          return;
+        }
+
+        loadUserInfo();
+
+        window.FurnostylesInquiryAdminUI.renderFilterBar(inquiryFilterContainer, {
+          onFilter: handleFilter
+        });
+
+        reloadInquiries();
+      }
+
+      /* ------------------------------------------------------------------ */
+      /* LOGOUT                                                               */
+      /* ------------------------------------------------------------------ */
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+          if (window.FurnostylesAuthState) {
+            window.FurnostylesAuthState.signOut()
+              .then(function () { window.location.href = '../../login.html'; })
+              .catch(function (err) { alert('Sign out failed: ' + err.message); });
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    }());
+  </script>
+</body>
+</html>

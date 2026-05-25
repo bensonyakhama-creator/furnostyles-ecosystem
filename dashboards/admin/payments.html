@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments Management | Furnostyles Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../../shared/commerce/commerce-layout.css">
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles Admin</strong> Executive Console</span>
+    <span><b>Secure Session</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html">
+      <span>Furnostyles Commerce Authority</span>
+    </a>
+    <div style="font-weight:700;color:#c9a227;font-size:13px;">💳 Payment Supervision Desk</div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main" style="padding:32px;">
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;">
+        <div>
+          <h1 style="font-size:26px;font-weight:900;color:#1a2540;margin:0 0 4px;">Payment Transactions</h1>
+          <p style="font-size:14px;color:#8090a0;margin:0;">Monitor all payment gateways, verify transactions, and reconcile escrow releases.</p>
+        </div>
+      </div>
+
+      <div class="cm-card">
+        <h2 class="cm-section-title">💳 All Payments</h2>
+        <div style="overflow-x:auto;">
+          <table class="cm-table">
+            <thead>
+              <tr>
+                <th>Payment ID</th>
+                <th>Gateway</th>
+                <th>Amount (KSh)</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Verified</th>
+              </tr>
+            </thead>
+            <tbody id="paymentsTable">
+              <tr><td colspan="6" style="text-align:center;padding:30px;color:#8090a0;">Loading payments...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+  <script src="../../shared/commerce/payment-gateways.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function () {
+        var b = window.FurnostylesFirebaseBridge;
+
+        if (!b) return;
+
+        b.list('payments').then(function (payments) {
+          var tbody = document.getElementById('paymentsTable');
+          if (payments.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px;color:#8090a0;">No payments yet. Gateway adapters ready for live integration.</td></tr>';
+            return;
+          }
+
+          tbody.innerHTML = payments.map(function (p) {
+            var badge = '<span class="cm-badge ' + p.status + '">' + p.status + '</span>';
+            return '<tr>' +
+              '<td>' + p.id.substring(0, 8) + '...</td>' +
+              '<td>' + p.gateway + '</td>' +
+              '<td>' + Number(p.amount).toLocaleString() + '</td>' +
+              '<td>' + badge + '</td>' +
+              '<td>' + (p.createdAt ? p.createdAt.substring(0, 10) : '') + '</td>' +
+              '<td>' + (p.verifiedAt ? p.verifiedAt.substring(0, 10) : '—') + '</td>' +
+            '</tr>';
+          }).join('');
+        });
+      });
+    }());
+  </script>
+</body>
+</html>

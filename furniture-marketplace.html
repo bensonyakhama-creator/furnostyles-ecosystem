@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furniture Marketplace | Furnostyles - Premium Furniture in Nairobi</title>
+  <meta name="description" content="Browse premium furniture, custom sofas, beds, dining sets, office furniture and luxury pieces from Furnostyles and verified vendors in Nairobi.">
+  <meta name="keywords" content="furniture marketplace, custom furniture, sofas, beds, dining sets, office furniture, Nairobi, Kenya">
+  <meta name="author" content="Furnostyles">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://furnostyles.com/furniture-marketplace.html">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="stylesheet" href="shared/rendering/marketplace.css">
+  <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/furniture-demo.js"></script>
+  <script src="shared/demo-data/materials-demo.js"></script>
+  <script src="shared/demo-data/secondhand-demo.js"></script>
+  <script src="shared/demo-data/property-demo.js"></script>
+  <script src="shared/demo-data/sourcing-demo.js"></script>
+  <script src="shared/demo-data/services-demo.js"></script>
+  <script src="shared/demo-data/vendors-demo.js"></script>
+  <script src="shared/demo-data/marketplace-renderer.js"></script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Furnostyles">
+  <meta property="og:title" content="Furniture Marketplace | Furnostyles - Premium Furniture in Nairobi">
+  <meta property="og:description" content="Browse premium furniture, custom sofas, beds, dining sets, office furniture and luxury pieces from Furnostyles and verified vendors in Nairobi.">
+  <meta property="og:url" content="https://furnostyles.com/furniture-marketplace.html">
+  <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Furniture Marketplace | Furnostyles - Premium Furniture in Nairobi">
+  <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
+
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <div class="fld-brand-section">
+      <span class="fld-brand-name">Furnostyles Luxe Designs</span>
+      <span class="fld-tagline">Personal Luxury. Elevated.</span>
+    </div>
+    <div class="fld-location-dropdown" role="button" aria-label="Delivery areas" aria-haspopup="true" aria-expanded="false" tabindex="0">
+      <svg class="fld-location-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+      </svg>
+      <span>Kenya-Wide Delivery</span>
+      <div class="fld-location-menu" role="menu">
+        <h4>Areas We Serve</h4>
+        <ul role="list">
+          <li role="menuitem">Nairobi Metro</li>
+          <li role="menuitem">Coastal Region</li>
+          <li role="menuitem">Western Region</li>
+          <li role="menuitem">Nyanza Region</li>
+          <li role="menuitem">Rift Valley</li>
+          <li role="menuitem">Central Region</li>
+          <li role="menuitem">Eastern Region</li>
+          <li role="menuitem">North Eastern</li>
+          <li role="menuitem">Highway Towns</li>
+        </ul>
+        <p class="fld-location-note">Worldwide expansion coming soon</p>
+      </div>
+    </div>
+    <span class="fld-contact-info">
+      <a href="tel:+254713639205" class="fld-contact-link" aria-label="Call us at +254 713 639 205">+254 713 639 205</a>
+      <span class="fld-contact-separator">|</span>
+      <a href="mailto:furnostyles@gmail.com" class="fld-contact-link" aria-label="Email us at furnostyles@gmail.com">furnostyles@gmail.com</a>
+    </span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
+      <img loading="eager" src="assets/images/logo.png" alt="Furnostyles Logo" onerror="this.remove()">
+      <span>Furnostyles</span>
+    </a>
+
+    <form class="fld-youtube-search" role="search" action="/search" method="GET">
+      <input type="search" id="siteSearch" name="q" placeholder="Search furniture, services, marketplace..." aria-label="Search Furnostyles" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
+
+    <div class="fld-icon-actions">
+      <button class="fld-icon-btn" id="fldAccountBtn" type="button" aria-label="Account" aria-haspopup="true" aria-expanded="false">
+        <svg class="fld-account-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+        </svg>
+        <span class="fld-btn-text">Account</span>
+        <span class="fld-tooltip">Sign in / Sign up<br>Account & Lists</span>
+        <div class="fld-account-menu" role="menu">
+          <a href="accounts/login.html" role="menuitem" class="fld-account-menu-item">
+            <svg class="fld-menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+            </svg>
+            Sign In
+          </a>
+          <a href="accounts/register.html" role="menuitem" class="fld-account-menu-item">
+            <svg class="fld-menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+            </svg>
+            Sign Up
+          </a>
+          <div class="fld-account-divider"></div>
+          <a href="accounts/orders.html" role="menuitem" class="fld-account-menu-item">
+            <svg class="fld-menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
+            </svg>
+            My Orders
+          </a>
+          <a href="accounts/profile.html" role="menuitem" class="fld-account-menu-item">
+            <svg class="fld-menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="currentColor"/>
+            </svg>
+            My Profile
+          </a>
+          <a href="accounts/settings.html" role="menuitem" class="fld-account-menu-item">
+            <svg class="fld-menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13-.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L3.16 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.04.64.09.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24-1.13-.56-1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" fill="currentColor"/>
+            </svg>
+            Settings
+          </a>
+        </div>
+      </button>
+      <button class="fld-icon-btn" id="fldAlertBtn" type="button" aria-label="Alerts" aria-haspopup="true" aria-expanded="false">
+        <svg class="fld-alert-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
+        </svg>
+        <span class="fld-btn-text">Alerts</span>
+        <span class="fld-tooltip">Notifications<br>& Alerts</span>
+        <div class="fld-alert-menu" role="menu">
+          <div class="fld-alert-header">
+            <h4>Notifications</h4>
+            <span class="fld-alert-count">0 new</span>
+          </div>
+          <div class="fld-alert-items">
+            <div class="fld-alert-empty">
+              <svg class="fld-empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor" opacity="0.3"/>
+              </svg>
+              <p>No new notifications</p>
+              <a href="alerts.html" class="fld-alert-cta">View All Alerts</a>
+            </div>
+          </div>
+          <div class="fld-alert-footer">
+            <a href="alerts.html" class="fld-alert-btn-view">View All Notifications</a>
+            <a href="accounts/settings.html" class="fld-alert-btn-settings">Settings</a>
+          </div>
+        </div>
+      </button>
+      <button class="fld-icon-btn" id="fldCartBtn" type="button" aria-label="Cart" aria-haspopup="true" aria-expanded="false">
+        <svg class="fld-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+        </svg>
+        <span class="fld-btn-text">Cart</span>
+        <span class="fld-tooltip">View Cart<br>0 items</span>
+        <span class="fld-badge" id="fldCartCount" data-cart-count aria-live="polite" aria-label="0 items in cart">0</span>
+        <div class="fld-cart-menu" role="menu">
+          <div class="fld-cart-header">
+            <h4>Your Cart</h4>
+            <span class="fld-cart-total">KES 0.00</span>
+          </div>
+          <div class="fld-cart-items">
+            <div class="fld-cart-empty">
+              <svg class="fld-empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="currentColor" opacity="0.3"/>
+              </svg>
+              <p>Your cart is empty</p>
+              <a href="marketplace.html" class="fld-cart-cta">Continue Shopping</a>
+            </div>
+          </div>
+          <div class="fld-cart-footer">
+            <a href="cart.html" class="fld-cart-btn-view">View Cart</a>
+            <a href="checkout.html" class="fld-cart-btn-checkout">Checkout</a>
+          </div>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+    <nav class="marketplace-link-strip premium-market-scroll" aria-label="Marketplace Categories">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="furniture-marketplace.html" class="active">Furniture</a>
+      <a href="materials-marketplace.html">Materials</a>
+      <a href="services-marketplace.html">Services</a>
+      <a href="realestate-marketplace.html">Real Estate</a>
+      <a href="secondhand-marketplace.html">Secondhand</a>
+      <a href="sourcing-marketplace.html">Sourcing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- DEALS BANNER -->
+    <div class="mp-deals-banner">
+      <div class="mp-deals-banner-label"><span class="flash-icon">?</span> Today's Deals</div>
+      <div class="mp-deals-items">
+        <a href="#categories" class="mp-deals-chip">Custom Sofas <span class="chip-discount">From KES 45K</span></a>
+        <a href="#categories" class="mp-deals-chip">Wardrobes <span class="chip-discount">20% Off</span></a>
+        <a href="#categories" class="mp-deals-chip">Office Sets <span class="chip-discount">Bundle Deals</span></a>
+        <a href="#categories" class="mp-deals-chip">Beds &amp; Mattresses <span class="chip-discount">Free Delivery</span></a>
+        <a href="#categories" class="mp-deals-chip">Dining Sets <span class="chip-discount">Limited Stock</span></a>
+        <a href="contact.html" class="mp-deals-chip">Custom Orders <span class="chip-discount">Get a Quote</span></a>
+      </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <nav class="mp-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="mp-breadcrumb-sep">›</span>
+      <a href="marketplace.html">Marketplace</a>
+      <span class="mp-breadcrumb-sep">›</span>
+      <span class="mp-breadcrumb-current">Furniture</span>
+    </nav>
+
+    <section class="hero-banner fns-hero-furniture">
+      <div class="hero-content">
+        <span class="hero-badge">Kenya's Premium Furniture Ecosystem</span>
+        <h1>Handcrafted Luxury.<br/>Timeless Elegance.</h1>
+        <p>From our master artisans' workshop to your living space—every piece crafted with premium solid woods, luxurious fabrics, and exceptional attention to detail. Custom furniture, premium collections, and verified vendor selections.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#categories">Browse Collections</a>
+          <a class="btn secondary" href="contact.html">Request Custom Quote</a>
+          <a class="btn dark-btn" href="#workshop">Our Workshop</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="mp-trust-strip">
+      <div class="mp-trust-item"><span class="icon">??</span> Kenya-Wide Delivery</div>
+      <div class="mp-trust-item"><span class="icon">??</span> Master Artisan Crafted</div>
+      <div class="mp-trust-item"><span class="icon">?</span> 500+ Verified Vendors</div>
+      <div class="mp-trust-item"><span class="icon">??</span> Easy Returns Policy</div>
+      <div class="mp-trust-item"><span class="icon">???</span> Quality Guarantee</div>
+      <div class="mp-trust-item"><span class="icon">??</span> Expert Consultation</div>
+    </div>
+
+    <section class="content-section premium-dark-gradient-section">
+      <div class="premium-gradient-bg-circle"></div>
+      <div class="section-header premium-centered-header">
+        <span class="section-badge">Our Craftsmanship</span>
+        <h2>The Furnostyles Workshop Difference</h2>
+        <p>Every piece crafted by master artisans using premium materials and time-honored techniques.</p>
+      </div>
+      <div class="home-stats premium-dark-stats">
+        <div class="premium-dark-stat-card">
+          <h3>100%</h3>
+          <p>Custom Crafted</p>
+        </div>
+        <div class="premium-dark-stat-card">
+          <h3>50+</h3>
+          <p>Years Expertise</p>
+        </div>
+        <div class="premium-dark-stat-card">
+          <h3>5000+</h3>
+          <p>Pieces Crafted</p>
+        </div>
+        <div class="premium-dark-stat-card">
+          <h3>Lifetime</h3>
+          <p>Durability</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="marketplace-premium-highlight">
+      <h3>? The Art of Premium Craftsmanship</h3>
+      <p>Every Furnostyles piece is handcrafted by master artisans using premium solid woods, luxurious fabrics, and time-honored techniques. Our furniture isn't just built—it's designed to become the centerpiece of your home, combining exceptional durability with timeless elegance. Each piece undergoes rigorous quality inspection before reaching your space.</p>
+      <div class="fns-filter-tags">
+        <span class="marketplace-trust-badge verified">? Master Artisan Crafted</span>
+        <span class="marketplace-trust-badge verified">? Premium Solid Wood</span>
+        <span class="marketplace-trust-badge verified">? Luxury Fabrics</span>
+        <span class="marketplace-trust-badge verified">? Lifetime Durability</span>
+      </div>
+    </section>
+
+    <section class="content-section" id="categories">
+      <div class="section-header">
+        <span>Categories</span>
+        <h2>Luxury Furniture Categories</h2>
+        <p>Explore our curated collection of premium furniture for every room in your home.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Living Room Furniture">
+          <div class="premium-product-info">
+            <span class="premium-product-category">Living Room</span>
+            <h3>Living Room Collection</h3>
+            <p>Luxury sofas, armchairs, coffee tables, TV units, bookshelves and display cabinets crafted for sophisticated living spaces.</p>
+            <div class="premium-product-tags">
+              <span class="premium-tag">Custom Orders</span>
+              <span class="premium-tag premium-tag-gold">Premium Quality</span>
+            </div>
+            <a href="#living-room" class="premium-product-link">Explore Collection</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="Bedroom Furniture">
+          <div class="premium-product-info">
+            <span class="premium-product-category">Bedroom</span>
+            <h3>Bedroom Sanctuary</h3>
+            <p>Premium beds, mattresses, wardrobes, nightstands, dressers and complete bedroom sets designed for restful luxury.</p>
+            <div class="premium-product-tags">
+              <span class="premium-tag">Custom Orders</span>
+              <span class="premium-tag premium-tag-gold">Premium Quality</span>
+            </div>
+            <a href="#bedroom" class="premium-product-link">Explore Bedroom</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/flooring.jpg" alt="Dining Room Furniture">
+          <div class="premium-product-info">
+            <span class="premium-product-category">Dining</span>
+            <h3>Dining Excellence</h3>
+            <p>Elegant dining tables, chairs, sideboards, china cabinets and complete dining sets for memorable gatherings.</p>
+            <div class="premium-product-tags">
+              <span class="premium-tag">Custom Orders</span>
+              <span class="premium-tag premium-tag-gold">Premium Quality</span>
+            </div>
+            <a href="#dining" class="premium-product-link">Explore Dining</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Office Furniture">
+          <div class="premium-product-info">
+            <span class="premium-product-category">Office</span>
+            <h3>Executive Office</h3>
+            <p>Executive desks, ergonomic chairs, bookcases, filing cabinets and complete office sets for productive workspaces.</p>
+            <div class="premium-product-tags">
+              <span class="premium-tag">Custom Orders</span>
+              <span class="premium-tag premium-tag-gold">Premium Quality</span>
+            </div>
+            <a href="#office" class="premium-product-link">Explore Office</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Outdoor Furniture">
+          <div class="premium-product-info">
+            <span>Outdoor</span>
+            <h3>Outdoor Luxury</h3>
+            <p>Weather-resistant patio sets, outdoor dining, lounge chairs, sun loungers and garden benches for elegant outdoor living.</p>
+            <div class="fns-furniture-tags">
+              <span>Custom Orders</span>
+              <span class="gold">Premium Quality</span>
+            </div>
+            <a href="#outdoor" class="primary">Explore Outdoor</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card featured">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Custom Furniture">
+          <div class="premium-product-info">
+            <span>Bespoke</span>
+            <h3>Custom Furniture</h3>
+            <p>Bespoke furniture designed and crafted by our master artisans to your exact specifications and unique vision.</p>
+            <a href="contact.html" class="gold">Request Custom Quote</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-exclusive-section">
+      <div class="section-header">
+        <span>Furnostyles Exclusive</span>
+        <h2>Premium Furnostyles Furniture</h2>
+        <p>Handcrafted luxury furniture designed and built by Furnostyles expert artisans.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Custom Sofas</h3>
+          <p>Bespoke sofas crafted to your specifications with premium fabrics.</p>
+        </div>
+        <div>
+          <h3>Luxury Beds</h3>
+          <p>Premium beds with custom headboards and high-quality mattresses.</p>
+        </div>
+        <div>
+          <h3>Built-in Wardrobes</h3>
+          <p>Custom wardrobes designed for your space and storage needs.</p>
+        </div>
+        <div>
+          <h3>Office Furniture</h3>
+          <p>Professional office furniture for home and commercial spaces.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Why Choose Us</span>
+        <h2>Why Choose Furnostyles Furniture</h2>
+        <p>Expert craftsmanship, premium materials, and exceptional service for your home.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Expert Craftsmanship</h3>
+          <p>Our artisans bring decades of experience to every piece we create.</p>
+        </div>
+        <div>
+          <h3>Premium Materials</h3>
+          <p>Solid wood, high-grade fabrics, and quality finishes for lasting beauty.</p>
+        </div>
+        <div>
+          <h3>Custom Design</h3>
+          <p>Furniture designed to fit your space, style, and budget perfectly.</p>
+        </div>
+        <div>
+          <h3>Quality Guarantee</h3>
+          <p>All furniture backed by our comprehensive quality warranty.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Furniture Expertise</span>
+        <h2>Our Furniture Expertise</h2>
+        <p>Deep knowledge in furniture design, materials, and craftsmanship for exceptional results.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-furniture-card">
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Living Room Design">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Living Room Design</h3>
+            <p>Expert guidance on sofas, seating arrangements, and living room aesthetics for sophisticated spaces.</p>
+            <a href="contact.html" class="primary">Get Consultation</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="Bedroom Solutions">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Bedroom Solutions</h3>
+            <p>Custom beds, wardrobes, and storage solutions for optimal space utilization and restful luxury.</p>
+            <a href="contact.html" class="primary">Explore Options</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Office Ergonomics">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Office Ergonomics</h3>
+            <p>Ergonomic office furniture designed for productivity, comfort, and professional workspaces.</p>
+            <a href="contact.html" class="primary">View Collection</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-furniture-card">
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Material Knowledge">
+          <div class="premium-product-info">
+            <span>Expertise</span>
+            <h3>Material Knowledge</h3>
+            <p>Expert guidance on wood types, fabrics, finishes, and durable materials for lasting beauty.</p>
+            <a href="contact.html" class="primary">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="workshop">
+      <div class="section-header">
+        <span>Custom Workshop</span>
+        <h2>Furnostyles Custom Furniture Workshop</h2>
+        <p>Our expert artisans create bespoke furniture tailored to your exact specifications and style preferences.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Custom Design Process">
+          <div class="premium-product-info">
+            <span>Process</span>
+            <h3>Custom Design Process</h3>
+            <p>From consultation to delivery, we guide you through every step of creating your perfect piece.</p>
+            <a href="contact.html">Start Your Design</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Premium Materials">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Material Selection</h3>
+            <p>Choose from solid wood, premium fabrics, leather, and high-quality finishes.</p>
+            <a href="contact.html">View Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Expert Craftsmanship">
+          <div class="premium-product-info">
+            <span>Craftsmanship</span>
+            <h3>Expert Craftsmanship</h3>
+            <p>Our skilled artisans bring decades of experience to every custom piece.</p>
+            <a href="contact.html">Meet Our Artisans</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Warranty">
+          <div class="premium-product-info">
+            <span>Warranty</span>
+            <h3>Quality Guarantee</h3>
+            <p>All custom furniture comes with our comprehensive quality warranty.</p>
+            <a href="contact.html">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Custom Order Process</span>
+        <h2>How Custom Orders Work</h2>
+        <p>Simple, transparent process from design consultation to final delivery.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>1. Consultation</h3>
+          <p>Discuss your vision, space, and budget with our design experts.</p>
+        </div>
+        <div>
+          <h3>2. Design & Quote</h3>
+          <p>Receive detailed designs and transparent pricing for approval.</p>
+        </div>
+        <div>
+          <h3>3. Crafting</h3>
+          <p>Our artisans build your furniture with premium materials.</p>
+        </div>
+        <div>
+          <h3>4. Delivery & Installation</h3>
+          <p>Professional delivery and installation at your location.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Delivery & Installation</span>
+        <h2>Professional Delivery & Installation</h2>
+        <p>We ensure your furniture arrives safely and is installed to perfection.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>Safe Delivery</h3>
+          <p>Professional delivery across Nairobi with insurance coverage.</p>
+        </div>
+        <div>
+          <h3>Expert Installation</h3>
+          <p>Skilled installation for all furniture types including built-ins.</p>
+        </div>
+        <div>
+          <h3>Site Assessment</h3>
+          <p>Pre-delivery site visits to ensure perfect fit and access.</p>
+        </div>
+        <div>
+          <h3>After-Care Support</h3>
+          <p>Ongoing support for maintenance and warranty claims.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Featured</span>
+        <h2>Featured Luxury Furniture</h2>
+        <p>Handpicked premium furniture pieces from our exclusive collection.</p>
+      </div>
+      <div class="marketplace-grid">
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Premium 3-Seater Sofa" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Furnostyles Exclusive</span>
+          <span class="marketplace-product-verified">? Premium</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Living Room</span>
+            <h3 class="marketplace-product-title">Premium 3-Seater Sofa</h3>
+            <p class="marketplace-product-description">Luxury upholstered sofa with premium fabric and solid wood frame for modern living spaces.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-availability in-stock">? In Stock</span>
+              <span>? 5.0 (42 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 95,000</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Inquire Now</button>
+              <button class="marketplace-engagement-btn">?? Get Custom Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="King Size Bed" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Furnostyles Exclusive</span>
+          <span class="marketplace-product-verified">? Premium</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Bedroom</span>
+            <h3 class="marketplace-product-title">King Size Bed</h3>
+            <p class="marketplace-product-description">Elegant king size bed with upholstered headboard and storage options for luxury bedrooms.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-availability in-stock">? In Stock</span>
+              <span>? 4.9 (38 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 75,000</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Inquire Now</button>
+              <button class="marketplace-engagement-btn">?? Get Custom Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/interior-office.jpg" alt="Executive Desk" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Office</span>
+          <span class="marketplace-product-verified">? Verified</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Office</span>
+            <h3 class="marketplace-product-title">Executive Desk</h3>
+            <p class="marketplace-product-description">Professional executive desk with cable management and storage for productive workspaces.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-availability limited">? Limited Stock</span>
+              <span>? 4.8 (29 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 55,000</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Inquire Now</button>
+              <button class="marketplace-engagement-btn">?? Get Custom Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-product-card">
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Dining Table Set" class="marketplace-product-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-product-badge">Dining</span>
+          <span class="marketplace-product-verified">? Verified</span>
+          <div class="marketplace-product-info">
+            <span class="marketplace-product-category">Dining Room</span>
+            <h3 class="marketplace-product-title">6-Seater Dining Set</h3>
+            <p class="marketplace-product-description">Elegant dining table with 6 matching chairs and premium finish for family gatherings.</p>
+            <div class="marketplace-product-meta">
+              <span class="marketplace-availability in-stock">? In Stock</span>
+              <span>? 4.9 (51 reviews)</span>
+            </div>
+            <div class="marketplace-product-price">KES 130,000</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Inquire Now</button>
+              <button class="marketplace-engagement-btn">?? Get Custom Quote</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Vendor Marketplace</span>
+        <h2>Verified Vendor Furniture</h2>
+        <p>Quality furniture from our verified vendor partners, quality-assured for your peace of mind.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Vendor Sofa">
+          <div class="premium-product-info">
+            <span class="fns-vendor-badge">Verified Vendor</span>
+            <h3>Modern L-Shaped Sofa</h3>
+            <p>Contemporary L-shaped sofa from verified furniture vendor.</p>
+            <a href="product-detail.html">View Details</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Vendor Bed">
+          <div class="premium-product-info">
+            <span class="fns-vendor-badge">Verified Vendor</span>
+            <h3>Queen Size Platform Bed</h3>
+            <p>Modern platform bed with storage from trusted vendor.</p>
+            <a href="product-detail.html">View Details</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Vendor Office Chair">
+          <div class="premium-product-info">
+            <span class="fns-vendor-badge">Verified Vendor</span>
+            <h3>Ergonomic Office Chair</h3>
+            <p>Premium ergonomic chair with lumbar support.</p>
+            <a href="product-detail.html">View Details</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span>Ecosystem</span>
+        <h2>Complete Your Space</h2>
+        <p>Transform your vision into reality with our connected ecosystem of premium services and materials.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design">
+          <div class="premium-product-info">
+            <span>Services</span>
+            <h3>Interior Design Services</h3>
+            <p>Expert interior design consultation to complement your furniture selection with cohesive aesthetics.</p>
+            <a href="services-marketplace.html">Book Consultation</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Construction Materials">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Materials</h3>
+            <p>Quality construction materials for renovations, installations, and custom furniture projects.</p>
+            <a href="materials-marketplace.html">Browse Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Property Enhancement">
+          <div class="premium-product-info">
+            <span>Real Estate</span>
+            <h3>Property Enhancement</h3>
+            <p>Airbnb optimization and property staging services to maximize your investment returns.</p>
+            <a href="realestate-marketplace.html">Explore Services</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-quality-section">
+      <div class="section-header">
+        <span>Quality Guarantee</span>
+        <h2>Our Quality Commitment</h2>
+        <p>Every piece of furniture meets our strict quality standards for durability, finish, and long-term satisfaction.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>100%</h3>
+          <p>Material Inspection</p>
+        </div>
+        <div>
+          <h3>Full</h3>
+          <p>Craftsmanship Standards</p>
+        </div>
+        <div>
+          <h3>Premium</h3>
+          <p>Finish Excellence</p>
+        </div>
+        <div>
+          <h3>Full</h3>
+          <p>Warranty Coverage</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-workshop-section">
+      <div class="section-header">
+        <span>Furnostyles Workshop</span>
+        <h2>Our Premium Workshop Ecosystem</h2>
+        <p>From our master artisans' workshop to your space—every piece crafted with excellence and attention to detail.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3>50+</h3>
+          <p>Years Expertise</p>
+        </div>
+        <div>
+          <h3>5000+</h3>
+          <p>Pieces Crafted</p>
+        </div>
+        <div>
+          <h3>100%</h3>
+          <p>Custom Capable</p>
+        </div>
+        <div>
+          <h3>Full</h3>
+          <p>Quality Control</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-complete-project-section">
+      <div class="section-header">
+        <span>Complete Your Project</span>
+        <h2>Everything You Need for Your Space</h2>
+        <p>From materials and services to property support—explore our complete ecosystem for your home and interior projects.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design">
+          <div class="premium-product-info">
+            <span>Related Services</span>
+            <h3>Interior Design Services</h3>
+            <p>Expert interior design consultation to create cohesive spaces with your new furniture.</p>
+            <a href="services-marketplace.html">Book Design Consultation</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Furniture Repairs">
+          <div class="premium-product-info">
+            <span>Maintenance</span>
+            <h3>Furniture Repair & Maintenance</h3>
+            <p>Professional repair services to keep your furniture looking pristine for years.</p>
+            <a href="repairs.html">Request Repair Service</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Construction Materials">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Materials</h3>
+            <p>Quality construction materials for installations, renovations, and custom projects.</p>
+            <a href="materials-marketplace.html">Browse Materials</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section fns-section-bg-light">
+      <div class="section-header">
+        <span class="fns-trust-badge">Installation & Support</span>
+        <h2>Need Installation or Repair?</h2>
+        <p>Our expert team handles professional installation and ongoing maintenance for all furniture purchases.</p>
+      </div>
+      <div class="fns-project-complete-grid">
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Professional Installation</h3>
+          <p>Expert assembly and installation for all furniture types. We handle everything from delivery to final placement.</p>
+          <a href="contact.html">Request Installation ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">???</div>
+          <h3>Repair & Maintenance</h3>
+          <p>Ongoing repair services to maintain your furniture's beauty and functionality. Quick response for urgent issues.</p>
+          <a href="repairs.html">Schedule Maintenance ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Custom Consultation</h3>
+          <p>Not finding exactly what you need? Our design team can create custom pieces tailored to your space.</p>
+          <a href="contact.html">Request Custom Quote ?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span class="fns-trust-badge">Frequently Requested Together</span>
+        <h2>What Our Customers Often Buy Together</h2>
+        <p>Complete your space with these complementary products and services commonly requested with furniture purchases.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Ceiling Design">
+          <div class="premium-product-info">
+            <span>Services</span>
+            <h3>Gypsum Ceiling Installation</h3>
+            <p>Elegant ceiling designs to complement your new furniture and elevate your space.</p>
+            <a href="services-marketplace.html">Explore Ceiling Services</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Kitchen Cabinets">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Custom Kitchen Cabinetry</h3>
+            <p>Bespoke kitchen cabinets and storage solutions designed to match your style.</p>
+            <a href="furniture-marketplace.html">View Cabinetry Options</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/flooring.jpg" alt="Flooring">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Flooring Materials</h3>
+            <p>Quality tiles, wood flooring, and finishing materials for complete room transformation.</p>
+            <a href="materials-marketplace.html">Browse Flooring</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span class="fns-trust-badge">Custom Orders</span>
+        <h2>Request Your Custom Furniture</h2>
+        <p>Tell us your vision and our artisans will bring it to life with premium materials and expert craftsmanship.</p>
+      </div>
+      <div class="fns-cta-buttons">
+        <a class="btn primary gold" href="contact.html">Start Custom Order</a>
+        <a class="btn secondary" href="contact.html">View Portfolio</a>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Get Started</span>
+        <h2>Find Your Perfect Furniture</h2>
+        <p>Browse our collection or request custom furniture built to your specifications.</p>
+      </div>
+      <div class="fns-cta-buttons">
+        <a class="btn primary" href="#categories">Browse All Furniture</a>
+        <a class="btn secondary" href="contact.html">Request Custom Furniture</a>
+        <a class="btn dark-btn" href="contact.html">Become a Vendor</a>
+      </div>
+    </section>
+    <!-- Category Tabs -->
+    <section class="content-section">
+      <div id="mpCategoryTabs"></div>
+    </section>
+
+    <!-- Featured Items -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">?</span> Featured Furniture</h2>
+        <p class="mp-browse-section-sub">Handpicked premium pieces from our exclusive collection.</p>
+      </div>
+      <div id="mpFeaturedGrid"></div>
+    </section>
+
+    <!-- Newest Items -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Newest Arrivals</h2>
+        <p class="mp-browse-section-sub">Fresh additions to our furniture collection.</p>
+      </div>
+      <div id="mpNewestGrid"></div>
+    </section>
+
+    <!-- Most Viewed Placeholder -->
+    <section class="content-section">
+      <div class="mp-most-viewed">
+        <div class="mp-most-viewed-icon">???</div>
+        <h3>Most Viewed</h3>
+        <p>Popular items trending this week. Coming soon!</p>
+      </div>
+    </section>
+
+    <!-- Recommended by Furnostyles -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Recommended by Furnostyles</h2>
+        <p class="mp-browse-section-sub">Curated selections based on quality and style.</p>
+      </div>
+      <div id="mpRecommendedGrid"></div>
+    </section>
+
+    <!-- Installation/Repair CTA -->
+    <section class="content-section">
+      <div class="mp-cta-section">
+        <h3>Need Installation or Repair?</h3>
+        <p>Our expert team provides professional furniture assembly, installation, and repair services across Kenya.</p>
+        <a href="services.html" class="btn">View Services</a>
+        <a href="contact.html" class="btn btn-secondary">Request Quote</a>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Related Services</h2>
+        <p class="mp-browse-section-sub">Professional services to complement your furniture purchase.</p>
+      </div>
+      <div id="mpRelatedServicesGrid"></div>
+    </section>
+
+    <!-- Main Shop Layout (Amazon/Alibaba style) -->
+    <section class="content-section" id="live-listings-section" data-marketplace-type="furniture">
+      <div class="mp-shop-layout">
+
+        <!-- SIDEBAR FILTERS -->
+        <aside class="mp-sidebar" id="mpSidebar" aria-label="Filter furniture">
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Categories</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-sidebar-cats">
+                <li><a href="furniture-sofas.html" class="mp-sidebar-cat">Sofas &amp; Armchairs <span class="mp-sidebar-cat-count">124</span></a></li>
+                <li><a href="furniture-beds.html" class="mp-sidebar-cat">Beds &amp; Mattresses <span class="mp-sidebar-cat-count">87</span></a></li>
+                <li><a href="furniture-dining.html" class="mp-sidebar-cat">Dining Sets <span class="mp-sidebar-cat-count">63</span></a></li>
+                <li><a href="furniture-office.html" class="mp-sidebar-cat">Office Furniture <span class="mp-sidebar-cat-count">95</span></a></li>
+                <li><a href="furniture-wardrobes.html" class="mp-sidebar-cat">Wardrobes &amp; Storage <span class="mp-sidebar-cat-count">72</span></a></li>
+                <li><a href="furniture-tv-units.html" class="mp-sidebar-cat">TV Units &amp; Shelving <span class="mp-sidebar-cat-count">48</span></a></li>
+                <li><a href="furniture-outdoor.html" class="mp-sidebar-cat">Outdoor Furniture <span class="mp-sidebar-cat-count">34</span></a></li>
+                <li><a href="furniture-custom.html" class="mp-sidebar-cat">Custom Orders <span class="mp-sidebar-cat-count">8</span></a></li>
+                <li><a href="furniture-luxury.html" class="mp-sidebar-cat">Luxury Collection <span class="mp-sidebar-cat-count">41</span></a></li>
+                <li><a href="furniture-imported.html" class="mp-sidebar-cat">Imported Furniture <span class="mp-sidebar-cat-count">29</span></a></li>
+                <li><a href="furniture-secondhand.html" class="mp-sidebar-cat">Secondhand Finds <span class="mp-sidebar-cat-count">156</span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Price Range (KES)</div>
+            <div class="mp-sidebar-body">
+              <div class="mp-price-range">
+                <div class="mp-price-inputs">
+                  <input type="number" class="mp-price-input" id="priceMin" placeholder="Min" min="0">
+                  <span class="mp-price-sep">—</span>
+                  <input type="number" class="mp-price-input" id="priceMax" placeholder="Max">
+                </div>
+                <button class="mp-price-apply" onclick="applyPriceFilter()">Apply Filter</button>
+              </div>
+              <ul class="mp-check-list mp-check-list-spaced">
+                <li class="mp-check-item"><input type="radio" name="priceQuick" value="0-50000"> Under KES 50,000</li>
+                <li class="mp-check-item"><input type="radio" name="priceQuick" value="50000-150000"> KES 50K – 150K</li>
+                <li class="mp-check-item"><input type="radio" name="priceQuick" value="150000-300000"> KES 150K – 300K</li>
+                <li class="mp-check-item"><input type="radio" name="priceQuick" value="300000-99999999"> Above KES 300K</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Customer Rating</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-rating-list">
+                <li class="mp-rating-item"><input type="checkbox"> <span class="mp-star-icons">?????</span> <span class="mp-rating-count">(142)</span></li>
+                <li class="mp-rating-item"><input type="checkbox"> <span class="mp-star-icons">????</span><span class="mp-stars-grey">?</span> &amp; up <span class="mp-rating-count">(284)</span></li>
+                <li class="mp-rating-item"><input type="checkbox"> <span class="mp-star-icons">???</span><span class="mp-stars-grey">??</span> &amp; up <span class="mp-rating-count">(356)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Availability</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-check-list">
+                <li class="mp-check-item"><input type="checkbox" checked> In Stock</li>
+                <li class="mp-check-item"><input type="checkbox" checked> Custom Order</li>
+                <li class="mp-check-item"><input type="checkbox"> Coming Soon</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mp-sidebar-section">
+            <div class="mp-sidebar-heading">Supplier Type</div>
+            <div class="mp-sidebar-body">
+              <ul class="mp-check-list">
+                <li class="mp-check-item"><input type="checkbox" checked> Furnostyles Workshop</li>
+                <li class="mp-check-item"><input type="checkbox" checked> Verified Vendor</li>
+                <li class="mp-check-item"><input type="checkbox"> Imported</li>
+                <li class="mp-check-item"><input type="checkbox"> Secondhand</li>
+              </ul>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="mp-content-area">
+
+          <!-- Featured banner -->
+          <div class="mp-featured-row">
+            <span class="mp-featured-row-badge">? Furnostyles Pick</span>
+            <div>
+              <div class="mp-featured-row-title">Request Bespoke Custom Furniture</div>
+              <div class="mp-featured-row-sub">Designed to your exact specs — solid wood, premium fabric, any finish.</div>
+            </div>
+            <a href="contact.html" class="mp-featured-row-cta">Get a Free Quote ?</a>
+          </div>
+
+          <!-- Sort bar -->
+          <div class="mp-sort-bar">
+            <span class="mp-sort-results"><strong id="mpCountEl">Loading...</strong> results</span>
+            <label class="mp-sort-label" for="mpSortSel">Sort:</label>
+            <select id="mpSortSel" class="mp-sort-sel">
+              <option value="newest">Newest First</option>
+              <option value="price_low">Price: Low to High</option>
+              <option value="price_high">Price: High to Low</option>
+              <option value="featured">Featured</option>
+            </select>
+            <div class="mp-view-toggle">
+              <button class="mp-view-btn active" id="gridViewBtn" aria-label="Grid view" title="Grid view">?</button>
+              <button class="mp-view-btn" id="listViewBtn" aria-label="List view" title="List view">?</button>
+            </div>
+          </div>
+
+          <div id="mpMainGrid" class="mp-grid-v2"></div>
+
+          <!-- Pagination -->
+          <div class="mp-pagination" id="mpPagination">
+            <button class="mp-page-btn" disabled>‹ Prev</button>
+            <button class="mp-page-btn active">1</button>
+            <button class="mp-page-btn">2</button>
+            <button class="mp-page-btn">3</button>
+            <span class="mp-page-ellipsis">…</span>
+            <button class="mp-page-btn">12</button>
+            <button class="mp-page-btn">Next ›</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="content-section" id="mpRecs"></section>
+    </main>
+  </div>
+
+  <a class="cart-float" href="cart.html">Cart <span data-cart-count>0</span></a>
+
+  <div class="chat-widget">
+    <button class="chat-widget-toggle" aria-label="Toggle chat options">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="currentColor"/>
+      </svg>
+    </button>
+    <div class="chat-widget-options">
+      <a class="chat-option whatsapp" href="https://wa.me/254713639205" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+      <a class="chat-option messenger" href="https://m.me/furnostyles" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 2.98.97 4.29L2 22l5.71-.97A9.96 9.96 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.85 0-3.58-.5-5.07-1.37l-.36-.22-3.77.63.63-3.67-.23-.37A7.95 7.95 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.44-6.19c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.27-.65-.37-.89-.1-.24-.2-.21-.29-.21h-.28c-.1 0-.26.04-.4.19-.14.15-.54.53-.54 1.29s.55 1.5.63 1.6c.08.11 1.09 1.66 2.64 2.33.37.16.66.25.88.32.37.12.71.1.98.06.27-.04.83-.34 1.05-.67.22-.33.22-.61.15-.73-.07-.12-.27-.24-.51-.36z"/>
+        </svg>
+        Messenger
+      </a>
+      <a class="chat-option livechat" href="contact.html">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+        Live Chat
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Close chat widget when clicking outside
+    document.addEventListener('click', function(e) {
+      var widget = document.querySelector('.chat-widget');
+      var toggle = document.querySelector('.chat-widget-toggle');
+      if (widget && toggle && !widget.contains(e.target) && !toggle.contains(e.target)) {
+        widget.classList.remove('active');
+      }
+    });
+
+    // Keyboard support for location dropdown
+    var locationDropdown = document.querySelector('.fld-location-dropdown');
+    if (locationDropdown) {
+      locationDropdown.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.classList.toggle('active');
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+        }
+        if (e.key === 'Escape') {
+          this.classList.remove('active');
+          this.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+
+  <script>
+    (function () {
+      document.addEventListener('DOMContentLoaded', function () {
+        var gridBtn = document.getElementById('gridViewBtn');
+        var listBtn = document.getElementById('listViewBtn');
+        var grid = document.getElementById('mpMainGrid');
+        if (gridBtn && listBtn && grid) {
+          gridBtn.addEventListener('click', function () {
+            grid.classList.remove('list-view');
+            gridBtn.classList.add('active');
+            listBtn.classList.remove('active');
+          });
+          listBtn.addEventListener('click', function () {
+            grid.classList.add('list-view');
+            listBtn.classList.add('active');
+            gridBtn.classList.remove('active');
+          });
+        }
+      });
+    })();
+  </script>
+
+  <div id="fld-footer-mount"></div>
+
+    <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase Config & Init -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-init.js"></script>
+  <!-- Firebase Bridge -->
+  <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Auth, Session -->
+  <script src="assets/js/session.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+  <!-- Auth State Manager -->
+  <script src="assets/js/auth-state.js" defer></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="shared/firebase/firebase-config.js"></script>
+  <script defer src="shared/firebase/firebase-bridge.js"></script>
+  <script defer src="shared/uploads/upload-bridge.js"></script>
+  <script defer src="shared/rendering/public-filter.js"></script>
+  <script defer src="shared/rendering/marketplace-renderer.js"></script>
+  <script defer src="shared/rendering/repair-renderer.js"></script>
+  <script defer src="shared/rendering/recommendation-renderer.js"></script>
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var allItems = []; var sortKey = 'newest';
+      function load() {
+        var grid = document.getElementById('mpMainGrid');
+        var R = window.FurnostylesMarketplaceRenderer, F = window.FurnostylesPublicFilter;
+        if (!R || !F) return;
+        R.renderLoadingGrid(grid);
+        F.getApprovedByType('furniture')
+          .then(function (items) {
+            allItems = items || [];
+            var c = document.getElementById('mpCountEl');
+            if (c) c.textContent = allItems.length + ' listing' + (allItems.length !== 1 ? 's' : '');
+            R.renderGrid(grid, F.sortItems(allItems, sortKey));
+            var rc = document.getElementById('mpRecs');
+            if (window.FurnostylesRecommendationRenderer && rc) {
+              window.FurnostylesRecommendationRenderer.loadAndRender(rc, [
+                { title: 'Sourcing Opportunities', promise: F.getApprovedByType('sourcing', null, 6), renderer: 'listing' },
+                { title: 'Secondhand Finds', promise: F.getApprovedByType('secondhand', null, 6), renderer: 'listing' }
+              ]);
+            }
+          })
+          .catch(function (err) { R.renderError(grid, err.message); });
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var sel = document.getElementById('mpSortSel');
+        if (sel) sel.addEventListener('change', function () {
+          sortKey = this.value;
+          var R = window.FurnostylesMarketplaceRenderer, F = window.FurnostylesPublicFilter;
+          if (R && F) R.renderGrid(document.getElementById('mpMainGrid'), F.sortItems(allItems, sortKey));
+        });
+        load();
+      });
+    }());
+  </script>
+</body>
+</html>

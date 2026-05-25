@@ -1,0 +1,284 @@
+/**
+ * Furnostyles Moderation UI Styles
+ * Shared styles for all admin review pages.
+ */
+
+/* ------------------------------------------------------------------ */
+/* ACTION BAR                                                           */
+/* ------------------------------------------------------------------ */
+
+.mdr-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.mdr-filter-sel {
+  padding: 9px 13px;
+  border: 1.5px solid #dce4f0;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #1a2540;
+  background: #fff;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mdr-refresh-btn {
+  padding: 9px 18px;
+  background: #f0f4ff;
+  color: #1a2540;
+  border: 1.5px solid #dce4f0;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.mdr-refresh-btn:hover { background: #1a2540; color: #fff; border-color: #1a2540; }
+
+/* ------------------------------------------------------------------ */
+/* STATS STRIP                                                           */
+/* ------------------------------------------------------------------ */
+
+.mdr-stats-strip {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.mdr-stat-pill {
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid #dce4f0;
+  background: #f8faff;
+  color: #3c4f72;
+}
+.mdr-stat-pill strong { color: #1a2540; }
+
+/* ------------------------------------------------------------------ */
+/* REVIEW GRID                                                           */
+/* ------------------------------------------------------------------ */
+
+.mdr-review-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ------------------------------------------------------------------ */
+/* REVIEW CARD                                                           */
+/* ------------------------------------------------------------------ */
+
+.mdr-review-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-rows: 1fr auto auto;
+  background: #fff;
+  border: 1.5px solid #dce4f0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.18s, opacity 0.3s;
+}
+.mdr-review-card:hover { box-shadow: 0 4px 18px rgba(26,37,64,0.08); }
+
+.mdr-card-media {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  position: relative;
+}
+
+.mdr-card-img {
+  width: 160px;
+  height: 100%;
+  min-height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.mdr-thumb-placeholder {
+  width: 160px;
+  min-height: 140px;
+  height: 100%;
+  background: #f0f4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #8090a0;
+}
+
+/* Repair before/after thumbs */
+.mdr-repair-thumbs {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  height: 100%;
+  min-height: 140px;
+}
+
+.mdr-repair-thumb {
+  flex: 1;
+  width: 100%;
+  min-height: 70px;
+  object-fit: cover;
+  display: block;
+}
+.mdr-repair-thumb + .mdr-repair-thumb {
+  border-top: 2px solid #fff;
+}
+
+/* Card info area */
+.mdr-card-info {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 14px 16px 10px;
+}
+
+.mdr-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mdr-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.mdr-card-date { font-size: 11px; color: #b0b8c8; }
+
+.mdr-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2540;
+  margin: 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mdr-card-fields { display: flex; flex-direction: column; gap: 4px; }
+
+.mdr-field-row {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #3c4f72;
+  align-items: flex-start;
+}
+
+.mdr-field-key {
+  min-width: 80px;
+  font-weight: 700;
+  color: #8090a0;
+  flex-shrink: 0;
+}
+
+.mdr-field-val {
+  color: #1a2540;
+  word-break: break-word;
+}
+
+/* Card action buttons */
+.mdr-card-actions {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 14px;
+  flex-wrap: wrap;
+}
+
+.mdr-btn {
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 1.5px solid;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.mdr-btn:disabled { cursor: not-allowed; }
+
+.mdr-btn-approve {
+  background: #f0faf4; color: #1a6e3a; border-color: #b6dfc6;
+}
+.mdr-btn-approve:hover:not(:disabled) { background: #1a6e3a; color: #fff; }
+
+.mdr-btn-reject {
+  background: #fff5f5; color: #cc1a1a; border-color: #f5c0c0;
+}
+.mdr-btn-reject:hover:not(:disabled) { background: #cc1a1a; color: #fff; }
+
+.mdr-btn-hide {
+  background: #f5f5f5; color: #555; border-color: #ccc;
+}
+.mdr-btn-hide:hover:not(:disabled) { background: #555; color: #fff; }
+
+.mdr-btn-flag {
+  background: #fff8f0; color: #8a4000; border-color: #f0c890;
+}
+.mdr-btn-flag:hover:not(:disabled) { background: #8a4000; color: #fff; }
+
+/* Inline action feedback */
+.mdr-action-feedback {
+  grid-column: 2;
+  grid-row: 3;
+  padding: 0 16px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 0;
+}
+
+/* Skeleton */
+.mdr-skel-block {
+  background: linear-gradient(90deg, #f0f4ff 25%, #e4eaf5 50%, #f0f4ff 75%);
+  background-size: 200% 100%;
+  animation: mdr-skel 1.4s infinite;
+  width: 160px; min-height: 140px; height: 100%;
+}
+
+.mdr-skel-line {
+  background: linear-gradient(90deg, #f0f4ff 25%, #e4eaf5 50%, #f0f4ff 75%);
+  background-size: 200% 100%;
+  animation: mdr-skel 1.4s infinite;
+  border-radius: 4px;
+  display: block;
+}
+
+@keyframes mdr-skel {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .mdr-review-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  .mdr-card-media { grid-column: 1; grid-row: 1; }
+  .mdr-card-img, .mdr-thumb-placeholder { width: 100%; height: 160px; min-height: 0; }
+  .mdr-skel-block { width: 100%; height: 160px; min-height: 0; }
+  .mdr-repair-thumbs { flex-direction: row; width: 100%; height: 120px; min-height: 0; }
+  .mdr-repair-thumb { flex: 1; height: 120px; }
+  .mdr-card-info    { grid-column: 1; grid-row: 2; }
+  .mdr-card-actions { grid-column: 1; grid-row: 3; }
+  .mdr-action-feedback { grid-column: 1; grid-row: 4; }
+}

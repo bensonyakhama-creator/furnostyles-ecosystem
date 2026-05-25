@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerts | Furnostyles — Personal Luxury. Elevated.</title>
+  <meta name="description" content="View your Furnostyles alerts — order updates, service notifications, property alerts, and important announcements.">
+  <meta name="keywords" content="notifications, alerts, account updates, order status, Furnostyles dashboard, Nairobi">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="canonical" href="https://furnostyles.com/alerts.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Furnostyles">
+  <meta property="og:title" content="Alerts | Furnostyles — Personal Luxury. Elevated.">
+  <meta property="og:description" content="View your Furnostyles alerts — order updates, service notifications, property alerts, and important announcements.">
+  <meta property="og:url" content="https://furnostyles.com/alerts.html">
+  <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alerts | Furnostyles — Personal Luxury. Elevated.">
+  <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="robots" content="noindex, nofollow">
+
+
+
+</head>
+<body>
+  <div id="fns-header-mount"></div>
+
+  <main class="fns-main">
+    <style>
+      .alerts-wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+      .alerts-wrap h1{font-size:1.5rem;color:#0b3b46;margin:0 0 6px}
+      .alerts-wrap .alerts-sub{font-size:.9rem;color:#888;margin:0 0 28px}
+      .alerts-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+      .alerts-toolbar h2{font-size:.95rem;font-weight:700;color:#0b3b46;margin:0}
+      .alerts-mark-all{background:none;border:none;color:#1a7d9a;font-size:.82rem;cursor:pointer;text-decoration:underline}
+      .alert-card{display:flex;gap:14px;padding:16px 20px;border-radius:12px;margin-bottom:10px;border:1.5px solid #e8eef5;background:#fff;align-items:flex-start;transition:background .15s}
+      .alert-card.unread{background:#f0f8fa;border-color:#c8e6f0}
+      .alert-card:hover{background:#f7fbfc}
+      .alert-icon-wrap{width:44px;height:44px;min-width:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+      .alert-icon-wrap.order{background:#e8f4f7}
+      .alert-icon-wrap.promo{background:#fff8e8}
+      .alert-icon-wrap.info{background:#f0f0f0}
+      .alert-body{flex:1}
+      .alert-body h3{font-size:.9rem;font-weight:700;color:#0b3b46;margin:0 0 3px}
+      .alert-body p{font-size:.85rem;color:#444;margin:0 0 4px;line-height:1.5}
+      .alert-body time{font-size:.75rem;color:#bbb}
+      .alert-unread-dot{width:8px;height:8px;min-width:8px;border-radius:50%;background:#0b3b46;margin-top:8px}
+      .alerts-empty{text-align:center;padding:56px 20px;color:#bbb}
+      .alerts-empty svg{margin-bottom:14px;opacity:.3}
+      .alerts-empty p{font-size:.95rem}
+      .alerts-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+      .alerts-cat-btn{padding:6px 14px;border-radius:20px;border:1.5px solid #d0e0e8;background:#fff;font-size:.8rem;font-weight:600;color:#555;cursor:pointer}
+      .alerts-cat-btn.active{background:#0b3b46;color:#fff;border-color:#0b3b46}
+    </style>
+
+    <div class="alerts-wrap">
+      <h1>&#128276; Notifications</h1>
+      <p class="alerts-sub">Your order updates, service alerts, and announcements.</p>
+
+      <div class="alerts-cats">
+        <button class="alerts-cat-btn active" data-cat="all">All</button>
+        <button class="alerts-cat-btn" data-cat="order">Orders</button>
+        <button class="alerts-cat-btn" data-cat="promo">Promotions</button>
+        <button class="alerts-cat-btn" data-cat="info">Info</button>
+      </div>
+
+      <div class="alerts-toolbar">
+        <h2 id="alertsCountLabel">Notifications</h2>
+        <button class="alerts-mark-all" id="alertsMarkAllBtn">Mark all as read</button>
+      </div>
+
+      <div id="alertsList"></div>
+    </div>
+
+    <script>
+    (function () {
+      var DEMO = [
+        { id:'a1', type:'order',  title:'Welcome to Furnostyles!', text:'Your account is set up and ready. Start exploring the marketplace.', time:'Today', read:false },
+        { id:'a2', type:'promo',  title:'Special Offer', text:'Get 10% off your first order. Use code FURNO10 at checkout.', time:'Today', read:false },
+        { id:'a3', type:'info',   title:'Buyer Protection Active', text:'All purchases on Furnostyles are covered by our Buyer Protection guarantee.', time:'Yesterday', read:true }
+      ];
+
+      var ICONS = { order:'&#128218;', promo:'&#127381;', info:'&#8505;' };
+
+      function alertsGet() {
+        try {
+          var a = JSON.parse(localStorage.getItem('furnostyles_alerts') || 'null');
+          if (!a || !a.length) {
+            localStorage.setItem('furnostyles_alerts', JSON.stringify(DEMO));
+            return DEMO;
+          }
+          return a;
+        } catch(e) { return DEMO; }
+      }
+
+      function alertsSave(a) { localStorage.setItem('furnostyles_alerts', JSON.stringify(a)); }
+
+      var currentCat = 'all';
+
+      function render() {
+        var all = alertsGet();
+        var filtered = currentCat === 'all' ? all : all.filter(function(a){ return a.type === currentCat; });
+        var label = document.getElementById('alertsCountLabel');
+        var list = document.getElementById('alertsList');
+        var unread = all.filter(function(a){ return !a.read; }).length;
+        if (label) label.textContent = filtered.length + ' notification' + (filtered.length !== 1 ? 's' : '') + (unread > 0 ? ' (' + unread + ' unread)' : '');
+
+        if (!filtered.length) {
+          list.innerHTML = '<div class="alerts-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="56" height="56"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><p>No notifications here yet</p></div>';
+          return;
+        }
+
+        list.innerHTML = filtered.map(function(a) {
+          return '<div class="alert-card ' + (a.read ? '' : 'unread') + '" data-aid="' + a.id + '">' +
+            '<div class="alert-icon-wrap ' + (a.type || 'info') + '">' + (ICONS[a.type] || ICONS.info) + '</div>' +
+            '<div class="alert-body"><h3>' + (a.title || 'Notification') + '</h3><p>' + (a.text || '') + '</p><time>' + (a.time || '') + '</time></div>' +
+            (a.read ? '' : '<div class="alert-unread-dot"></div>') +
+          '</div>';
+        }).join('');
+
+        /* Mark individual as read on click */
+        list.querySelectorAll('.alert-card').forEach(function(card) {
+          card.addEventListener('click', function() {
+            var id = card.getAttribute('data-aid');
+            var arr = alertsGet().map(function(x){ return x.id===id ? Object.assign({},x,{read:true}) : x; });
+            alertsSave(arr);
+            render();
+          });
+        });
+      }
+
+      /* Mark all read */
+      document.getElementById('alertsMarkAllBtn').addEventListener('click', function() {
+        alertsSave(alertsGet().map(function(a){ return Object.assign({},a,{read:true}); }));
+        render();
+      });
+
+      /* Category filters */
+      document.querySelectorAll('.alerts-cat-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.alerts-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentCat = btn.getAttribute('data-cat');
+          render();
+        });
+      });
+
+      render();
+    })();
+    </script>
+  </main>
+
+  <div id="fld-footer-mount"></div>
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <script src="shared/layout/header-data.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="shared/layout/footer-data.js" defer></script>
+  <script src="shared/layout/footer-render.js" defer></script>
+</body>
+</html>

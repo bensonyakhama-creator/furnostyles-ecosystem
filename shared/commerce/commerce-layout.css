@@ -1,0 +1,280 @@
+/**
+ * Furnostyles Commerce Layout CSS
+ * Premium styling for cart rows, checkout forms, order tables, payment status badges, and commission summaries.
+ */
+
+/* ------------------------------------------------------------------ */
+/* CART & CHECKOUT GRIDS                                                 */
+/* ------------------------------------------------------------------ */
+
+.cm-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .cm-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cm-card {
+  background: #fff;
+  border: 1.5px solid #dce4f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(11, 59, 70, 0.02);
+}
+
+.cm-section-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a2540;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ------------------------------------------------------------------ */
+/* CART ITEM ROWS                                                       */
+/* ------------------------------------------------------------------ */
+
+.cm-cart-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f4ff;
+}
+
+.cm-cart-row:last-child {
+  border-bottom: none;
+}
+
+.cm-cart-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #f0f4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.cm-cart-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2540;
+  margin: 0 0 4px;
+}
+
+.cm-cart-meta {
+  font-size: 12px;
+  color: #607080;
+}
+
+.cm-cart-price {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0b3b46;
+}
+
+.cm-cart-remove {
+  color: #cc1a1a;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ */
+/* CHECKOUT FORMS                                                        */
+/* ------------------------------------------------------------------ */
+
+.cm-form-group {
+  margin-bottom: 16px;
+}
+
+.cm-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4c5e80;
+  margin-bottom: 6px;
+}
+
+.cm-input,
+.cm-select,
+.cm-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #dce4f0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #1a2540;
+  background: #fafbfd;
+  transition: all 0.18s;
+  box-sizing: border-box;
+}
+
+.cm-input:focus,
+.cm-select:focus,
+.cm-textarea:focus {
+  outline: none;
+  border-color: #0b3b46;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(11, 59, 70, 0.1);
+}
+
+.cm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .cm-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* PAYMENT METHOD CARDS                                                  */
+/* ------------------------------------------------------------------ */
+
+.cm-payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cm-method-card {
+  border: 1.5px solid #dce4f0;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.cm-method-card:hover {
+  border-color: #0b3b46;
+  background: #f8faff;
+}
+
+.cm-method-card.selected {
+  border-color: #0b3b46;
+  background: #eef2ff;
+  box-shadow: 0 0 0 2px #0b3b46;
+}
+
+.cm-method-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.cm-method-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a2540;
+}
+
+/* ------------------------------------------------------------------ */
+/* ORDER TABLES                                                          */
+/* ------------------------------------------------------------------ */
+
+.cm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.cm-table th {
+  text-align: left;
+  padding: 12px;
+  background: #f8faff;
+  color: #4c5e80;
+  font-weight: 700;
+  border-bottom: 1.5px solid #eef2f6;
+}
+
+.cm-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f4ff;
+  color: #1a2540;
+}
+
+/* ------------------------------------------------------------------ */
+/* STATUS BADGES                                                         */
+/* ------------------------------------------------------------------ */
+
+.cm-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 12px;
+}
+
+.cm-badge.pending { background: #fff8e8; color: #b8901e; border: 1px solid #fce8cd; }
+.cm-badge.paid { background: #e8f8f0; color: #1a6e3a; border: 1px solid #c8e8d0; }
+.cm-badge.failed { background: #fee8e8; color: #cc1a1a; border: 1px solid #e8c8c8; }
+.cm-badge.processing { background: #e8f0ff; color: #2563eb; border: 1px solid #c8d8e8; }
+.cm-badge.completed { background: #e8f8ff; color: #0b3b46; border: 1px solid #c8d8e8; }
+
+/* ------------------------------------------------------------------ */
+/* COMMISSION CARDS                                                      */
+/* ------------------------------------------------------------------ */
+
+.cm-comm-card {
+  background: #fafbfd;
+  border: 1.5px solid #dce4f0;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.cm-comm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eef2f6;
+  font-size: 13px;
+}
+
+.cm-comm-row:last-child {
+  border-bottom: none;
+}
+
+.cm-comm-label {
+  font-weight: 600;
+  color: #4c5e80;
+}
+
+.cm-comm-value {
+  font-weight: 900;
+  color: #1a2540;
+}
+
+.cm-comm-total {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 2px solid #dce4f0;
+  font-size: 16px;
+  font-weight: 900;
+  color: #0b3b46;
+  display: flex;
+  justify-content: space-between;
+}

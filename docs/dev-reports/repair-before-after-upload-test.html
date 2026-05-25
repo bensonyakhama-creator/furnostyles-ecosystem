@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repair Before/After Upload Test | Furnostyles</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/uploads/upload.css">
+  <style>
+    body { background: #f0f2f7; margin: 0; font-family: 'Segoe UI', Arial, sans-serif; color: #1a2540; }
+
+    .ut-page-header {
+      background: #1a2540; color: #fff; padding: 20px 32px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .ut-page-header a { color: #aac4f0; text-decoration: none; font-size: 13px; }
+    .ut-page-header a:hover { text-decoration: underline; }
+    .ut-page-title { font-size: 20px; font-weight: 700; margin: 0; }
+    .ut-page-tag {
+      background: #8a3a00; color: #fff; font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    .ut-main { max-width: 1000px; margin: 32px auto; padding: 0 20px 60px; }
+
+    .ut-card {
+      background: #fff; border: 1px solid #dde3ef; border-radius: 10px;
+      padding: 28px; margin-bottom: 24px;
+    }
+    .ut-card-title { font-size: 17px; font-weight: 700; color: #1a2540; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid #edf0f7; }
+
+    .ut-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ut-form-grid .ut-full { grid-column: 1 / -1; }
+
+    .ut-field { display: flex; flex-direction: column; gap: 6px; }
+    .ut-label { font-size: 13px; font-weight: 600; color: #3c4f72; }
+    .ut-label span { color: #cc1a1a; margin-left: 2px; }
+    .ut-input, .ut-select, .ut-textarea {
+      padding: 10px 13px; border: 1px solid #d0d7e3; border-radius: 6px;
+      font-size: 14px; color: #1a2540; background: #f9fafc; width: 100%; box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .ut-input:focus, .ut-select:focus, .ut-textarea:focus {
+      outline: none; border-color: #c07800; background: #fff;
+    }
+    .ut-textarea { resize: vertical; min-height: 90px; }
+    .ut-hint { font-size: 12px; color: #8a95ae; margin-top: 2px; }
+
+    /* Before / After grid */
+    .ut-ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .ut-ba-panel {
+      border: 2px solid #e0e5ef;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .ut-ba-panel-header {
+      padding: 13px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ut-ba-before .ut-ba-panel-header { background: #fff4e0; color: #8a3a00; border-bottom: 2px solid #fcd590; }
+    .ut-ba-after  .ut-ba-panel-header { background: #e8f8ef; color: #0a6e3a; border-bottom: 2px solid #96ddb6; }
+
+    .ut-ba-panel-body { padding: 16px; background: #fff; }
+
+    .ut-ba-count {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    .ut-ba-count-warn  { color: #8a5d00; }
+    .ut-ba-count-ok    { color: #1a6e3a; }
+
+    /* Combined count bar */
+    .ut-combined-bar {
+      background: #fff; border: 1px solid #dde3ef; border-radius: 8px;
+      padding: 14px 18px; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+    .ut-combined-label { font-size: 14px; font-weight: 600; color: #3c4f72; }
+    .ut-combined-value { font-size: 20px; font-weight: 800; color: #1a2540; }
+    .ut-combined-note  { font-size: 12px; color: #8a95ae; margin-left: auto; }
+    .ut-combined-ok    { color: #1a6e3a; }
+    .ut-combined-warn  { color: #c07800; }
+
+    /* Global validation message above submit */
+    .ut-global-validation {
+      padding: 11px 14px; border-radius: 7px; font-size: 13px; font-weight: 500;
+      margin-bottom: 14px; display: none;
+    }
+    .ut-global-error   { background: #fff0f0; color: #cc1a1a; border: 1px solid #f5c0c0; }
+    .ut-global-success { background: #f0faf4; color: #1a6e3a; border: 1px solid #b6dfc6; }
+
+    .ut-submit-btn {
+      display: block; width: 100%; padding: 13px 24px; background: #1a2540;
+      color: #fff; border: none; border-radius: 7px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .ut-submit-btn:hover { background: #8a3a00; }
+
+    .ut-result {
+      display: none; margin-top: 24px; background: #f0faf4;
+      border: 1px solid #b6dfc6; border-radius: 10px; padding: 22px;
+    }
+    .ut-result-title { font-size: 15px; font-weight: 700; color: #1a6e3a; margin: 0 0 14px; }
+    .ut-result-row { font-size: 13px; padding: 5px 0; border-bottom: 1px solid #d4f5e2; display: flex; gap: 10px; }
+    .ut-result-row:last-child { border-bottom: none; }
+    .ut-result-key { font-weight: 600; min-width: 140px; color: #3c4f72; flex-shrink: 0; }
+    .ut-result-val { word-break: break-all; color: #1a2540; }
+    .ut-firebase-note {
+      margin-top: 14px; padding: 10px 14px; background: #fffbea;
+      border: 1px solid #f0d890; border-radius: 6px; font-size: 12px; color: #8a5d00;
+    }
+
+    @media (max-width: 680px) {
+      .ut-ba-grid { grid-template-columns: 1fr; }
+      .ut-form-grid { grid-template-columns: 1fr; }
+      .ut-form-grid .ut-full { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ut-page-header">
+    <div>
+      <p style="margin:0 0 3px;"><a href="index.html">&larr; Back</a> &nbsp;|&nbsp; <a href="upload-test.html">Upload Widget Test</a></p>
+      <h1 class="ut-page-title">Repair Before / After Upload Form</h1>
+    </div>
+    <span class="ut-page-tag">Phase 16 Test</span>
+  </div>
+
+  <div class="ut-main">
+
+    <!-- Form fields -->
+    <div class="ut-card">
+      <h2 class="ut-card-title">Repair Job Details</h2>
+      <div class="ut-form-grid">
+
+        <div class="ut-field">
+          <label class="ut-label" for="repairType">Repair Type <span>*</span></label>
+          <select id="repairType" class="ut-select" required>
+            <option value="">Select type...</option>
+            <option value="furniture_repair">Furniture Repair</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="electrical">Electrical</option>
+            <option value="painting">Painting / Repainting</option>
+            <option value="gypsum_ceiling">Gypsum Ceiling</option>
+            <option value="flooring">Flooring / Tiling</option>
+            <option value="roofing">Roofing</option>
+            <option value="welding">Welding / Fabrication</option>
+            <option value="upholstery">Upholstery</option>
+            <option value="renovation">Full Renovation</option>
+            <option value="appliance">Appliance Repair</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="ut-field">
+          <label class="ut-label" for="repairLocation">Location <span>*</span></label>
+          <input type="text" id="repairLocation" class="ut-input" placeholder="e.g. Lavington, Nairobi" required>
+        </div>
+
+        <div class="ut-field">
+          <label class="ut-label" for="repairDate">Repair Date</label>
+          <input type="date" id="repairDate" class="ut-input">
+        </div>
+
+        <div class="ut-field">
+          <label class="ut-label" for="repairCost">Job Cost (KSh)</label>
+          <input type="number" id="repairCost" class="ut-input" placeholder="e.g. 15000" min="0">
+        </div>
+
+        <div class="ut-field ut-full">
+          <label class="ut-label" for="repairDesc">Description <span>*</span></label>
+          <textarea id="repairDesc" class="ut-textarea" placeholder="Describe the repair job — what was done, materials used, scope of work..." required></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Combined image count bar -->
+    <div class="ut-combined-bar">
+      <span class="ut-combined-label">Total Images:</span>
+      <span class="ut-combined-value ut-combined-warn" id="combinedCount">0</span>
+      <span class="ut-combined-note" id="combinedNote">Minimum 3 images total (before + after)</span>
+    </div>
+
+    <!-- Before / After Upload Widgets -->
+    <div class="ut-ba-grid">
+
+      <div class="ut-ba-panel ut-ba-before">
+        <div class="ut-ba-panel-header">
+          <span>&#128247;</span> Before Images
+        </div>
+        <div class="ut-ba-panel-body">
+          <p class="ut-hint" style="margin:0 0 12px;">Photos showing the state <strong>before</strong> the repair.</p>
+          <div id="beforeUploadContainer"></div>
+          <div class="ut-ba-count ut-ba-count-warn" id="beforeCount">0 images</div>
+        </div>
+      </div>
+
+      <div class="ut-ba-panel ut-ba-after">
+        <div class="ut-ba-panel-header">
+          <span>&#10003;</span> After Images
+        </div>
+        <div class="ut-ba-panel-body">
+          <p class="ut-hint" style="margin:0 0 12px;">Photos showing the result <strong>after</strong> the repair.</p>
+          <div id="afterUploadContainer"></div>
+          <div class="ut-ba-count ut-ba-count-warn" id="afterCount">0 images</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Global validation + submit -->
+    <div class="ut-card" style="margin-top: 24px;">
+      <div class="ut-global-validation" id="globalValidation"></div>
+      <button type="button" id="submitRepairBtn" class="ut-submit-btn">Submit Repair Job</button>
+    </div>
+
+    <!-- Result (filled by FurnostylesListingUI) -->
+    <div id="repairResult" style="display:none;"></div>
+
+  </div>
+
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-bridge.js"></script>
+  <script src="shared/firebase/storage-service.js"></script>
+  <script src="shared/uploads/upload-config.js"></script>
+  <script src="shared/uploads/upload-validation.js"></script>
+  <script src="shared/uploads/upload-service.js"></script>
+  <script src="shared/uploads/upload-ui.js"></script>
+
+  <!-- Listing system -->
+  <script src="shared/listings/listing-config.js"></script>
+  <script src="shared/listings/listing-types.js"></script>
+  <script src="shared/listings/listing-validation.js"></script>
+  <script src="shared/listings/listing-service.js"></script>
+  <script src="shared/listings/listing-ui.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var MIN_TOTAL  = 3;
+      var beforeAPI  = null;
+      var afterAPI   = null;
+
+      /* ---- Update combined count bar ---- */
+      function updateCombinedCount() {
+        var before = beforeAPI ? beforeAPI.getImageCount() : 0;
+        var after  = afterAPI  ? afterAPI.getImageCount()  : 0;
+        var total  = before + after;
+
+        var countEl = document.getElementById('combinedCount');
+        var noteEl  = document.getElementById('combinedNote');
+        var beforeCountEl = document.getElementById('beforeCount');
+        var afterCountEl  = document.getElementById('afterCount');
+
+        if (countEl) {
+          countEl.textContent = total;
+          countEl.className = 'ut-combined-value ' + (total >= MIN_TOTAL ? 'ut-combined-ok' : 'ut-combined-warn');
+        }
+        if (noteEl) {
+          noteEl.textContent = total >= MIN_TOTAL
+            ? '\u2713 Minimum met (' + total + ' total)'
+            : 'Minimum 3 images total \u2014 need ' + (MIN_TOTAL - total) + ' more';
+          noteEl.className = 'ut-combined-note ' + (total >= MIN_TOTAL ? 'ut-combined-ok' : '');
+        }
+        if (beforeCountEl) {
+          beforeCountEl.textContent = before + ' image' + (before !== 1 ? 's' : '');
+          beforeCountEl.className = 'ut-ba-count ' + (before > 0 ? 'ut-ba-count-ok' : 'ut-ba-count-warn');
+        }
+        if (afterCountEl) {
+          afterCountEl.textContent = after + ' image' + (after !== 1 ? 's' : '');
+          afterCountEl.className = 'ut-ba-count ' + (after > 0 ? 'ut-ba-count-ok' : 'ut-ba-count-warn');
+        }
+      }
+
+      function showGlobalMsg(msg, type) {
+        var el = document.getElementById('globalValidation');
+        if (!el) return;
+        el.textContent = msg;
+        el.className = 'ut-global-validation ut-global-' + type;
+        el.style.display = 'block';
+      }
+
+      function clearGlobalMsg() {
+        var el = document.getElementById('globalValidation');
+        if (el) { el.textContent = ''; el.style.display = 'none'; }
+      }
+
+      function init() {
+        /* Init BEFORE widget — isolated instance via createInstance() */
+        beforeAPI = window.FurnostylesUploadUI.init(
+          document.getElementById('beforeUploadContainer'),
+          {
+            context:     'repairs',
+            minImages:   1,
+            submitLabel: 'Confirm Before Images',
+            onChange:    function () {
+              updateCombinedCount();
+              document.getElementById('repairResult').style.display = 'none';
+              clearGlobalMsg();
+            }
+          }
+        );
+
+        /* Init AFTER widget — second isolated instance, independent state */
+        afterAPI = window.FurnostylesUploadUI.init(
+          document.getElementById('afterUploadContainer'),
+          {
+            context:     'repairs',
+            minImages:   1,
+            submitLabel: 'Confirm After Images',
+            onChange:    function () {
+              updateCombinedCount();
+              document.getElementById('repairResult').style.display = 'none';
+              clearGlobalMsg();
+            }
+          }
+        );
+
+        updateCombinedCount();
+
+        /* Submit handler */
+        document.getElementById('submitRepairBtn').addEventListener('click', function () {
+          var type     = document.getElementById('repairType').value;
+          var location = document.getElementById('repairLocation').value.trim();
+          var desc     = document.getElementById('repairDesc').value.trim();
+          var date     = document.getElementById('repairDate').value;
+          var cost     = document.getElementById('repairCost').value.trim();
+
+          /* Field validation */
+          if (!type || !location || !desc) {
+            showGlobalMsg('Please fill in all required fields (Repair Type, Location, Description).', 'error');
+            return;
+          }
+
+          /* Combined image count validation */
+          var beforeImgs = beforeAPI ? beforeAPI.getImages() : [];
+          var afterImgs  = afterAPI  ? afterAPI.getImages()  : [];
+          var total      = beforeImgs.length + afterImgs.length;
+
+          if (total < MIN_TOTAL) {
+            showGlobalMsg(
+              'Please add at least ' + MIN_TOTAL + ' images total (before + after). You have ' + total + '.',
+              'error'
+            );
+            window.scrollTo({ top: document.getElementById('beforeUploadContainer').getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+            return;
+          }
+
+          clearGlobalMsg();
+
+          var formData = {
+            type:     type,
+            location: location,
+            date:     date || '\u2014',
+            cost:     cost ? 'KSh ' + Number(cost).toLocaleString() : '\u2014',
+            desc:     desc.substring(0, 120) + (desc.length > 120 ? '...' : '')
+          };
+
+          /* Upload both before and after sets in parallel */
+          /* Loading state */
+          var resultEl  = document.getElementById('repairResult');
+          var listingUI = window.FurnostylesListingUI;
+          if (listingUI) listingUI.showLoading(resultEl, 'Uploading images and saving repair project\u2026');
+          else showGlobalMsg('Uploading images\u2026', 'success');
+
+          /* 1. Upload before + after in parallel \u2192 2. Save repair project to Firestore */
+          Promise.all([
+            beforeAPI.uploadAndGetURLs('before'),
+            afterAPI.uploadAndGetURLs('after')
+          ]).then(function (results) {
+            clearGlobalMsg();
+            return window.FurnostylesListingService.submitRepairProject({
+              repairType:     type,
+              location:       location,
+              description:    desc,
+              repairDate:     date,
+              estimatedCost:  Number(cost) || 0,
+              sourcePage:     'repair-before-after-upload-test'
+            }, results[0], results[1]);
+          }).then(function (saved) {
+            var totalImgs = (saved.beforeImages ? saved.beforeImages.length : 0) +
+                            (saved.afterImages  ? saved.afterImages.length  : 0);
+            if (listingUI) listingUI.showSuccess(resultEl, 'Repair project submitted!', {
+              id:         saved.id,
+              collection: 'repairProjects',
+              status:     saved.status || 'pending',
+              imageCount: totalImgs,
+              uploadMode: saved.uploadMode
+            });
+          }).catch(function (err) {
+            clearGlobalMsg();
+            if (listingUI) listingUI.showError(resultEl, err.message, function () {
+              document.getElementById('submitRepairBtn').click();
+            });
+            else showGlobalMsg('Error: ' + err.message, 'error');
+          });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    }());
+  </script>
+</body>
+</html>

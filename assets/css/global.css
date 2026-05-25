@@ -1,0 +1,290 @@
+/**
+ * FURNOSTYLES — GLOBAL CSS
+ * ========================
+ * File: assets/css/global.css
+ * Purpose: CSS custom properties (variables), reset, base typography,
+ *          utility classes used across all pages.
+ *
+ * Load order: 1 of 4 (always first)
+ * Class prefix: fns-
+ *
+ * REUSABLE DESIGN SYSTEM:
+ * - Color palette: Light grey primary + Petrol blue accents + Gold highlights
+ * - Typography: Consistent font sizing with responsive scaling
+ * - Spacing: 6-level spacing system (xs to 2xl)
+ * - Shadows: Premium shadow hierarchy for depth
+ * - Transitions: Smooth, premium hover effects
+ */
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   Brand Colors: Light grey palette + gold accents + petrol blue
+============================================================ */
+
+:root {
+  /* Furnostyles Rich Premium Color System */
+  
+  /* Petrol Blue - Strategic Accent Colour */
+  --fns-petrol-blue: #063B46;
+  --fns-petrol-medium: #075466;
+  --fns-petrol-light: #062e37;
+  --fns-petrol-dark: #02181c;
+
+  /* Premium Gold */
+  --fns-gold-primary: #D4AF37;
+  --fns-gold-light: #d4b84a;
+  --fns-gold-dark: #a68a20;
+  --fns-gold-accent: #e5c158;
+  --fns-gold-medium: #c9a227;
+
+  /* Deep Light Grey Cards - For separation on white background */
+  --fns-card-bg: #D8D6D0;
+  --fns-card-bg-alt: #E4E1DA;
+  --fns-soft-luxury-grey: #E4E1DA;
+
+  /* Light Grey */
+  --fns-light-grey: #aeb0b1;
+  --fns-grey-medium: #555555;
+  --fns-grey-dark: #333333;
+  --fns-bg-grey: #f5f5f5;
+
+  /* Charcoal */
+  --fns-charcoal: #1E2329;
+  --fns-soft-charcoal: #222;
+
+  /* Warm White */
+  --fns-warm-white: #fafafa;
+
+  /* Text Colors */
+  --fns-text-primary: #1a1a1a;
+  --fns-text-secondary: #2d2d2d;
+  --fns-text-muted: #6b7280;
+  --fns-text-light: #E8EAED;
+  --fns-text-lighter: #ffffff;
+  --fns-text-dark: #333333;
+
+  /* Background Colors - White dominates */
+  --fns-bg-light: #FFFFFF;
+  --fns-bg-medium: #f5f5f5;
+  --fns-bg-dark: #063B46;
+  --fns-bg-darker: #075466;
+
+  /* Neutral Colors */
+  --fns-white: #ffffff;
+  --fns-border: #e5e7eb;
+  --fns-border-light: #d1d5db;
+  --fns-border-dark: rgba(0, 0, 0, 0.10);
+
+  /* Status Colors */
+  --fns-success: #5cb85c;
+  --fns-warning: #f0ad4e;
+  --fns-info: #5bc0de;
+  --fns-danger: #d9534f;
+  --fns-danger-dark: #8b1e1e;
+
+  /* Typography */
+  --fns-font-family: 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  --fns-font-family-serif: 'Georgia', 'Times New Roman', serif;
+  --fns-font-size-base: 16px;
+  --fns-font-size-small: 14px;
+  --fns-font-size-smaller: 12px;
+
+  /* Spacing Scale (8 levels for premium spacing rhythm - increased for breathing room) */
+  --fns-spacing-xs: 4px;
+  --fns-spacing-sm: 8px;
+  --fns-spacing-md: 16px;
+  --fns-spacing-lg: 24px;
+  --fns-spacing-xl: 32px;
+  --fns-spacing-2xl: 48px;
+  --fns-spacing-3xl: 72px;
+  --fns-spacing-4xl: 96px;
+
+  /* Border Radius */
+  --fns-radius-sm: 4px;
+  --fns-radius-md: 8px;
+  --fns-radius-lg: 12px;
+  --fns-radius-pill: 999px;
+  --fns-radius: 18px;
+
+  /* Premium Shadow Hierarchy (for depth and luxury feel) */
+  --fns-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --fns-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --fns-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --fns-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10);
+  --fns-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+  --fns-shadow-gold: 0 4px 16px rgba(212, 175, 55, 0.20);
+  --fns-shadow-gold-hover: 0 8px 32px rgba(212, 175, 55, 0.30);
+  --fns-shadow-gold-active: 0 12px 40px rgba(212, 175, 55, 0.40);
+  --fns-shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --fns-shadow-premium: 0 20px 60px rgba(0, 0, 0, 0.12);
+
+  /* Transitions (smooth, premium hover effects) */
+  --fns-transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --fns-transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --fns-transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --fns-transition-smooth: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Container */
+  --fns-container-max: 1400px;
+  --fns-container-padding: 28px;
+}
+
+/* ============================================================
+   CSS RESET
+============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fns-font-size-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fns-font-family);
+  color: var(--fns-charcoal);
+  background: #FFFFFF;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   BASE TYPOGRAPHY
+============================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--fns-spacing-md) 0;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--fns-charcoal);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 50px; }
+h2 { font-size: 36px; }
+h3 { font-size: 28px; }
+h4 { font-size: 22px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+p {
+  margin: 0 0 var(--fns-spacing-md) 0;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--fns-charcoal);
+  text-decoration: none;
+  transition: color var(--fns-transition-base);
+}
+
+a:hover {
+  color: var(--fns-gold-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   REUSABLE SYSTEM: Spacing, text alignment, display, visibility
+============================================================ */
+
+/* Container System - max-width wrapper for content */
+.fns-container {
+  max-width: var(--fns-container-max);
+  margin: 0 auto;
+  padding: 0 var(--fns-container-padding);
+}
+
+/* Text Alignment Utilities */
+.fns-text-center { text-align: center; }
+.fns-text-left { text-align: left; }
+.fns-text-right { text-align: right; }
+
+/* Margin Top Utilities */
+.fns-mt-0 { margin-top: 0; }
+.fns-mt-xs { margin-top: var(--fns-spacing-xs); }
+.fns-mt-sm { margin-top: var(--fns-spacing-sm); }
+.fns-mt-md { margin-top: var(--fns-spacing-md); }
+.fns-mt-lg { margin-top: var(--fns-spacing-lg); }
+.fns-mt-xl { margin-top: var(--fns-spacing-xl); }
+.fns-mt-2xl { margin-top: var(--fns-spacing-2xl); }
+
+/* Margin Bottom Utilities */
+.fns-mb-0 { margin-bottom: 0; }
+.fns-mb-xs { margin-bottom: var(--fns-spacing-xs); }
+.fns-mb-sm { margin-bottom: var(--fns-spacing-sm); }
+.fns-mb-md { margin-bottom: var(--fns-spacing-md); }
+.fns-mb-lg { margin-bottom: var(--fns-spacing-lg); }
+.fns-mb-xl { margin-bottom: var(--fns-spacing-xl); }
+.fns-mb-2xl { margin-bottom: var(--fns-spacing-2xl); }
+
+/* Padding Utilities */
+.fns-p-0 { padding: 0; }
+.fns-p-sm { padding: var(--fns-spacing-sm); }
+.fns-p-md { padding: var(--fns-spacing-md); }
+.fns-p-lg { padding: var(--fns-spacing-lg); }
+.fns-p-xl { padding: var(--fns-spacing-xl); }
+
+/* Display Utilities */
+.fns-hidden { display: none !important; }
+.fns-block { display: block; }
+.fns-inline-block { display: inline-block; }
+.fns-flex { display: flex; }
+.fns-inline-flex { display: inline-flex; }
+
+/* Flex Utilities */
+.fns-flex-wrap { flex-wrap: wrap; }
+.fns-justify-center { justify-content: center; }
+.fns-justify-between { justify-content: space-between; }
+.fns-align-center { align-items: center; }
+.fns-gap-sm { gap: var(--fns-spacing-sm); }
+.fns-gap-md { gap: var(--fns-spacing-md); }
+.fns-gap-lg { gap: var(--fns-spacing-lg); }
+
+/* Typography Utilities */
+.fns-body-large {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--fns-text-secondary);
+}
+
+.fns-body-small {
+  font-size: var(--fns-font-size-small);
+  line-height: 1.6;
+  color: var(--fns-text-muted);
+}
+
+/* Visibility Utilities (for dynamic content) */
+.fsr-hidden { display: none !important; }
+.fsr-visible { display: block !important; }
+
+/* ============================================================
+   SCREEN READER ONLY
+   REUSABLE SYSTEM: Accessibility helpers
+============================================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

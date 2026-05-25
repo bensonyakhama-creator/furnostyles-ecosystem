@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artisan Assignment Console | Furnostyles Provider</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../../shared/routing/routing-layout.css">
+  <style>
+    .job-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    @media (max-width: 1024px) {
+      .job-grid { grid-template-columns: 1fr; }
+    }
+    .job-card {
+      background: #fff;
+      border: 1.5px solid #dce4f0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .job-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .job-table th {
+      text-align: left;
+      padding: 10px;
+      background: #f8faff;
+      color: #4c5e80;
+      font-weight: 700;
+      border-bottom: 1.5px solid #eef2f6;
+    }
+    .job-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #f0f4ff;
+      color: #1a2540;
+    }
+    .job-btn-sm {
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles Partner Portal</strong> Provider Desk</span>
+    <span><b>Secure Login</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html">
+      <span>Furnostyles Provider</span>
+    </a>
+    <div style="font-weight:700;color:#c9a227;font-size:13px;">🛠️ Vetted Partner Workshop</div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main" style="padding:32px;">
+
+      <div>
+        <h1 style="font-size:26px;font-weight:900;color:#1a2540;margin:0 0 4px;">My Active Assignments</h1>
+        <p style="font-size:14px;color:#8090a0;margin:0;">Accept dispatches, log progress milestones, and track escrow payments.</p>
+      </div>
+
+      <div class="job-grid">
+        
+        <div>
+          <!-- Pending dispatch jobs -->
+          <div class="job-card">
+            <h2 style="font-size:16px;font-weight:800;color:#1a2540;margin:0 0 16px;">📥 Pending Acceptance</h2>
+            <div style="overflow-x:auto;">
+              <table class="job-table">
+                <thead>
+                  <tr>
+                    <th>Job ID</th>
+                    <th>Request ID</th>
+                    <th>Required Role</th>
+                    <th>Priority</th>
+                    <th>Operations</th>
+                  </tr>
+                </thead>
+                <tbody id="tblPending">
+                  <tr><td colspan="5" style="text-align:center;padding:30px;color:#8090a0;">No dispatches awaiting acceptance.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Accepted active jobs -->
+          <div class="job-card">
+            <h2 style="font-size:16px;font-weight:800;color:#1a2540;margin:0 0 16px;">🔄 Active Jobs In Progress</h2>
+            <div style="overflow-x:auto;">
+              <table class="job-table">
+                <thead>
+                  <tr>
+                    <th>Job ID</th>
+                    <th>Request ID</th>
+                    <th>Category</th>
+                    <th>Escrow status</th>
+                    <th>Operations</th>
+                  </tr>
+                </thead>
+                <tbody id="tblActive">
+                  <tr><td colspan="5" style="text-align:center;padding:30px;color:#8090a0;">No active works. Submit catalog listings to boost assignments!</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Finished history -->
+          <div class="job-card">
+            <h2 style="font-size:16px;font-weight:800;color:#1a2540;margin:0 0 16px;">✅ Verified Completed Jobs</h2>
+            <div style="overflow-x:auto;">
+              <table class="job-table">
+                <thead>
+                  <tr>
+                    <th>Job ID</th>
+                    <th>Request ID</th>
+                    <th>Category</th>
+                    <th>Completed At</th>
+                  </tr>
+                </thead>
+                <tbody id="tblCompleted">
+                  <tr><td colspan="4" style="text-align:center;padding:30px;color:#8090a0;">No completed history.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <!-- Platform Discipline Sidebar -->
+          <div class="job-card" style="background:#f8faff;">
+            <h3 style="font-size:14px;font-weight:800;color:#1a2540;margin:0 0 10px;">🛡️ Platform Compliance</h3>
+            <p style="font-size:12px;color:#4c5e80;line-height:1.6;margin-bottom:14px;">
+              Maintain your response speed under 2 hours, and ensure description accuracy to safeguard your platform rating. High scores guarantee direct dispatches.
+            </p>
+            <div style="border-top:1.5px dashed #dce4f0;padding-top:12px;margin-top:12px;font-size:13px;font-weight:700;color:#1a2540;">
+              Your Discipline Rating: <span style="color:#1a6e3a;">9.8 / 10</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+  <script src="../../shared/assignments/assignment-status.js"></script>
+  <script src="../../shared/assignments/assignment-service.js"></script>
+  <script src="../../shared/assignments/assignment-workflow.js"></script>
+  <script src="../../shared/assignments/assignment-ui.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function () {
+        var b = window.FurnostylesFirebaseBridge;
+        var s = window.FurnostylesAssignmentStatus;
+        var svc = window.FurnostylesAssignmentService;
+
+        if (!b) return;
+
+        // Extract logged provider query string as simulation
+        var provId = prompt('Enter your provider/artisan User ID to load workspace:') || 'vendor123';
+
+        function reloadJobs() {
+          b.list('assignments', {
+            where: [{ field: 'assignedTo', operator: '==', value: provId }]
+          }).then(function (assigns) {
+            // Render pending dispatches
+            var pendingTbl = document.getElementById('tblPending');
+            var pendingList = assigns.filter(function (a) { return a.assignmentStatus === 'assigned'; });
+            if (pendingList.length === 0) {
+              pendingTbl.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#8090a0;">No dispatches awaiting acceptance.</td></tr>';
+            } else {
+              pendingTbl.innerHTML = pendingList.map(function (a) {
+                return '<tr>' +
+                  '<td>' + a.id.substring(0, 8) + '...</td>' +
+                  '<td>' + a.requestId.substring(0, 8) + '...</td>' +
+                  '<td>' + a.assignedRole + '</td>' +
+                  '<td>' + a.assignmentPriority + '</td>' +
+                  '<td>' +
+                    '<button class="job-btn-sm" style="background:#cc1a1a;color:#fff;margin-right:6px;" onclick="window.respondJob(\'' + a.id + '\',\'' + a.requestId + '\',\'declined\')">Decline</button>' +
+                    '<button class="job-btn-sm" style="background:#10b981;color:#fff;" onclick="window.respondJob(\'' + a.id + '\',\'' + a.requestId + '\',\'accepted\')">Accept</button>' +
+                  '</td>' +
+                '</tr>';
+              }).join('');
+            }
+
+            // Render active jobs (accepted or in progress)
+            var activeTbl = document.getElementById('tblActive');
+            var activeList = assigns.filter(function (a) { return a.assignmentStatus === 'accepted' || a.assignmentStatus === 'in progress'; });
+            if (activeList.length === 0) {
+              activeTbl.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#8090a0;">No active works.</td></tr>';
+            } else {
+              activeTbl.innerHTML = activeList.map(function (a) {
+                return '<tr>' +
+                  '<td>' + a.id.substring(0, 8) + '...</td>' +
+                  '<td>' + a.requestId.substring(0, 8) + '...</td>' +
+                  '<td>Artisan Support</td>' +
+                  '<td>Escrow Held</td>' +
+                  '<td>' +
+                    (a.assignmentStatus === 'accepted'
+                      ? '<button class="job-btn-sm" style="background:#0b3b46;color:#fff;" onclick="window.respondJob(\'' + a.id + '\',\'' + a.requestId + '\',\'in progress\')">Start Work</button>'
+                      : '<span style="font-size:12px;color:#2563eb;font-weight:700;">In Progress...</span>') +
+                  '</td>' +
+                '</tr>';
+              }).join('');
+            }
+
+            // Render completed history
+            var compTbl = document.getElementById('tblCompleted');
+            var compList = assigns.filter(function (a) { return a.assignmentStatus === 'completed'; });
+            if (compList.length === 0) {
+              compTbl.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:20px;color:#8090a0;">No completed history.</td></tr>';
+            } else {
+              compTbl.innerHTML = compList.map(function (a) {
+                return '<tr>' +
+                  '<td>' + a.id.substring(0, 8) + '...</td>' +
+                  '<td>' + a.requestId.substring(0, 8) + '...</td>' +
+                  '<td>Artisan Support</td>' +
+                  '<td>' + (a.completedAt ? a.completedAt.substring(0, 10) : 'Done') + '</td>' +
+                '</tr>';
+              }).join('');
+            }
+          });
+        }
+
+        window.respondJob = function (assignId, reqId, status) {
+          svc.updateAssignmentStatus(assignId, reqId, status, b)
+            .then(function () { alert('Status updated successfully!'); reloadJobs(); })
+            .catch(function (err) { alert('Error: ' + err.message); });
+        };
+
+        reloadJobs();
+      });
+    }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload System Test | Furnostyles</title>
+
+  <!-- Base site styles -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Upload widget styles -->
+  <link rel="stylesheet" href="shared/uploads/upload.css">
+
+  <style>
+    body {
+      background: #f0f2f7;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #1a2540;
+    }
+
+    .ut-page-header {
+      background: #1a2540;
+      color: #fff;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ut-page-header a {
+      color: #aac4f0;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .ut-page-header a:hover { text-decoration: underline; }
+
+    .ut-page-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .ut-page-tag {
+      background: #0055cc;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .ut-main {
+      max-width: 860px;
+      margin: 36px auto;
+      padding: 0 20px 60px;
+    }
+
+    .ut-intro {
+      background: #ffffff;
+      border: 1px solid #dde3ef;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+
+    .ut-intro h2 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0 0 10px;
+      color: #1a2540;
+    }
+
+    .ut-intro ul {
+      margin: 0;
+      padding: 0 0 0 18px;
+      color: #3c4f72;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .ut-section-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1a2540;
+      margin: 0 0 16px;
+    }
+
+    .ut-result {
+      margin-top: 28px;
+      background: #fff;
+      border: 1px solid #dde3ef;
+      border-radius: 10px;
+      padding: 22px;
+      display: none;
+    }
+
+    .ut-result-heading {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a6e3a;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ut-result-heading::before {
+      content: '✅';
+      font-size: 18px;
+    }
+
+    .ut-result-summary {
+      font-size: 13px;
+      color: #3c4f72;
+      margin-bottom: 14px;
+    }
+
+    .ut-result-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ut-result-items li {
+      padding: 6px 0;
+      font-size: 13px;
+      border-bottom: 1px solid #edf0f7;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      word-break: break-all;
+    }
+
+    .ut-result-items li:last-child { border-bottom: none; }
+
+    .ut-result-items .ut-item-type {
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-top: 1px;
+    }
+
+    .ut-type-file { background: #dce9ff; color: #0044aa; }
+    .ut-type-url  { background: #d4f5e2; color: #1a6e3a; }
+
+    .ut-result-name { color: #1a2540; font-weight: 500; }
+
+    .ut-bridge-status {
+      margin-top: 28px;
+      padding: 12px 16px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .ut-bridge-live    { background: #f0faf4; color: #1a6e3a; border: 1px solid #b6dfc6; }
+    .ut-bridge-local   { background: #fffbea; color: #8a5d00; border: 1px solid #f0d890; }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <div class="ut-page-header">
+    <div>
+      <p style="margin:0 0 4px;"><a href="index.html">&larr; Back to Furnostyles</a></p>
+      <h1 class="ut-page-title">Universal Upload System Test</h1>
+    </div>
+    <span class="ut-page-tag">Dev Test</span>
+  </div>
+
+  <!-- Main Content -->
+  <div class="ut-main">
+
+    <!-- Intro card -->
+    <div class="ut-intro">
+      <h2>What this tests</h2>
+      <ul>
+        <li>Upload images from your device (file picker)</li>
+        <li>Drag and drop image files onto the zone</li>
+        <li>Add images via URL (paste image URL)</li>
+        <li>Mix local files and URL images together</li>
+        <li>Preview all selected images in a gallery</li>
+        <li>Remove individual images before submission</li>
+        <li>Minimum 3 images validation before submit</li>
+        <li>Image file type and size validation</li>
+        <li>Submit button triggers onSubmit callback with image array</li>
+      </ul>
+    </div>
+
+    <!-- Bridge Status -->
+    <div id="bridgeStatus" class="ut-bridge-status ut-bridge-local">
+      Checking Firebase bridge status&hellip;
+    </div>
+
+    <!-- Upload Widget -->
+    <div style="margin-top: 28px;">
+      <h2 class="ut-section-title">Upload Widget</h2>
+      <div id="uploadContainer"></div>
+    </div>
+
+    <!-- Submit Result -->
+    <div id="uploadResult" class="ut-result">
+      <h3 class="ut-result-heading">Upload Set Ready</h3>
+      <p class="ut-result-summary" id="resultSummary"></p>
+      <ul class="ut-result-items" id="resultList"></ul>
+    </div>
+
+  </div>
+
+  <!-- Firebase (for bridge init — no duplicate init, bridge handles this) -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-bridge.js"></script>
+  <script src="shared/firebase/storage-service.js"></script>
+
+  <!-- Upload System -->
+  <script src="shared/uploads/upload-config.js"></script>
+  <script src="shared/uploads/upload-validation.js"></script>
+  <script src="shared/uploads/upload-service.js"></script>
+  <script src="shared/uploads/upload-ui.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---- Bridge status display ---- */
+      function showBridgeStatus() {
+        var el     = document.getElementById('bridgeStatus');
+        var bridge = window.FurnostylesFirebase;
+        var isLive = bridge && typeof bridge.isLive === 'function' && bridge.isLive();
+
+        var storageSvc = window.FurnostylesStorageService;
+        var storageOK  = storageSvc && storageSvc.isAvailable();
+
+        if (isLive && storageOK) {
+          el.className = 'ut-bridge-status ut-bridge-live';
+          el.textContent = '\uD83D\uDD25 Firebase mode \u2014 files upload to Firebase Storage.';
+        } else if (isLive) {
+          el.className = 'ut-bridge-status ut-bridge-local';
+          el.textContent = '\u26A0\uFE0F Firebase active but Storage not ready. Files use data-URL preview.';
+        } else {
+          el.className = 'ut-bridge-status ut-bridge-local';
+          el.textContent = '\uD83D\uDCBE LOCAL mode \u2014 no Firebase config. Files stored as data-URL previews in memory.';
+        }
+      }
+
+      /* ---- Result display ---- */
+      function showResult(uploadResult) {
+        var resultEl  = document.getElementById('uploadResult');
+        var summaryEl = document.getElementById('resultSummary');
+        var listEl    = document.getElementById('resultList');
+
+        var modeLabel = uploadResult.mode === 'firebase' ? 'Firebase Storage' : 'Local preview (data URL)';
+
+        summaryEl.textContent =
+          uploadResult.urls.length + ' image URL' + (uploadResult.urls.length !== 1 ? 's' : '') +
+          ' \u2022 ' + uploadResult.totalUploaded + ' file(s) uploaded, ' +
+          uploadResult.totalURLs + ' URL(s) passed through' +
+          ' \u2022 Mode: ' + modeLabel;
+
+        listEl.innerHTML = uploadResult.urls.map(function (url, i) {
+          var isData   = url && url.indexOf('data:') === 0;
+          var isLocal  = url && url.indexOf('[local:') === 0;
+          var typeClass = isData || isLocal ? 'ut-type-file' : 'ut-type-url';
+          var typeLabel = isData ? 'data-URL' : (isLocal ? 'local' : 'Storage URL');
+          var display   = isData ? '[data:image — preview ' + (i + 1) + ']' : url;
+          return (
+            '<li>' +
+              '<span class="ut-item-type ' + typeClass + '">' + typeLabel + '</span>' +
+              '<span class="ut-result-name">' + display + '</span>' +
+            '</li>'
+          );
+        }).join('');
+
+        resultEl.style.display = 'block';
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      /* ---- Init widget ---- */
+      function initWidget() {
+        var container = document.getElementById('uploadContainer');
+        if (!container) return;
+
+        window.uploadTestAPI = window.FurnostylesUploadUI.init(container, {
+          context:     'default',
+          minImages:   3,
+          submitLabel: 'Test Submit (Validate & Show Result)',
+
+          onSubmit: function () {
+            window.uploadTestAPI.uploadAndGetURLs()
+              .then(function (result) { showResult(result); })
+              .catch(function (err) { console.error('[UploadTest] Upload error:', err); });
+          },
+
+          onChange: function (images) {
+            /* Hide result when set changes */
+            var resultEl = document.getElementById('uploadResult');
+            if (resultEl) resultEl.style.display = 'none';
+          },
+
+          onReady: function (api) {
+            console.log('[UploadTest] Widget ready. API:', api);
+          }
+        });
+      }
+
+      /* ---- Bootstrap ---- */
+      function init() {
+        showBridgeStatus();
+        initWidget();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    }());
+  </script>
+</body>
+</html>

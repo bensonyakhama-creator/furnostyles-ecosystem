@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coordinated Messages | Furnostyles Contractor</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../shared/layout/footer.css">
+  <link rel="stylesheet" href="../../shared/communication/communication-layout.css">
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span><strong>Furnostyles Contractor Portal</strong> Contractor Workspace</span>
+    <span><b>Secure Session</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="../../index.html">
+      <span>Furnostyles Contractor Desk</span>
+    </a>
+    <div style="font-weight:700;color:#c9a227;font-size:13px;">💬 Supervised Chats</div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main" style="padding:32px;">
+
+      <div class="comm-split">
+        
+        <!-- Sidebar thread selectors -->
+        <div class="comm-list-panel">
+          <div class="comm-panel-header">📁 Active Assignment Rooms</div>
+          <div class="comm-items-container" id="threadsList">
+            <div style="padding:20px;text-align:center;color:#8090a0;font-size:13px;">Loading conversations...</div>
+          </div>
+        </div>
+
+        <!-- Chat Workspace -->
+        <div class="comm-chat-panel">
+          <div class="comm-chat-header">
+            <div>
+              <div class="comm-chat-title" id="chatTitle">Select a Conversation Room</div>
+              <div class="comm-chat-sub" id="chatSub">All communications are logged for platform safety compliance.</div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:#c9a227;">🛡️ ESCROW HELD</div>
+          </div>
+
+          <div class="comm-messages-wrap" id="messagesArea">
+            <div style="text-align:center;margin:auto;color:#8090a0;font-size:13px;">
+              🛡️ Select an active room to communicate under admin oversight.
+            </div>
+          </div>
+
+          <div class="comm-chat-footer">
+            <form class="comm-chat-form" id="chatForm">
+              <input type="text" class="comm-chat-input" id="msgInput" placeholder="Type verified platform message..." required disabled>
+              <button type="submit" class="btn primary" id="sendBtn" disabled>Send</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../../shared/firebase/firebase-config.js"></script>
+  <script src="../../shared/firebase/firebase-bridge.js"></script>
+  <script src="../../shared/communication/communication-status.js"></script>
+  <script src="../../shared/communication/messaging-service.js"></script>
+  <script src="../../shared/communication/communication-ui.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function () {
+        var b = window.FurnostylesFirebaseBridge;
+        var msgSvc = window.FurnostylesMessagingService;
+        var commUI = window.FurnostylesCommunicationUI;
+
+        if (!b) return;
+
+        var contractId = prompt('Enter Contractor ID to load messages:') || 'contractor123';
+        var selectedConvoId = null;
+
+        function loadThreads() {
+          b.list('conversations', {
+            where: [{ field: 'partnerId', operator: '==', value: contractId }]
+          }).then(function (threads) {
+            var container = document.getElementById('threadsList');
+            if (threads.length === 0) {
+              container.innerHTML = '<div style="padding:20px;text-align:center;color:#8090a0;font-size:12px;">No active rooms found. Accept assignments first.</div>';
+              return;
+            }
+
+            container.innerHTML = threads.map(function (t) {
+              var activeClass = t.id === selectedConvoId ? ' active' : '';
+              var snippet = t.lastMessageSnippet || 'No messages yet';
+              return '<a class="comm-item' + activeClass + '" href="#" onclick="window.selectConvo(\'' + t.id + '\',\'' + t.conversationType + '\')">' +
+                '<div class="comm-item-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>' +
+                '<div class="comm-item-info">' +
+                  '<div class="comm-item-name">' + (t.conversationType === 'escalation' ? '⚠️ ESCALATED CONFLICT' : '🛠️ Client Assignment') + '</div>' +
+                  '<div class="comm-item-msg">' + snippet + '</div>' +
+                '</div>' +
+              '</a>';
+            }).join('');
+          });
+        }
+
+        window.selectConvo = function (convoId, type) {
+          selectedConvoId = convoId;
+          document.getElementById('chatTitle').textContent = type === 'escalation' ? '⚠️ Supervised Escalation Dispute' : '🛠️ Workspace Client Chat';
+          document.getElementById('msgInput').removeAttribute('disabled');
+          document.getElementById('sendBtn').removeAttribute('disabled');
+          
+          loadThreads();
+          loadMessages();
+        };
+
+        function loadMessages() {
+          if (!selectedConvoId) return;
+          msgSvc.fetchMessages(selectedConvoId, b).then(function (msgs) {
+            var area = document.getElementById('messagesArea');
+            if (msgs.length === 0) {
+              area.innerHTML = '<div style="text-align:center;margin:auto;color:#8090a0;font-size:12px;">No messages. Write a message below to start platform logging.</div>';
+              return;
+            }
+            area.innerHTML = msgs.map(function (m) {
+              return commUI.renderMessageBubble(m, contractId);
+            }).join('');
+            area.scrollTop = area.scrollHeight;
+          });
+        }
+
+        document.getElementById('chatForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var input = document.getElementById('msgInput');
+          var text = input.value.trim();
+          if (!text || !selectedConvoId) return;
+
+          msgSvc.sendMessage(selectedConvoId, contractId, 'vendor', text, b).then(function () {
+            input.value = '';
+            loadMessages();
+            loadThreads();
+          });
+        });
+
+        loadThreads();
+      });
+    }());
+  </script>
+</body>
+</html>

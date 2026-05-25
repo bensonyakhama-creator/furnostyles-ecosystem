@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Marketplace | Furnostyles - Property Services in Nairobi</title>
+  <meta name="description" content="Browse rentals, homes for sale, Airbnb setup, staging services and property improvement packages from Furnostyles and verified agents in Nairobi.">
+  <meta name="keywords" content="real estate, rentals, homes for sale, Airbnb setup, property staging, Nairobi, Kenya">
+  <meta name="author" content="Furnostyles">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://furnostyles.com/realestate-marketplace.html">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="stylesheet" href="shared/inquiries/inquiry-form.css">
+  <link rel="stylesheet" href="shared/rendering/marketplace.css">
+  <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/furniture-demo.js"></script>
+  <script src="shared/demo-data/materials-demo.js"></script>
+  <script src="shared/demo-data/secondhand-demo.js"></script>
+  <script src="shared/demo-data/property-demo.js"></script>
+  <script src="shared/demo-data/sourcing-demo.js"></script>
+  <script src="shared/demo-data/services-demo.js"></script>
+  <script src="shared/demo-data/vendors-demo.js"></script>
+  <script src="shared/demo-data/marketplace-renderer.js"></script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Furnostyles">
+  <meta property="og:title" content="Real Estate Marketplace | Furnostyles - Property Services in Nairobi">
+  <meta property="og:description" content="Browse rentals, homes for sale, Airbnb setup, staging services and property improvement packages from Furnostyles and verified agents in Nairobi.">
+  <meta property="og:url" content="https://furnostyles.com/realestate-marketplace.html">
+  <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Real Estate Marketplace | Furnostyles - Property Services in Nairobi">
+  <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
+
+</head>
+<body>
+
+  <div class="premium-topbar">
+    <span>Delivery to all major towns in Kenya and beyond.</span>
+    <div class="fld-location-dropdown">
+      <span>Kasarani, Nairobi</span>
+      <div class="fld-location-menu">
+        <h4>Areas We Serve</h4>
+        <ul>
+          <li>Nairobi</li>
+          <li>Mombasa</li>
+          <li>Kisumu</li>
+          <li>Nakuru</li>
+          <li>Eldoret</li>
+          <li>Thika</li>
+          <li>Naivasha</li>
+          <li>Kitengela</li>
+          <li>Rongai</li>
+          <li>Kikuyu</li>
+          <li>Kiambu</li>
+          <li>Ruiru</li>
+          <li>Machakos</li>
+          <li>Athi River</li>
+          <li>Malindi</li>
+          <li>Lamu</li>
+          <li>Nyeri</li>
+          <li>Meru</li>
+          <li>Kakamega</li>
+          <li>Kisii</li>
+        </ul>
+        <p class="fld-location-note">Delivery to all major towns in Kenya and beyond.</p>
+      </div>
+    </div>
+    <span><b>+254 713 639 205</b><b>furnostyles@gmail.com</b></span>
+  </div>
+
+  <header class="premium-header">
+    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
+      <img loading="eager" src="assets/images/logo.png" alt="Furnostyles Logo" onerror="this.remove()">
+      <span>Furnostyles</span>
+    </a>
+
+    <div class="fld-youtube-search" role="search">
+      <input type="search" id="siteSearch" placeholder="Search furniture, services, marketplace..." aria-label="Search Furnostyles">
+      <button type="button" onclick="searchSite()" aria-label="Search">Search</button>
+    </div>
+
+    <div class="fld-icon-actions">
+      <button class="fld-icon-btn" id="fldCartBtn" type="button" title="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+          <path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.71l-1.39-1.39a1 1 0 0 0-1.41 0l-1.4 1.4a1 1 0 0 0 0 1.41l.82.82L8.5 14H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/>
+        </svg>
+        <span class="fld-badge" id="fldCartCount" data-cart-count>0</span>
+      </button>
+      <button class="fld-icon-btn" id="fldAlertsBtn" type="button" title="Alerts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span class="fld-badge" id="fldAlertsCount" data-alert-count>0</span>
+      </button>
+      <button class="fld-avatar-btn" id="fldAccountBtn" type="button" data-login-tooltip="Sign up and Log in" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" class="avatar-icon" id="fldAccountAvatar" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="user-name" hidden></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+    <nav class="marketplace-link-strip premium-market-scroll" aria-label="Marketplace Categories">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="furniture-marketplace.html">Furniture</a>
+      <a href="materials-marketplace.html">Materials</a>
+      <a href="services-marketplace.html">Services</a>
+      <a href="realestate-marketplace.html" class="active">Real Estate</a>
+      <a href="secondhand-marketplace.html">Secondhand</a>
+      <a href="sourcing-marketplace.html">Sourcing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="hero-banner hero-banner-repair">
+      <div class="hero-content">
+        <span class="hero-badge">Kenya's Property Transformation Hub</span>
+        <h1>Premium Properties.<br/>Maximum ROI.</h1>
+        <p>From luxury properties to Airbnb optimization and property enhancement—we transform spaces into premium experiences that command higher value. Verified agents, staging services, and proven ROI strategies.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#categories">Browse Properties</a>
+          <a class="btn secondary" href="contact.html">Property Services</a>
+          <a class="btn dark-btn" href="#airbnb">Airbnb Setup</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section-dark">
+      <div class="fns-decorative-circle"></div>
+      <div class="section-header fns-section-header-centered">
+        <span class="section-badge">Property Excellence</span>
+        <h2 class="section-title-white">Verified Properties, Premium Services</h2>
+        <p class="section-desc-white">From Airbnb optimization to property staging, we maximize your investment value.</p>
+      </div>
+      <div class="home-stats fns-stats-glass">
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">500+</h3>
+          <p class="fns-stat-label-white">Verified Listings</p>
+        </div>
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">30%</h3>
+          <p class="fns-stat-label-white">ROI Increase</p>
+        </div>
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">50+</h3>
+          <p class="fns-stat-label-white">Expert Agents</p>
+        </div>
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">Full</h3>
+          <p class="fns-stat-label-white">Service Suite</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="marketplace-premium-highlight">
+      <h3>? Transform Properties into Premium Experiences</h3>
+      <p>Our real estate services go beyond traditional property transactions. We specialize in transforming spaces into premium experiences that command higher value—from Airbnb optimization with luxury furnishings to professional staging that accelerates sales. Verified agents, interior designers, and property experts work together to maximize your property's potential. Proven ROI strategies, premium furniture packages, and market expertise ensure your investment delivers exceptional returns.</p>
+      <div class="fns-trust-badges">
+        <span class="marketplace-trust-badge verified">? Verified Property Experts</span>
+        <span class="marketplace-trust-badge verified">? Premium Staging</span>
+        <span class="marketplace-trust-badge verified">? Airbnb Optimization</span>
+        <span class="marketplace-trust-badge verified">? Proven ROI Strategies</span>
+      </div>
+    </section>
+
+    <section class="content-section" id="categories">
+      <div class="section-header">
+        <span>Categories</span>
+        <h2>Premium Real Estate Categories</h2>
+        <p>Find the perfect property or service for your real estate and investment needs.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Properties for Sale" class="fns-product-card-image">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold">For Sale</span>
+            <h3 class="fns-product-title">Properties for Sale</h3>
+            <p class="fns-product-description">Houses, apartments, villas and land for sale in Nairobi and surrounding areas with verified listings.</p>
+            <div class="fns-product-tags">
+              <span class="fns-tag-petrol">Verified</span>
+              <span class="fns-tag-gold">Prime Location</span>
+            </div>
+            <a href="#properties" class="fns-btn-petrol">View Properties</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="Rental Properties" class="fns-product-card-image">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold">Rentals</span>
+            <h3 class="fns-product-title">Rental Properties</h3>
+            <p class="fns-product-description">Houses, apartments, rooms and vacation rentals for short and long-term stays in prime locations.</p>
+            <div class="fns-product-tags">
+              <span class="fns-tag-petrol">Verified</span>
+              <span class="fns-tag-gold">Prime Location</span>
+            </div>
+            <a href="#rentals" class="fns-btn-petrol">View Rentals</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-hover fns-product-card-bordered fns-product-card-relative">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Airbnb Setup" class="fns-product-card-image">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold">Airbnb</span>
+            <h3 class="fns-product-title">Airbnb Setup Services</h3>
+            <p class="fns-product-description">Complete furnishing, styling, photography and management for Airbnb properties to maximize rental income.</p>
+            <a href="contact.html" class="fns-btn-gold">Request Service</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Property Staging" class="fns-product-card-image">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold">Staging</span>
+            <h3 class="fns-product-title">Property Staging</h3>
+            <p class="fns-product-description">Pre-sale staging, virtual staging, decluttering and curb appeal enhancement for faster sales.</p>
+            <a href="contact.html" class="fns-btn-petrol">Request Service</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/flooring.jpg" alt="Property Upgrades" class="fns-product-card-image">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold">Upgrades</span>
+            <h3 class="fns-product-title">Property Upgrades</h3>
+            <p class="fns-product-description">Kitchen upgrades, bathroom renovations, flooring and lighting improvements to increase value.</p>
+            <a href="contact.html" class="fns-btn-petrol">Request Service</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
+          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
+          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Landlord Services" class="fns-product-card-image">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold">Landlord</span>
+            <h3 class="fns-product-title">Landlord Services</h3>
+            <p class="fns-product-description">Bulk renovations, property management, turnkey solutions and investment advisory for landlords.</p>
+            <a href="contact.html" class="fns-btn-petrol">Request Service</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section content-section-dark">
+      <div class="section-header">
+        <span class="section-badge">Furnostyles Property Services</span>
+        <h2 class="section-title-white">Premium Property Solutions</h2>
+        <p class="section-desc-white">Expert property services delivered directly by Furnostyles professionals.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3 class="fns-stat-title-gold">Airbnb Setup</h3>
+          <p class="fns-stat-desc-white">Complete Airbnb furnishing and styling for maximum rental income.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-gold">Property Staging</h3>
+          <p class="fns-stat-desc-white">Professional staging to sell your property faster and for more.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-gold">Property Upgrades</h3>
+          <p class="fns-stat-desc-white">Strategic upgrades to increase property value and appeal.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-gold">Investment Advisory</h3>
+          <p class="fns-stat-desc-white">Expert guidance on property investment and ROI optimization.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Why Choose Us</span>
+        <h2>Why Choose Furnostyles Real Estate</h2>
+        <p>Verified properties, expert services, and investment-focused solutions for your real estate needs.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3 class="fns-stat-title-petrol">Verified Listings</h3>
+          <p class="fns-stat-desc-charcoal">All properties verified for authenticity, ownership, and condition.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Expert Agents</h3>
+          <p class="fns-stat-desc-charcoal">Vetted real estate professionals with proven track records.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">ROI Focus</h3>
+          <p class="fns-stat-desc-charcoal">Investment-oriented services designed to maximize returns.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Full Service</h3>
+          <p class="fns-stat-desc-charcoal">Complete property solutions from search to enhancement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section-light">
+      <div class="section-header">
+        <span>Property Expertise</span>
+        <h2>Our Property Expertise</h2>
+        <p>Deep knowledge in real estate, property management, and investment optimization.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Property Investment" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Expertise</span>
+            <h3>Property Investment</h3>
+            <p>Expert guidance on property selection, valuation, and investment strategy.</p>
+            <a href="contact.html">Get Consultation</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Airbnb Management" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Expertise</span>
+            <h3>Airbnb Management</h3>
+            <p>Complete Airbnb setup, optimization, and guest experience design.</p>
+            <a href="contact.html">Explore Services</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Property Staging" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Expertise</span>
+            <h3>Property Staging</h3>
+            <p>Professional staging to maximize property appeal and sale value.</p>
+            <a href="contact.html">View Portfolio</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Property Upgrades" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Expertise</span>
+            <h3>Property Upgrades</h3>
+            <p>Strategic renovations and upgrades for maximum ROI.</p>
+            <a href="contact.html">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="airbnb">
+      <div class="section-header">
+        <span>Airbnb Optimization</span>
+        <h2>Maximize Your Airbnb Income</h2>
+        <p>Transform your property into a premium Airbnb listing with our comprehensive optimization services.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Airbnb Furnishing" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Furnishing</span>
+            <h3>Premium Furnishing</h3>
+            <p>Complete furnishing with durable, stylish pieces designed for short-term rentals.</p>
+            <a href="contact.html">Request Quote</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Professional Photography" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Photography</span>
+            <h3>Professional Photography</h3>
+            <p>High-quality photography that showcases your property in the best light.</p>
+            <a href="contact.html">Book Session</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Listing Optimization" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Optimization</span>
+            <h3>Listing Optimization</h3>
+            <p>Optimized descriptions, pricing strategy, and guest experience enhancement.</p>
+            <a href="contact.html">Learn More</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Guest Experience" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Experience</span>
+            <h3>Guest Experience</h3>
+            <p>Amenity packages, welcome kits, and 5-star guest experience design.</p>
+            <a href="contact.html">View Packages</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Property Enhancement Process</span>
+        <h2>How Property Enhancement Works</h2>
+        <p>Strategic process to increase your property value and market appeal.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3 class="fns-stat-title-petrol">1. Property Assessment</h3>
+          <p class="fns-stat-desc-charcoal">Comprehensive evaluation of your property's current condition and potential.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">2. Enhancement Plan</h3>
+          <p class="fns-stat-desc-charcoal">Customized enhancement strategy with ROI projections.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">3. Implementation</h3>
+          <p class="fns-stat-desc-charcoal">Professional execution of upgrades and improvements.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">4. Value Realization</h3>
+          <p class="fns-stat-desc-charcoal">Property positioned for maximum market value and appeal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section-light">
+      <div class="section-header">
+        <span>Quality Assurance</span>
+        <h2>Our Property Quality Standards</h2>
+        <p>Every property and service meets strict quality standards for your peace of mind.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3 class="fns-stat-title-petrol">Property Verification</h3>
+          <p class="fns-stat-desc-charcoal">All properties verified for ownership, condition, and legal compliance.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Agent Vetting</h3>
+          <p class="fns-stat-desc-charcoal">Real estate agents vetted for licenses, experience, and track record.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Service Standards</h3>
+          <p class="fns-stat-desc-charcoal">Strict quality control on all property services and enhancements.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Investment Protection</h3>
+          <p class="fns-stat-desc-charcoal">Guidance designed to protect and grow your property investment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section-light">
+      <div class="section-header">
+        <span>Featured</span>
+        <h2>Featured Premium Properties</h2>
+        <p>Handpicked properties from our real estate marketplace.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Modern Apartment" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">For Sale</span>
+            <h3>3-Bedroom Modern Apartment</h3>
+            <p>Modern apartment in Kasarani with premium finishes and ample parking.</p>
+            <a href="property-detail.html">View Property</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Family House" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">For Sale</span>
+            <h3>4-Bedroom Family House</h3>
+            <p>Spacious family house with garden, garage and modern amenities.</p>
+            <a href="property-detail.html">View Property</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Studio Apartment" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Rental</span>
+            <h3>Studio Apartment for Rent</h3>
+            <p>Modern studio apartment in prime location with all amenities included.</p>
+            <a href="property-detail.html">View Property</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="2-Bedroom Apartment" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Rental</span>
+            <h3>2-Bedroom Apartment</h3>
+            <p>Cozy 2-bedroom apartment with modern kitchen and secure parking.</p>
+            <a href="property-detail.html">View Property</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Verified Agents</span>
+        <h2>Verified Real Estate Agents</h2>
+        <p>Trusted real estate agents and property managers, vetted for reliability and expertise.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Real Estate Agent" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-blue-small">Verified Agent</span>
+            <h3>Premium Real Estate Agency</h3>
+            <p>Leading real estate agency with extensive property listings.</p>
+            <a href="contact.html">Contact Agent</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Property Manager" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-blue-small">Verified Agent</span>
+            <h3>Professional Property Management</h3>
+            <p>Full-service property management for landlords and investors.</p>
+            <a href="contact.html">Contact Agent</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Investment Advisor" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-blue-small">Verified Agent</span>
+            <h3>Property Investment Advisory</h3>
+            <p>Expert guidance on property investment and portfolio management.</p>
+            <a href="contact.html">Contact Agent</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section content-section-dark fns-section-large">
+      <div class="fns-decorative-circle-large"></div>
+      <div class="section-header fns-section-header-centered">
+        <span class="section-badge">Property Enhancement</span>
+        <h2 class="section-title-white section-title-large">Increase Your Property Value</h2>
+        <p class="section-desc-white section-desc-large">Strategic property enhancements that deliver measurable ROI and market appeal for your investment.</p>
+      </div>
+      <div class="home-stats fns-stats-glass">
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">30%</h3>
+          <p class="fns-stat-label-white">ROI Increase</p>
+        </div>
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">50+</h3>
+          <p class="fns-stat-label-white">Expert Agents</p>
+        </div>
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">Full</h3>
+          <p class="fns-stat-label-white">Service Suite</p>
+        </div>
+        <div class="fns-stat-card-glass">
+          <h3 class="fns-stat-number-gold">500+</h3>
+          <p class="fns-stat-label-white">Verified Listings</p>
+        </div>
+      </div>
+      <div class="fns-cta-centered">
+        <a class="btn primary fns-btn-gold" href="contact.html">Request Property Assessment</a>
+        <a class="btn secondary" href="contact.html">View Enhancement Portfolio</a>
+      </div>
+    </section>
+
+    <section class="content-section content-section-light fns-section-large">
+      <div class="fns-decorative-circle-petrol"></div>
+      <div class="section-header fns-section-header-centered">
+        <span class="section-badge section-badge-petrol">Complete Your Project</span>
+        <h2 class="section-title-large">Everything You Need for Your Property</h2>
+        <p class="section-desc-large">From furniture and materials to services—explore our complete ecosystem for your property transformation and investment projects.</p>
+      </div>
+
+      <div class="premium-preview-grid fns-grid-relative">
+        <article class="premium-product-card fns-product-card-bordered fns-product-card-white">
+          <div class="premium-product-info fns-product-info-padded">
+            <span class="fns-product-badge-blue">Furniture</span>
+            <h3 class="fns-product-title">Furniture Marketplace</h3>
+            <p class="fns-product-description-muted">Luxury furniture, custom pieces, and premium collections for property furnishing.</p>
+            <a href="furniture-marketplace.html" class="fns-btn-petrol">Explore Furniture</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-bordered fns-product-card-white">
+          <div class="premium-product-info fns-product-info-padded">
+            <span class="fns-product-badge-blue">Materials</span>
+            <h3 class="fns-product-title">Construction Materials</h3>
+            <p class="fns-product-description-muted">Building materials, finishing supplies, and bulk supply for property upgrades.</p>
+            <a href="materials-marketplace.html" class="fns-btn-petrol">Explore Materials</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-bordered fns-product-card-white">
+          <div class="premium-product-info fns-product-info-padded">
+            <span class="fns-product-badge-blue">Services</span>
+            <h3 class="fns-product-title">Professional Services</h3>
+            <p class="fns-product-description-muted">Verified professionals for installation, repairs, renovations, and property services.</p>
+            <a href="services-marketplace.html" class="fns-btn-petrol">Explore Services</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-product-card-bordered fns-product-card-white">
+          <div class="premium-product-info fns-product-info-padded">
+            <span class="fns-product-badge-blue">Sourcing</span>
+            <h3 class="fns-product-title">Global Sourcing</h3>
+            <p class="fns-product-description-muted">Imported products, custom sourcing, and verified international suppliers.</p>
+            <a href="sourcing-marketplace.html" class="fns-btn-petrol">Explore Sourcing</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section content-section-light">
+      <div class="section-header">
+        <span>Property Enhancement Ecosystem</span>
+        <h2>Our Complete Property Transformation Network</h2>
+        <p>From assessment to Airbnb optimization—our ecosystem maximizes your property's potential.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3 class="fns-stat-title-gold">Property Assessment</h3>
+          <p class="fns-stat-desc-white">Comprehensive evaluation of your property's enhancement potential.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Design Planning</h3>
+          <p class="fns-stat-desc-charcoal">Professional interior design and space optimization strategies.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Furnishing Solutions</h3>
+          <p class="fns-stat-desc-charcoal">Premium furniture selection and installation for guest comfort.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Airbnb Optimization</h3>
+          <p class="fns-stat-desc-charcoal">Data-driven strategies to maximize rental income and occupancy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Agent Partnership</span>
+        <h2>Become a Verified Real Estate Agent</h2>
+        <p>Partner with Furnostyles to reach premium property buyers and investors across Kenya.</p>
+      </div>
+      <div class="home-stats">
+        <div>
+          <h3 class="fns-stat-title-petrol">Easy Onboarding</h3>
+          <p class="fns-stat-desc-charcoal">Simple verification process to start listing properties.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Premium Exposure</h3>
+          <p class="fns-stat-desc-charcoal">Access to our network of premium buyers and investors.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Marketing Support</h3>
+          <p class="fns-stat-desc-charcoal">Promote your listings to our premium customer base.</p>
+        </div>
+        <div>
+          <h3 class="fns-stat-title-petrol">Reliable Commissions</h3>
+          <p class="fns-stat-desc-charcoal">Transparent commission structure and timely payments.</p>
+        </div>
+      </div>
+      <div class="fns-cta-centered">
+        <a class="btn primary" href="contact.html">Apply as Agent</a>
+      </div>
+    </section>
+
+    <section class="content-section fns-section-bg-light">
+      <div class="section-header">
+        <span class="fns-trust-badge">Property Upgrade Opportunities</span>
+        <h2>Maximize Your Property Value</h2>
+        <p>Enhance your property with our comprehensive furnishing, maintenance, and upgrade services.</p>
+      </div>
+      <div class="fns-project-complete-grid">
+        <div class="fns-project-complete-card">
+          <div class="icon">???</div>
+          <h3>Premium Furnishing</h3>
+          <p>Complete furnishing packages for rentals, Airbnb, and residential properties with premium furniture.</p>
+          <a href="furniture-marketplace.html">Explore Furniture ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Property Maintenance</h3>
+          <p>Ongoing maintenance and repair services to keep your property in excellent condition and protect your investment.</p>
+          <a href="repairs.html">Request Maintenance ?</a>
+        </div>
+        <div class="fns-project-complete-card">
+          <div class="icon">??</div>
+          <h3>Interior Design</h3>
+          <p>Professional interior design and staging services to maximize appeal and rental income.</p>
+          <a href="services-marketplace.html">Book Design Service ?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section fns-trust-section">
+      <div class="section-header">
+        <span class="fns-trust-badge">Frequently Requested Together</span>
+        <h2>What Property Owners Often Request Together</h2>
+        <p>Complete your property investment journey with these complementary services and products.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Furniture">
+          <div class="premium-product-info">
+            <span>Furniture</span>
+            <h3>Airbnb Furnishing Packages</h3>
+            <p>Complete furniture sets designed specifically for short-term rental properties and guest comfort.</p>
+            <a href="furniture-marketplace.html">View Packages</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/repair.jpg" alt="Repairs">
+          <div class="premium-product-info">
+            <span>Repairs</span>
+            <h3>Property Renovation Services</h3>
+            <p>Full renovation and upgrade services to modernize properties and increase market value.</p>
+            <a href="repairs.html">Explore Renovations</a>
+          </div>
+        </article>
+        <article class="premium-product-card fns-marketplace-card">
+          <img loading="lazy" src="assets/images/boards.jpg" alt="Materials">
+          <div class="premium-product-info">
+            <span>Materials</span>
+            <h3>Premium Building Materials</h3>
+            <p>Quality construction materials for property improvements, renovations, and upgrades.</p>
+            <a href="materials-marketplace.html">Browse Materials</a>
+          </div>
+        </article>
+      </div>
+    </section>
+        <a class="btn secondary" href="contact.html">Learn More</a>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-header">
+        <span>Get Started</span>
+        <h2>Find Your Perfect Property</h2>
+        <p>Browse properties or request property services from our experts.</p>
+      </div>
+      <div class="fns-cta-centered">
+        <a class="btn primary" href="#categories">Browse All Properties</a>
+        <a class="btn secondary" href="contact.html">Request Property Services</a>
+        <a class="btn dark-btn" href="contact.html">Become an Agent</a>
+      </div>
+    </section>
+
+    <section class="marketplace-featured-collection">
+      <div class="marketplace-featured-header">
+        <h2>Airbnb Upgrade Packages</h2>
+        <span class="marketplace-featured-badge">Premium ROI</span>
+      </div>
+      <div class="marketplace-featured-grid">
+        <article class="marketplace-property-card">
+          <img loading="lazy" src="assets/images/furniture.jpg" alt="Airbnb Starter" class="marketplace-property-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-property-type">Starter Package</span>
+          <span class="marketplace-property-status">Popular</span>
+          <div class="marketplace-property-info">
+            <div class="marketplace-property-location">?? Nairobi</div>
+            <h3 class="marketplace-property-title">Airbnb Starter Upgrade</h3>
+            <div class="marketplace-property-specs">
+              <div class="marketplace-property-spec">
+                <strong>1-2</strong>
+                Bedrooms
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>Basic</strong>
+                Furnishing
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>7 Days</strong>
+                Setup
+              </div>
+            </div>
+            <div class="marketplace-property-price">KES 150,000</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Property Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Upgrade Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-property-card">
+          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Airbnb Premium" class="marketplace-property-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-property-type">Premium Package</span>
+          <span class="marketplace-property-status">Featured</span>
+          <div class="marketplace-property-info">
+            <div class="marketplace-property-location">?? Nairobi</div>
+            <h3 class="marketplace-property-title">Airbnb Premium Upgrade</h3>
+            <div class="marketplace-property-specs">
+              <div class="marketplace-property-spec">
+                <strong>2-3</strong>
+                Bedrooms
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>Full</strong>
+                Furnishing
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>14 Days</strong>
+                Setup
+              </div>
+            </div>
+            <div class="marketplace-property-price">KES 350,000</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Property Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Upgrade Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-property-card">
+          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="Airbnb Luxury" class="marketplace-property-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-property-type">Luxury Package</span>
+          <span class="marketplace-property-status">Premium</span>
+          <div class="marketplace-property-info">
+            <div class="marketplace-property-location">?? Nairobi</div>
+            <h3 class="marketplace-property-title">Airbnb Luxury Upgrade</h3>
+            <div class="marketplace-property-specs">
+              <div class="marketplace-property-spec">
+                <strong>3+</strong>
+                Bedrooms
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>Luxury</strong>
+                Furnishing
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>21 Days</strong>
+                Setup
+              </div>
+            </div>
+            <div class="marketplace-property-price">KES 650,000</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Property Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Upgrade Quote</button>
+            </div>
+          </div>
+        </article>
+        <article class="marketplace-property-card">
+          <img loading="lazy" src="assets/images/interior-kitchen.jpg" alt="Property Staging" class="marketplace-property-image">
+          <button class="marketplace-save-btn" aria-label="Save to favorites">?</button>
+          <span class="marketplace-property-type">Staging Service</span>
+          <span class="marketplace-property-status">Available</span>
+          <div class="marketplace-property-info">
+            <div class="marketplace-property-location">?? Kenya Wide</div>
+            <h3 class="marketplace-property-title">Property Staging Service</h3>
+            <div class="marketplace-property-specs">
+              <div class="marketplace-property-spec">
+                <strong>Any</strong>
+                Size
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>Custom</strong>
+                Design
+              </div>
+              <div class="marketplace-property-spec">
+                <strong>Flexible</strong>
+                Timeline
+              </div>
+            </div>
+            <div class="marketplace-property-price">Custom Quote</div>
+            <div class="marketplace-engagement-bar">
+              <button class="marketplace-engagement-btn">?? Property Consultation</button>
+              <button class="marketplace-engagement-btn">?? Get Upgrade Quote</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section content-section-light">
+      <div class="section-header">
+        <span>Ecosystem</span>
+        <h2>Need Furniture for Your Property?</h2>
+        <p>Complete your Airbnb or property upgrade with premium furniture from our handcrafted collection.</p>
+      </div>
+      <div class="premium-preview-grid">
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Sofa" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Furniture</span>
+            <h3>Premium Sofas</h3>
+            <p>Luxury sofas perfect for Airbnb properties and premium living spaces.</p>
+            <a href="furniture-marketplace.html">Browse Furniture</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="Bedroom" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Furniture</span>
+            <h3>Premium Beds</h3>
+            <p>Handcrafted beds and bedroom sets for guest comfort and luxury.</p>
+            <a href="furniture-marketplace.html">Browse Furniture</a>
+          </div>
+        </article>
+        <article class="premium-product-card">
+          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design" class="fns-product-card-image-small">
+          <div class="premium-product-info">
+            <span class="fns-product-badge-gold-small">Services</span>
+            <h3>Interior Design</h3>
+            <p>Professional interior design services to maximize your property's appeal.</p>
+            <a href="services-marketplace.html">Book Service</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <section class="content-section">
+      <div id="mpCategoryTabs"></div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">?</span> Featured Properties</h2>
+        <p class="mp-browse-section-sub">Premium properties in prime locations across Kenya.</p>
+      </div>
+      <div id="mpFeaturedGrid"></div>
+    </section>
+
+    <!-- Newest Properties -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> New Listings</h2>
+        <p class="mp-browse-section-sub">Fresh property listings just added.</p>
+      </div>
+      <div id="mpNewestGrid"></div>
+    </section>
+
+    <!-- Most Viewed Placeholder -->
+    <section class="content-section">
+      <div class="mp-most-viewed">
+        <div class="mp-most-viewed-icon">???</div>
+        <h3>Most Viewed</h3>
+        <p>Popular properties trending this week. Coming soon!</p>
+      </div>
+    </section>
+
+    <!-- Recommended by Furnostyles -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Recommended by Furnostyles</h2>
+        <p class="mp-browse-section-sub">Properties we recommend for quality and value.</p>
+      </div>
+      <div id="mpRecommendedGrid"></div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="content-section mp-browse-section">
+      <div class="mp-section-head">
+        <h2 class="mp-browse-section-title"><span class="icon">??</span> Related Services</h2>
+        <p class="mp-browse-section-sub">Property staging, Airbnb setup, and renovation services.</p>
+      </div>
+      <div id="mpRelatedServicesGrid"></div>
+    </section>
+
+    <!-- Live Property Listings -->
+    <section class="content-section" id="live-listings-section" data-marketplace-type="property">
+      <div class="mp-section-head">
+        <h2 class="mp-section-title">All Property Listings</h2>
+        <p class="mp-section-sub">Admin-approved residential and commercial properties available now.</p>
+      </div>
+      <div class="mp-filter-bar">
+        <span class="mp-filter-label">Sort by:</span>
+        <select id="mpSortSel" class="mp-filter-sel">
+          <option value="newest">Newest First</option>
+          <option value="price_low">Price: Low to High</option>
+          <option value="price_high">Price: High to Low</option>
+        </select>
+        <span class="mp-count" id="mpCountEl"></span>
+      </div>
+      <div id="mpMainGrid" class="fns-product-grid"></div>
+    </section>
+    <section class="content-section" id="mpRecs"></section>
+
+    <section class="content-section content-section-light">
+      <div class="section-header">
+        <span>Get Started</span>
+        <h2>Interested in Property Services?</h2>
+        <p>Contact us for property inquiries, Airbnb setup, staging services, or agent partnership.</p>
+      </div>
+      <div class="fns-form-container">
+        <div id="inquiryFormContainer"></div>
+      </div>
+    </section>
+    </main>
+  </div>
+
+  <a class="cart-float" href="cart.html">Cart <span data-cart-count>0</span></a>
+  <a class="chat-float" href="https://wa.me/254713639205" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+
+  <div id="fld-footer-mount"></div>
+
+  <script defer src="js/main.js"></script>
+  <script defer src="shared/firebase/firebase-config.js"></script>
+  <script defer src="shared/firebase/firebase-bridge.js"></script>
+  <script defer src="shared/firebase/firebase-init.js"></script>
+  <script defer src="shared/auth/auth-state.js"></script>
+  <script defer src="shared/uploads/upload-bridge.js"></script>
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+  
+  <script defer src="shared/rendering/public-filter.js"></script>
+  <script defer src="shared/rendering/marketplace-renderer.js"></script>
+  <script defer src="shared/rendering/property-renderer.js"></script>
+  <script defer src="shared/rendering/repair-renderer.js"></script>
+  <script defer src="shared/rendering/recommendation-renderer.js"></script>
+
+  <!-- Inquiry System -->
+  <script defer src="shared/inquiries/inquiry-types.js"></script>
+  <script defer src="shared/inquiries/inquiry-validation.js"></script>
+  <script defer src="shared/inquiries/inquiry-config.js"></script>
+  <script defer src="shared/inquiries/inquiry-service.js"></script>
+  <script defer src="shared/inquiries/inquiry-ui.js"></script>
+  
+  <script>
+    (function () {
+      'use strict';
+      
+      document.addEventListener('DOMContentLoaded', function () {
+        var container = document.getElementById('inquiryFormContainer');
+        if (container && window.FurnostylesInquiryUI) {
+          window.FurnostylesInquiryUI.renderInquiryForm(container, {
+            page: 'realestate-marketplace.html',
+            relatedCategory: 'real_estate',
+            prefillMessage: 'I am interested in property services, Airbnb setup, or agent partnership.'
+          });
+        }
+      });
+      
+    }());
+  </script>
+  <script>
+    (function () {
+      'use strict';
+      var allItems = []; var sortKey = 'newest';
+      function load() {
+        var grid = document.getElementById('mpMainGrid');
+        var R = window.FurnostylesPropertyRenderer, F = window.FurnostylesPublicFilter;
+        if (!R || !F) return;
+        R.renderLoadingGrid(grid);
+        F.getApprovedProperties()
+          .then(function (items) {
+            allItems = items || [];
+            var c = document.getElementById('mpCountEl');
+            if (c) c.textContent = allItems.length + ' propert' + (allItems.length !== 1 ? 'ies' : 'y');
+            R.renderGrid(grid, F.sortItems(allItems, sortKey));
+            var rc = document.getElementById('mpRecs');
+            if (window.FurnostylesRecommendationRenderer && rc) {
+              window.FurnostylesRecommendationRenderer.loadAndRender(rc, [
+                { title: 'Renovation Services', promise: F.getApprovedRepairs(null, 6), renderer: 'repair' },
+                { title: 'Furniture for Your New Home', promise: F.getApprovedByType('furniture', null, 6), renderer: 'listing' }
+              ]);
+            }
+          })
+          .catch(function (err) { R.renderError(grid, err.message); });
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var sel = document.getElementById('mpSortSel');
+        if (sel) sel.addEventListener('change', function () {
+          sortKey = this.value;
+          var R = window.FurnostylesPropertyRenderer, F = window.FurnostylesPublicFilter;
+          if (R && F) R.renderGrid(document.getElementById('mpMainGrid'), F.sortItems(allItems, sortKey));
+        });
+        load();
+      });
+    }());
+  </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase Config & Init -->
+  <script src="shared/firebase/firebase-config.js"></script>
+  <script src="shared/firebase/firebase-init.js"></script>
+  <!-- Firebase Bridge -->
+  <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Auth, Session -->
+  <script src="assets/js/session.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+  <!-- Auth State Manager -->
+  <script src="assets/js/auth-state.js" defer></script>
+</body>
+</html>
