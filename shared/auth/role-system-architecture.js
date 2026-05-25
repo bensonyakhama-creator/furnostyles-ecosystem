@@ -38,14 +38,55 @@
         'update:own-profile'
       ],
       features: ['saved-items', 'inquiries', 'orders', 'profile'],
-      canUpgradeTo: ['vendor', 'provider', 'property-owner']
+      canUpgradeTo: ['individual-seller', 'individual-landlord', 'vendor', 'provider', 'property-owner']
     },
-    
+
+    INDIVIDUAL_SELLER: {
+      id: 'individual-seller',
+      name: 'Individual Seller',
+      description: 'Non-business individuals selling secondhand items (minimal verification)',
+      level: 2,
+      dashboard: 'vendor/dashboard.html',
+      permissions: [
+        'view:products',
+        'view:services',
+        'create:secondhand-products',
+        'update:own-products',
+        'delete:own-products',
+        'respond:inquiries',
+        'view:own-inquiries',
+        'view:own-orders',
+        'update:own-profile'
+      ],
+      features: ['products', 'inquiries', 'orders', 'reviews', 'profile'],
+      canUpgradeTo: ['vendor']
+    },
+
+    INDIVIDUAL_LANDLORD: {
+      id: 'individual-landlord',
+      name: 'Individual Landlord',
+      description: 'Individual property owners without business registration (minimal verification)',
+      level: 2,
+      dashboard: 'property-owner/dashboard.html',
+      permissions: [
+        'view:properties',
+        'create:properties',
+        'update:own-properties',
+        'delete:own-properties',
+        'respond:inquiries',
+        'view:own-inquiries',
+        'view:own-orders',
+        'update:own-profile'
+      ],
+      features: ['properties', 'inquiries', 'orders', 'reviews', 'profile'],
+      canUpgradeTo: ['property-owner']
+    },
+
     VENDOR: {
       id: 'vendor',
       name: 'Vendor',
-      description: 'Product and service providers who list items and respond to inquiries',
-      level: 2,
+      description: 'Business product and service providers with full verification',
+      level: 3,
       dashboard: 'vendor/dashboard.html',
       permissions: [
         'view:products',
@@ -69,7 +110,7 @@
       id: 'provider',
       name: 'Service Provider',
       description: 'Professional service providers (contractors, designers, etc.)',
-      level: 2,
+      level: 3,
       dashboard: 'provider/dashboard.html',
       permissions: [
         'view:products',
@@ -85,12 +126,12 @@
       features: ['services', 'inquiries', 'orders', 'reviews', 'profile', 'portfolio'],
       canUpgradeTo: []
     },
-    
+
     CONTRACTOR: {
       id: 'contractor',
       name: 'Contractor',
       description: 'Construction and renovation contractors',
-      level: 2,
+      level: 3,
       dashboard: 'provider/dashboard.html',
       permissions: [
         'view:products',
@@ -106,12 +147,12 @@
       features: ['services', 'inquiries', 'orders', 'reviews', 'profile', 'portfolio'],
       canUpgradeTo: []
     },
-    
+
     PROPERTY_OWNER: {
       id: 'property-owner',
       name: 'Property Owner',
-      description: 'Property owners listing properties for sale or rent',
-      level: 2,
+      description: 'Business property owners with full verification',
+      level: 3,
       dashboard: 'property-owner/dashboard.html',
       permissions: [
         'view:properties',
@@ -126,12 +167,12 @@
       features: ['properties', 'inquiries', 'orders', 'reviews', 'profile'],
       canUpgradeTo: []
     },
-    
+
     AGENT: {
       id: 'agent',
       name: 'Real Estate Agent',
       description: 'Real estate agents and brokers',
-      level: 2,
+      level: 3,
       dashboard: 'agent/dashboard.html',
       permissions: [
         'view:properties',
@@ -201,9 +242,10 @@
   var RoleHierarchy = {
     levels: {
       1: ['client'],
-      2: ['vendor', 'provider', 'contractor', 'property-owner', 'agent'],
-      3: ['admin'],
-      4: ['super-admin']
+      2: ['individual-seller', 'individual-landlord'],
+      3: ['vendor', 'provider', 'contractor', 'property-owner', 'agent'],
+      4: ['admin'],
+      5: ['super-admin']
     },
     
     /**

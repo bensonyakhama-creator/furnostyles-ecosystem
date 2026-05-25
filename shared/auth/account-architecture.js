@@ -35,13 +35,57 @@
         'track:own-orders'
       ],
       dashboard: 'client/dashboard.html',
-      features: ['saved-items', 'inquiries', 'orders', 'profile']
+      features: ['saved-items', 'inquiries', 'orders', 'profile'],
+      verificationLevel: 'none'
     },
-    
+
+    INDIVIDUAL_SELLER: {
+      id: 'individual-seller',
+      name: 'Individual Seller',
+      description: 'Non-business individuals selling secondhand items (minimal verification)',
+      permissions: [
+        'view:products',
+        'view:services',
+        'create:secondhand-products',
+        'update:own-products',
+        'delete:own-products',
+        'respond:inquiries',
+        'view:own-inquiries',
+        'view:own-orders',
+        'update:own-profile'
+      ],
+      dashboard: 'vendor/dashboard.html',
+      features: ['products', 'inquiries', 'orders', 'reviews', 'profile'],
+      verificationLevel: 'basic',
+      verificationRequirements: ['phone', 'id'],
+      canUpgradeTo: ['vendor']
+    },
+
+    INDIVIDUAL_LANDLORD: {
+      id: 'individual-landlord',
+      name: 'Individual Landlord',
+      description: 'Individual property owners without business registration (minimal verification)',
+      permissions: [
+        'view:properties',
+        'create:properties',
+        'update:own-properties',
+        'delete:own-properties',
+        'respond:inquiries',
+        'view:own-inquiries',
+        'view:own-orders',
+        'update:own-profile'
+      ],
+      dashboard: 'property-owner/dashboard.html',
+      features: ['properties', 'inquiries', 'orders', 'reviews', 'profile'],
+      verificationLevel: 'basic',
+      verificationRequirements: ['phone', 'id'],
+      canUpgradeTo: ['property-owner']
+    },
+
     VENDOR: {
       id: 'vendor',
       name: 'Vendor',
-      description: 'Product and service providers who list items and respond to inquiries',
+      description: 'Business product and service providers with full verification',
       permissions: [
         'view:products',
         'view:services',
@@ -56,7 +100,9 @@
         'view:own-orders'
       ],
       dashboard: 'vendor/dashboard.html',
-      features: ['products', 'services', 'inquiries', 'orders', 'reviews', 'profile', 'analytics']
+      features: ['products', 'services', 'inquiries', 'orders', 'reviews', 'profile', 'analytics'],
+      verificationLevel: 'full',
+      verificationRequirements: ['phone', 'id', 'business-license', 'tax-registration', 'bank-account']
     },
     
     PROVIDER: {
@@ -74,13 +120,15 @@
         'view:own-orders'
       ],
       dashboard: 'provider/dashboard.html',
-      features: ['services', 'inquiries', 'orders', 'reviews', 'profile', 'portfolio']
+      features: ['services', 'inquiries', 'orders', 'reviews', 'profile', 'portfolio'],
+      verificationLevel: 'full',
+      verificationRequirements: ['phone', 'id', 'business-license', 'tax-registration', 'bank-account']
     },
-    
+
     PROPERTY_OWNER: {
       id: 'property-owner',
       name: 'Property Owner',
-      description: 'Property owners listing properties for sale or rent',
+      description: 'Business property owners with full verification',
       permissions: [
         'view:properties',
         'create:properties',
@@ -91,7 +139,9 @@
         'view:own-orders'
       ],
       dashboard: 'property-owner/dashboard.html',
-      features: ['properties', 'inquiries', 'orders', 'reviews', 'profile']
+      features: ['properties', 'inquiries', 'orders', 'reviews', 'profile'],
+      verificationLevel: 'full',
+      verificationRequirements: ['phone', 'id', 'business-license', 'tax-registration', 'bank-account']
     },
     
     ADMIN: {
@@ -111,7 +161,8 @@
         'manage:settings'
       ],
       dashboard: 'admin/dashboard.html',
-      features: ['users', 'vendors', 'products', 'services', 'properties', 'inquiries', 'orders', 'reports', 'settings']
+      features: ['users', 'vendors', 'products', 'services', 'properties', 'inquiries', 'orders', 'reports', 'settings'],
+      verificationLevel: 'none'
     }
   };
 
@@ -154,7 +205,32 @@
     verification: {
       emailVerified: 'boolean',
       phoneVerified: 'boolean',
-      verifiedAt: 'timestamp'
+      verifiedAt: 'timestamp',
+      verificationLevel: 'string', // 'none', 'basic', 'full'
+      verificationStatus: 'string', // 'pending', 'verified', 'rejected'
+      documents: {
+        id: {
+          uploaded: 'boolean',
+          verified: 'boolean',
+          url: 'string'
+        },
+        businessLicense: {
+          uploaded: 'boolean',
+          verified: 'boolean',
+          url: 'string'
+        },
+        taxRegistration: {
+          uploaded: 'boolean',
+          verified: 'boolean',
+          url: 'string'
+        },
+        bankAccount: {
+          uploaded: 'boolean',
+          verified: 'boolean',
+          accountNumber: 'string',
+          bankName: 'string'
+        }
+      }
     },
     
     metadata: {
@@ -276,34 +352,57 @@
       console.log('createClient will be implemented when auth is integrated');
       return Promise.resolve({ success: true, userId: 'placeholder' });
     },
-    
+
     /**
-     * Vendor account creation
+     * Individual seller account creation (minimal verification)
+     */
+    createIndividualSeller: function (email, password, userData) {
+      // Future implementation: Create individual seller account
+      // Only requires phone and ID verification
+      console.log('createIndividualSeller will be implemented when auth is integrated');
+      return Promise.resolve({ success: true, userId: 'placeholder' });
+    },
+
+    /**
+     * Individual landlord account creation (minimal verification)
+     */
+    createIndividualLandlord: function (email, password, userData) {
+      // Future implementation: Create individual landlord account
+      // Only requires phone and ID verification
+      console.log('createIndividualLandlord will be implemented when auth is integrated');
+      return Promise.resolve({ success: true, userId: 'placeholder' });
+    },
+
+    /**
+     * Vendor account creation (full verification)
      */
     createVendor: function (email, password, userData) {
       // Future implementation: Create vendor account
+      // Requires full business documentation
       console.log('createVendor will be implemented when auth is integrated');
       return Promise.resolve({ success: true, userId: 'placeholder' });
     },
-    
+
     /**
-     * Provider account creation
+     * Provider account creation (full verification)
      */
     createProvider: function (email, password, userData) {
       // Future implementation: Create provider account
+      // Requires full business documentation
       console.log('createProvider will be implemented when auth is integrated');
       return Promise.resolve({ success: true, userId: 'placeholder' });
     },
-    
+
     /**
-     * Property owner account creation
+     * Property owner account creation (full verification)
      */
     createPropertyOwner: function (email, password, userData) {
       // Future implementation: Create property owner account
+      // Requires full business documentation
       console.log('createPropertyOwner will be implemented when auth is integrated');
       return Promise.resolve({ success: true, userId: 'placeholder' });
     },
-    
+
     /**
      * Admin account creation
      */
