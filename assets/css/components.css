@@ -3123,6 +3123,122 @@
   border: 1px solid var(--fns-petrol-blue);
 }
 
+.btn.full-width {
+  width: 100%;
+  display: block;
+}
+
+/* AUTH PAGE STYLES */
+.auth-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px;
+  background: var(--fns-white);
+  border-radius: var(--fns-radius-lg);
+  box-shadow: var(--fns-shadow-lg);
+}
+
+.auth-container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--fns-petrol-blue);
+  margin-bottom: 8px;
+}
+
+.auth-container > p {
+  color: var(--fns-text-secondary);
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--fns-charcoal);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--fns-border);
+  border-radius: var(--fns-radius-md);
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--fns-gold-primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.forgot-link {
+  display: block;
+  text-align: right;
+  color: var(--fns-petrol-blue);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.social-login {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.social-login p {
+  color: var(--fns-text-secondary);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--fns-white);
+  border: 1px solid var(--fns-border);
+  border-radius: var(--fns-radius-md);
+  font-weight: 600;
+  color: var(--fns-charcoal);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.google-btn:hover {
+  background: var(--fns-warm-white);
+  border-color: var(--fns-petrol-blue);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--fns-text-secondary);
+}
+
+.auth-footer a {
+  color: var(--fns-petrol-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
 .btn.dark-btn:hover {
   background: linear-gradient(135deg, var(--fns-gold-primary) 0%, var(--fns-gold-light) 100%);
   color: var(--fns-petrol-blue);
