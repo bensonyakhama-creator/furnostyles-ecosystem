@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up | Furnostyles — Personal Luxury. Elevated.</title>
+  <title>Sign Up | Furnostyles â€” Personal Luxury. Elevated.</title>
   <meta name="description" content="Create your Furnostyles account to access premium furniture, materials, and services.">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/layout.css">
@@ -12,62 +12,54 @@
   <link rel="stylesheet" href="shared/layout/footer.css">
 </head>
 <body>
-  <div class="premium-topbar">
-    <span><strong>Furnostyles</strong> Personal Luxury. Elevated.</span>
-    <span><b>Kasarani, Nairobi</b><b>+254 713 639 205</b><b>furnostyles@gmail.com</b></span>
-  </div>
-
-  <header class="premium-header">
-    <a class="premium-brand" href="index.html" aria-label="Furnostyles Home">
-      <span>Furnostyles</span>
-    </a>
-  </header>
+  <div id="fns-header-mount"></div>
 
   <div class="premium-layout">
     <main class="premium-main">
       <div class="auth-container">
         <h1>Create Account</h1>
         <p>Join Furnostyles for premium furniture, materials, and services.</p>
-        
+
         <form id="registerForm">
           <div class="form-group">
             <label for="fullName">Full Name</label>
             <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
           </div>
-          
+
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required placeholder="your@email.com">
           </div>
-          
+
           <div class="form-group">
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" required placeholder="+254 7XX XXX XXX">
           </div>
-          
+
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required placeholder="Min 6 characters" minlength="6">
+            <input type="password" id="password" name="password" required placeholder="Create a strong password">
           </div>
-          
+
           <div class="form-group">
-            <label for="role">I am a</label>
-            <select id="role" name="role" required>
-              <option value="buyer">Buyer / Client</option>
-              <option value="vendor">Vendor / Artisan</option>
-              <option value="landlord">Property Owner / Landlord</option>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+          </div>
+
+          <div class="form-group">
+            <label for="role">Account Type</label>
+            <select id="role" name="role">
+              <option value="client">Client (Buyer)</option>
+              <option value="individual-seller">Individual Seller (Secondhand)</option>
+              <option value="individual-landlord">Individual Landlord</option>
+              <option value="vendor">Business Vendor</option>
+              <option value="provider">Service Provider</option>
+              <option value="property-owner">Property Owner</option>
             </select>
           </div>
 
           <button type="submit" class="btn primary full-width">Create Account</button>
         </form>
-
-        <div class="social-login">
-          <p>Or continue with</p>
-          <button id="googleSignUpBtn" class="btn google-btn">
-            <span>Google</span>
-          </button>
-        </div>
 
         <p class="auth-footer">
           Already have an account? <a href="login.html">Sign in</a>
@@ -91,19 +83,24 @@
   <script src="assets/js/firestore.js" defer></script>
   <script src="assets/js/session.js" defer></script>
   <script src="assets/js/auth.js" defer></script>
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="shared/layout/footer-render.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
 
   <script>
     (function() {
       'use strict';
-      
+
       var form = document.getElementById('registerForm');
       var fullNameInput = document.getElementById('fullName');
       var emailInput = document.getElementById('email');
       var phoneInput = document.getElementById('phone');
       var passwordInput = document.getElementById('password');
-      var roleInput = document.getElementById('role');
-      var googleBtn = document.getElementById('googleSignUpBtn');
-      
+      var confirmPasswordInput = document.getElementById('confirmPassword');
+      var roleSelect = document.getElementById('role');
+
       function setLoading(loading) {
         var btn = form.querySelector('button[type="submit"]');
         if (loading) {
@@ -114,45 +111,50 @@
           btn.textContent = 'Create Account';
         }
       }
-      
+
       function showErr(msg) {
         alert(msg);
       }
-      
+
       function showSuc(msg) {
         alert(msg);
       }
-      
-      function getRedirect() {
-        var urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('redirect') || 'index.html';
-      }
-      
-      function saveLocalUser(user) {
-        localStorage.setItem('fns_local_user', JSON.stringify(user));
-      }
-      
-      // Email/password registration
+
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         var fullName = fullNameInput.value.trim();
         var email = emailInput.value.trim();
         var phone = phoneInput.value.trim();
         var password = passwordInput.value;
-        var role = roleInput.value;
-        
-        if (!fullName || !email || !phone || !password) {
+        var confirmPassword = confirmPasswordInput.value;
+        var role = roleSelect.value;
+
+        if (!fullName || !email || !phone || !password || !confirmPassword) {
           showErr('Please fill in all fields');
           return;
         }
-        
+
+        if (password !== confirmPassword) {
+          showErr('Passwords do not match');
+          return;
+        }
+
+        if (password.length < 6) {
+          showErr('Password must be at least 6 characters');
+          return;
+        }
+
         setLoading(true);
-        
+
         if (window.FurnostylesAuth) {
-          window.FurnostylesAuth.registerWithEmailAndPassword(email, password, fullName, phone, role)
+          window.FurnostylesAuth.signUp(email, password, {
+            fullName: fullName,
+            phone: phone,
+            role: role
+          })
             .then(function(user) {
               showSuc('Account created successfully! Redirecting...');
-              setTimeout(function() { location.href = getRedirect(); }, 700);
+              setTimeout(function() { location.href = 'login.html'; }, 1500);
             })
             .catch(function(err) {
               setLoading(false);
@@ -161,28 +163,6 @@
         } else {
           setLoading(false);
           showErr('Auth system not loaded. Please refresh the page.');
-        }
-      });
-      
-      // Google sign-up
-      googleBtn.addEventListener('click', function() {
-        if (window.FurnostylesAuth) {
-          setLoading(true);
-          window.FurnostylesAuth.signInWithGoogle()
-            .then(function(user) {
-              showSuc('Google sign up successful! Redirecting...');
-              setTimeout(function() { location.href = getRedirect(); }, 700);
-            })
-            .catch(function(err) {
-              setLoading(false);
-              showErr('Google sign up failed: ' + err.message);
-            });
-        } else {
-          /* Local demo mode */
-          var demo = { uid: 'google_demo', email: 'demo@furnostyles.com', displayName: 'Demo User' };
-          saveLocalUser(demo);
-          showSuc('Demo sign up successful! Redirecting...');
-          setTimeout(function() { location.href = getRedirect(); }, 700);
         }
       });
     })();
