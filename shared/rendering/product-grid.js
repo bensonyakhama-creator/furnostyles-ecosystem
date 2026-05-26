@@ -145,28 +145,37 @@
 
       const stockColor = product.stock === 'In Stock' || product.stock === 'Available' ? '#28a745' : '#dc3545';
 
+      // Add marketplace to product for cart/wishlist
+      product.marketplace = this.marketplaceType;
+
       return `
-        <a href="product-detail.html?id=${product.id}" class="mp-card">
+        <div class="mp-card">
           <div class="mp-card-img-wrap">
-            <img src="${product.image}" alt="${product.title}" class="mp-card-img" loading="lazy">
+            <a href="product-detail.html?id=${product.id}">
+              <img src="${product.image}" alt="${product.title}" class="mp-card-img" loading="lazy">
+            </a>
             ${discountBadge}
             ${featuredBadge}
+            <button onclick="event.preventDefault(); window.FurnostylesWishlist && window.FurnostylesWishlist.addToWishlist(${JSON.stringify(product).replace(/"/g, '&quot;')})" style="position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">❤️</button>
           </div>
           <div class="mp-card-body">
-            <div class="mp-card-cat">${product.category}</div>
-            <div class="mp-card-title">${product.title}</div>
-            <div class="mp-card-desc">${product.description.substring(0, 80)}...</div>
-            <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-              <span style="color: #ffc107; font-size: 14px;">★ ${product.rating}</span>
-              <span style="color: #8090a0; font-size: 12px;">(${product.reviews} reviews)</span>
-            </div>
-            <div class="mp-card-location">📍 ${product.location} • ${product.seller}</div>
-            <div style="margin: 8px 0;">${priceDisplay}</div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-top: auto;">
-              <span style="color: ${stockColor}; font-size: 12px; font-weight: 600;">● ${product.stock}</span>
-            </div>
+            <a href="product-detail.html?id=${product.id}" style="text-decoration: none; color: inherit;">
+              <div class="mp-card-cat">${product.category}</div>
+              <div class="mp-card-title">${product.title}</div>
+              <div class="mp-card-desc">${product.description.substring(0, 80)}...</div>
+              <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
+                <span style="color: #ffc107; font-size: 14px;">★ ${product.rating}</span>
+                <span style="color: #8090a0; font-size: 12px;">(${product.reviews} reviews)</span>
+              </div>
+              <div class="mp-card-location">📍 ${product.location} • ${product.seller}</div>
+              <div style="margin: 8px 0;">${priceDisplay}</div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-top: auto;">
+                <span style="color: ${stockColor}; font-size: 12px; font-weight: 600;">● ${product.stock}</span>
+              </div>
+            </a>
+            <button onclick="event.preventDefault(); window.FurnostylesShoppingCart && window.FurnostylesShoppingCart.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})" style="width: 100%; margin-top: 12px; padding: 10px; background: #0b3b46; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;">Add to Cart</button>
           </div>
-        </a>
+        </div>
       `;
     },
 
