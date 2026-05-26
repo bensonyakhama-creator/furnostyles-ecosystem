@@ -171,6 +171,129 @@ Category pages rely on demo data from products-demo.js. The category filter may 
 
 ---
 
+## 9. IMAGE AND PAGE SIZE AUDIT (May 27, 2026)
+
+### Files Examined
+- All images in `assets/images/` directory (218 files)
+- All HTML pages in root directory (46 files)
+
+### Image Audit Findings
+
+#### Total Image Statistics
+- **Total Images:** 218 files
+- **Total Size:** 150.49 MB
+- **Average Size:** ~690 KB per image
+
+#### Largest Images (Top 10)
+1. sofa-black-used-pair.jpg - 6.3 MB
+2. 2.jpg - 6.3 MB
+3. pexels-alec-35285574.jpg - 4.2 MB
+4. IMG_20251128_144552_MP.jpg - 4.0 MB
+5. table-coffee-glass-modern.jpg - 4.0 MB
+6. pexels-tima-miroshnichenko-6474121.jpg - 3.8 MB
+7. repair.jpg - 3.8 MB
+8. repair-painting.jpg - 3.8 MB
+9. pexels-aysegul-aytoren-46790226-17634565.jpg - 3.5 MB
+10. bed-dark-wood-suite-1.jpg - 3.4 MB
+
+#### Issues Found
+
+#### 9.1 Oversized Images
+**Severity:** HIGH
+**Location:** assets/images/
+
+Multiple images exceed 3 MB, which is excessive for web use:
+- 2 images at 6.3 MB each
+- 1 image at 4.2 MB
+- 2 images at 4.0 MB
+- 4 images at 3.5-3.8 MB
+
+**Impact:**
+- Slow page load times
+- Poor user experience on slow connections
+- High bandwidth usage
+- Potential SEO penalty for slow sites
+
+**Recommendation:**
+- Compress all images above 1 MB to under 500 KB
+- Use WebP format for better compression
+- Implement lazy loading for images
+- Use responsive images with srcset for different screen sizes
+- Consider using a CDN for image delivery
+
+#### 9.2 Large HTML Page Sizes
+**Severity:** MEDIUM
+**Location:** Root directory
+
+Largest HTML pages:
+1. materials-marketplace.html - 72.5 KB
+2. furniture-marketplace.html - 70.3 KB
+3. services-marketplace.html - 64.0 KB
+4. realestate-marketplace.html - 59.9 KB
+5. marketplace.html - 55.5 KB
+
+**Impact:**
+- Slower initial page render
+- Larger DOM to parse
+- Increased memory usage
+
+**Recommendation:**
+- Implement server-side rendering or static generation for marketplace pages
+- Use pagination instead of loading all products at once
+- Minify HTML, CSS, and JavaScript
+- Remove unused CSS and JavaScript
+- Consider code splitting for large pages
+
+#### 9.3 Image Naming Inconsistency
+**Severity:** LOW
+**Location:** assets/images/
+
+Inconsistent naming patterns:
+- Some files use descriptive names (sofa-black-used-pair.jpg)
+- Some use timestamps (1700913605754.jpg)
+- Some use Instagram IDs (464605278_399493566566020_4619312308634317938_n.jpg)
+- Some use WhatsApp naming (IMG-20230923-WA0107.jpg)
+
+**Impact:**
+- Difficult to manage and maintain
+- Hard to identify images without opening them
+- Poor SEO for image search
+
+**Recommendation:**
+- Establish consistent naming convention
+- Rename files to be descriptive and SEO-friendly
+- Use hyphens instead of underscores
+- Include dimensions in filename (e.g., sofa-black-800x600.jpg)
+
+### Optimization Recommendations
+
+#### Immediate Actions (High Priority)
+1. **Compress all images above 1 MB** - Use tools like TinyPNG, ImageOptim, or Squoosh
+2. **Convert to WebP format** - 25-35% smaller than JPEG with same quality
+3. **Implement lazy loading** - Add loading="lazy" to img tags
+4. **Add image dimensions** - Specify width and height attributes to prevent layout shift
+
+#### Medium Priority
+1. **Use responsive images** - Implement srcset for different screen sizes
+2. **Implement image CDN** - Use Cloudinary, Cloudflare Images, or similar
+3. **Minify HTML/CSS/JS** - Reduce file sizes by 10-30%
+4. **Enable Gzip/Brotli compression** - Server-side compression
+
+#### Long-term Improvements
+1. **Implement image optimization pipeline** - Automatic compression on upload
+2. **Use next-gen formats** - AVIF for even better compression
+3. **Implement progressive image loading** - Blur-up technique
+4. **Consider using a headless CMS** - Better asset management
+
+### Estimated Impact
+If all recommendations implemented:
+- **Image size reduction:** 60-70% (from 150 MB to ~45-60 MB)
+- **Page load improvement:** 40-60% faster
+- **Bandwidth savings:** Significant reduction in data transfer
+- **SEO improvement:** Better Core Web Vitals scores
+
+---
+
 ## 1. CART SYSTEM AUDIT
 
 ### Files Examined
