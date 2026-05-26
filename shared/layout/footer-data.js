@@ -119,15 +119,12 @@ window.FurnostylesFooterData = {
     {
       heading: "Legal & Policies",
       links: [
-        { label: "Terms of Service",      href: "terms-of-service.html" },
-        { label: "Privacy Policy",        href: "privacy-policy.html" },
-        { label: "Buyer Protection",      href: "buyer-protection.html" },
-        { label: "Return Policy",         href: "return-policy.html" },
-        { label: "Shipping Policy",       href: "shipping-policy.html" },
-        { label: "Warranty Policy",       href: "warranty-policy.html" },
-        { label: "Vendor Policy",         href: "vendor-policy.html" },
-        { label: "Service Policy",        href: "service-policy.html" },
-        { label: "Dispute Resolution",    href: "dispute-policy.html" }
+        { label: "All Legal Policies",     href: "legal-policies.html" },
+        { label: "Terms of Service",      href: "legal-policies.html#terms" },
+        { label: "Privacy Policy",        href: "legal-policies.html#privacy" },
+        { label: "Refund Policy",         href: "legal-policies.html#refund" },
+        { label: "Vendor Agreement",     href: "legal-policies.html#vendor" },
+        { label: "Dispute Resolution",    href: "legal-policies.html#dispute" }
       ]
     }
   ],
