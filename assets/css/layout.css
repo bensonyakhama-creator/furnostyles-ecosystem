@@ -1170,7 +1170,7 @@
 }
 
 /* ============================================================
-   AUTH DROPDOWN BUTTON (Amazon/Alibaba style)
+   AUTH DROPDOWN BUTTON (Original Furnostyles design)
    ============================================================ */
 
 .fns-auth-dropdown {
@@ -1181,21 +1181,23 @@
 
 .fns-auth-btn {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 8px 12px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
   background: transparent;
-  border: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
   cursor: pointer;
   text-decoration: none;
   color: #0b3b46;
   transition: all 0.2s ease;
-  border-radius: 4px;
-  min-width: 140px;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .fns-auth-btn:hover {
-  background: rgba(11, 59, 70, 0.05);
+  background: #f5f5f5;
+  border-color: #d0d0d0;
 }
 
 .fns-auth-btn:focus {
@@ -1203,26 +1205,54 @@
   outline-offset: 2px;
 }
 
-.fns-auth-greeting {
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #666;
-  line-height: 1.2;
+.fns-auth-logged-in {
+  padding: 6px 12px 6px 6px;
+  background: linear-gradient(135deg, #0b3b46 0%, #1a5a6a 100%);
+  border: none;
+  color: #ffffff;
 }
 
-.fns-auth-label {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #0b3b46;
-  line-height: 1.2;
+.fns-auth-logged-in:hover {
+  background: linear-gradient(135deg, #1a5a6a 0%, #2a7a8a 100%);
+}
+
+.fns-auth-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.fns-auth-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.fns-auth-login-btn {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #ffffff;
+}
+
+.fns-auth-login-btn:hover {
+  background: #c49a2a;
+  border-color: #c49a2a;
+}
+
+.fns-auth-login-btn svg {
+  color: #ffffff;
 }
 
 .fns-auth-arrow {
   transition: transform 0.2s ease;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .fns-auth-btn[aria-expanded="true"] .fns-auth-arrow {
@@ -1231,14 +1261,13 @@
 
 .fns-auth-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   right: 0;
-  margin-top: 8px;
-  min-width: 220px;
+  min-width: 200px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   padding: 8px 0;
   opacity: 0;
   visibility: hidden;
@@ -1257,7 +1286,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 12px 20px;
   color: #0b3b46;
   text-decoration: none;
   font-size: 0.9rem;
@@ -1271,17 +1300,18 @@
 }
 
 .fns-auth-menu-item:hover {
-  background: #f5f5f5;
+  background: #f8f9fa;
 }
 
 .fns-auth-menu-item svg {
   flex-shrink: 0;
-  opacity: 0.7;
+  opacity: 0.6;
+  color: #0b3b46;
 }
 
 .fns-auth-divider {
   height: 1px;
-  background: #e0e0e0;
+  background: #e8e8e8;
   margin: 8px 0;
 }
 
@@ -1300,21 +1330,23 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
   .fns-auth-btn {
-    min-width: auto;
-    padding: 6px 10px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
   }
 
-  .fns-auth-greeting {
-    font-size: 0.7rem;
+  .fns-auth-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
   }
 
-  .fns-auth-label {
-    font-size: 0.8rem;
+  .fns-auth-name {
+    display: none;
   }
 
   .fns-auth-menu {
     min-width: 180px;
-    right: -12px;
+    right: -8px;
   }
 }
 

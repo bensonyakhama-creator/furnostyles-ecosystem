@@ -195,16 +195,15 @@
     } catch (e) {}
 
     if (user) {
-      // User is logged in - show account dropdown like Amazon/Alibaba
-      var userName = user.fullName || user.email || 'Account';
-      var displayName = userName.split(' ')[0]; // Show first name only
-      if (displayName.length > 10) displayName = displayName.substring(0, 10) + '...';
+      // User is logged in - show avatar with dropdown
+      var userName = user.fullName || user.email || 'User';
+      var initials = userName.split(' ').map(function(n) { return n[0]; }).join('').toUpperCase().substring(0, 2);
 
       container.innerHTML =
         '<div class="fns-auth-dropdown">' +
-          '<button class="fns-auth-btn" id="fnsAuthBtn" aria-haspopup="true" aria-expanded="false">' +
-            '<span class="fns-auth-greeting">Hello, ' + safe(displayName) + '</span>' +
-            '<span class="fns-auth-label">Account & Lists</span>' +
+          '<button class="fns-auth-btn fns-auth-logged-in" id="fnsAuthBtn" aria-haspopup="true" aria-expanded="false">' +
+            '<div class="fns-auth-avatar">' + safe(initials) + '</div>' +
+            '<span class="fns-auth-name">' + safe(userName.split(' ')[0]) + '</span>' +
             '<svg class="fns-auth-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">' +
               '<polyline points="6 9 12 15 18 9"/>' +
             '</svg>' +
@@ -215,20 +214,20 @@
                 '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>' +
                 '<polyline points="9 22 9 12 15 12 15 22"/>' +
               '</svg>' +
-              'My Dashboard' +
+              'Dashboard' +
             '</a>' +
             '<a href="client/orders.html" class="fns-auth-menu-item" role="menuitem">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">' +
                 '<path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.71l-1.39-1.39a1 1 0 0 0-1.41 0l-1.4 1.4a1 1 0 0 0 0 1.41l.82.82L8.5 14H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/>' +
               '</svg>' +
-              'My Orders' +
+              'Orders' +
             '</a>' +
             '<a href="client/profile.html" class="fns-auth-menu-item" role="menuitem">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">' +
                 '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>' +
                 '<circle cx="12" cy="7" r="4"/>' +
               '</svg>' +
-              'My Profile' +
+              'Profile' +
             '</a>' +
             '<div class="fns-auth-divider"></div>' +
             '<button class="fns-auth-menu-item fns-auth-logout" id="fnsLogoutBtn" role="menuitem">' +
@@ -282,17 +281,15 @@
         });
       }
     } else {
-      // User is not logged in - show login button like Amazon/Alibaba
+      // User is not logged in - show login button
       container.innerHTML =
-        '<div class="fns-auth-dropdown">' +
-          '<a href="login.html" class="fns-auth-btn fns-auth-login">' +
-            '<span class="fns-auth-greeting">Hello, Sign in</span>' +
-            '<span class="fns-auth-label">Account & Lists</span>' +
-            '<svg class="fns-auth-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">' +
-              '<polyline points="6 9 12 15 18 9"/>' +
-            '</svg>' +
-          '</a>' +
-        '</div>';
+        '<a href="login.html" class="fns-auth-btn fns-auth-login-btn">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">' +
+            '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>' +
+            '<circle cx="12" cy="7" r="4"/>' +
+          '</svg>' +
+          '<span>Sign In</span>' +
+        '</a>';
     }
   }
 
