@@ -111,7 +111,7 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* PRODUCT GRID - Flexible Responsive Grid (1-12 per row)                    */
+/* PRODUCT GRID - Flexible Responsive Grid (1-6 per row)                     */
 /* ------------------------------------------------------------------ */
 
 .mp-grid {
@@ -120,35 +120,29 @@
   gap: 16px;
 }
 
-/* Ultra-wide screens (up to 12 items) */
-@media (min-width: 1600px) {
-  .mp-grid {
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-
-@media (min-width: 1400px) and (max-width: 1599px) {
-  .mp-grid {
-    grid-template-columns: repeat(10, 1fr);
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .mp-grid {
-    grid-template-columns: repeat(8, 1fr);
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
+/* Ultra-wide screens (max 6 items) */
+@media (min-width: 1400px) {
   .mp-grid {
     grid-template-columns: repeat(6, 1fr);
   }
 }
 
-/* Tablet (4 items) */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .mp-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
   .mp-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablet (3 items) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .mp-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

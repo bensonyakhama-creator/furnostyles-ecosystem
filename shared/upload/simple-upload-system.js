@@ -36,16 +36,19 @@
       return { valid: false, error: 'Invalid file' };
     }
 
-    // Check file type
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+    // Check file type - allow both images and videos
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'video/mp4', 'video/webm', 'video/quicktime', 'video/x-msvideo'];
     if (!allowedTypes.includes(file.type)) {
-      return { valid: false, error: 'Only JPEG, PNG, GIF, and WebP images are allowed' };
+      return { valid: false, error: 'Only JPEG, PNG, GIF, WebP images and MP4, WebM, MOV, AVI videos are allowed' };
     }
 
-    // Check file size (max 10MB)
-    const maxSize = 10 * 1024 * 1024; // 10MB
-    if (file.size > maxSize) {
-      return { valid: false, error: 'File size must be less than 10MB' };
+    // No file size limit for videos
+    // Keep 10MB limit for images only
+    if (file.type.startsWith('image/')) {
+      const maxSize = 10 * 1024 * 1024; // 10MB
+      if (file.size > maxSize) {
+        return { valid: false, error: 'Image size must be less than 10MB' };
+      }
     }
 
     // Check file size (min 1KB)
@@ -122,6 +125,20 @@
           return;
         }
 
+        // Check if file is a video
+        if (file.type.startsWith('video/')) {
+          // For videos, just convert to data URL without compression
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            resolve(e.target.result);
+          };
+          reader.onerror = () => {
+            reject(new Error('Failed to read video'));
+          };
+          reader.readAsDataURL(file);
+          return;
+        }
+
         // Compress image before storing to avoid localStorage quota
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -165,7 +182,7 @@
       });
     },
 
-    // Upload multiple images
+    // Upload multiple images and videos
     uploadImages: function(files) {
       const promises = Array.from(files).map(file => this.uploadImage(file));
       return Promise.all(promises);
@@ -183,6 +200,7 @@
         condition: data.condition || 'new',
         location: data.location || 'Nairobi',
         images: data.images || [],
+        videos: data.videos || [],
         seller: {
           name: data.sellerName || 'Anonymous',
           phone: data.sellerPhone || '',
@@ -304,6 +322,18 @@
               <div id="image-preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 8px; margin-top: 12px;"></div>
             </div>
 
+            <!-- Video Upload -->
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 8px;">Videos (up to 3, no size limit)</label>
+              <div id="video-dropzone" style="border: 2px dashed #dce4f0; border-radius: 8px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.3s;" ondragover="this.style.borderColor='#c9a227'; this.style.background='#fafafa'" ondragleave="this.style.borderColor='#dce4f0'; this.style.background='#fff'" ondrop="window.FurnostylesSimpleUpload.handleVideoDrop(event)" onclick="document.getElementById('video-input').click()">
+                <div style="font-size: 32px; margin-bottom: 8px;">🎬</div>
+                <div style="font-size: 14px; color: #8090a0; margin-bottom: 4px;">Drag & drop videos here</div>
+                <div style="font-size: 12px; color: #a0b0c0;">or click to browse (MP4, WebM, MOV, AVI)</div>
+                <input type="file" id="video-input" multiple accept="video/*" style="display: none;" onchange="window.FurnostylesSimpleUpload.handleVideoFileSelect(event)">
+              </div>
+              <div id="video-preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 12px;"></div>
+            </div>
+
             <!-- Seller Info -->
             <div style="margin-bottom: 24px;">
               <label style="display: block; font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 8px;">Your Contact Info</label>
@@ -326,6 +356,7 @@
 
       container.innerHTML = html;
       this.uploadedImages = [];
+      this.uploadedVideos = [];
     },
 
     handleDrop: function(event) {
@@ -342,6 +373,22 @@
     handleFileSelect: function(event) {
       const files = event.target.files;
       this.processFiles(files);
+    },
+
+    handleVideoDrop: function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const dropzone = document.getElementById('video-dropzone');
+      dropzone.style.borderColor = '#dce4f0';
+      dropzone.style.background = '#fff';
+
+      const files = event.dataTransfer.files;
+      this.processVideos(files);
+    },
+
+    handleVideoFileSelect: function(event) {
+      const files = event.target.files;
+      this.processVideos(files);
     },
 
     processFiles: async function(files) {
@@ -376,6 +423,54 @@
           showAlert(error.message, 'Error');
         }
       }
+    },
+
+    processVideos: async function(files) {
+      const preview = document.getElementById('video-preview');
+      const maxVideos = 3;
+
+      // Validate files array
+      if (!files || !Array.from) {
+        console.error('Invalid files object');
+        return;
+      }
+
+      const fileArray = Array.from(files);
+      if (fileArray.length === 0) {
+        return;
+      }
+
+      for (let i = 0; i < Math.min(fileArray.length, maxVideos - this.uploadedVideos.length); i++) {
+        try {
+          const dataUrl = await this.uploadImage(fileArray[i]);
+          this.uploadedVideos.push(dataUrl);
+
+          // Add video preview
+          const videoContainer = document.createElement('div');
+          videoContainer.style.cssText = 'position: relative; border-radius: 8px; overflow: hidden; background: #000;';
+          videoContainer.innerHTML =
+            '<video src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 150px; object-fit: cover;" controls></video>' +
+            '<button type="button" onclick="window.FurnostylesSimpleUpload.removeVideo(' + (this.uploadedVideos.length - 1) + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';
+          preview.appendChild(videoContainer);
+        } catch (error) {
+          console.error('Upload error:', error);
+          showAlert(error.message, 'Error');
+        }
+      }
+    },
+
+    removeVideo: function(index) {
+      this.uploadedVideos.splice(index, 1);
+      const preview = document.getElementById('video-preview');
+      preview.innerHTML = '';
+      this.uploadedVideos.forEach((dataUrl, i) => {
+        const videoContainer = document.createElement('div');
+        videoContainer.style.cssText = 'position: relative; border-radius: 8px; overflow: hidden; background: #000;';
+        videoContainer.innerHTML =
+          '<video src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 150px; object-fit: cover;" controls></video>' +
+          '<button type="button" onclick="window.FurnostylesSimpleUpload.removeVideo(' + i + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';
+        preview.appendChild(videoContainer);
+      });
     },
 
     removeImage: function(index) {
@@ -414,6 +509,7 @@
           condition: formData.get('condition'),
           location: formData.get('location'),
           images: this.uploadedImages,
+          videos: this.uploadedVideos,
           sellerName: formData.get('sellerName'),
           sellerPhone: formData.get('sellerPhone')
         };

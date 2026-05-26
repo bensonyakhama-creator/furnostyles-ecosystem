@@ -21,6 +21,14 @@
     return '<div class="dtl-gallery-main-wrap"><img class="dtl-gallery-main" src="'+_e(src[0])+'" alt="'+_e(title)+'"></div>'+th;
   }
 
+  function _videos(videos, title) {
+    var vids = (videos||[]).filter(function(u){return u&&u.indexOf('data:')!==0;});
+    if(!vids.length) return '';
+    return '<div class="dtl-videos-section"><h2 class="dtl-section-title">Videos</h2><div class="dtl-videos-grid">'+vids.map(function(u,i){
+      return '<div class="dtl-video-wrapper"><video src="'+_e(u)+'" controls preload="metadata" style="width:100%;height:auto;border-radius:8px;background:#000;"></video></div>';
+    }).join('')+'</div></div>';
+  }
+
   function _wireGallery(el) {
     if(!el) return;
     var main = el.querySelector('.dtl-gallery-main');
@@ -79,6 +87,7 @@
           '</div>'+
         '</div>'+
       '</div>'+
+      _videos(L.videos, L.title)+
       '<div class="dtl-section"><h2 class="dtl-section-title">Description</h2><p class="dtl-desc">'+_e(L.description||'No description provided.')+'</p></div>'+
       '<div class="dtl-section dtl-section-alt"><h2 class="dtl-section-title">Details &amp; Specifications</h2>'+_fields([{l:'Category',v:L.category},{l:'Sub-category',v:L.subcategory},{l:'Condition',v:L.condition},{l:'Seller Type',v:L.sellerType},{l:'Location',v:L.location},{l:'Price',v:price},{l:'Listed',v:_fmt(L.createdAt)}])+'</div>'+
       _trust('listing')+
@@ -118,6 +127,7 @@
           '</div>'+
         '</div>'+
       '</div>'+
+      _videos(P.videos, P.title)+
       '<div class="dtl-section"><h2 class="dtl-section-title">About This Property</h2><p class="dtl-desc">'+_e(P.description||'No description provided.')+'</p></div>'+
       '<div class="dtl-section dtl-section-alt"><h2 class="dtl-section-title">Property Details</h2>'+_fields([{l:'Type',v:P.propertyType},{l:'Mode',v:mode},{l:'Location',v:P.location},{l:'Bedrooms',v:P.bedrooms},{l:'Bathrooms',v:P.bathrooms},{l:'Floor Area',v:P.floorArea},{l:'Price',v:price},{l:'Listed',v:_fmt(P.createdAt)}])+'</div>'+
       _trust('property')+

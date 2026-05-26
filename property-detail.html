@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -38,11 +38,11 @@
       <!-- Breadcrumb Navigation -->
       <nav class="breadcrumb-nav" style="padding: 20px 24px 0; margin-bottom: 20px;">
         <a href="index.html" style="color: var(--fns-text-light); text-decoration: none; font-size: 14px;">Home</a>
-        <span style="color: var(--fns-gold-primary); margin: 0 8px;">�</span>
+        <span style="color: var(--fns-gold-primary); margin: 0 8px;">?</span>
         <a href="realestate-marketplace.html" style="color: var(--fns-text-light); text-decoration: none; font-size: 14px;">Real Estate Marketplace</a>
-        <span style="color: var(--fns-gold-primary); margin: 0 8px;">�</span>
+        <span style="color: var(--fns-gold-primary); margin: 0 8px;">?</span>
         <a href="#" style="color: var(--fns-text-light); text-decoration: none; font-size: 14px;">For Sale</a>
-        <span style="color: var(--fns-gold-primary); margin: 0 8px;">�</span>
+        <span style="color: var(--fns-gold-primary); margin: 0 8px;">?</span>
         <span style="color: var(--fns-white); font-size: 14px; font-weight: 600;">Luxury Apartment in Kilimani</span>
       </nav>
 
@@ -109,7 +109,7 @@
             <div class="price-section" style="margin-bottom: 24px;">
               <span style="font-size: 14px; color: var(--fns-text-light);">Asking Price</span>
               <div class="price" style="font-size: 32px; font-weight: 700; color: var(--fns-gold-primary); margin-top: 4px;">KES 18,500,000</div>
-              <span style="font-size: 12px; color: var(--fns-text-light);">Negotiable � Verified Listing</span>
+              <span style="font-size: 12px; color: var(--fns-text-light);">Negotiable ? Verified Listing</span>
             </div>
 
             <!-- Future Availability Placeholder -->
@@ -133,7 +133,11 @@
                   <div style="font-size: 16px; font-weight: 600; color: var(--fns-white);">Furnostyles Real Estate</div>
                   <div style="font-size: 14px; color: var(--fns-text-light);">Premium Property Services</div>
                   <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
-                    <span style="color: var(--fns-gold-primary);">?????</span>
+                    <div class="fns-icon" data-icon="star" data-size="16" data-color="#d4af37"></div>
+                    <div class="fns-icon" data-icon="star" data-size="16" data-color="#d4af37"></div>
+                    <div class="fns-icon" data-icon="star" data-size="16" data-color="#d4af37"></div>
+                    <div class="fns-icon" data-icon="star" data-size="16" data-color="#d4af37"></div>
+                    <div class="fns-icon" data-icon="star" data-size="16" data-color="#d4af37"></div>
                     <span style="font-size: 12px; color: var(--fns-text-light);">5.0 (89 listings)</span>
                   </div>
                 </div>
@@ -504,6 +508,8 @@
   <script src="shared/firebase/firebase-init.js"></script>
   <!-- Firebase Bridge -->
   <script src="shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Icon Library -->
+  <link rel="stylesheet" href="shared/icons/icon-styles.css">`n  <script src="shared/icons/icon-library-premium.js" defer></script>
   <!-- Auth, Session -->
   <script src="assets/js/session.js" defer></script>
   <script src="assets/js/auth.js" defer></script>

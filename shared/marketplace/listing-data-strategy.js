@@ -167,9 +167,9 @@
      * Video specifications
      */
     videoSpecs: {
-      maxFileSize: 52428800,
-      allowedFormats: ['mp4', 'webm'],
-      maxDuration: 300
+      maxFileSize: null, // No size limit
+      allowedFormats: ['mp4', 'webm', 'mov', 'avi'],
+      maxDuration: null // No duration limit
     }
   };
 

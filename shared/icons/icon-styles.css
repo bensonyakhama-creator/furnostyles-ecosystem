@@ -1,0 +1,36 @@
+/**
+ * FURNOSTYLES — ICON STYLES
+ * =========================
+ * File: shared/icons/icon-styles.css
+ * Purpose: Clean, professional styling for icons
+ */
+
+/* Base Icon Styling */
+.fns-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fns-icon svg {
+  display: block;
+}
+
+/* Subtle hover effect */
+.fns-icon:hover svg {
+  opacity: 0.8;
+}
+
+/* Responsive Icon Sizing */
+@media (max-width: 768px) {
+  .fns-icon svg {
+    transform: scale(0.9);
+  }
+}
+
+/* Icon Container Styling */
+.fns-icon-rendered {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
