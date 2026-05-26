@@ -32,12 +32,9 @@ window.FurnostylesHeaderData = {
   nav: [
     { label: "Home",        href: "/index.html" },
     { label: "Marketplace", href: "/marketplace.html" },
-    { label: "Furniture",   href: "/furniture.html" },
     { label: "Services",    href: "/services.html" },
     { label: "Repairs",     href: "/repairs.html" },
-    { label: "Sourcing",    href: "/sourcing.html" },
-    { label: "Real Estate", href: "/realestate.html" },
-    { label: "Blogs",       href: "/blogs.html" },
+    { label: "Dashboard",  href: "/dashboard.html" },
     { label: "Contact",     href: "/contact.html" }
   ],
 
