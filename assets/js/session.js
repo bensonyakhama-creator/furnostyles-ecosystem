@@ -95,16 +95,29 @@
       var userStr = localStorage.getItem(USER_KEY);
       var roleStr = localStorage.getItem(ROLE_KEY);
 
+      // Also check for fns_local_user for compatibility with login.html
+      var fnsLocalUser = localStorage.getItem('fns_local_user');
+
       if (userDataStr) {
         sessionState.userData = JSON.parse(userDataStr);
       }
 
       if (userStr) {
         sessionState.user = JSON.parse(userStr);
+      } else if (fnsLocalUser) {
+        // Migrate from fns_local_user to standard keys
+        var localUser = JSON.parse(fnsLocalUser);
+        sessionState.user = localUser;
+        localStorage.setItem(USER_KEY, JSON.stringify(localUser));
       }
 
       if (roleStr) {
         sessionState.role = roleStr;
+      } else if (fnsLocalUser) {
+        // Set default role if migrating
+        var localUser = JSON.parse(fnsLocalUser);
+        sessionState.role = localUser.activeRole || localUser.roles?.[0] || 'customer';
+        localStorage.setItem(ROLE_KEY, sessionState.role);
       }
 
       return {

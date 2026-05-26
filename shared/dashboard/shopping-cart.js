@@ -17,12 +17,25 @@
     },
 
     loadCart: function() {
-      this.cart = JSON.parse(localStorage.getItem('fns_shopping_cart') || '[]');
+      // Try both keys for compatibility
+      const fnsCart = localStorage.getItem('fns_shopping_cart');
+      const furnostylesCart = localStorage.getItem('furnostyles_cart');
+      
+      if (furnostylesCart && !fnsCart) {
+        // Migrate from old key to new key
+        this.cart = JSON.parse(furnostylesCart);
+        localStorage.setItem('fns_shopping_cart', furnostylesCart);
+      } else {
+        this.cart = JSON.parse(fnsCart || '[]');
+      }
       this.calculateTotal();
     },
 
     saveCart: function() {
-      localStorage.setItem('fns_shopping_cart', JSON.stringify(this.cart));
+      // Save to both keys for compatibility
+      const cartData = JSON.stringify(this.cart);
+      localStorage.setItem('fns_shopping_cart', cartData);
+      localStorage.setItem('furnostyles_cart', cartData);
       this.calculateTotal();
     },
 

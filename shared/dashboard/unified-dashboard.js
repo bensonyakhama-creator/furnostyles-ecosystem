@@ -236,18 +236,26 @@
 
     // Render customer dashboard
     renderCustomerDashboard: function() {
+      // Get real data from localStorage
+      const cart = JSON.parse(localStorage.getItem('fns_shopping_cart') || localStorage.getItem('furnostyles_cart') || '[]');
+      const wishlist = JSON.parse(localStorage.getItem('fns_wishlist') || '[]');
+      const uploads = JSON.parse(localStorage.getItem('fns_uploads') || '[]');
+      
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      const cartTotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+      
       return `
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
-          ${this.renderDashboardCard('🛒', 'Shopping Cart', '12 items', 'KES 245,000', '#0b3b46', 'cart')}
-          ${this.renderDashboardCard('📦', 'Orders', '5 active', '3 pending', '#c9a227', 'orders')}
-          ${this.renderDashboardCard('❤️', 'Wishlist', '28 items', '4 price drops', '#dc3545', 'wishlist')}
-          ${this.renderDashboardCard('📍', 'Addresses', '3 saved', 'Default: Nairobi', '#28a745', 'addresses')}
+          ${this.renderDashboardCard('🛒', 'Shopping Cart', cartCount + ' items', 'KES ' + cartTotal.toLocaleString(), '#0b3b46', 'cart')}
+          ${this.renderDashboardCard('📦', 'My Uploads', uploads.length + ' items', 'Active listings', '#c9a227', 'uploads')}
+          ${this.renderDashboardCard('❤️', 'Wishlist', wishlist.length + ' items', 'Saved items', '#dc3545', 'wishlist')}
+          ${this.renderDashboardCard('📍', 'Location', 'Nairobi', 'Default location', '#28a745', 'location')}
         </div>
 
         <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px;">
           <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Recent Orders</h3>
-            ${this.renderRecentOrders()}
+            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">My Uploads</h3>
+            ${this.renderMyUploadsList(uploads)}
           </div>
           <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
             <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Quick Actions</h3>
@@ -488,6 +496,44 @@
           </a>
         `;
       });
+      return html;
+    },
+
+    // Helper: Render my uploads list
+    renderMyUploadsList: function(uploads) {
+      if (!uploads || uploads.length === 0) {
+        return `
+          <div style="text-align: center; padding: 40px 20px; color: #8090a0;">
+            <div style="font-size: 48px; margin-bottom: 12px;">📦</div>
+            <p style="margin: 0;">No uploads yet</p>
+            <button onclick="window.location.href='upload.html'" style="margin-top: 12px; padding: 8px 16px; background: #c9a227; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Upload Item</button>
+          </div>
+        `;
+      }
+
+      let html = '<div style="display: flex; flex-direction: column; gap: 12px;">';
+      uploads.slice(0, 5).forEach(upload => {
+        const image = upload.images && upload.images[0] ? upload.images[0] : 'assets/images/default-product.jpg';
+        html += `
+          <div style="display: flex; gap: 12px; padding: 12px; background: #f8f9fa; border-radius: 8px;">
+            <img src="${image}" alt="${upload.title}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+            <div style="flex: 1;">
+              <div style="font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 4px;">${upload.title}</div>
+              <div style="font-size: 13px; color: #0b3b46; font-weight: 700;">KES ${upload.price.toLocaleString()}</div>
+              <div style="font-size: 12px; color: #8090a0; margin-top: 4px;">${upload.type} • ${upload.category}</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 11px; background: ${upload.status === 'active' ? '#e8f5e9' : '#fff3e0'}; color: ${upload.status === 'active' ? '#2e7d32' : '#e65100'}; padding: 4px 8px; border-radius: 4px;">${upload.status}</span>
+            </div>
+          </div>
+        `;
+      });
+      
+      if (uploads.length > 5) {
+        html += `<button onclick="window.location.href='upload.html'" style="margin-top: 8px; padding: 8px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 6px; cursor: pointer; font-size: 13px;">View all ${uploads.length} uploads</button>`;
+      }
+      
+      html += '</div>';
       return html;
     },
 
