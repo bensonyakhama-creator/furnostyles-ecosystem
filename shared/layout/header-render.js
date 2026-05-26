@@ -217,25 +217,28 @@
             '</svg>' +
           '</button>' +
           '<div class="fns-auth-menu" role="menu">' +
-            '<a href="client/dashboard.html" class="fns-auth-menu-item" role="menuitem">' +
+            '<a href="dashboard.html" class="fns-auth-menu-item" role="menuitem">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">' +
                 '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>' +
                 '<polyline points="9 22 9 12 15 12 15 22"/>' +
               '</svg>' +
               'Dashboard' +
             '</a>' +
-            '<a href="client/orders.html" class="fns-auth-menu-item" role="menuitem">' +
+            '<a href="upload.html" class="fns-auth-menu-item" role="menuitem">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">' +
-                '<path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.71l-1.39-1.39a1 1 0 0 0-1.41 0l-1.4 1.4a1 1 0 0 0 0 1.41l.82.82L8.5 14H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/>' +
+                '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>' +
+                '<polyline points="17 8 12 3 7 8"/>' +
+                '<line x1="12" y1="3" x2="12" y2="15"/>' +
               '</svg>' +
-              'Orders' +
+              'Sell Item' +
             '</a>' +
-            '<a href="client/profile.html" class="fns-auth-menu-item" role="menuitem">' +
+            '<a href="dropshipping-dashboard.html" class="fns-auth-menu-item" role="menuitem">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">' +
-                '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>' +
-                '<circle cx="12" cy="7" r="4"/>' +
+                '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>' +
+                '<polyline points="3.27 6.96 12 12.01 20.73 6.96"/>' +
+                '<line x1="12" y1="22.08" x2="12" y2="12"/>' +
               '</svg>' +
-              'Profile' +
+              'Dropshipping' +
             '</a>' +
             '<div class="fns-auth-divider"></div>' +
             '<button class="fns-auth-menu-item fns-auth-logout" id="fnsLogoutBtn" role="menuitem">' +
