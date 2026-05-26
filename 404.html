@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - Furnostyles</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Browse our furniture, services, and home improvement solutions.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+</head>
+<body>
+  <div id="fns-topbar-mount"></div>
+  <div id="fns-header-mount"></div>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="error-page">
+        <div class="error-content">
+          <h1 class="error-code">404</h1>
+          <h2 class="error-title">Page Not Found</h2>
+          <p class="error-message">
+            The page you're looking for doesn't exist or has been moved.
+            Let's get you back on track.
+          </p>
+          <div class="error-actions">
+            <a href="index.html" class="btn primary">Go to Homepage</a>
+            <a href="marketplace.html" class="btn secondary">Browse Marketplace</a>
+            <a href="services.html" class="btn dark-btn">Our Services</a>
+          </div>
+          <div class="error-help">
+            <h3>Looking for something specific?</h3>
+            <ul class="error-links">
+              <li><a href="furniture-marketplace.html">Furniture</a></li>
+              <li><a href="materials-marketplace.html">Building Materials</a></li>
+              <li><a href="services-marketplace.html">Professional Services</a></li>
+              <li><a href="realestate-marketplace.html">Real Estate</a></li>
+              <li><a href="repairs.html">Home Repairs</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fns-footer-mount"></div>
+
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <!-- Footer Data & Render -->
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+
+  <style>
+    .error-page {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .error-content {
+      max-width: 600px;
+    }
+
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      color: #d4af37;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .error-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .error-message {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .error-help {
+      padding: 2rem;
+      background: #f8f8f8;
+      border-radius: 8px;
+    }
+
+    .error-help h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .error-links {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .error-links li a {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .error-links li a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 6rem;
+      }
+
+      .error-title {
+        font-size: 1.5rem;
+      }
+
+      .error-actions {
+        flex-direction: column;
+      }
+
+      .error-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</body>
+</html>

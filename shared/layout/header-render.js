@@ -124,6 +124,22 @@
       return '<a href="' + safe(item.href) + '">' + safe(item.label) + '</a>';
     }).join('');
 
+    // Mobile menu toggle button
+    var mobileToggleHtml =
+      '<button class="fns-mobile-toggle" id="fnsMobileToggle" aria-label="Toggle menu" aria-expanded="false">' +
+        '<span class="fns-toggle-icon"></span>' +
+        '<span class="fns-toggle-icon"></span>' +
+        '<span class="fns-toggle-icon"></span>' +
+      '</button>';
+
+    // Mobile navigation menu
+    var mobileNavHtml =
+      '<nav class="fns-mobile-nav" id="fnsMobileNav" aria-hidden="true">' +
+        nav.map(function (item) {
+          return '<a href="' + safe(item.href) + '" class="fns-mobile-nav-link">' + safe(item.label) + '</a>';
+        }).join('') +
+      '</nav>';
+
     var iconActionsHtml =
       '<div class="fns-header-actions">' +
         '<a href="cart.html" class="fns-header-btn" id="fldCartBtn" title="Cart">' +
@@ -149,10 +165,12 @@
           deliveryHtml +
         '</div>' +
         '<div class="fns-header-main">' +
+          mobileToggleHtml +
           brandHtml +
           searchHtml +
           iconActionsHtml +
         '</div>' +
+        mobileNavHtml +
       '</header>'
     );
   }
@@ -200,6 +218,45 @@
   }
 
   /* ============================================================
+     MOBILE MENU HANDLER
+  ============================================================ */
+
+  function initMobileMenu() {
+    var toggle = document.getElementById('fnsMobileToggle');
+    var mobileNav = document.getElementById('fnsMobileNav');
+
+    if (!toggle || !mobileNav) return;
+
+    toggle.addEventListener('click', function() {
+      var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      mobileNav.setAttribute('aria-hidden', isExpanded);
+      mobileNav.classList.toggle('active', !isExpanded);
+      toggle.classList.toggle('active', !isExpanded);
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!toggle.contains(e.target) && !mobileNav.contains(e.target)) {
+        toggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        mobileNav.classList.remove('active');
+        toggle.classList.remove('active');
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        mobileNav.classList.remove('active');
+        toggle.classList.remove('active');
+      }
+    });
+  }
+
+  /* ============================================================
      MOUNT — inject header into page
   ============================================================ */
 
@@ -238,6 +295,9 @@
 
     // Initialize scroll handler
     initScrollHandler();
+
+    // Initialize mobile menu
+    initMobileMenu();
   }
 
   /* ============================================================
