@@ -13,36 +13,7 @@
 </head>
 <body>
 
-  <div class="premium-topbar">
-    <div class="fld-brand-section">
-      <span class="fld-brand-name">Furnostyles Luxe Designs</span>
-      <span class="fld-tagline">Personal Luxury. Elevated.</span>
-    </div>
-    <div class="fld-location-dropdown" role="button" aria-label="Delivery areas" aria-haspopup="true" aria-expanded="false" tabindex="0">
-      <svg class="fld-location-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-      </svg>
-      <span>Delivery to all major towns in Kenya and beyond.</span>
-    </div>
-    <span class="fld-contact-info">
-      <a href="tel:+254713639205" class="fld-contact-link" aria-label="Call us at +254 713 639 205">+254 713 639 205</a>
-      <span class="fld-contact-separator">|</span>
-      <a href="mailto:furnostyles@gmail.com" class="fld-contact-link" aria-label="Email us at furnostyles@gmail.com">furnostyles@gmail.com</a>
-    </span>
-  </div>
-
-  <header class="premium-header">
-    <a class="premium-brand" href="../index.html" aria-label="Furnostyles Home">
-      <span>Furnostyles</span>
-    </a>
-    <nav class="premium-nav" aria-label="Main navigation">
-      <a href="../index.html">Home</a>
-      <a href="../marketplace.html">Marketplace</a>
-      <a href="../services.html">Services</a>
-      <a href="../portfolio.html">Portfolio</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-  </header>
+  <div id="fns-header-mount"></div>
 
   <main class="premium-main">
     <section class="section-header">
@@ -84,6 +55,11 @@
       </div>
     </div>
   </main>
+
+  <!-- Header Data & Render -->
+  <script src="../shared/layout/header-data.js"></script>
+  <script src="../shared/layout/header-render.js" defer></script>
+  <script src="../assets/js/layout-loader.js" defer></script></main>
 
   <script src="../shared/layout/footer-render.js"></script>
   <script src="../assets/js/app.js"></script>
