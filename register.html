@@ -151,8 +151,16 @@
             role: role
           })
             .then(function(user) {
-              showSuc('Account created successfully! Redirecting...');
-              setTimeout(function() { location.href = 'login.html'; }, 1500);
+              showSuc('Account created successfully!');
+              
+              // Redirect based on role
+              if (role === 'vendor' || role === 'provider') {
+                // Vendors and providers need to complete verification
+                setTimeout(function() { location.href = 'vendor-vetting.html'; }, 1500);
+              } else {
+                // Other roles go to login
+                setTimeout(function() { location.href = 'login.html'; }, 1500);
+              }
             })
             .catch(function(err) {
               setLoading(false);
