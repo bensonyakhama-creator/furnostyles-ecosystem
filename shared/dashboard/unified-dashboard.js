@@ -252,19 +252,24 @@
           <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
             <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Quick Actions</h3>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <button style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">Continue Shopping</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Track Orders</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">View Wishlist</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Account Settings</button>
-              <button style="padding: 12px; background: #c9a227; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">Become a Vendor</button>
+              <button onclick="window.location.href='furniture-marketplace.html'" style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">🛍️ Continue Shopping</button>
+              <button onclick="window.location.href='cart.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🛒 View Cart</button>
+              <button onclick="window.location.href='upload.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📤 Sell Item</button>
+              <button onclick="window.location.href='dropshipping-dashboard.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📦 Dropshipping</button>
+              <button onclick="window.location.href='services-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🔧 Services</button>
+              <button onclick="window.location.href='realestate-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏠 Real Estate</button>
+              <button onclick="window.location.href='secondhand-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">♻️ Second Hand</button>
+              <button onclick="window.location.href='sourcing-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏗️ Sourcing</button>
+              <button onclick="window.location.href='materials-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🧱 Materials</button>
+              <button onclick="window.location.href='about.html'" style="padding: 12px; background: #c9a227; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">ℹ️ About Us</button>
             </div>
           </div>
         </div>
 
         <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-          <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Recommended for You</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
-            ${this.renderRecommendedProducts()}
+          <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Marketplaces</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
+            ${this.renderMarketplaceLinks()}
           </div>
         </div>
       `;
@@ -290,11 +295,14 @@
           <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
             <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Quick Actions</h3>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <button style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">Add New Product</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Manage Products</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">View Orders</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Withdraw Earnings</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Shop as Customer</button>
+              <button onclick="window.location.href='upload.html'" style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">📤 Add New Product</button>
+              <button onclick="window.location.href='dropshipping-dashboard.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📦 Dropshipping</button>
+              <button onclick="window.location.href='furniture-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🛍️ Browse Market</button>
+              <button onclick="window.location.href='services-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🔧 Services</button>
+              <button onclick="window.location.href='materials-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🧱 Materials</button>
+              <button onclick="window.location.href='sourcing-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏗️ Sourcing</button>
+              <button onclick="window.location.href='realestate-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏠 Real Estate</button>
+              <button onclick="window.location.href='secondhand-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">♻️ Second Hand</button>
             </div>
           </div>
         </div>
@@ -341,11 +349,14 @@
           <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
             <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Admin Actions</h3>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <button style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">User Management</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Vendor Approvals</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Marketing Campaigns</button>
-              <button style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">Reports & Analytics</button>
-              <button style="padding: 12px; background: #c9a227; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">Send Newsletter</button>
+              <button onclick="window.location.href='furniture-marketplace.html'" style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">🛍️ Browse Market</button>
+              <button onclick="window.location.href='upload.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📤 Add Product</button>
+              <button onclick="window.location.href='dropshipping-dashboard.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📦 Dropshipping</button>
+              <button onclick="window.location.href='services-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🔧 Services</button>
+              <button onclick="window.location.href='materials-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🧱 Materials</button>
+              <button onclick="window.location.href='realestate-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏠 Real Estate</button>
+              <button onclick="window.location.href='secondhand-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">♻️ Second Hand</button>
+              <button onclick="window.location.href='sourcing-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏗️ Sourcing</button>
             </div>
           </div>
         </div>
@@ -451,6 +462,32 @@
         `;
       });
       html += '</div>';
+      return html;
+    },
+
+    // Helper: Render marketplace links
+    renderMarketplaceLinks: function() {
+      const marketplaces = [
+        { name: 'Furniture Marketplace', icon: '🛋️', href: 'furniture-marketplace.html', color: '#0b3b46' },
+        { name: 'Materials Marketplace', icon: '🧱', href: 'materials-marketplace.html', color: '#c9a227' },
+        { name: 'Services Marketplace', icon: '🔧', href: 'services-marketplace.html', color: '#28a745' },
+        { name: 'Real Estate Marketplace', icon: '🏠', href: 'realestate-marketplace.html', color: '#17a2b8' },
+        { name: 'Second Hand Marketplace', icon: '♻️', href: 'secondhand-marketplace.html', color: '#6c757d' },
+        { name: 'Sourcing Marketplace', icon: '🏗️', href: 'sourcing-marketplace.html', color: '#dc3545' }
+      ];
+
+      let html = '';
+      marketplaces.forEach(mp => {
+        html += `
+          <a href="${mp.href}" style="display: flex; align-items: center; gap: 12px; padding: 16px; background: #f8f9fa; border: 1.5px solid #dce4f0; border-radius: 8px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.borderColor='${mp.color}'; this.style.background='${mp.color}15'" onmouseout="this.style.borderColor='#dce4f0'; this.style.background='#f8f9fa'">
+            <span style="font-size: 28px;">${mp.icon}</span>
+            <div>
+              <div style="font-size: 14px; font-weight: 600; color: #1a2540;">${mp.name}</div>
+              <div style="font-size: 12px; color: #8090a0;">Browse listings</div>
+            </div>
+          </a>
+        `;
+      });
       return html;
     },
 

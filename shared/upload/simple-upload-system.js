@@ -39,11 +39,7 @@
           return;
         }
 
-        // Check file size (max 5MB)
-        if (file.size > 5 * 1024 * 1024) {
-          reject(new Error('Image must be less than 5MB'));
-          return;
-        }
+        // No file size limit - removed for better user experience
 
         const reader = new FileReader();
         reader.onload = (e) => {
