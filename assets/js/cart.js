@@ -66,8 +66,9 @@
           headerCartBtn.appendChild(badge);
         }
         badge.textContent = totalCount;
+        badge.style.display = 'block';
       } else if (badge) {
-        badge.remove();
+        badge.style.display = 'none';
       }
     }
 
