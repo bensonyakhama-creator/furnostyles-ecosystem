@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Products | Vendor Dashboard - Furnostyles</title>
+  <meta name="description" content="Upload and manage your products on the Furnostyles marketplace.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="stylesheet" href="shared/rendering/marketplace.css">
+</head>
+<body>
+  <div id="fns-header-mount"></div>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <div style="max-width: 900px; margin: 0 auto; padding: 40px 24px;">
+        
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+          <span class="section-badge">Vendor Dashboard</span>
+          <h1>Upload New Product</h1>
+          <p>Add your products to the Furnostyles marketplace</p>
+        </div>
+
+        <form id="product-upload-form" style="display: flex; flex-direction: column; gap: 24px;">
+          
+          <!-- Product Type -->
+          <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1.5px solid #dce4f0;">
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Product Type *</label>
+            <select id="product-type" required style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+              <option value="">Select product type</option>
+              <option value="furniture">Furniture</option>
+              <option value="materials">Materials</option>
+              <option value="services">Services</option>
+              <option value="realestate">Real Estate</option>
+              <option value="secondhand">Secondhand</option>
+              <option value="sourcing">Sourcing</option>
+            </select>
+          </div>
+
+          <!-- Basic Info -->
+          <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1.5px solid #dce4f0;">
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Product Title *</label>
+            <input type="text" id="product-title" required placeholder="Enter product title" style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px; margin-bottom: 16px;">
+            
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Category *</label>
+            <select id="product-category" required style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px; margin-bottom: 16px;">
+              <option value="">Select category</option>
+            </select>
+            
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Description *</label>
+            <textarea id="product-description" required rows="4" placeholder="Describe your product in detail" style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px; resize: vertical;"></textarea>
+          </div>
+
+          <!-- Pricing -->
+          <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1.5px solid #dce4f0;">
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Price (KES) *</label>
+            <input type="number" id="product-price" required placeholder="Enter price" style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px; margin-bottom: 16px;">
+            
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Original Price (KES)</label>
+            <input type="number" id="product-original-price" placeholder="Enter original price for discount display" style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+          </div>
+
+          <!-- Location -->
+          <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1.5px solid #dce4f0;">
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Location *</label>
+            <select id="product-location" required style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+              <option value="">Select location</option>
+              <option value="Nairobi">Nairobi</option>
+              <option value="Mombasa">Mombasa</option>
+              <option value="Kisumu">Kisumu</option>
+              <option value="Nakuru">Nakuru</option>
+              <option value="Eldoret">Eldoret</option>
+              <option value="Thika">Thika</option>
+              <option value="Malindi">Malindi</option>
+            </select>
+          </div>
+
+          <!-- Stock Status -->
+          <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1.5px solid #dce4f0;">
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Stock Status *</label>
+            <select id="product-stock" required style="width: 100%; padding: 12px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+              <option value="In Stock">In Stock</option>
+              <option value="Limited Stock">Limited Stock</option>
+              <option value="Available">Available</option>
+              <option value="Bulk Order">Bulk Order</option>
+              <option value="Pre-order">Pre-order</option>
+            </select>
+          </div>
+
+          <!-- Image Upload -->
+          <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1.5px solid #dce4f0;">
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Product Images *</label>
+            <div id="image-upload-area" style="border: 2px dashed #dce4f0; border-radius: 8px; padding: 40px; text-align: center; cursor: pointer; transition: all 0.3s;">
+              <div style="font-size: 48px; margin-bottom: 12px;">📷</div>
+              <p style="color: #8090a0; margin-bottom: 8px;">Click to upload or drag and drop</p>
+              <p style="color: #a0aabb; font-size: 12px;">PNG, JPG up to 5MB each</p>
+              <input type="file" id="product-images" multiple accept="image/*" style="display: none;">
+            </div>
+            <div id="image-preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; margin-top: 16px;"></div>
+          </div>
+
+          <!-- Specifications -->
+          <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1.5px solid #dce4f0;">
+            <label style="display: block; font-weight: 700; color: #1a2540; margin-bottom: 12px;">Specifications (Optional)</label>
+            <div id="specifications-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+            <button type="button" id="add-spec-btn" style="margin-top: 12px; padding: 10px 16px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px;">+ Add Specification</button>
+          </div>
+
+          <!-- Submit Button -->
+          <div style="display: flex; gap: 12px;">
+            <button type="submit" style="flex: 1; padding: 16px; background: #c9a227; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer;">Upload Product</button>
+            <button type="button" id="cancel-btn" style="padding: 16px 32px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;">Cancel</button>
+          </div>
+
+        </form>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // Category options based on product type
+      const categoryOptions = {
+        furniture: ['Sofas', 'Beds', 'Dining Tables', 'Chairs', 'Wardrobes', 'Desks', 'Cabinets', 'TV Stands', 'Coffee Tables', 'Bookshelves'],
+        materials: ['Tiles', 'Paint', 'Gypsum Boards', 'Cement', 'Steel Bars', 'Plumbing', 'Electrical', 'Flooring', 'Roofing', 'Hardware'],
+        services: ['Interior Design', 'Plumbing', 'Electrical', 'Carpentry', 'Painting', 'Renovation', 'Installation', 'Repair', 'Consultation', 'Maintenance'],
+        realestate: ['Apartment', 'House', 'Land', 'Commercial Space', 'Office', 'Warehouse'],
+        secondhand: ['Furniture', 'Appliances', 'Electronics', 'Kitchen Items', 'Decor', 'Tools', 'Fitness', 'Books'],
+        sourcing: ['Furniture', 'Materials', 'Electronics', 'Textiles', 'Machinery', 'Auto Parts', 'Chemicals', 'Food Products']
+      };
+
+      // Update category options based on product type
+      document.getElementById('product-type').addEventListener('change', function() {
+        const categorySelect = document.getElementById('product-category');
+        const type = this.value;
+        categorySelect.innerHTML = '<option value="">Select category</option>';
+        
+        if (categoryOptions[type]) {
+          categoryOptions[type].forEach(cat => {
+            const option = document.createElement('option');
+            option.value = cat;
+            option.textContent = cat;
+            categorySelect.appendChild(option);
+          });
+        }
+      });
+
+      // Image upload handling
+      const imageUploadArea = document.getElementById('image-upload-area');
+      const imageInput = document.getElementById('product-images');
+      const imagePreview = document.getElementById('image-preview');
+      let uploadedImages = [];
+
+      imageUploadArea.addEventListener('click', () => imageInput.click());
+      
+      imageUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        imageUploadArea.style.borderColor = '#c9a227';
+        imageUploadArea.style.background = '#f9f4e8';
+      });
+
+      imageUploadArea.addEventListener('dragleave', () => {
+        imageUploadArea.style.borderColor = '#dce4f0';
+        imageUploadArea.style.background = 'transparent';
+      });
+
+      imageUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        imageUploadArea.style.borderColor = '#dce4f0';
+        imageUploadArea.style.background = 'transparent';
+        handleFiles(e.dataTransfer.files);
+      });
+
+      imageInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+      });
+
+      function handleFiles(files) {
+        Array.from(files).forEach(file => {
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              uploadedImages.push(e.target.result);
+              updateImagePreview();
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      function updateImagePreview() {
+        imagePreview.innerHTML = '';
+        uploadedImages.forEach((img, index) => {
+          const div = document.createElement('div');
+          div.style.cssText = 'position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; border: 1.5px solid #dce4f0;';
+          div.innerHTML = `
+            <img src="${img}" style="width: 100%; height: 100%; object-fit: cover;">
+            <button type="button" onclick="removeImage(${index})" style="position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.7); color: #fff; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 14px;">×</button>
+          `;
+          imagePreview.appendChild(div);
+        });
+      }
+
+      window.removeImage = function(index) {
+        uploadedImages.splice(index, 1);
+        updateImagePreview();
+      };
+
+      // Add specification fields
+      document.getElementById('add-spec-btn').addEventListener('click', function() {
+        const container = document.getElementById('specifications-container');
+        const specRow = document.createElement('div');
+        specRow.style.cssText = 'display: flex; gap: 12px;';
+        specRow.innerHTML = `
+          <input type="text" placeholder="Specification name (e.g., Material)" style="flex: 1; padding: 10px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+          <input type="text" placeholder="Value (e.g., Solid Wood)" style="flex: 1; padding: 10px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+          <button type="button" onclick="this.parentElement.remove()" style="padding: 10px 16px; background: #dc3545; color: #fff; border: none; border-radius: 8px; cursor: pointer;">Remove</button>
+        `;
+        container.appendChild(specRow);
+      });
+
+      // Form submission
+      document.getElementById('product-upload-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const productData = {
+          type: document.getElementById('product-type').value,
+          title: document.getElementById('product-title').value,
+          category: document.getElementById('product-category').value,
+          description: document.getElementById('product-description').value,
+          price: parseFloat(document.getElementById('product-price').value),
+          originalPrice: document.getElementById('product-original-price').value ? parseFloat(document.getElementById('product-original-price').value) : null,
+          location: document.getElementById('product-location').value,
+          stock: document.getElementById('product-stock').value,
+          images: uploadedImages,
+          specifications: []
+        };
+
+        // Collect specifications
+        const specRows = document.querySelectorAll('#specifications-container > div');
+        specRows.forEach(row => {
+          const inputs = row.querySelectorAll('input');
+          if (inputs[0].value && inputs[1].value) {
+            productData.specifications.push({
+              name: inputs[0].value,
+              value: inputs[1].value
+            });
+          }
+        });
+
+        // Save to localStorage for demo
+        const vendorProducts = JSON.parse(localStorage.getItem('fns_vendor_products') || '[]');
+        productData.id = 'vendor-' + Date.now();
+        productData.createdAt = new Date().toISOString();
+        vendorProducts.push(productData);
+        localStorage.setItem('fns_vendor_products', JSON.stringify(vendorProducts));
+
+        alert('Product uploaded successfully!');
+        this.reset();
+        uploadedImages = [];
+        updateImagePreview();
+      });
+
+      // Cancel button
+      document.getElementById('cancel-btn').addEventListener('click', function() {
+        if (confirm('Are you sure you want to cancel? All unsaved changes will be lost.')) {
+          window.history.back();
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>

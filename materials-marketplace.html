@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="shared/layout/footer.css">
   <link rel="stylesheet" href="shared/rendering/marketplace.css">
   <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/products-demo.js"></script>
+  <script src="shared/rendering/product-grid.js"></script>
   <script src="shared/demo-data/furniture-demo.js"></script>
   <script src="shared/demo-data/materials-demo.js"></script>
   <script src="shared/demo-data/secondhand-demo.js"></script>
@@ -24,6 +26,21 @@
   <script src="shared/demo-data/services-demo.js"></script>
   <script src="shared/demo-data/vendors-demo.js"></script>
   <script src="shared/demo-data/marketplace-renderer.js"></script>
+
+  <script>
+    (function() {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.FurnostylesProductGrid) {
+          window.FurnostylesProductGrid.init('materials');
+          const countEl = document.getElementById('product-count');
+          if (countEl) {
+            countEl.textContent = window.FurnostylesProductGrid.filteredProducts.length + ' products';
+          }
+        }
+      });
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Materials Marketplace | Furnostyles - Construction Materials in Nairobi">
@@ -138,112 +155,55 @@
       </div>
     </section>
 
-    <section class="content-section" id="categories">
-      <div class="section-header">
-        <span>Categories</span>
-        <h2>Construction Material Categories</h2>
-        <p>Comprehensive material selection for every phase of your construction project.</p>
+    <!-- SEARCH & FILTER BAR -->
+    <section class="content-section" style="padding: 24px;">
+      <div class="mp-filter-bar">
+        <div style="flex: 1; min-width: 250px;">
+          <input type="text" id="product-search" placeholder="Search materials..." style="width: 100%; padding: 10px 14px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <select id="filter-category" class="mp-filter-sel">
+          <option value="all">All Categories</option>
+          <option value="Tiles">Tiles</option>
+          <option value="Paint">Paint</option>
+          <option value="Gypsum Boards">Gypsum Boards</option>
+          <option value="Cement">Cement</option>
+          <option value="Steel Bars">Steel Bars</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Electrical">Electrical</option>
+          <option value="Flooring">Flooring</option>
+          <option value="Roofing">Roofing</option>
+          <option value="Hardware">Hardware</option>
+        </select>
+        <select id="filter-location" class="mp-filter-sel">
+          <option value="all">All Locations</option>
+          <option value="Nairobi">Nairobi</option>
+          <option value="Mombasa">Mombasa</option>
+          <option value="Kisumu">Kisumu</option>
+          <option value="Nakuru">Nakuru</option>
+          <option value="Eldoret">Eldoret</option>
+          <option value="Thika">Thika</option>
+          <option value="Malindi">Malindi</option>
+        </select>
+        <select id="filter-rating" class="mp-filter-sel">
+          <option value="0">All Ratings</option>
+          <option value="4">4+ Stars</option>
+          <option value="4.5">4.5+ Stars</option>
+        </select>
+        <select id="sort-products" class="mp-filter-sel">
+          <option value="relevance">Relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="reviews">Most Reviews</option>
+          <option value="newest">Newest</option>
+        </select>
+        <span class="mp-count" id="product-count">Loading...</span>
       </div>
-      <div class="premium-preview-grid">
-        <article class="premium-product-card">
-          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/boards.jpg" alt="Building Materials">
-          <div class="premium-product-info">
-            <span class="premium-product-category">Building</span>
-            <h3>Building Materials</h3>
-            <p>Quality cement, blocks, bricks, sand, aggregates, timber and steel bars for foundation and structural work.</p>
-            <div class="premium-product-tags">
-              <span class="premium-tag">Bulk Orders</span>
-              <span class="premium-tag premium-tag-gold">Quality Tested</span>
-            </div>
-            <a href="#building" class="premium-product-link">Explore Building</a>
-          </div>
-        </article>
-        <article class="premium-product-card">
-          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/flooring.jpg" alt="Tiles & Flooring">
-          <div class="premium-product-info">
-            <span class="premium-product-category">Tiles</span>
-            <h3>Tiles & Flooring</h3>
-            <p>Premium ceramic tiles, porcelain tiles, natural stone, vinyl and hardwood flooring for elegant interiors.</p>
-            <div class="premium-product-tags">
-              <span class="premium-tag">Bulk Orders</span>
-              <span class="premium-tag premium-tag-gold">Quality Tested</span>
-            </div>
-            <a href="#tiles" class="premium-product-link">Explore Tiles</a>
-          </div>
-        </article>
-        <article class="premium-product-card">
-          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Paint & Finishes">
-          <div class="premium-product-info">
-            <span class="premium-product-category">Paint</span>
-            <h3>Paint & Finishes</h3>
-            <p>High-quality interior paint, exterior paint, specialty paint, varnishes and stains for lasting protection and beauty.</p>
-            <div class="premium-product-tags">
-              <span class="premium-tag">Bulk Orders</span>
-              <span class="premium-tag premium-tag-gold">Quality Tested</span>
-            </div>
-            <a href="#paint" class="premium-product-link">Explore Paint</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Gypsum & Ceiling">
-          <div class="premium-product-info">
-            <span>Gypsum</span>
-            <h3>Gypsum & Ceiling</h3>
-            <p>Fire-resistant gypsum boards, ceiling tiles, ceiling grids and complete gypsum accessories for modern interiors.</p>
-            <div class="fns-furniture-tags">
-              <span>Bulk Orders</span>
-              <span class="gold">Quality Tested</span>
-            </div>
-            <a href="#gypsum" class="primary">Explore Gypsum</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/repair-plumbing.jpg" alt="Plumbing Materials">
-          <div class="premium-product-info">
-            <span>Plumbing</span>
-            <h3>Plumbing Materials</h3>
-            <p>Durable pipes, fittings, faucets, sinks, toilets, showers and water heaters for reliable plumbing systems.</p>
-            <div class="fns-furniture-tags">
-              <span>Bulk Orders</span>
-              <span class="gold">Quality Tested</span>
-            </div>
-            <a href="#plumbing" class="primary">Explore Plumbing</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/repair.jpg" alt="Electrical Materials">
-          <div class="premium-product-info">
-            <span>Electrical</span>
-            <h3>Electrical Materials</h3>
-            <p>Safety-certified wiring, switches, sockets, circuit breakers, lighting fixtures and fans for electrical installations.</p>
-            <a href="#electrical" class="primary">Explore Electrical</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Hardware">
-          <div class="premium-product-info">
-            <span>Hardware</span>
-            <h3>Hardware</h3>
-            <p>Premium tools, fasteners, hinges, locks, handles, brackets and adhesives for construction and finishing work.</p>
-            <a href="#hardware" class="primary">Explore Hardware</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card featured">
-          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Finishing Materials">
-          <div class="premium-product-info">
-            <span>Finishing</span>
-            <h3>Finishing Materials</h3>
-            <p>Elegant moldings, trim, wainscoting, wall panels and decorative elements for premium interior finishing.</p>
-            <a href="contact.html" class="gold">Request Consultation</a>
-          </div>
-        </article>
-      </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="content-section" style="padding: 0 24px 40px;">
+      <div id="product-grid-container"></div>
     </section>
 
     <section class="content-section fns-exclusive-section">

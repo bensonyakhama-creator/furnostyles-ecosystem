@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="shared/layout/footer.css">
   <link rel="stylesheet" href="shared/rendering/marketplace.css">
   <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/products-demo.js"></script>
+  <script src="shared/rendering/product-grid.js"></script>
   <script src="shared/demo-data/furniture-demo.js"></script>
   <script src="shared/demo-data/materials-demo.js"></script>
   <script src="shared/demo-data/secondhand-demo.js"></script>
@@ -24,6 +26,21 @@
   <script src="shared/demo-data/services-demo.js"></script>
   <script src="shared/demo-data/vendors-demo.js"></script>
   <script src="shared/demo-data/marketplace-renderer.js"></script>
+
+  <script>
+    (function() {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.FurnostylesProductGrid) {
+          window.FurnostylesProductGrid.init('secondhand');
+          const countEl = document.getElementById('product-count');
+          if (countEl) {
+            countEl.textContent = window.FurnostylesProductGrid.filteredProducts.length + ' items';
+          }
+        }
+      });
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Secondhand Marketplace | Furnostyles - Used Furniture in Nairobi">
@@ -105,91 +122,53 @@
       </div>
     </section>
 
-    <section class="content-section" id="categories">
-      <div class="section-header">
-        <span>Categories</span>
-        <h2>Pre-Owned Item Categories</h2>
-        <p>Find quality pre-owned items at exceptional prices across all categories.</p>
+    <!-- SEARCH & FILTER BAR -->
+    <section class="content-section" style="padding: 24px;">
+      <div class="mp-filter-bar">
+        <div style="flex: 1; min-width: 250px;">
+          <input type="text" id="product-search" placeholder="Search secondhand items..." style="width: 100%; padding: 10px 14px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <select id="filter-category" class="mp-filter-sel">
+          <option value="all">All Categories</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Appliances">Appliances</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Kitchen Items">Kitchen Items</option>
+          <option value="Decor">Decor</option>
+          <option value="Tools">Tools</option>
+          <option value="Fitness">Fitness</option>
+          <option value="Books">Books</option>
+        </select>
+        <select id="filter-location" class="mp-filter-sel">
+          <option value="all">All Locations</option>
+          <option value="Nairobi">Nairobi</option>
+          <option value="Mombasa">Mombasa</option>
+          <option value="Kisumu">Kisumu</option>
+          <option value="Nakuru">Nakuru</option>
+          <option value="Eldoret">Eldoret</option>
+          <option value="Thika">Thika</option>
+          <option value="Malindi">Malindi</option>
+        </select>
+        <select id="filter-rating" class="mp-filter-sel">
+          <option value="0">All Ratings</option>
+          <option value="4">4+ Stars</option>
+          <option value="4.5">4.5+ Stars</option>
+        </select>
+        <select id="sort-products" class="mp-filter-sel">
+          <option value="relevance">Relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="reviews">Most Reviews</option>
+          <option value="newest">Newest</option>
+        </select>
+        <span class="mp-count" id="product-count">Loading...</span>
       </div>
+    </section>
 
-      <div class="fns-filter-buttons">
-        <button class="fns-filter-btn active">All Items</button>
-        <button class="fns-filter-btn">Furniture</button>
-        <button class="fns-filter-btn">Appliances</button>
-        <button class="fns-filter-btn">Clearance</button>
-        <button class="fns-filter-btn">Materials</button>
-        <button class="fns-filter-btn">Fittings</button>
-      </div>
-      <div class="premium-preview-grid">
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Used Furniture">
-          <div class="premium-product-info">
-            <span>Furniture</span>
-            <h3>Used Furniture</h3>
-            <p>Sofas, beds, tables, chairs and cabinets in good condition with quality inspection.</p>
-            <div class="fns-furniture-tags">
-              <span>Inspected</span>
-              <span class="gold">Great Value</span>
-            </div>
-            <a href="#furniture" class="primary">Browse Furniture</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Used Appliances">
-          <div class="premium-product-info">
-            <span>Appliances</span>
-            <h3>Used Appliances</h3>
-            <p>Kitchen appliances, laundry machines and electronics in working condition with warranty.</p>
-            <div class="fns-furniture-tags">
-              <span>Inspected</span>
-              <span class="gold">Great Value</span>
-            </div>
-            <a href="#appliances" class="primary">Browse Appliances</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card featured">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/boards.jpg" alt="Clearance Items">
-          <div class="premium-product-info">
-            <span>Clearance</span>
-            <h3>Clearance Items</h3>
-            <p>Showroom samples, discontinued items and special clearance deals at exclusive prices.</p>
-            <a href="#clearance" class="gold">Browse Clearance</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/flooring.jpg" alt="Renovation Leftovers">
-          <div class="premium-product-info">
-            <span>Leftovers</span>
-            <h3>Renovation Leftovers</h3>
-            <p>Materials, fixtures and fittings from completed renovation projects at bargain prices.</p>
-            <a href="#leftovers" class="primary">Browse Leftovers</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Used Fittings">
-          <div class="premium-product-info">
-            <span>Fittings</span>
-            <h3>Used Fittings</h3>
-            <p>Hardware, handles, knobs, hinges and other fittings in good condition for upgrades.</p>
-            <a href="#fittings" class="primary">Browse Fittings</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Sell Your Items">
-          <div class="premium-product-info">
-            <span>Sell</span>
-            <h3>Sell Your Items</h3>
-            <p>List your used furniture, appliances and items for sale on our trusted marketplace.</p>
-            <a href="contact.html" class="primary">List Items</a>
-          </div>
-        </article>
-      </div>
+    <!-- PRODUCT GRID -->
+    <section class="content-section" style="padding: 0 24px 40px;">
+      <div id="product-grid-container"></div>
     </section>
 
     <section class="content-section fns-exclusive-section">

@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="shared/layout/footer.css">
   <link rel="stylesheet" href="shared/rendering/marketplace.css">
   <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/products-demo.js"></script>
+  <script src="shared/rendering/product-grid.js"></script>
   <script src="shared/demo-data/furniture-demo.js"></script>
   <script src="shared/demo-data/materials-demo.js"></script>
   <script src="shared/demo-data/secondhand-demo.js"></script>
@@ -24,6 +26,21 @@
   <script src="shared/demo-data/services-demo.js"></script>
   <script src="shared/demo-data/vendors-demo.js"></script>
   <script src="shared/demo-data/marketplace-renderer.js"></script>
+
+  <script>
+    (function() {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.FurnostylesProductGrid) {
+          window.FurnostylesProductGrid.init('services');
+          const countEl = document.getElementById('product-count');
+          if (countEl) {
+            countEl.textContent = window.FurnostylesProductGrid.filteredProducts.length + ' services';
+          }
+        }
+      });
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Services Marketplace | Furnostyles - Home Services in Nairobi">
@@ -137,109 +154,56 @@
       </div>
     </section>
 
-    <section class="content-section" id="categories">
-      <div class="section-header">
-        <span>Categories</span>
-        <h2>Professional Service Categories</h2>
-        <p>Find the right verified professional for every home improvement need.</p>
+    <!-- SEARCH & FILTER BAR -->
+    <section class="content-section" style="padding: 24px;">
+      <div class="mp-filter-bar">
+        <div style="flex: 1; min-width: 250px;">
+          <input type="text" id="product-search" placeholder="Search services..." style="width: 100%; padding: 10px 14px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <select id="filter-category" class="mp-filter-sel">
+          <option value="all">All Categories</option>
+          <option value="Interior Design">Interior Design</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Electrical">Electrical</option>
+          <option value="Carpentry">Carpentry</option>
+          <option value="Painting">Painting</option>
+          <option value="Renovation">Renovation</option>
+          <option value="Installation">Installation</option>
+          <option value="Repair">Repair</option>
+          <option value="Consultation">Consultation</option>
+          <option value="Maintenance">Maintenance</option>
+        </select>
+        <select id="filter-location" class="mp-filter-sel">
+          <option value="all">All Locations</option>
+          <option value="Nairobi">Nairobi</option>
+          <option value="Mombasa">Mombasa</option>
+          <option value="Kisumu">Kisumu</option>
+          <option value="Nakuru">Nakuru</option>
+          <option value="Eldoret">Eldoret</option>
+          <option value="Thika">Thika</option>
+          <option value="Malindi">Malindi</option>
+        </select>
+        <select id="filter-rating" class="mp-filter-sel">
+          <option value="0">All Ratings</option>
+          <option value="4">4+ Stars</option>
+          <option value="4.5">4.5+ Stars</option>
+        </select>
+        <select id="sort-products" class="mp-filter-sel">
+          <option value="relevance">Relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="reviews">Most Reviews</option>
+          <option value="newest">Newest</option>
+        </select>
+        <span class="mp-count" id="product-count">Loading...</span>
       </div>
-      <div class="premium-preview-grid">
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Interior Design">
-          <div class="premium-product-info">
-            <span>Design</span>
-            <h3>Interior Design</h3>
-            <p>Consultations, space planning, 3D visualization and full project design for sophisticated spaces.</p>
-            <div class="fns-furniture-tags">
-              <span>Verified</span>
-              <span class="gold">Insured</span>
-            </div>
-            <a href="contact.html" class="primary">Request Quote</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/repair.jpg" alt="Repairs & Maintenance">
-          <div class="premium-product-info">
-            <span>Repairs</span>
-            <h3>Repairs & Maintenance</h3>
-            <p>Plumbing repairs, electrical repairs, general maintenance and emergency services for your home.</p>
-            <div class="fns-furniture-tags">
-              <span>Verified</span>
-              <span class="gold">Insured</span>
-            </div>
-            <a href="contact.html" class="primary">Request Quote</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Carpentry & Joinery">
-          <div class="premium-product-info">
-            <span>Carpentry</span>
-            <h3>Carpentry & Joinery</h3>
-            <p>Custom furniture building, repairs, built-ins and structural carpentry by expert artisans.</p>
-            <div class="fns-furniture-tags">
-              <span>Verified</span>
-              <span class="gold">Insured</span>
-            </div>
-            <a href="contact.html" class="primary">Request Quote</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/repair-plumbing.jpg" alt="Plumbing Services">
-          <div class="premium-product-info">
-            <span>Plumbing</span>
-            <h3>Plumbing Services</h3>
-            <p>Installation, repairs, maintenance, water heaters and drain cleaning by licensed plumbers.</p>
-            <div class="fns-furniture-tags">
-              <span>Verified</span>
-              <span class="gold">Insured</span>
-            </div>
-            <a href="contact.html" class="primary">Request Quote</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/repair.jpg" alt="Electrical Services">
-          <div class="premium-product-info">
-            <span>Electrical</span>
-            <h3>Electrical Services</h3>
-            <p>Wiring installation, lighting, outlets, panel upgrades and smart home by certified electricians.</p>
-            <div class="fns-furniture-tags">
-              <span>Verified</span>
-              <span class="gold">Insured</span>
-            </div>
-            <a href="contact.html" class="primary">Request Quote</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Painting Services">
-          <div class="premium-product-info">
-            <span>Painting</span>
-            <h3>Painting Services</h3>
-            <p>Interior painting, exterior painting, specialty finishes and wallpaper by expert painters.</p>
-            <a href="contact.html" class="primary">Request Quote</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Gypsum & Ceiling">
-          <div class="premium-product-info">
-            <span>Gypsum</span>
-            <h3>Gypsum & Ceiling</h3>
-            <p>Board installation, ceiling design, suspended ceilings and cornices for modern interiors.</p>
-            <a href="contact.html" class="primary">Request Quote</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card featured">
-          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Renovations">
-          <div class="premium-product-info">
-            <span>Renovations</span>
-            <h3>Property Renovations</h3>
-            <p>Kitchen renovations, bathroom upgrades, full home renovations and additions by expert teams.</p>
-            <a href="contact.html" class="gold">Request Consultation</a>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="content-section" style="padding: 0 24px 40px;">
+      <div id="product-grid-container"></div>
+    </section>
           </div>
         </article>
       </div>

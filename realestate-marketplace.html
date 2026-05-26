@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="shared/inquiries/inquiry-form.css">
   <link rel="stylesheet" href="shared/rendering/marketplace.css">
   <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/products-demo.js"></script>
+  <script src="shared/rendering/product-grid.js"></script>
   <script src="shared/demo-data/furniture-demo.js"></script>
   <script src="shared/demo-data/materials-demo.js"></script>
   <script src="shared/demo-data/secondhand-demo.js"></script>
@@ -25,6 +27,21 @@
   <script src="shared/demo-data/services-demo.js"></script>
   <script src="shared/demo-data/vendors-demo.js"></script>
   <script src="shared/demo-data/marketplace-renderer.js"></script>
+
+  <script>
+    (function() {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.FurnostylesProductGrid) {
+          window.FurnostylesProductGrid.init('realestate');
+          const countEl = document.getElementById('product-count');
+          if (countEl) {
+            countEl.textContent = window.FurnostylesProductGrid.filteredProducts.length + ' properties';
+          }
+        }
+      });
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Real Estate Marketplace | Furnostyles - Property Services in Nairobi">
@@ -107,82 +124,50 @@
       </div>
     </section>
 
-    <section class="content-section" id="categories">
-      <div class="section-header">
-        <span>Categories</span>
-        <h2>Premium Real Estate Categories</h2>
-        <p>Find the perfect property or service for your real estate and investment needs.</p>
+    <!-- SEARCH & FILTER BAR -->
+    <section class="content-section" style="padding: 24px;">
+      <div class="mp-filter-bar">
+        <div style="flex: 1; min-width: 250px;">
+          <input type="text" id="product-search" placeholder="Search properties..." style="width: 100%; padding: 10px 14px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <select id="filter-category" class="mp-filter-sel">
+          <option value="all">All Types</option>
+          <option value="Apartment">Apartment</option>
+          <option value="House">House</option>
+          <option value="Land">Land</option>
+          <option value="Commercial Space">Commercial Space</option>
+          <option value="Office">Office</option>
+          <option value="Warehouse">Warehouse</option>
+        </select>
+        <select id="filter-location" class="mp-filter-sel">
+          <option value="all">All Locations</option>
+          <option value="Nairobi Westlands">Nairobi Westlands</option>
+          <option value="Nairobi Kilimani">Nairobi Kilimani</option>
+          <option value="Mombasa Nyali">Mombasa Nyali</option>
+          <option value="Kisumu Milimani">Kisumu Milimani</option>
+          <option value="Nakuru CBD">Nakuru CBD</option>
+          <option value="Eldoret">Eldoret</option>
+        </select>
+        <select id="filter-rating" class="mp-filter-sel">
+          <option value="0">All Ratings</option>
+          <option value="4">4+ Stars</option>
+          <option value="4.5">4.5+ Stars</option>
+        </select>
+        <select id="sort-products" class="mp-filter-sel">
+          <option value="relevance">Relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="reviews">Most Reviews</option>
+          <option value="newest">Newest</option>
+        </select>
+        <span class="mp-count" id="product-count">Loading...</span>
       </div>
-      <div class="premium-preview-grid">
-        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Properties for Sale" class="fns-product-card-image">
-          <div class="premium-product-info">
-            <span class="fns-product-badge-gold">For Sale</span>
-            <h3 class="fns-product-title">Properties for Sale</h3>
-            <p class="fns-product-description">Houses, apartments, villas and land for sale in Nairobi and surrounding areas with verified listings.</p>
-            <div class="fns-product-tags">
-              <span class="fns-tag-petrol">Verified</span>
-              <span class="fns-tag-gold">Prime Location</span>
-            </div>
-            <a href="#properties" class="fns-btn-petrol">View Properties</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="Rental Properties" class="fns-product-card-image">
-          <div class="premium-product-info">
-            <span class="fns-product-badge-gold">Rentals</span>
-            <h3 class="fns-product-title">Rental Properties</h3>
-            <p class="fns-product-description">Houses, apartments, rooms and vacation rentals for short and long-term stays in prime locations.</p>
-            <div class="fns-product-tags">
-              <span class="fns-tag-petrol">Verified</span>
-              <span class="fns-tag-gold">Prime Location</span>
-            </div>
-            <a href="#rentals" class="fns-btn-petrol">View Rentals</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-product-card-hover fns-product-card-bordered fns-product-card-relative">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-design.jpg" alt="Airbnb Setup" class="fns-product-card-image">
-          <div class="premium-product-info">
-            <span class="fns-product-badge-gold">Airbnb</span>
-            <h3 class="fns-product-title">Airbnb Setup Services</h3>
-            <p class="fns-product-description">Complete furnishing, styling, photography and management for Airbnb properties to maximize rental income.</p>
-            <a href="contact.html" class="fns-btn-gold">Request Service</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Property Staging" class="fns-product-card-image">
-          <div class="premium-product-info">
-            <span class="fns-product-badge-gold">Staging</span>
-            <h3 class="fns-product-title">Property Staging</h3>
-            <p class="fns-product-description">Pre-sale staging, virtual staging, decluttering and curb appeal enhancement for faster sales.</p>
-            <a href="contact.html" class="fns-btn-petrol">Request Service</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/flooring.jpg" alt="Property Upgrades" class="fns-product-card-image">
-          <div class="premium-product-info">
-            <span class="fns-product-badge-gold">Upgrades</span>
-            <h3 class="fns-product-title">Property Upgrades</h3>
-            <p class="fns-product-description">Kitchen upgrades, bathroom renovations, flooring and lighting improvements to increase value.</p>
-            <a href="contact.html" class="fns-btn-petrol">Request Service</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-product-card-hover fns-product-card-relative">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Landlord Services" class="fns-product-card-image">
-          <div class="premium-product-info">
-            <span class="fns-product-badge-gold">Landlord</span>
-            <h3 class="fns-product-title">Landlord Services</h3>
-            <p class="fns-product-description">Bulk renovations, property management, turnkey solutions and investment advisory for landlords.</p>
-            <a href="contact.html" class="fns-btn-petrol">Request Service</a>
-          </div>
-        </article>
-      </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="content-section" style="padding: 0 24px 40px;">
+      <div id="product-grid-container"></div>
     </section>
 
     <section class="content-section content-section-dark">

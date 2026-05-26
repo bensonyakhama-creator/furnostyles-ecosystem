@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="shared/inquiries/inquiry-form.css">
   <link rel="stylesheet" href="shared/rendering/marketplace.css">
   <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/products-demo.js"></script>
+  <script src="shared/rendering/product-grid.js"></script>
   <script src="shared/demo-data/furniture-demo.js"></script>
   <script src="shared/demo-data/materials-demo.js"></script>
   <script src="shared/demo-data/secondhand-demo.js"></script>
@@ -25,6 +27,21 @@
   <script src="shared/demo-data/services-demo.js"></script>
   <script src="shared/demo-data/vendors-demo.js"></script>
   <script src="shared/demo-data/marketplace-renderer.js"></script>
+
+  <script>
+    (function() {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.FurnostylesProductGrid) {
+          window.FurnostylesProductGrid.init('sourcing');
+          const countEl = document.getElementById('product-count');
+          if (countEl) {
+            countEl.textContent = window.FurnostylesProductGrid.filteredProducts.length + ' products';
+          }
+        }
+      });
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Sourcing Marketplace | Furnostyles - Product Sourcing in Nairobi">
@@ -106,81 +123,55 @@
       </div>
     </section>
 
-    <section class="content-section" id="categories">
-      <div class="section-header">
-        <span>Categories</span>
-        <h2>Global Sourcing Categories</h2>
-        <p>Access premium products from around the world through our verified supplier network.</p>
+    <!-- SEARCH & FILTER BAR -->
+    <section class="content-section" style="padding: 24px;">
+      <div class="mp-filter-bar">
+        <div style="flex: 1; min-width: 250px;">
+          <input type="text" id="product-search" placeholder="Search sourcing products..." style="width: 100%; padding: 10px 14px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <select id="filter-category" class="mp-filter-sel">
+          <option value="all">All Categories</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Materials">Materials</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Textiles">Textiles</option>
+          <option value="Machinery">Machinery</option>
+          <option value="Auto Parts">Auto Parts</option>
+          <option value="Chemicals">Chemicals</option>
+          <option value="Food Products">Food Products</option>
+        </select>
+        <select id="filter-location" class="mp-filter-sel">
+          <option value="all">All Origins</option>
+          <option value="China">China</option>
+          <option value="Turkey">Turkey</option>
+          <option value="UAE">UAE</option>
+          <option value="India">India</option>
+          <option value="Vietnam">Vietnam</option>
+          <option value="Thailand">Thailand</option>
+          <option value="Germany">Germany</option>
+          <option value="Italy">Italy</option>
+        </select>
+        <select id="filter-rating" class="mp-filter-sel">
+          <option value="0">All Ratings</option>
+          <option value="4">4+ Stars</option>
+          <option value="4.5">4.5+ Stars</option>
+        </select>
+        <select id="sort-products" class="mp-filter-sel">
+          <option value="relevance">Relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="reviews">Most Reviews</option>
+          <option value="newest">Newest</option>
+        </select>
+        <span class="mp-count" id="product-count">Loading...</span>
       </div>
-      <div class="premium-preview-grid">
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Imported Furniture">
-          <div class="premium-product-info">
-            <span>Imported</span>
-            <h3>Imported Furniture</h3>
-            <p>Premium furniture from international manufacturers in Italy, Spain, China and beyond.</p>
-            <div class="fns-furniture-tags">
-              <span>Verified</span>
-              <span class="gold">Global</span>
-            </div>
-            <a href="#imported" class="primary">Browse Imported</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/boards.jpg" alt="Imported Materials">
-          <div class="premium-product-info">
-            <span>Imported</span>
-            <h3>Imported Materials</h3>
-            <p>Construction and finishing materials from global suppliers with quality verification.</p>
-            <div class="fns-furniture-tags">
-              <span>Verified</span>
-              <span class="gold">Global</span>
-            </div>
-            <a href="#materials" class="primary">Browse Materials</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Supplier Products">
-          <div class="premium-product-info">
-            <span>Supplier</span>
-            <h3>Supplier-Linked Products</h3>
-            <p>Products from verified Kenyan and international suppliers with direct coordination.</p>
-            <a href="#suppliers" class="primary">Browse Suppliers</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-living.jpg" alt="External Marketplace">
-          <div class="premium-product-info">
-            <span>Partner</span>
-            <h3>External Marketplace</h3>
-            <p>Products from partner platforms with commission-based referrals and dropshipping support.</p>
-            <a href="#partners" class="primary">Browse Partners</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card featured">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/flooring.jpg" alt="Custom Sourcing">
-          <div class="premium-product-info">
-            <span>Custom</span>
-            <h3>Custom Sourcing</h3>
-            <p>Request specific products and we'll source them globally with quality assurance.</p>
-            <a href="contact.html" class="gold">Request Sourcing</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/ceiling.jpg" alt="Dropshipping">
-          <div class="premium-product-info">
-            <span>Dropship</span>
-            <h3>Dropshipping Ready</h3>
-            <p>Products available for direct dropshipping to customers with commission-based earnings.</p>
-            <a href="#dropship" class="primary">Browse Dropship</a>
-          </div>
-        </article>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="content-section" style="padding: 0 24px 40px;">
+      <div id="product-grid-container"></div>
+    </section>
       </div>
     </section>
 

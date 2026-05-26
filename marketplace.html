@@ -24,6 +24,7 @@
   <script src="shared/demo-data/services-demo.js"></script>
   <script src="shared/demo-data/vendors-demo.js"></script>
   <script src="shared/demo-data/marketplace-renderer.js"></script>
+  <script src="shared/rendering/live-data.js"></script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Marketplace | Furnostyles - Premium Home Solutions Marketplace">
@@ -40,7 +41,8 @@
   <div id="fns-header-mount"></div>
 
   <div class="premium-layout">
-    <main class="premium-main">
+    <main class="premium-main" style="display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: start;">
+      <div>
     <nav class="marketplace-link-strip premium-market-scroll" aria-label="Marketplace Categories">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -860,6 +862,17 @@
       });
     }
   </script>
+
+      </div>
+      
+      <!-- Sidebar with Live Data Widgets -->
+      <aside style="position: sticky; top: 80px;">
+        <div id="live-news-widget"></div>
+        <div id="live-stock-widget"></div>
+        <div id="live-forex-widget"></div>
+      </aside>
+    </main>
+  </div>
 
   <div id="fld-footer-mount"></div>
 

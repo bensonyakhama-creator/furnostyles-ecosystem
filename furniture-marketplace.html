@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="shared/layout/footer.css">
   <link rel="stylesheet" href="shared/rendering/marketplace.css">
   <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/products-demo.js"></script>
+  <script src="shared/rendering/product-grid.js"></script>
   <script src="shared/demo-data/furniture-demo.js"></script>
   <script src="shared/demo-data/materials-demo.js"></script>
   <script src="shared/demo-data/secondhand-demo.js"></script>
@@ -24,6 +26,22 @@
   <script src="shared/demo-data/services-demo.js"></script>
   <script src="shared/demo-data/vendors-demo.js"></script>
   <script src="shared/demo-data/marketplace-renderer.js"></script>
+
+  <script>
+    (function() {
+      'use strict';
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.FurnostylesProductGrid) {
+          window.FurnostylesProductGrid.init('furniture');
+          // Update product count
+          const countEl = document.getElementById('product-count');
+          if (countEl) {
+            countEl.textContent = window.FurnostylesProductGrid.filteredProducts.length + ' products';
+          }
+        }
+      });
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Furniture Marketplace | Furnostyles - Premium Furniture in Nairobi">
@@ -138,94 +156,55 @@
       </div>
     </section>
 
-    <section class="content-section" id="categories">
-      <div class="section-header">
-        <span>Categories</span>
-        <h2>Luxury Furniture Categories</h2>
-        <p>Explore our curated collection of premium furniture for every room in your home.</p>
+    <!-- SEARCH & FILTER BAR -->
+    <section class="content-section" style="padding: 24px;">
+      <div class="mp-filter-bar">
+        <div style="flex: 1; min-width: 250px;">
+          <input type="text" id="product-search" placeholder="Search furniture..." style="width: 100%; padding: 10px 14px; border: 1.5px solid #dce4f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <select id="filter-category" class="mp-filter-sel">
+          <option value="all">All Categories</option>
+          <option value="Sofas">Sofas</option>
+          <option value="Beds">Beds</option>
+          <option value="Dining Tables">Dining Tables</option>
+          <option value="Chairs">Chairs</option>
+          <option value="Wardrobes">Wardrobes</option>
+          <option value="Desks">Desks</option>
+          <option value="Cabinets">Cabinets</option>
+          <option value="TV Stands">TV Stands</option>
+          <option value="Coffee Tables">Coffee Tables</option>
+          <option value="Bookshelves">Bookshelves</option>
+        </select>
+        <select id="filter-location" class="mp-filter-sel">
+          <option value="all">All Locations</option>
+          <option value="Nairobi">Nairobi</option>
+          <option value="Mombasa">Mombasa</option>
+          <option value="Kisumu">Kisumu</option>
+          <option value="Nakuru">Nakuru</option>
+          <option value="Eldoret">Eldoret</option>
+          <option value="Thika">Thika</option>
+          <option value="Malindi">Malindi</option>
+        </select>
+        <select id="filter-rating" class="mp-filter-sel">
+          <option value="0">All Ratings</option>
+          <option value="4">4+ Stars</option>
+          <option value="4.5">4.5+ Stars</option>
+        </select>
+        <select id="sort-products" class="mp-filter-sel">
+          <option value="relevance">Relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="reviews">Most Reviews</option>
+          <option value="newest">Newest</option>
+        </select>
+        <span class="mp-count" id="product-count">Loading...</span>
       </div>
-      <div class="premium-preview-grid">
-        <article class="premium-product-card">
-          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/sofa-1.jpg" alt="Living Room Furniture">
-          <div class="premium-product-info">
-            <span class="premium-product-category">Living Room</span>
-            <h3>Living Room Collection</h3>
-            <p>Luxury sofas, armchairs, coffee tables, TV units, bookshelves and display cabinets crafted for sophisticated living spaces.</p>
-            <div class="premium-product-tags">
-              <span class="premium-tag">Custom Orders</span>
-              <span class="premium-tag premium-tag-gold">Premium Quality</span>
-            </div>
-            <a href="#living-room" class="premium-product-link">Explore Collection</a>
-          </div>
-        </article>
-        <article class="premium-product-card">
-          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-bedroom.jpg" alt="Bedroom Furniture">
-          <div class="premium-product-info">
-            <span class="premium-product-category">Bedroom</span>
-            <h3>Bedroom Sanctuary</h3>
-            <p>Premium beds, mattresses, wardrobes, nightstands, dressers and complete bedroom sets designed for restful luxury.</p>
-            <div class="premium-product-tags">
-              <span class="premium-tag">Custom Orders</span>
-              <span class="premium-tag premium-tag-gold">Premium Quality</span>
-            </div>
-            <a href="#bedroom" class="premium-product-link">Explore Bedroom</a>
-          </div>
-        </article>
-        <article class="premium-product-card">
-          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/flooring.jpg" alt="Dining Room Furniture">
-          <div class="premium-product-info">
-            <span class="premium-product-category">Dining</span>
-            <h3>Dining Excellence</h3>
-            <p>Elegant dining tables, chairs, sideboards, china cabinets and complete dining sets for memorable gatherings.</p>
-            <div class="premium-product-tags">
-              <span class="premium-tag">Custom Orders</span>
-              <span class="premium-tag premium-tag-gold">Premium Quality</span>
-            </div>
-            <a href="#dining" class="premium-product-link">Explore Dining</a>
-          </div>
-        </article>
-        <article class="premium-product-card">
-          <button class="premium-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/cabinet.jpg" alt="Office Furniture">
-          <div class="premium-product-info">
-            <span class="premium-product-category">Office</span>
-            <h3>Executive Office</h3>
-            <p>Executive desks, ergonomic chairs, bookcases, filing cabinets and complete office sets for productive workspaces.</p>
-            <div class="premium-product-tags">
-              <span class="premium-tag">Custom Orders</span>
-              <span class="premium-tag premium-tag-gold">Premium Quality</span>
-            </div>
-            <a href="#office" class="premium-product-link">Explore Office</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/interior-living.jpg" alt="Outdoor Furniture">
-          <div class="premium-product-info">
-            <span>Outdoor</span>
-            <h3>Outdoor Luxury</h3>
-            <p>Weather-resistant patio sets, outdoor dining, lounge chairs, sun loungers and garden benches for elegant outdoor living.</p>
-            <div class="fns-furniture-tags">
-              <span>Custom Orders</span>
-              <span class="gold">Premium Quality</span>
-            </div>
-            <a href="#outdoor" class="primary">Explore Outdoor</a>
-          </div>
-        </article>
-        <article class="premium-product-card fns-furniture-card featured">
-          <button class="fns-favorite-btn" aria-label="Save to favorites">?</button>
-          <img loading="lazy" src="assets/images/boards.jpg" alt="Custom Furniture">
-          <div class="premium-product-info">
-            <span>Bespoke</span>
-            <h3>Custom Furniture</h3>
-            <p>Bespoke furniture designed and crafted by our master artisans to your exact specifications and unique vision.</p>
-            <a href="contact.html" class="gold">Request Custom Quote</a>
-          </div>
-        </article>
-      </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="content-section" style="padding: 0 24px 40px;">
+      <div id="product-grid-container"></div>
     </section>
 
     <section class="content-section fns-exclusive-section">
