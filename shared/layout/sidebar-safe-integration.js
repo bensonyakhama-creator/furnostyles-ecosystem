@@ -46,11 +46,11 @@
    */
   var CategoryNavigationStructure = {
     categories: [
-      { id: 'furniture', label: 'Furniture', icon: '🛋️', subcategories: ['living-room', 'bedroom', 'dining', 'office'] },
-      { id: 'materials', label: 'Materials', icon: '🧱', subcategories: ['flooring', 'paint', 'lighting', 'fixtures'] },
-      { id: 'services', label: 'Services', icon: '🔧', subcategories: ['installation', 'repair', 'consultation'] },
-      { id: 'real-estate', label: 'Real Estate', icon: '🏠', subcategories: ['apartments', 'houses', 'land'] },
-      { id: 'sourcing', label: 'Global Sourcing', icon: '🌍', subcategories: ['furniture', 'materials', 'fixtures'] }
+      { id: 'furniture', label: 'Furniture', icon: 'chair', subcategories: ['living-room', 'bedroom', 'dining', 'office'] },
+      { id: 'materials', label: 'Materials', icon: 'brick', subcategories: ['flooring', 'paint', 'lighting', 'fixtures'] },
+      { id: 'services', label: 'Services', icon: 'wrench', subcategories: ['installation', 'repair', 'consultation'] },
+      { id: 'real-estate', label: 'Real Estate', icon: 'home', subcategories: ['apartments', 'houses', 'land'] },
+      { id: 'sourcing', label: 'Global Sourcing', icon: 'globe', subcategories: ['furniture', 'materials', 'fixtures'] }
     ],
     
     display: {
@@ -107,36 +107,36 @@
         id: 'account',
         label: 'Account',
         items: [
-          { id: 'profile', label: 'My Profile', icon: '👤' },
-          { id: 'saved', label: 'Saved Items', icon: '❤️' },
-          { id: 'inquiries', label: 'My Inquiries', icon: '💬' },
-          { id: 'orders', label: 'My Orders', icon: '📦' }
+          { id: 'profile', label: 'My Profile', icon: 'user' },
+          { id: 'saved', label: 'Saved Items', icon: 'heart' },
+          { id: 'inquiries', label: 'My Inquiries', icon: 'message' },
+          { id: 'orders', label: 'My Orders', icon: 'box' }
         ]
       },
       {
         id: 'vendor',
         label: 'Vendor',
         items: [
-          { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-          { id: 'products', label: 'My Products', icon: '🛋️' },
-          { id: 'services', label: 'My Services', icon: '🔧' },
-          { id: 'inquiries', label: 'Inquiries', icon: '💬' },
-          { id: 'orders', label: 'Orders', icon: '📦' },
-          { id: 'reviews', label: 'Reviews', icon: '⭐' },
-          { id: 'settings', label: 'Settings', icon: '⚙️' }
+          { id: 'dashboard', label: 'Dashboard', icon: 'chart' },
+          { id: 'products', label: 'My Products', icon: 'chair' },
+          { id: 'services', label: 'My Services', icon: 'wrench' },
+          { id: 'inquiries', label: 'Inquiries', icon: 'message' },
+          { id: 'orders', label: 'Orders', icon: 'box' },
+          { id: 'reviews', label: 'Reviews', icon: 'star' },
+          { id: 'settings', label: 'Settings', icon: 'gear' }
         ]
       },
       {
         id: 'admin',
         label: 'Admin',
         items: [
-          { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-          { id: 'users', label: 'Users', icon: '👥' },
-          { id: 'vendors', label: 'Vendors', icon: '🏪' },
-          { id: 'products', label: 'Products', icon: '🛋️' },
-          { id: 'inquiries', label: 'Inquiries', icon: '💬' },
-          { id: 'reports', label: 'Reports', icon: '📈' },
-          { id: 'settings', label: 'Settings', icon: '⚙️' }
+          { id: 'dashboard', label: 'Dashboard', icon: 'chart' },
+          { id: 'users', label: 'Users', icon: 'users' },
+          { id: 'vendors', label: 'Vendors', icon: 'store' },
+          { id: 'products', label: 'Products', icon: 'chair' },
+          { id: 'inquiries', label: 'Inquiries', icon: 'message' },
+          { id: 'reports', label: 'Reports', icon: 'trending' },
+          { id: 'settings', label: 'Settings', icon: 'gear' }
         ]
       }
     ],
@@ -159,12 +159,12 @@
    */
   var MarketplaceNavigationStructure = {
     marketplaces: [
-      { id: 'furniture', label: 'Furniture Marketplace', icon: '🛋️', url: 'furniture-marketplace.html' },
-      { id: 'materials', label: 'Materials Marketplace', icon: '🧱', url: 'materials-marketplace.html' },
-      { id: 'services', label: 'Services Marketplace', icon: '🔧', url: 'services-marketplace.html' },
-      { id: 'real-estate', label: 'Real Estate Marketplace', icon: '🏠', url: 'realestate-marketplace.html' },
-      { id: 'secondhand', label: 'Secondhand Marketplace', icon: '♻️', url: 'secondhand-marketplace.html' },
-      { id: 'sourcing', label: 'Global Sourcing', icon: '🌍', url: 'sourcing-marketplace.html' }
+      { id: 'furniture', label: 'Furniture Marketplace', icon: 'chair', url: 'furniture-marketplace.html' },
+      { id: 'materials', label: 'Materials Marketplace', icon: 'brick', url: 'materials-marketplace.html' },
+      { id: 'services', label: 'Services Marketplace', icon: 'wrench', url: 'services-marketplace.html' },
+      { id: 'real-estate', label: 'Real Estate Marketplace', icon: 'home', url: 'realestate-marketplace.html' },
+      { id: 'secondhand', label: 'Secondhand Marketplace', icon: 'recycle', url: 'secondhand-marketplace.html' },
+      { id: 'sourcing', label: 'Global Sourcing', icon: 'globe', url: 'sourcing-marketplace.html' }
     ],
     
     display: {

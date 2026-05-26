@@ -197,7 +197,15 @@
     if (user) {
       // User is logged in - show avatar with dropdown
       var userName = user.fullName || user.email || 'User';
-      var initials = userName.split(' ').map(function(n) { return n[0]; }).join('').toUpperCase().substring(0, 2);
+      var initials = 'U';
+      if (userName && userName.length > 0) {
+        var parts = userName.trim().split(/\s+/);
+        if (parts.length >= 2) {
+          initials = (parts[0][0] + parts[1][0]).toUpperCase();
+        } else if (parts.length === 1 && parts[0].length > 0) {
+          initials = parts[0][0].toUpperCase();
+        }
+      }
 
       container.innerHTML =
         '<div class="fns-auth-dropdown">' +
