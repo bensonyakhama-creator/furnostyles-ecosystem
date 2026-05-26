@@ -209,6 +209,15 @@
           authState.userData = userData;
           authState.role = userData ? userData.role : 'client';
 
+          // Save to localStorage for header button detection
+          var localUser = {
+            uid: user.uid,
+            email: user.email,
+            fullName: userData ? userData.fullName : user.email,
+            role: authState.role
+          };
+          localStorage.setItem('fns_local_user', JSON.stringify(localUser));
+
           console.log('[Auth] Sign in successful. Role:', authState.role);
           return user;
         });
@@ -239,6 +248,9 @@
 
         // Check if user exists in Firestore
         return loadUserFromFirestore(user.uid).then(function (userData) {
+          var finalUserData;
+          var finalRole;
+
           if (!userData) {
             // New user - create Firestore document
             var newUserData = {
@@ -252,6 +264,18 @@
               authState.currentUser = user;
               authState.userData = newUserData;
               authState.role = 'client';
+              finalUserData = newUserData;
+              finalRole = 'client';
+
+              // Save to localStorage for header button detection
+              var localUser = {
+                uid: user.uid,
+                email: user.email,
+                fullName: newUserData.fullName,
+                role: finalRole
+              };
+              localStorage.setItem('fns_local_user', JSON.stringify(localUser));
+
               return user;
             });
           } else {
@@ -259,6 +283,18 @@
             authState.currentUser = user;
             authState.userData = userData;
             authState.role = userData.role || 'client';
+            finalUserData = userData;
+            finalRole = userData.role || 'client';
+
+            // Save to localStorage for header button detection
+            var localUser = {
+              uid: user.uid,
+              email: user.email,
+              fullName: userData.fullName,
+              role: finalRole
+            };
+            localStorage.setItem('fns_local_user', JSON.stringify(localUser));
+
             return user;
           }
         });
@@ -287,6 +323,9 @@
         authState.currentUser = null;
         authState.userData = null;
         authState.role = null;
+
+        // Clear localStorage
+        localStorage.removeItem('fns_local_user');
 
         // Clear session
         if (window.FurnostylesSession) {
