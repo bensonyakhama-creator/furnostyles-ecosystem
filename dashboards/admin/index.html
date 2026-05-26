@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  
 </head>
 <body>
 
@@ -116,15 +117,15 @@
         /* Render metrics */
         var metrics = window.FurnostylesDashboardData.getAdminMetrics();
         var metricsData = [
-          { label: 'Total Users', value: metrics.totalUsers, icon: '👥' },
-          { label: 'Active Users', value: metrics.activeUsers, icon: '✅' },
-          { label: 'Pending Verifications', value: metrics.pendingVerifications, icon: '📋' },
-          { label: 'Total Vendors', value: metrics.totalVendors, icon: '🏪' },
-          { label: 'Total Providers', value: metrics.totalProviders, icon: '🔧' },
-          { label: 'Total Contractors', value: metrics.totalContractors, icon: '🏗️' },
-          { label: 'Total Property Owners', value: metrics.totalPropertyOwners, icon: '🏠' },
-          { label: 'Total Agents', value: metrics.totalAgents, icon: '🤝' },
-          { label: 'System Status', value: metrics.systemStatus, icon: '🟢' }
+          { label: 'Total Users', value: metrics.totalUsers, icon: '??' },
+          { label: 'Active Users', value: metrics.activeUsers, icon: '?' },
+          { label: 'Pending Verifications', value: metrics.pendingVerifications, icon: '??' },
+          { label: 'Total Vendors', value: metrics.totalVendors, icon: '??' },
+          { label: 'Total Providers', value: metrics.totalProviders, icon: '??' },
+          { label: 'Total Contractors', value: metrics.totalContractors, icon: '???' },
+          { label: 'Total Property Owners', value: metrics.totalPropertyOwners, icon: '??' },
+          { label: 'Total Agents', value: metrics.totalAgents, icon: '??' },
+          { label: 'System Status', value: metrics.systemStatus, icon: '??' }
         ];
 
         metricsData.forEach(function (metric) {
@@ -135,10 +136,10 @@
 
         /* Render quick actions */
         var actionsData = [
-          { label: 'View Verifications', icon: '📋', onClick: function () { console.log('View verifications - coming soon'); } },
-          { label: 'Manage Users', icon: '👥', onClick: function () { console.log('Manage users - coming soon'); } },
-          { label: 'System Reports', icon: '📊', onClick: function () { console.log('System reports - coming soon'); } },
-          { label: 'Settings', icon: '⚙️', onClick: function () { console.log('Settings - coming soon'); } }
+          { label: 'View Verifications', icon: '??', onClick: function () { console.log('View verifications - coming soon'); } },
+          { label: 'Manage Users', icon: '??', onClick: function () { console.log('Manage users - coming soon'); } },
+          { label: 'System Reports', icon: '??', onClick: function () { console.log('System reports - coming soon'); } },
+          { label: 'Settings', icon: '??', onClick: function () { console.log('Settings - coming soon'); } }
         ];
         window.FurnostylesDashboardComponents.renderQuickActions(quickActions, actionsData);
 
@@ -148,7 +149,7 @@
           window.FurnostylesDashboardComponents.renderEmptyState(activityList, {
             title: 'No recent activities',
             message: 'System activities will appear here.',
-            icon: '📊'
+            icon: '??'
           });
         } else {
           window.FurnostylesDashboardComponents.renderInquiryList(activityList, activities.map(function (act) {

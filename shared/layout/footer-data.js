@@ -201,19 +201,16 @@ window.FurnostylesFooterData = {
 
   serviceAreas: {
     enabled: true,
-    heading: "Areas We Serve",
+    heading: "Delivery Areas",
     areas: [
-      "Nairobi Metro: Nairobi, Thika, Kiambu, Ruiru, Kikuyu, Kitengela, Rongai, Athi River, Machakos",
-      "Coastal Region: Mombasa, Malindi, Lamu, Kilifi, Kwale, Taita Taveta, Mariakani",
-      "Western Region: Kakamega, Bungoma, Busia, Kisii, Webuye",
-      "Nyanza Region: Kisumu, Homa Bay, Siaya, Bondo, Migori, Nyamira",
-      "Rift Valley: Nakuru, Eldoret, Naivasha, Kericho, Bomet, Narok, Baringo, Kitale",
-      "Central Region: Nyeri, Murang'a, Kirinyaga, Embu, Meru, Tharaka Nithi",
-      "Eastern Region: Makueni, Machakos, Makindu, Kibwezi, Sultan Hamud, Emali",
-      "North Eastern: Garissa, Wajir, Mandera, Marsabit, Isiolo",
-      "Highway Towns: Makindu, Kibwezi, Sultan Hamud, Emali, Mariakani, Voi, Mtito Andei"
+      "Nairobi CBD", "Westlands", "Kilimani", "Lavington", "Karen", "Muthaiga", "Upper Hill", "Hurlingham",
+      "Parklands", "Eastleigh", "Thika Road", "Nairobi West", "South B & C", "Langata", "Riverside", "Kileleshwa",
+      "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika", "Machakos", "Kajiado", "Naivasha",
+      "Nyeri", "Meru", "Kitale", "Kakamega", "Kisii", "Bungoma", "Busia", "Migori",
+      "Malindi", "Lamu", "Garissa", "Wajir", "Mandera", "Marsabit", "Isiolo", "Lodwar",
+      "Kakuma", "Moyale", "Narok", "Bomet", "Kericho", "Baringo", "Laikipia", "Samburu"
     ],
-    note: "Currently serving Kenya nationwide. Worldwide expansion coming soon."
+    note: "Nationwide delivery available across Kenya and beyond."
   },
 
   emergencyCTA: {

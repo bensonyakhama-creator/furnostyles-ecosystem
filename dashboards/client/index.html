@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  
 </head>
 <body>
 
@@ -130,12 +131,12 @@
         /* Render metrics */
         var metrics = window.FurnostylesDashboardData.getClientMetrics();
         var metricsData = [
-          { label: 'Saved Items', value: metrics.savedItems, icon: '❤️' },
-          { label: 'Quote Requests', value: metrics.quoteRequests, icon: '📋' },
-          { label: 'Sourcing Requests', value: metrics.sourcingRequests, icon: '🔍' },
-          { label: 'Repair Requests', value: metrics.repairRequests, icon: '🔧' },
-          { label: 'Project Consultations', value: metrics.projectConsultations, icon: '💡' },
-          { label: 'Pending Actions', value: metrics.pendingActions, icon: '⏳' }
+          { label: 'Saved Items', value: metrics.savedItems, icon: '??' },
+          { label: 'Quote Requests', value: metrics.quoteRequests, icon: '??' },
+          { label: 'Sourcing Requests', value: metrics.sourcingRequests, icon: '??' },
+          { label: 'Repair Requests', value: metrics.repairRequests, icon: '??' },
+          { label: 'Project Consultations', value: metrics.projectConsultations, icon: '??' },
+          { label: 'Pending Actions', value: metrics.pendingActions, icon: '?' }
         ];
 
         metricsData.forEach(function (metric) {
@@ -146,10 +147,10 @@
 
         /* Render quick actions */
         var actionsData = [
-          { label: 'Request Quote', icon: '📝', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('quote'); } },
-          { label: 'Source Item', icon: '🔍', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('sourcing'); } },
-          { label: 'Request Repair', icon: '🔧', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('repair'); } },
-          { label: 'Consultation', icon: '💡', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('consultation'); } }
+          { label: 'Request Quote', icon: '??', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('quote'); } },
+          { label: 'Source Item', icon: '??', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('sourcing'); } },
+          { label: 'Request Repair', icon: '??', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('repair'); } },
+          { label: 'Consultation', icon: '??', onClick: function () { window.FurnostylesDashboardActions.createNewInquiry('consultation'); } }
         ];
         window.FurnostylesDashboardComponents.renderQuickActions(quickActions, actionsData);
 
@@ -176,7 +177,7 @@
             title: srv.title,
             status: 'available',
             date: srv.price,
-            vendor: srv.provider + ' ⭐ ' + srv.rating
+            vendor: srv.provider + ' ? ' + srv.rating
           };
         }));
       }

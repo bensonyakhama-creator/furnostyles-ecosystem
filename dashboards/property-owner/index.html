@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  
 </head>
 <body>
 
@@ -130,14 +131,14 @@
         /* Render metrics */
         var metrics = window.FurnostylesDashboardData.getPropertyOwnerMetrics();
         var metricsData = [
-          { label: 'Total Properties', value: metrics.totalProperties, icon: '🏠' },
-          { label: 'Listed Properties', value: metrics.listedProperties, icon: '📋' },
-          { label: 'Rental Inquiries', value: metrics.rentalInquiries, icon: '📬' },
-          { label: 'Sales Inquiries', value: metrics.salesInquiries, icon: '💰' },
-          { label: 'Maintenance Requests', value: metrics.maintenanceRequests, icon: '🔧' },
-          { label: 'Total Revenue', value: metrics.totalRevenue, icon: '💵' },
-          { label: 'Avg Rating', value: metrics.averageRating + ' ⭐', icon: '⭐' },
-          { label: 'Verification', value: metrics.verificationStatus, icon: '🔒' }
+          { label: 'Total Properties', value: metrics.totalProperties, icon: '??' },
+          { label: 'Listed Properties', value: metrics.listedProperties, icon: '??' },
+          { label: 'Rental Inquiries', value: metrics.rentalInquiries, icon: '??' },
+          { label: 'Sales Inquiries', value: metrics.salesInquiries, icon: '??' },
+          { label: 'Maintenance Requests', value: metrics.maintenanceRequests, icon: '??' },
+          { label: 'Total Revenue', value: metrics.totalRevenue, icon: '??' },
+          { label: 'Avg Rating', value: metrics.averageRating + ' ?', icon: '?' },
+          { label: 'Verification', value: metrics.verificationStatus, icon: '??' }
         ];
 
         metricsData.forEach(function (metric) {
@@ -148,10 +149,10 @@
 
         /* Render quick actions */
         var actionsData = [
-          { label: 'Add Property', icon: '➕', onClick: function () { console.log('Add property - coming soon'); } },
-          { label: 'Request Maintenance', icon: '🔧', onClick: function () { console.log('Request maintenance - coming soon'); } },
-          { label: 'Request Upgrade', icon: '🏗️', onClick: function () { console.log('Request upgrade - coming soon'); } },
-          { label: 'View Inquiries', icon: '📬', onClick: function () { console.log('View inquiries - coming soon'); } }
+          { label: 'Add Property', icon: '?', onClick: function () { console.log('Add property - coming soon'); } },
+          { label: 'Request Maintenance', icon: '??', onClick: function () { console.log('Request maintenance - coming soon'); } },
+          { label: 'Request Upgrade', icon: '???', onClick: function () { console.log('Request upgrade - coming soon'); } },
+          { label: 'View Inquiries', icon: '??', onClick: function () { console.log('View inquiries - coming soon'); } }
         ];
         window.FurnostylesDashboardComponents.renderQuickActions(quickActions, actionsData);
 
@@ -161,7 +162,7 @@
           window.FurnostylesDashboardComponents.renderEmptyState(propertyList, {
             title: 'No properties yet',
             message: 'Start by adding your first property listing.',
-            icon: '🏠'
+            icon: '??'
           });
         } else {
           window.FurnostylesDashboardComponents.renderInquiryList(propertyList, properties.map(function (prop) {
@@ -170,7 +171,7 @@
               title: prop.title,
               status: prop.status,
               date: prop.price,
-              vendor: prop.location + ' • ' + prop.views + ' views'
+              vendor: prop.location + ' � ' + prop.views + ' views'
             };
           }));
         }
@@ -181,7 +182,7 @@
           window.FurnostylesDashboardComponents.renderEmptyState(inquiryList, {
             title: 'No inquiries yet',
             message: 'Property inquiries will appear here.',
-            icon: '📬'
+            icon: '??'
           });
         } else {
           window.FurnostylesDashboardComponents.renderInquiryList(inquiryList, inquiries.map(function (inq) {
@@ -198,12 +199,12 @@
         /* Render performance summary */
         var performance = window.FurnostylesDashboardData.getPropertyOwnerPerformance();
         var performanceData = [
-          { label: 'Response Rate', value: performance.responseRate, icon: '📊' },
-          { label: 'Avg Response Time', value: performance.averageResponseTime, icon: '⏱️' },
-          { label: 'Occupancy Rate', value: performance.occupancyRate, icon: '🏠' },
-          { label: 'Tenant Satisfaction', value: performance.tenantSatisfaction + ' ⭐', icon: '⭐' },
-          { label: 'Maintenance Response', value: performance.maintenanceResponseTime, icon: '🔧' },
-          { label: 'Revenue Growth', value: performance.revenueGrowth, icon: '📈' }
+          { label: 'Response Rate', value: performance.responseRate, icon: '??' },
+          { label: 'Avg Response Time', value: performance.averageResponseTime, icon: '??' },
+          { label: 'Occupancy Rate', value: performance.occupancyRate, icon: '??' },
+          { label: 'Tenant Satisfaction', value: performance.tenantSatisfaction + ' ?', icon: '?' },
+          { label: 'Maintenance Response', value: performance.maintenanceResponseTime, icon: '??' },
+          { label: 'Revenue Growth', value: performance.revenueGrowth, icon: '??' }
         ];
 
         performanceData.forEach(function (metric) {

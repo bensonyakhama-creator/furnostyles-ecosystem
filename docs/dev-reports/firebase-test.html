@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -74,7 +74,7 @@
 
   <div id="fld-footer-mount"></div>
 
-  <!-- Firebase Compat SDK (CDN) — loaded before config for Firebase mode testing -->
+  <!-- Firebase Compat SDK (CDN) � loaded before config for Firebase mode testing -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -114,10 +114,10 @@
         html += '<div>SDK: ' + (report.sdk.loaded ? 'loaded' : 'not loaded') + '</div>';
         html += '<hr style="margin: 12px 0; border: none; border-top: 1px solid #ccc;">';
         html += '<div>Services:</div>';
-        html += '<div>  App: ' + (report.services.app.ready ? '✓' : '✗') + '</div>';
-        html += '<div>  DB (Firestore): ' + (report.services.db.ready ? '✓' : '✗') + '</div>';
-        html += '<div>  Auth: ' + (report.services.auth.ready ? '✓' : '✗') + '</div>';
-        html += '<div>  Storage: ' + (report.services.storage.ready ? '✓' : '✗') + '</div>';
+        html += '<div>  App: ' + (report.services.app.ready ? '?' : '?') + '</div>';
+        html += '<div>  DB (Firestore): ' + (report.services.db.ready ? '?' : '?') + '</div>';
+        html += '<div>  Auth: ' + (report.services.auth.ready ? '?' : '?') + '</div>';
+        html += '<div>  Storage: ' + (report.services.storage.ready ? '?' : '?') + '</div>';
 
         /* Add guidance based on mode and status */
         html += '<hr style="margin: 12px 0; border: none; border-top: 1px solid #ccc;">';

@@ -7,14 +7,19 @@
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
   <script src="shared/layout/header-data.js"></script>
-  <script src="shared/layout/header-render.js"></script>
-  <script src="shared/layout/footer-data.js"></script>
-  <script src="shared/layout/footer-render.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <script src="shared/layout/footer-data.js" defer></script>
+  <script src="shared/layout/footer-render.js" defer></script>
   <script src="shared/upload/simple-upload-system.js"></script>
+  
 </head>
 <body>
-  <div id="header-mount"></div>
+  <div id="fns-topbar-mount"></div>
+  <div id="fns-header-mount"></div>
 
   <main style="min-height: 80vh; padding: 40px 24px;">
     <div style="max-width: 800px; margin: 0 auto;">
@@ -29,7 +34,7 @@
     </div>
   </main>
 
-  <div id="footer-mount"></div>
+  <div id="fns-footer-mount"></div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

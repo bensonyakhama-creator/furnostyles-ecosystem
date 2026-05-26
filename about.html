@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -23,9 +23,11 @@
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/video-player.css">
   <link rel="stylesheet" href="shared/layout/footer.css">
+  
 </head>
 <body>
 
+  <div id="fns-topbar-mount"></div>
   <div id="fns-header-mount"></div>
 
   <div class="premium-layout">
@@ -126,42 +128,42 @@
       </div>
       <div class="premium-ecosystem-grid">
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="briefcase" data-size="32"></div>
+          <i class="ri-sofa-line premium-ecosystem-icon"></i>
           <h3>Furniture Ecosystem</h3>
           <p>Premium furniture, custom manufacturing, and interior solutions</p>
         </div>
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="tools" data-size="32"></div>
+          <i class="ri-tools-line premium-ecosystem-icon"></i>
           <h3>Repairs Authority</h3>
           <p>Trusted repair routing, electrical, plumbing, and maintenance</p>
         </div>
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="building" data-size="32"></div>
+          <i class="ri-building-2-line premium-ecosystem-icon"></i>
           <h3>Construction Ecosystem</h3>
           <p>Renovations, finishing, and construction project coordination</p>
         </div>
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="tools" data-size="32"></div>
+          <i class="ri-home-heart-line premium-ecosystem-icon"></i>
           <h3>Property Ecosystem</h3>
           <p>Property sales, management, Airbnb upgrades, and staging</p>
         </div>
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="tools" data-size="32"></div>
+          <i class="ri-earth-line premium-ecosystem-icon"></i>
           <h3>Sourcing Authority</h3>
           <p>50+ country sourcing, verified suppliers, and import services</p>
         </div>
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="tools" data-size="32"></div>
+          <i class="ri-user-smile-line premium-ecosystem-icon"></i>
           <h3>Artisan Ecosystem</h3>
           <p>National artisan network, skilled craftsmen, and quality control</p>
         </div>
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="tools" data-size="32"></div>
+          <i class="ri-archive-line premium-ecosystem-icon"></i>
           <h3>Materials Ecosystem</h3>
           <p>Hardware, tools, construction materials, and supplies</p>
         </div>
         <div class="premium-ecosystem-card">
-          <div class="premium-ecosystem-icon fns-icon" data-icon="tools" data-size="32"></div>
+          <i class="ri-shopping-bag-3-line premium-ecosystem-icon"></i>
           <h3>Marketplace Ecosystem</h3>
           <p>Furniture, materials, secondhand, and sourcing marketplace</p>
         </div>
@@ -441,6 +443,7 @@
 
   <!-- Header Data & Render -->
   <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
   <script src="shared/layout/header-render.js" defer></script>
   <script src="assets/js/layout-loader.js" defer></script>
   <!-- Firebase SDK -->
@@ -461,6 +464,11 @@
   <!-- Auth State Manager -->
   <script src="assets/js/auth-state.js" defer></script>
   <script defer src="assets/js/app.js"></script>
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
   <script defer src="shared/firebase/firebase-config.js"></script>
   <script defer src="shared/firebase/firebase-bridge.js"></script>
   <script defer src="shared/uploads/upload-bridge.js"></script>

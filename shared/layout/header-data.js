@@ -19,14 +19,67 @@ window.FurnostylesHeaderData = {
 
   topbar: {
     enabled: true,
-    left:    "🚚 Free delivery in Nairobi • 📦 Nationwide shipping available",
-    right:   "📞 +254 713 639 205 • ✉️ furnostyles@gmail.com"
+    brandName: "FURNOSTYLES",
+    tagline: "Personal Luxury. Elevated.",
+    phone: "+254 713 639 205",
+    email: "furnostyles@gmail.com"
+  },
+
+  // Top navigation bar (Jumia-style)
+  topNav: {
+    enabled: true,
+    links: [
+      { label: "Sell on Furnostyles", href: "/upload.html", highlight: true },
+      { label: "Sign In", href: "/login.html" },
+      { label: "My Account", href: "/dashboard.html" },
+      { label: "Orders", href: "/orders.html" },
+      { label: "Wishlist", href: "/wishlist.html" },
+      { label: "Shipping", href: "/shipping.html" },
+      { label: "Help Center", href: "/help.html" },
+      { label: "Cart", href: "/cart.html", icon: "cart" }
+    ]
+  },
+
+  // Main category navigation (Jumia-style)
+  categories: {
+    enabled: true,
+    items: [
+      { label: "Official Stores", href: "/official-stores.html" },
+      { label: "Furniture", href: "/furniture.html" },
+      { label: "Home Decor", href: "/home-decor.html" },
+      { label: "Appliances", href: "/appliances.html" },
+      { label: "Services", href: "/services.html" },
+      { label: "Repairs", href: "/repairs.html" },
+      { label: "Property", href: "/property.html" },
+      { label: "Marketplace", href: "/marketplace.html" },
+      { label: "Lighting", href: "/lighting.html" },
+      { label: "Kitchen", href: "/kitchen.html" }
+    ]
   },
 
   search: {
     enabled:     true,
     placeholder: "Search furniture, services, marketplace...",
     categories: ["All", "Products", "Services", "Property"]
+  },
+
+  // Promotional banners (Jumia-style)
+  promotions: {
+    enabled: true,
+    items: [
+      { text: "WhatsApp Text To Order", href: "https://wa.me/254713639205", highlight: true },
+      { text: "Free Delivery Nationwide", href: "/delivery.html", subtext: "Orders Above KSh 5,000" },
+      { text: "SELL ON FURNOSTYLES", href: "/upload.html", subtext: "Millions Of Visitors" },
+      { text: "Live Now", href: "/flash-sales.html", highlight: true }
+    ]
+  },
+
+  // Delivery hooks
+  delivery: {
+    enabled: true,
+    locations: ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika"],
+    info: "Free delivery on orders above KSh 5,000",
+    tracking: true
   },
 
   nav: [

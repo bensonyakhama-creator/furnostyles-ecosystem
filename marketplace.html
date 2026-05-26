@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="shared/layout/footer.css">
+  
   <link rel="stylesheet" href="shared/rendering/marketplace.css">
   <!-- Demo Data Scripts -->
   <script src="shared/demo-data/furniture-demo.js"></script>
@@ -38,6 +39,7 @@
 </head>
 <body>
 
+  <div id="fns-topbar-mount"></div>
   <div id="fns-header-mount"></div>
 
   <div class="premium-layout">
@@ -80,6 +82,10 @@
     <section class="marketplace-category-quick-access">
       <span class="marketplace-category-pill active">All Categories</span>
       <span class="marketplace-category-pill">Furniture</span>
+      <span class="marketplace-category-pill">Home Decor</span>
+      <span class="marketplace-category-pill">Appliances</span>
+      <span class="marketplace-category-pill">Kitchen</span>
+      <span class="marketplace-category-pill">Lighting</span>
       <span class="marketplace-category-pill">Materials</span>
       <span class="marketplace-category-pill">Services</span>
       <span class="marketplace-category-pill">Real Estate</span>
@@ -895,6 +901,10 @@
   <!-- Auth, Session -->
   <script src="assets/js/session.js" defer></script>
   <script src="assets/js/auth.js" defer></script>
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
   <!-- Auth State Manager -->
   <script src="assets/js/auth-state.js" defer></script>
   <script defer src="assets/js/app.js"></script>

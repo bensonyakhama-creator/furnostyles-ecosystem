@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -53,6 +53,7 @@
       .vd-form-grid { grid-template-columns: 1fr; }
     }
   </style>
+  
 </head>
 <body>
 
@@ -67,7 +68,7 @@
               <h2 class="fns-dashboard-title">Add New Listing</h2>
               <div class="fns-dashboard-user-info">
                 Vendor: <strong id="vendorEmail">Loading&hellip;</strong>
-                &nbsp;|&nbsp; ID: <strong id="vendorId">â€”</strong>
+                &nbsp;|&nbsp; ID: <strong id="vendorId">—</strong>
               </div>
             </div>
             <a href="listings.html" class="btn secondary">&larr; My Listings</a>
@@ -81,7 +82,7 @@
               <div class="vd-field">
                 <label class="vd-label" for="listingType">Listing Type <span>*</span></label>
                 <select id="listingType" class="vd-select">
-                  <option value="">â€” Select type â€”</option>
+                  <option value="">— Select type —</option>
                   <option value="furniture">Furniture</option>
                   <option value="material">Material / Supplies</option>
                   <option value="sourcing">Sourcing / Import</option>
@@ -92,7 +93,7 @@
               <div class="vd-field">
                 <label class="vd-label" for="sellerType">Seller Type <span>*</span></label>
                 <select id="sellerType" class="vd-select">
-                  <option value="">â€” Select â€”</option>
+                  <option value="">— Select —</option>
                   <option value="individual">Individual</option>
                   <option value="vendor">Vendor</option>
                   <option value="manufacturer">Manufacturer</option>
@@ -110,7 +111,7 @@
               <div class="vd-field">
                 <label class="vd-label" for="listingCategory">Category <span>*</span></label>
                 <select id="listingCategory" class="vd-select">
-                  <option value="">â€” Select listing type first â€”</option>
+                  <option value="">— Select listing type first —</option>
                 </select>
               </div>
 
@@ -129,10 +130,10 @@
               <div class="vd-field">
                 <label class="vd-label" for="listingCondition">Condition <span>*</span></label>
                 <select id="listingCondition" class="vd-select">
-                  <option value="">â€” Select â€”</option>
+                  <option value="">— Select —</option>
                   <option value="new">New</option>
                   <option value="like_new">Like New</option>
-                  <option value="used">Used â€” Good</option>
+                  <option value="used">Used — Good</option>
                   <option value="refurbished">Refurbished</option>
                 </select>
               </div>
@@ -146,7 +147,7 @@
               <div class="vd-field vd-form-full">
                 <label class="vd-label" for="listingDesc">Description <span>*</span></label>
                 <textarea id="listingDesc" class="vd-textarea"
-                  placeholder="Describe the item â€” dimensions, materials, condition, any extras..."></textarea>
+                  placeholder="Describe the item — dimensions, materials, condition, any extras..."></textarea>
               </div>
 
             </div>
@@ -243,7 +244,7 @@
       function updateCategories() {
         var type = document.getElementById('listingType').value;
         var sel  = document.getElementById('listingCategory');
-        sel.innerHTML = '<option value="">â€” Select category â€”</option>';
+        sel.innerHTML = '<option value="">— Select category —</option>';
         var cats = CATEGORIES[type] || [];
         cats.forEach(function (c) {
           var o = document.createElement('option');

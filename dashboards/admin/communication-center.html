@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../../shared/communication/communication-layout.css">
+  
 </head>
 <body>
 
@@ -23,7 +24,7 @@
     <a class="premium-brand" href="../../index.html">
       <span>Furnostyles Coordinating Authority</span>
     </a>
-    <div style="font-weight:700;color:#c9a227;font-size:13px;">🛡️ Supervised Communications Desk</div>
+    <div style="font-weight:700;color:#c9a227;font-size:13px;">??? Supervised Communications Desk</div>
   </header>
 
   <div class="premium-layout">
@@ -33,7 +34,7 @@
         
         <!-- Sidebar thread selectors -->
         <div class="comm-list-panel">
-          <div class="comm-panel-header">📁 Active Platform Rooms</div>
+          <div class="comm-panel-header">?? Active Platform Rooms</div>
           <div class="comm-items-container" id="threadsList">
             <div style="padding:20px;text-align:center;color:#8090a0;font-size:13px;">Loading conversations...</div>
           </div>
@@ -46,12 +47,12 @@
               <div class="comm-chat-title" id="chatTitle">Select an Active Platform Room</div>
               <div class="comm-chat-sub" id="chatSub">All platform messages can be moderated by administrators here.</div>
             </div>
-            <div style="font-size:11px;font-weight:700;color:#cc1a1a;">🛡️ AUDIT ACTIVE</div>
+            <div style="font-size:11px;font-weight:700;color:#cc1a1a;">??? AUDIT ACTIVE</div>
           </div>
 
           <div class="comm-messages-wrap" id="messagesArea">
             <div style="text-align:center;margin:auto;color:#8090a0;font-size:13px;">
-              🛡️ Select a thread to verify transaction communications.
+              ??? Select a thread to verify transaction communications.
             </div>
           </div>
 
@@ -103,9 +104,9 @@
               var activeClass = t.id === selectedConvoId ? ' active' : '';
               var snippet = t.lastMessageSnippet || 'No messages yet';
               return '<a class="comm-item' + activeClass + '" href="#" onclick="window.selectConvo(\'' + t.id + '\',\'' + t.conversationType + '\')">' +
-                '<div class="comm-item-avatar">🏢</div>' +
+                '<div class="comm-item-avatar">??</div>' +
                 '<div class="comm-item-info">' +
-                  '<div class="comm-item-name">' + (t.conversationType === 'escalation' ? '⚠️ DISPUTE' : '🛠️ Work Thread') + '</div>' +
+                  '<div class="comm-item-name">' + (t.conversationType === 'escalation' ? '?? DISPUTE' : '??? Work Thread') + '</div>' +
                   '<div class="comm-item-msg">' + snippet + '</div>' +
                 '</div>' +
               '</a>';
@@ -115,7 +116,7 @@
 
         window.selectConvo = function (convoId, type) {
           selectedConvoId = convoId;
-          document.getElementById('chatTitle').textContent = type === 'escalation' ? '⚠️ Escalation Interventions' : '🛠️ Coordinate Workspace Chat';
+          document.getElementById('chatTitle').textContent = type === 'escalation' ? '?? Escalation Interventions' : '??? Coordinate Workspace Chat';
           document.getElementById('msgInput').removeAttribute('disabled');
           document.getElementById('sendBtn').removeAttribute('disabled');
           

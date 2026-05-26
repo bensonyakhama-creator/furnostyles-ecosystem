@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appliances - Furnostyles</title>
+  <meta name="description" content="Browse premium home appliances at Furnostyles - refrigerators, washing machines, ovens, and more">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="stylesheet" href="shared/rendering/marketplace.css">
+  
+  <!-- Demo Data Scripts -->
+  <script src="shared/demo-data/products-demo.js"></script>
+  <script src="shared/demo-data/marketplace-renderer.js"></script>
+</head>
+<body>
+  <div id="fns-topbar-mount"></div>
+  <div id="fns-header-mount"></div>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="page-header">
+        <h1>Appliances</h1>
+        <p>Premium home appliances for modern living</p>
+      </section>
+
+      <section class="products-section">
+        <div class="products-container">
+          <div class="products-filter">
+            <button class="filter-btn active">All Appliances</button>
+            <button class="filter-btn">Refrigerators</button>
+            <button class="filter-btn">Washing Machines</button>
+            <button class="filter-btn">Ovens</button>
+            <button class="filter-btn">Air Conditioners</button>
+          </div>
+
+          <div class="products-grid" id="appliances-products"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fns-footer-mount"></div>
+
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <!-- Footer Data & Render -->
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.FurnostylesMarketplaceRenderer && window.FurnostylesDemoProducts) {
+        window.FurnostylesMarketplaceRenderer.renderProducts(
+          window.FurnostylesDemoProducts,
+          'appliances-products',
+          { category: 'Appliances', limit: 20 }
+        );
+      }
+    });
+  </script>
+</body>
+</html>

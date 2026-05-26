@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -27,17 +27,18 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/video-player.css">
-  <link rel="stylesheet" href="shared/layout/footer.css">
+  <link rel="stylesheet" href="shared/layout/footer.css"> 
 </head>
 <body>
 
+  <div id="fns-topbar-mount"></div>
   <div id="fns-header-mount"></div>
 
   <div class="premium-layout">
     <main class="premium-main">
       <section class="hero-banner premium-home-hero" id="home">
         <div class="hero-content">
-          <span class="hero-badge">Furnostyles Platform</span>
+        
           <h1>Premium Interiors, Furniture &amp; Home Improvement Solutions</h1>
           <p>
             We design, furnish, finish, repair, upgrade and support modern spaces with a premium touch,
@@ -305,7 +306,7 @@
         <div class="section-header marketplace-ecosystem-header">
           <span class="section-badge">Complete Ecosystem</span>
           <h2>6 Integrated Marketplaces</h2>
-          <p>From furniture and materials to services, real estate, secondhand, and global sourcing—everything you need for your home and property projects in one trusted ecosystem.</p>
+          <p>From furniture and materials to services, real estate, secondhand, and global sourcing�everything you need for your home and property projects in one trusted ecosystem.</p>
         </div>
 
         <div class="marketplace-ecosystem-grid">
@@ -399,15 +400,15 @@
 
         <div class="testimonial-grid">
           <article class="testimonial-card">
-            <p>“A platform that brings services, materials, repairs and property support into one clear place.”</p>
+            <p>�A platform that brings services, materials, repairs and property support into one clear place.�</p>
             <strong>Home Improvement Client</strong>
           </article>
           <article class="testimonial-card">
-            <p>“Ideal for clients who want design, supply and execution without moving between suppliers.”</p>
+            <p>�Ideal for clients who want design, supply and execution without moving between suppliers.�</p>
             <strong>Interior Project Client</strong>
           </article>
           <article class="testimonial-card">
-            <p>“The request flow makes it easier to explain what you need and get support professionally.”</p>
+            <p>�The request flow makes it easier to explain what you need and get support professionally.�</p>
             <strong>Service Request User</strong>
           </article>
         </div>
@@ -670,7 +671,7 @@
   </script>
 
   <script>
-  /* Furnostyles index.html — auth/cart/alerts state bridge */
+  /* Furnostyles index.html � auth/cart/alerts state bridge */
   (function(){
     function cartGet(){try{return JSON.parse(localStorage.getItem('furnostyles_cart')||'[]');}catch(e){return[];}}
     function alertsGet(){try{return JSON.parse(localStorage.getItem('furnostyles_alerts')||'[]');}catch(e){return[];}}
@@ -751,6 +752,7 @@
   <script defer src="assets/js/app.js"></script>
   <!-- Header Data & Render -->
   <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
   <script src="shared/layout/header-render.js" defer></script>
   <script src="assets/js/layout-loader.js" defer></script>
   <!-- Firebase SDK -->`n  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>`n  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>`n  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>`n  <!-- Firebase Config & Init -->`n  <script src="shared/firebase/firebase-config.js"></script>`n  <script src="shared/firebase/firebase-init.js"></script>`n  <!-- Firebase Bridge -->

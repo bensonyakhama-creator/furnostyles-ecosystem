@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Test - Jumia Style</title>
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .test-info {
+      padding: 40px;
+      background: #f5f5f5;
+      text-align: center;
+    }
+    .content {
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .content-block {
+      background: white;
+      padding: 30px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="fns-topbar-mount"></div>
+  <div id="fns-header-mount"></div>
+
+  <div class="test-info">
+    <h1>Header Test Page</h1>
+    <p>Scroll down to test sticky header behavior</p>
+  </div>
+
+  <div class="content">
+    <div class="content-block">
+      <h2>Content Block 1</h2>
+      <p>This is test content to enable scrolling. The header should stick to the top when you scroll past it.</p>
+    </div>
+    <div class="content-block">
+      <h2>Content Block 2</h2>
+      <p>More test content to enable scrolling.</p>
+    </div>
+    <div class="content-block">
+      <h2>Content Block 3</h2>
+      <p>Keep scrolling to see the sticky header in action.</p>
+    </div>
+    <div class="content-block">
+      <h2>Content Block 4</h2>
+      <p>The header should remain visible at the top of the viewport.</p>
+    </div>
+    <div class="content-block">
+      <h2>Content Block 5</h2>
+      <p>End of test content.</p>
+    </div>
+  </div>
+  
+  <div class="test-info">
+    <h1>Header Test Page</h1>
+    <p>This page demonstrates the new Jumia-style header structure</p>
+    <p>Features: Top navigation, Categories, Promotional banners, Premium search</p>
+  </div>
+
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../../shared/communication/communication-layout.css">
+  
 </head>
 <body>
 
@@ -23,7 +24,7 @@
     <a class="premium-brand" href="../../index.html">
       <span>Furnostyles Personal Luxury</span>
     </a>
-    <div style="font-weight:700;color:#c9a227;font-size:13px;">💬 Supervised Conversation</div>
+    <div style="font-weight:700;color:#c9a227;font-size:13px;">?? Supervised Conversation</div>
   </header>
 
   <div class="premium-layout">
@@ -33,7 +34,7 @@
         
         <!-- Sidebar thread selectors -->
         <div class="comm-list-panel">
-          <div class="comm-panel-header">💬 My Coordinated Threads</div>
+          <div class="comm-panel-header">?? My Coordinated Threads</div>
           <div class="comm-items-container" id="threadsList">
             <div style="padding:20px;text-align:center;color:#8090a0;font-size:13px;">Loading conversations...</div>
           </div>
@@ -46,12 +47,12 @@
               <div class="comm-chat-title" id="chatTitle">Select a Conversation Thread</div>
               <div class="comm-chat-sub" id="chatSub">All interactions are moderated by Furnostyles Coordinators.</div>
             </div>
-            <div style="font-size:11px;font-weight:700;color:#c9a227;">🛡️ ESCROW PROTECTED</div>
+            <div style="font-size:11px;font-weight:700;color:#c9a227;">??? ESCROW PROTECTED</div>
           </div>
 
           <div class="comm-messages-wrap" id="messagesArea">
             <div style="text-align:center;margin:auto;color:#8090a0;font-size:13px;">
-              🛡️ Select an active assignment thread to connect with coordinates.
+              ??? Select an active assignment thread to connect with coordinates.
             </div>
           </div>
 
@@ -107,7 +108,7 @@
               return '<a class="comm-item' + activeClass + '" href="#" onclick="window.selectConvo(\'' + t.id + '\',\'' + t.conversationType + '\')">' +
                 '<div class="comm-item-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>' +
                 '<div class="comm-item-info">' +
-                  '<div class="comm-item-name">' + (t.conversationType === 'escalation' ? '⚠️ DISPUTE RESOLUTION' : '🛠️ Work Assignment') + '</div>' +
+                  '<div class="comm-item-name">' + (t.conversationType === 'escalation' ? '?? DISPUTE RESOLUTION' : '??? Work Assignment') + '</div>' +
                   '<div class="comm-item-msg">' + snippet + '</div>' +
                 '</div>' +
               '</a>';
@@ -117,7 +118,7 @@
 
         window.selectConvo = function (convoId, type) {
           selectedConvoId = convoId;
-          document.getElementById('chatTitle').textContent = type === 'escalation' ? '⚠️ Dispute Resolution Center' : '🛠️ Service Assignment Chat';
+          document.getElementById('chatTitle').textContent = type === 'escalation' ? '?? Dispute Resolution Center' : '??? Service Assignment Chat';
           document.getElementById('msgInput').removeAttribute('disabled');
           document.getElementById('sendBtn').removeAttribute('disabled');
           

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  
 </head>
 <body>
 
@@ -200,13 +201,13 @@
         /* Render metrics */
         var metrics = window.FurnostylesDashboardData.getVendorMetrics();
         var metricsData = [
-          { label: 'Total Products', value: metrics.totalProducts, icon: '📦' },
-          { label: 'Active Listings', value: metrics.activeListings, icon: '✅' },
-          { label: 'Pending Inquiries', value: metrics.pendingInquiries, icon: '📬' },
-          { label: 'Completed Orders', value: metrics.completedOrders, icon: '✓' },
-          { label: 'Total Revenue', value: metrics.totalRevenue, icon: '💰' },
-          { label: 'Avg Rating', value: metrics.averageRating + ' ⭐', icon: '⭐' },
-          { label: 'Verification', value: metrics.verificationStatus, icon: '🔒' }
+          { label: 'Total Products', value: metrics.totalProducts, icon: '??' },
+          { label: 'Active Listings', value: metrics.activeListings, icon: '?' },
+          { label: 'Pending Inquiries', value: metrics.pendingInquiries, icon: '??' },
+          { label: 'Completed Orders', value: metrics.completedOrders, icon: '?' },
+          { label: 'Total Revenue', value: metrics.totalRevenue, icon: '??' },
+          { label: 'Avg Rating', value: metrics.averageRating + ' ?', icon: '?' },
+          { label: 'Verification', value: metrics.verificationStatus, icon: '??' }
         ];
 
         metricsData.forEach(function (metric) {
@@ -217,10 +218,10 @@
 
         /* Render quick actions */
         var actionsData = [
-          { label: 'Add Listing',  icon: '➕', onClick: function () { window.location.href = 'add-listing.html'; } },
-          { label: 'My Listings',  icon: '—', onClick: function () { window.location.href = 'listings.html'; } },
-          { label: 'View Inquiries', icon: '—', onClick: function () { console.log('Inquiries — coming soon'); } },
-          { label: 'Update Profile', icon: '—', onClick: function () { console.log('Profile — coming soon'); } }
+          { label: 'Add Listing',  icon: '?', onClick: function () { window.location.href = 'add-listing.html'; } },
+          { label: 'My Listings',  icon: '�', onClick: function () { window.location.href = 'listings.html'; } },
+          { label: 'View Inquiries', icon: '�', onClick: function () { console.log('Inquiries � coming soon'); } },
+          { label: 'Update Profile', icon: '�', onClick: function () { console.log('Profile � coming soon'); } }
         ];
         window.FurnostylesDashboardComponents.renderQuickActions(quickActions, actionsData);
 
@@ -269,7 +270,7 @@
           window.FurnostylesDashboardComponents.renderEmptyState(inquiryList, {
             title: 'No inquiries yet',
             message: 'Customer inquiries will appear here.',
-            icon: '📬'
+            icon: '??'
           });
         } else {
           window.FurnostylesDashboardComponents.renderInquiryList(inquiryList, inquiries.map(function (inq) {
@@ -286,12 +287,12 @@
         /* Render performance summary */
         var performance = window.FurnostylesDashboardData.getVendorPerformance();
         var performanceData = [
-          { label: 'Response Rate', value: performance.responseRate, icon: '📊' },
-          { label: 'Avg Response Time', value: performance.averageResponseTime, icon: '⏱️' },
-          { label: 'Fulfillment Rate', value: performance.fulfillmentRate, icon: '✓' },
-          { label: 'Customer Satisfaction', value: performance.customerSatisfaction + ' ⭐', icon: '⭐' },
-          { label: 'Monthly Sales', value: performance.monthlySales, icon: '📈' },
-          { label: 'Revenue Growth', value: performance.revenueGrowth, icon: '📈' }
+          { label: 'Response Rate', value: performance.responseRate, icon: '??' },
+          { label: 'Avg Response Time', value: performance.averageResponseTime, icon: '??' },
+          { label: 'Fulfillment Rate', value: performance.fulfillmentRate, icon: '?' },
+          { label: 'Customer Satisfaction', value: performance.customerSatisfaction + ' ?', icon: '?' },
+          { label: 'Monthly Sales', value: performance.monthlySales, icon: '??' },
+          { label: 'Revenue Growth', value: performance.revenueGrowth, icon: '??' }
         ];
 
         performanceData.forEach(function (metric) {

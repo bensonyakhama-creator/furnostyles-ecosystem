@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders - Furnostyles</title>
+  <meta name="description" content="View and track your orders on Furnostyles">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+</head>
+<body>
+  <div id="fns-topbar-mount"></div>
+  <div id="fns-header-mount"></div>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <section class="page-header">
+        <h1>My Orders</h1>
+        <p>Track and manage your orders</p>
+      </section>
+
+      <section class="orders-section">
+        <div class="orders-container">
+          <div class="orders-filter">
+            <button class="filter-btn active">All Orders</button>
+            <button class="filter-btn">Pending</button>
+            <button class="filter-btn">Shipped</button>
+            <button class="filter-btn">Delivered</button>
+          </div>
+
+          <div class="orders-list">
+            <div class="order-card">
+              <div class="order-header">
+                <div class="order-info">
+                  <span class="order-id">Order #FN-2024-001</span>
+                  <span class="order-date">May 26, 2024</span>
+                </div>
+                <span class="order-status status-pending">Pending</span>
+              </div>
+              <div class="order-items">
+                <div class="order-item">
+                  <div class="item-image"></div>
+                  <div class="item-details">
+                    <h3>Premium Sofa Set</h3>
+                    <p>Qty: 1</p>
+                    <p class="item-price">KSh 45,000</p>
+                  </div>
+                </div>
+              </div>
+              <div class="order-footer">
+                <span class="order-total">Total: KSh 45,000</span>
+                <button class="btn-primary">Track Order</button>
+              </div>
+            </div>
+
+            <div class="order-card">
+              <div class="order-header">
+                <div class="order-info">
+                  <span class="order-id">Order #FN-2024-002</span>
+                  <span class="order-date">May 20, 2024</span>
+                </div>
+                <span class="order-status status-delivered">Delivered</span>
+              </div>
+              <div class="order-items">
+                <div class="order-item">
+                  <div class="item-image"></div>
+                  <div class="item-details">
+                    <h3>Dining Table</h3>
+                    <p>Qty: 1</p>
+                    <p class="item-price">KSh 28,000</p>
+                  </div>
+                </div>
+              </div>
+              <div class="order-footer">
+                <span class="order-total">Total: KSh 28,000</span>
+                <button class="btn-secondary">Buy Again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="fns-footer-mount"></div>
+
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <!-- Footer Data & Render -->
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+</body>
+</html>

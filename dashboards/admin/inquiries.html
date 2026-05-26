@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  
 </head>
 <body>
 
@@ -59,7 +60,7 @@
                 All Inquiries
                 <span id="inquiryCountBadge" class="fns-admin-status-badge status-new" style="font-size:12px; margin-left:8px; vertical-align:middle;"></span>
               </h3>
-              <p style="font-size:12px; color:var(--fns-text-light);">Showing placeholder data â€” Firestore integration in next phase.</p>
+              <p style="font-size:12px; color:var(--fns-text-light);">Showing placeholder data — Firestore integration in next phase.</p>
             </div>
             <div id="inquiryTableContainer"></div>
           </div>
@@ -117,7 +118,7 @@
       var inquiryTableContainer   = document.getElementById('inquiryTableContainer');
       var countBadge              = document.getElementById('inquiryCountBadge');
 
-      /* Master dataset â€” updated after each successful load */
+      /* Master dataset — updated after each successful load */
       var currentInquiries = [];
 
       /* ------------------------------------------------------------------ */
@@ -171,10 +172,10 @@
             );
           },
           onAssign: function (id) {
-            window.FurnostylesInquiryAdminUI.showActionToast('Assign â€” coming in next phase.');
+            window.FurnostylesInquiryAdminUI.showActionToast('Assign — coming in next phase.');
           },
           onEscalate: function (id) {
-            window.FurnostylesInquiryAdminUI.showActionToast('Escalate â€” coming in next phase.');
+            window.FurnostylesInquiryAdminUI.showActionToast('Escalate — coming in next phase.');
           },
           onStatusUpdated: function () { reloadInquiries(); }
         });
@@ -213,7 +214,7 @@
             var isLive  = bridge && typeof bridge.isLive === 'function' && bridge.isLive();
             if (!isLive) {
               window.FurnostylesInquiryAdminUI.showActionToast(
-                'LOCAL mode â€” data stored in localStorage. Add Firebase config for Firestore.'
+                'LOCAL mode — data stored in localStorage. Add Firebase config for Firestore.'
               );
             }
           },

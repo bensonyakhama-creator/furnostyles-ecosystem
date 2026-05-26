@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  
 </head>
 <body>
 
@@ -116,15 +117,15 @@
         /* Render metrics */
         var metrics = window.FurnostylesDashboardData.getSuperAdminMetrics();
         var metricsData = [
-          { label: 'Total Users', value: metrics.totalUsers, icon: '👥' },
-          { label: 'Total Revenue', value: metrics.totalRevenue, icon: '💰' },
-          { label: 'Active Subscriptions', value: metrics.activeSubscriptions, icon: '✅' },
-          { label: 'Pending Issues', value: metrics.pendingIssues, icon: '⚠️' },
-          { label: 'System Uptime', value: metrics.systemUptime, icon: '🟢' },
+          { label: 'Total Users', value: metrics.totalUsers, icon: '??' },
+          { label: 'Total Revenue', value: metrics.totalRevenue, icon: '??' },
+          { label: 'Active Subscriptions', value: metrics.activeSubscriptions, icon: '?' },
+          { label: 'Pending Issues', value: metrics.pendingIssues, icon: '??' },
+          { label: 'System Uptime', value: metrics.systemUptime, icon: '??' },
           { label: 'Total Admins', value: metrics.totalAdmins, icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' },
-          { label: 'Total Roles', value: metrics.totalRoles, icon: '🔐' },
-          { label: 'Database Size', value: metrics.databaseSize, icon: '💾' },
-          { label: 'API Requests', value: metrics.apiRequests, icon: '📡' }
+          { label: 'Total Roles', value: metrics.totalRoles, icon: '??' },
+          { label: 'Database Size', value: metrics.databaseSize, icon: '??' },
+          { label: 'API Requests', value: metrics.apiRequests, icon: '??' }
         ];
 
         metricsData.forEach(function (metric) {
@@ -135,10 +136,10 @@
 
         /* Render quick actions */
         var actionsData = [
-          { label: 'System Settings', icon: '⚙️', onClick: function () { console.log('System settings - coming soon'); } },
-          { label: 'User Management', icon: '👥', onClick: function () { console.log('User management - coming soon'); } },
-          { label: 'Revenue Reports', icon: '💰', onClick: function () { console.log('Revenue reports - coming soon'); } },
-          { label: 'System Logs', icon: '📋', onClick: function () { console.log('System logs - coming soon'); } }
+          { label: 'System Settings', icon: '??', onClick: function () { console.log('System settings - coming soon'); } },
+          { label: 'User Management', icon: '??', onClick: function () { console.log('User management - coming soon'); } },
+          { label: 'Revenue Reports', icon: '??', onClick: function () { console.log('Revenue reports - coming soon'); } },
+          { label: 'System Logs', icon: '??', onClick: function () { console.log('System logs - coming soon'); } }
         ];
         window.FurnostylesDashboardComponents.renderQuickActions(quickActions, actionsData);
 
@@ -148,7 +149,7 @@
           window.FurnostylesDashboardComponents.renderEmptyState(healthList, {
             title: 'No health data',
             message: 'System health data will appear here.',
-            icon: '🟢'
+            icon: '??'
           });
         } else {
           window.FurnostylesDashboardComponents.renderInquiryList(healthList, health.map(function (h) {

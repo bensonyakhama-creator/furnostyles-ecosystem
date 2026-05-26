@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
+  
 </head>
 <body>
 
@@ -195,14 +196,14 @@
         /* Render metrics */
         var metrics = window.FurnostylesDashboardData.getProviderMetrics();
         var metricsData = [
-          { label: 'Total Jobs', value: metrics.totalJobs, icon: '🔧' },
-          { label: 'Available Requests', value: metrics.availableRequests, icon: '📬' },
-          { label: 'Assigned Jobs', value: metrics.assignedJobs, icon: '📋' },
-          { label: 'Completed Jobs', value: metrics.completedJobs, icon: '✓' },
-          { label: 'Total Earnings', value: metrics.totalEarnings, icon: '💰' },
-          { label: 'Avg Rating', value: metrics.averageRating + ' ⭐', icon: '⭐' },
-          { label: 'Discipline Score', value: metrics.disciplineScore, icon: '🏆' },
-          { label: 'Verification', value: metrics.verificationStatus, icon: '🔒' }
+          { label: 'Total Jobs', value: metrics.totalJobs, icon: '??' },
+          { label: 'Available Requests', value: metrics.availableRequests, icon: '??' },
+          { label: 'Assigned Jobs', value: metrics.assignedJobs, icon: '??' },
+          { label: 'Completed Jobs', value: metrics.completedJobs, icon: '?' },
+          { label: 'Total Earnings', value: metrics.totalEarnings, icon: '??' },
+          { label: 'Avg Rating', value: metrics.averageRating + ' ?', icon: '?' },
+          { label: 'Discipline Score', value: metrics.disciplineScore, icon: '??' },
+          { label: 'Verification', value: metrics.verificationStatus, icon: '??' }
         ];
 
         metricsData.forEach(function (metric) {
@@ -214,9 +215,9 @@
         /* Render quick actions */
         var actionsData = [
           { label: 'Update Profile', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>', onClick: function () { console.log('Update profile - coming soon'); } },
-          { label: 'View Job Requests', icon: '📬', onClick: function () { console.log('View job requests - coming soon'); } },
-          { label: 'Respond to Inquiry', icon: '💬', onClick: function () { console.log('Respond to inquiry - coming soon'); } },
-          { label: 'Request Verification', icon: '🔒', onClick: function () { console.log('Request verification - coming soon'); } }
+          { label: 'View Job Requests', icon: '??', onClick: function () { console.log('View job requests - coming soon'); } },
+          { label: 'Respond to Inquiry', icon: '??', onClick: function () { console.log('Respond to inquiry - coming soon'); } },
+          { label: 'Request Verification', icon: '??', onClick: function () { console.log('Request verification - coming soon'); } }
         ];
         window.FurnostylesDashboardComponents.renderQuickActions(quickActions, actionsData);
 
@@ -226,7 +227,7 @@
           window.FurnostylesDashboardComponents.renderEmptyState(jobList, {
             title: 'No job requests yet',
             message: 'Available job requests will appear here.',
-            icon: '📬'
+            icon: '??'
           });
         } else {
           window.FurnostylesDashboardComponents.renderInquiryList(jobList, jobs.map(function (job) {
@@ -235,7 +236,7 @@
               title: job.title,
               status: job.status,
               date: job.budget,
-              vendor: job.location + ' • ' + job.urgency + ' urgency'
+              vendor: job.location + ' � ' + job.urgency + ' urgency'
             };
           }));
         }
@@ -246,7 +247,7 @@
           window.FurnostylesDashboardComponents.renderEmptyState(inquiryList, {
             title: 'No inquiries yet',
             message: 'Customer inquiries will appear here.',
-            icon: '💬'
+            icon: '??'
           });
         } else {
           window.FurnostylesDashboardComponents.renderInquiryList(inquiryList, inquiries.map(function (inq) {
@@ -263,12 +264,12 @@
         /* Render performance summary */
         var performance = window.FurnostylesDashboardData.getProviderPerformance();
         var performanceData = [
-          { label: 'Response Rate', value: performance.responseRate, icon: '📊' },
-          { label: 'Avg Response Time', value: performance.averageResponseTime, icon: '⏱️' },
-          { label: 'Completion Rate', value: performance.completionRate, icon: '✓' },
-          { label: 'Customer Satisfaction', value: performance.customerSatisfaction + ' ⭐', icon: '⭐' },
-          { label: 'Discipline Score', value: performance.disciplineScore, icon: '🏆' },
-          { label: 'On-Time Delivery', value: performance.onTimeDelivery, icon: '⏰' }
+          { label: 'Response Rate', value: performance.responseRate, icon: '??' },
+          { label: 'Avg Response Time', value: performance.averageResponseTime, icon: '??' },
+          { label: 'Completion Rate', value: performance.completionRate, icon: '?' },
+          { label: 'Customer Satisfaction', value: performance.customerSatisfaction + ' ?', icon: '?' },
+          { label: 'Discipline Score', value: performance.disciplineScore, icon: '??' },
+          { label: 'On-Time Delivery', value: performance.onTimeDelivery, icon: '?' }
         ];
 
         performanceData.forEach(function (metric) {
