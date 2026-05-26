@@ -2366,7 +2366,7 @@
 
 /* Dark Section */
 .premium-dark-section {
-  background: var(--fns-petrol-blue);
+  background: #0F4C5C;
   color: var(--fns-text-lighter);
 }
 
@@ -2382,6 +2382,10 @@
   color: var(--fns-text-lighter);
 }
 
+.premium-dark-section .section-header p {
+  color: var(--fns-text-lighter);
+}
+
 .premium-dark-section a {
   color: var(--fns-gold-accent);
 }
@@ -2391,7 +2395,7 @@
 }
 
 .premium-dark-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: #12343B;
   padding: 32px;
   border-radius: var(--fns-radius);
   border: 1px solid rgba(255, 255, 255, 0.15);
