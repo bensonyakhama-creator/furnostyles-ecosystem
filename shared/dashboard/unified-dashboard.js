@@ -172,13 +172,13 @@
       ];
 
       let html = `
-        <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-            <div>
-              <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #1a2540;">Welcome, ${this.currentUser?.displayName || 'User'}</h2>
-              <p style="margin: 4px 0 0; color: #8090a0; font-size: 14px;">Switch between your roles seamlessly</p>
+        <div class="fns-role-switcher">
+          <div class="fns-role-switcher-header">
+            <div class="fns-role-switcher-title">
+              <h2>Welcome, ${this.currentUser?.displayName || 'User'}</h2>
+              <p>Switch between your roles seamlessly</p>
             </div>
-            <div style="display: flex; gap: 8px;">
+            <div class="fns-role-buttons">
       `;
 
       roles.forEach(role => {
@@ -187,22 +187,8 @@
         
         html += `
           <button 
+            class="fns-role-btn ${isActive ? 'active' : ''}"
             onclick="window.FurnostylesUnifiedDashboard.switchRole('${role.id}')"
-            style="
-              padding: 10px 16px;
-              border: 1.5px solid ${isActive ? '#c9a227' : isAvailable ? '#dce4f0' : '#e9ecef'};
-              background: ${isActive ? '#c9a227' : isAvailable ? '#fff' : '#f8f9fa'};
-              color: ${isActive ? '#fff' : isAvailable ? '#1a2540' : '#a0aabb'};
-              border-radius: 8px;
-              cursor: ${isAvailable ? 'pointer' : 'not-allowed'};
-              font-size: 13px;
-              font-weight: 600;
-              display: flex;
-              align-items: center;
-              gap: 6px;
-              transition: all 0.2s;
-              opacity: ${isAvailable ? '1' : '0.5'};
-            "
             ${!isAvailable ? 'disabled' : ''}
           >
             ${role.icon} ${role.name}
@@ -214,18 +200,18 @@
       html += `
             </div>
           </div>
-          <div style="display: flex; gap: 16px; padding-top: 16px; border-top: 1.5px solid #dce4f0;">
-            <div style="flex: 1; text-align: center; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-              <div style="font-size: 24px; font-weight: 700; color: #0b3b46;">${this.availableRoles.length}</div>
-              <div style="font-size: 12px; color: #8090a0;">Active Roles</div>
+          <div class="fns-role-stats">
+            <div class="fns-role-stat">
+              <div class="fns-role-stat-value">${this.availableRoles.length}</div>
+              <div class="fns-role-stat-label">Active Roles</div>
             </div>
-            <div style="flex: 1; text-align: center; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-              <div style="font-size: 24px; font-weight: 700; color: #0b3b46;">${this.currentRole}</div>
-              <div style="font-size: 12px; color: #8090a0;">Current Role</div>
+            <div class="fns-role-stat">
+              <div class="fns-role-stat-value">${this.currentRole}</div>
+              <div class="fns-role-stat-label">Current Role</div>
             </div>
-            <div style="flex: 1; text-align: center; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-              <div style="font-size: 24px; font-weight: 700; color: #0b3b46;">1</div>
-              <div style="font-size: 12px; color: #8090a0;">Account</div>
+            <div class="fns-role-stat">
+              <div class="fns-role-stat-value">1</div>
+              <div class="fns-role-stat-label">Account</div>
             </div>
           </div>
         </div>
@@ -245,38 +231,38 @@
       const cartTotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
       
       return `
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
+        <div class="fns-dashboard-grid">
           ${this.renderDashboardCard('🛒', 'Shopping Cart', cartCount + ' items', 'KES ' + cartTotal.toLocaleString(), '#0b3b46', 'cart')}
           ${this.renderDashboardCard('📦', 'My Uploads', uploads.length + ' items', 'Active listings', '#c9a227', 'uploads')}
           ${this.renderDashboardCard('❤️', 'Wishlist', wishlist.length + ' items', 'Saved items', '#dc3545', 'wishlist')}
           ${this.renderDashboardCard('📍', 'Location', 'Nairobi', 'Default location', '#28a745', 'location')}
         </div>
 
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px;">
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">My Uploads</h3>
+        <div class="fns-content-grid">
+          <div class="fns-dashboard-panel">
+            <h3>My Uploads</h3>
             ${this.renderMyUploadsList(uploads)}
           </div>
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Quick Actions</h3>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <button onclick="window.location.href='furniture-marketplace.html'" style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">🛍️ Continue Shopping</button>
-              <button onclick="window.location.href='cart.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🛒 View Cart</button>
-              <button onclick="window.location.href='upload.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📤 Sell Item</button>
-              <button onclick="window.location.href='dropshipping-dashboard.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📦 Dropshipping</button>
-              <button onclick="window.location.href='services-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🔧 Services</button>
-              <button onclick="window.location.href='realestate-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏠 Real Estate</button>
-              <button onclick="window.location.href='secondhand-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">♻️ Second Hand</button>
-              <button onclick="window.location.href='sourcing-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏗️ Sourcing</button>
-              <button onclick="window.location.href='materials-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🧱 Materials</button>
-              <button onclick="window.location.href='about.html'" style="padding: 12px; background: #c9a227; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">ℹ️ About Us</button>
+          <div class="fns-dashboard-panel">
+            <h3>Quick Actions</h3>
+            <div class="fns-quick-actions">
+              <button onclick="window.location.href='furniture-marketplace.html'" class="fns-quick-action-btn primary">🛍️ Continue Shopping</button>
+              <button onclick="window.location.href='cart.html'" class="fns-quick-action-btn">🛒 View Cart</button>
+              <button onclick="window.location.href='upload.html'" class="fns-quick-action-btn">📤 Sell Item</button>
+              <button onclick="window.location.href='dropshipping-dashboard.html'" class="fns-quick-action-btn">📦 Dropshipping</button>
+              <button onclick="window.location.href='services-marketplace.html'" class="fns-quick-action-btn">🔧 Services</button>
+              <button onclick="window.location.href='realestate-marketplace.html'" class="fns-quick-action-btn">🏠 Real Estate</button>
+              <button onclick="window.location.href='secondhand-marketplace.html'" class="fns-quick-action-btn">♻️ Second Hand</button>
+              <button onclick="window.location.href='sourcing-marketplace.html'" class="fns-quick-action-btn">🏗️ Sourcing</button>
+              <button onclick="window.location.href='materials-marketplace.html'" class="fns-quick-action-btn">🧱 Materials</button>
+              <button onclick="window.location.href='about.html'" class="fns-quick-action-btn gold">ℹ️ About Us</button>
             </div>
           </div>
         </div>
 
-        <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-          <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Marketplaces</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
+        <div class="fns-dashboard-panel">
+          <h3>Marketplaces</h3>
+          <div class="fns-marketplace-grid">
             ${this.renderMarketplaceLinks()}
           </div>
         </div>
@@ -286,37 +272,37 @@
     // Render vendor dashboard
     renderVendorDashboard: function() {
       return `
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
+        <div class="fns-dashboard-grid">
           ${this.renderDashboardCard('📦', 'Products', '45 listed', '12 active', '#0b3b46', 'products')}
           ${this.renderDashboardCard('💰', 'Earnings', 'KES 125,000', '+23% this month', '#28a745', 'earnings')}
           ${this.renderDashboardCard('📋', 'Orders', '28 pending', '15 shipped', '#c9a227', 'vendor-orders')}
           ${this.renderDashboardCard('⭐', 'Rating', '4.8/5.0', '142 reviews', '#ffc107', 'rating')}
         </div>
 
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px;">
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Sales Analytics</h3>
-            <div style="height: 200px; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #8090a0;">
+        <div class="fns-content-grid">
+          <div class="fns-dashboard-panel">
+            <h3>Sales Analytics</h3>
+            <div class="fns-chart-placeholder">
               [Chart: Sales over last 30 days]
             </div>
           </div>
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Quick Actions</h3>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <button onclick="window.location.href='upload.html'" style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">📤 Add New Product</button>
-              <button onclick="window.location.href='dropshipping-dashboard.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📦 Dropshipping</button>
-              <button onclick="window.location.href='furniture-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🛍️ Browse Market</button>
-              <button onclick="window.location.href='services-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🔧 Services</button>
-              <button onclick="window.location.href='materials-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🧱 Materials</button>
-              <button onclick="window.location.href='sourcing-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏗️ Sourcing</button>
-              <button onclick="window.location.href='realestate-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏠 Real Estate</button>
-              <button onclick="window.location.href='secondhand-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">♻️ Second Hand</button>
+          <div class="fns-dashboard-panel">
+            <h3>Quick Actions</h3>
+            <div class="fns-quick-actions">
+              <button onclick="window.location.href='upload.html'" class="fns-quick-action-btn primary">📤 Add New Product</button>
+              <button onclick="window.location.href='dropshipping-dashboard.html'" class="fns-quick-action-btn">📦 Dropshipping</button>
+              <button onclick="window.location.href='furniture-marketplace.html'" class="fns-quick-action-btn">🛍️ Browse Market</button>
+              <button onclick="window.location.href='services-marketplace.html'" class="fns-quick-action-btn">🔧 Services</button>
+              <button onclick="window.location.href='materials-marketplace.html'" class="fns-quick-action-btn">🧱 Materials</button>
+              <button onclick="window.location.href='sourcing-marketplace.html'" class="fns-quick-action-btn">🏗️ Sourcing</button>
+              <button onclick="window.location.href='realestate-marketplace.html'" class="fns-quick-action-btn">🏠 Real Estate</button>
+              <button onclick="window.location.href='secondhand-marketplace.html'" class="fns-quick-action-btn">♻️ Second Hand</button>
             </div>
           </div>
         </div>
 
-        <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-          <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Recent Orders</h3>
+        <div class="fns-dashboard-panel">
+          <h3>Recent Orders</h3>
           ${this.renderVendorOrders()}
         </div>
       `;
@@ -325,52 +311,52 @@
     // Render admin dashboard
     renderAdminDashboard: function() {
       return `
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
+        <div class="fns-dashboard-grid">
           ${this.renderDashboardCard('👥', 'Users', '1,245 total', '89 new today', '#0b3b46', 'users')}
           ${this.renderDashboardCard('🏪', 'Vendors', '156 active', '23 pending', '#c9a227', 'vendors')}
           ${this.renderDashboardCard('💵', 'Revenue', 'KES 2.4M', '+18% this week', '#28a745', 'revenue')}
           ${this.renderDashboardCard('📊', 'Analytics', 'Real-time', 'Live data', '#17a2b8', 'analytics')}
         </div>
 
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px;">
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Platform Analytics</h3>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-              <div style="padding: 16px; background: #f8f9fa; border-radius: 8px;">
-                <div style="font-size: 12px; color: #8090a0; margin-bottom: 4px;">Page Views</div>
-                <div style="font-size: 24px; font-weight: 700; color: #0b3b46;">45,231</div>
+        <div class="fns-content-grid">
+          <div class="fns-dashboard-panel">
+            <h3>Platform Analytics</h3>
+            <div class="fns-analytics-grid">
+              <div class="fns-analytics-item">
+                <div class="fns-analytics-item-label">Page Views</div>
+                <div class="fns-analytics-item-value">45,231</div>
               </div>
-              <div style="padding: 16px; background: #f8f9fa; border-radius: 8px;">
-                <div style="font-size: 12px; color: #8090a0; margin-bottom: 4px;">Conversions</div>
-                <div style="font-size: 24px; font-weight: 700; color: #28a745;">3.2%</div>
+              <div class="fns-analytics-item">
+                <div class="fns-analytics-item-label">Conversions</div>
+                <div class="fns-analytics-item-value">3.2%</div>
               </div>
-              <div style="padding: 16px; background: #f8f9fa; border-radius: 8px;">
-                <div style="font-size: 12px; color: #8090a0; margin-bottom: 4px;">Avg Session</div>
-                <div style="font-size: 24px; font-weight: 700; color: #c9a227;">4:32</div>
+              <div class="fns-analytics-item">
+                <div class="fns-analytics-item-label">Avg Session</div>
+                <div class="fns-analytics-item-value">4:32</div>
               </div>
-              <div style="padding: 16px; background: #f8f9fa; border-radius: 8px;">
-                <div style="font-size: 12px; color: #8090a0; margin-bottom: 4px;">Bounce Rate</div>
-                <div style="font-size: 24px; font-weight: 700; color: #dc3545;">32%</div>
+              <div class="fns-analytics-item">
+                <div class="fns-analytics-item-label">Bounce Rate</div>
+                <div class="fns-analytics-item-value">32%</div>
               </div>
             </div>
           </div>
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-            <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Admin Actions</h3>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <button onclick="window.location.href='furniture-marketplace.html'" style="padding: 12px; background: #0b3b46; color: #fff; border: none; border-radius: 8px; cursor: pointer; text-align: left;">🛍️ Browse Market</button>
-              <button onclick="window.location.href='upload.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📤 Add Product</button>
-              <button onclick="window.location.href='dropshipping-dashboard.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">📦 Dropshipping</button>
-              <button onclick="window.location.href='services-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🔧 Services</button>
-              <button onclick="window.location.href='materials-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🧱 Materials</button>
-              <button onclick="window.location.href='realestate-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏠 Real Estate</button>
-              <button onclick="window.location.href='secondhand-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">♻️ Second Hand</button>
-              <button onclick="window.location.href='sourcing-marketplace.html'" style="padding: 12px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 8px; cursor: pointer; text-align: left;">🏗️ Sourcing</button>
+          <div class="fns-dashboard-panel">
+            <h3>Admin Actions</h3>
+            <div class="fns-quick-actions">
+              <button onclick="window.location.href='furniture-marketplace.html'" class="fns-quick-action-btn primary">🛍️ Browse Market</button>
+              <button onclick="window.location.href='upload.html'" class="fns-quick-action-btn">📤 Add Product</button>
+              <button onclick="window.location.href='dropshipping-dashboard.html'" class="fns-quick-action-btn">📦 Dropshipping</button>
+              <button onclick="window.location.href='services-marketplace.html'" class="fns-quick-action-btn">🔧 Services</button>
+              <button onclick="window.location.href='materials-marketplace.html'" class="fns-quick-action-btn">🧱 Materials</button>
+              <button onclick="window.location.href='realestate-marketplace.html'" class="fns-quick-action-btn">🏠 Real Estate</button>
+              <button onclick="window.location.href='secondhand-marketplace.html'" class="fns-quick-action-btn">♻️ Second Hand</button>
+              <button onclick="window.location.href='sourcing-marketplace.html'" class="fns-quick-action-btn">🏗️ Sourcing</button>
             </div>
           </div>
         </div>
 
-        <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 24px;">
-          <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: #1a2540;">Pending Vendor Approvals</h3>
+        <div class="fns-dashboard-panel">
+          <h3>Pending Vendor Approvals</h3>
           ${this.renderPendingVendors()}
         </div>
       `;
@@ -379,13 +365,13 @@
     // Helper: Render dashboard card
     renderDashboardCard: function(icon, title, value, subtitle, color, id) {
       return `
-        <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <span style="font-size: 32px;">${icon}</span>
-            <span style="font-size: 12px; color: ${color}; font-weight: 600; background: ${color}15; padding: 4px 12px; border-radius: 20px;">View All</span>
+        <div class="fns-dashboard-card">
+          <div class="fns-dashboard-card-header">
+            <span class="fns-dashboard-card-icon">${icon}</span>
+            <span class="fns-dashboard-card-badge" style="color: ${color}; background: ${color}15;">View All</span>
           </div>
-          <div style="font-size: 28px; font-weight: 700; color: #1a2540; margin-bottom: 4px;">${value}</div>
-          <div style="font-size: 13px; color: #8090a0;">${subtitle}</div>
+          <div class="fns-dashboard-card-value">${value}</div>
+          <div class="fns-dashboard-card-subtitle">${subtitle}</div>
         </div>
       `;
     },
@@ -398,18 +384,18 @@
         { id: 'ORD-003', product: 'Dining Table Set', status: 'Delivered', date: '2026-05-20', total: 'KES 45,000' }
       ];
 
-      let html = '<div style="display: flex; flex-direction: column; gap: 12px;">';
+      let html = '<div class="fns-orders-list">';
       orders.forEach(order => {
-        const statusColor = order.status === 'Delivered' ? '#28a745' : order.status === 'Shipped' ? '#c9a227' : '#17a2b8';
+        const statusClass = order.status === 'Delivered' ? 'delivered' : order.status === 'Shipped' ? 'shipped' : 'processing';
         html += `
-          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-            <div>
-              <div style="font-size: 14px; font-weight: 600; color: #1a2540;">${order.product}</div>
-              <div style="font-size: 12px; color: #8090a0;">${order.id} • ${order.date}</div>
+          <div class="fns-order-item">
+            <div class="fns-order-item-info">
+              <div class="fns-order-item-info-title">${order.product}</div>
+              <div class="fns-order-item-info-meta">${order.id} • ${order.date}</div>
             </div>
             <div style="text-align: right;">
-              <div style="font-size: 14px; font-weight: 700; color: #0b3b46;">${order.total}</div>
-              <div style="font-size: 12px; color: ${statusColor}; font-weight: 600;">${order.status}</div>
+              <div class="fns-order-item-price">${order.total}</div>
+              <div class="fns-order-item-status ${statusClass}">${order.status}</div>
             </div>
           </div>
         `;
@@ -426,18 +412,18 @@
         { id: 'V-ORD-003', customer: 'Mike Johnson', product: 'Office Desk', status: 'Shipped', total: 'KES 55,000' }
       ];
 
-      let html = '<div style="display: flex; flex-direction: column; gap: 12px;">';
+      let html = '<div class="fns-orders-list">';
       orders.forEach(order => {
-        const statusColor = order.status === 'New' ? '#28a745' : order.status === 'Processing' ? '#c9a227' : '#17a2b8';
+        const statusClass = order.status === 'New' ? 'new' : order.status === 'Processing' ? 'shipped' : 'shipped';
         html += `
-          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-            <div>
-              <div style="font-size: 14px; font-weight: 600; color: #1a2540;">${order.customer}</div>
-              <div style="font-size: 12px; color: #8090a0;">${order.product} • ${order.id}</div>
+          <div class="fns-order-item">
+            <div class="fns-order-item-info">
+              <div class="fns-order-item-info-title">${order.customer}</div>
+              <div class="fns-order-item-info-meta">${order.product} • ${order.id}</div>
             </div>
             <div style="text-align: right;">
-              <div style="font-size: 14px; font-weight: 700; color: #0b3b46;">${order.total}</div>
-              <div style="font-size: 12px; color: ${statusColor}; font-weight: 600;">${order.status}</div>
+              <div class="fns-order-item-price">${order.total}</div>
+              <div class="fns-order-item-status ${statusClass}">${order.status}</div>
             </div>
           </div>
         `;
@@ -454,17 +440,17 @@
         { name: 'Master Craftsmen', type: 'Services', applied: '2026-05-22', status: 'Pending Review' }
       ];
 
-      let html = '<div style="display: flex; flex-direction: column; gap: 12px;">';
+      let html = '<div class="fns-orders-list">';
       vendors.forEach(vendor => {
         html += `
-          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-            <div>
-              <div style="font-size: 14px; font-weight: 600; color: #1a2540;">${vendor.name}</div>
-              <div style="font-size: 12px; color: #8090a0;">${vendor.type} • Applied: ${vendor.applied}</div>
+          <div class="fns-vendor-item">
+            <div class="fns-vendor-item-info">
+              <div class="fns-vendor-item-info-name">${vendor.name}</div>
+              <div class="fns-vendor-item-info-meta">${vendor.type} • Applied: ${vendor.applied}</div>
             </div>
-            <div style="display: flex; gap: 8px;">
-              <button style="padding: 8px 16px; background: #28a745; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">Approve</button>
-              <button style="padding: 8px 16px; background: #dc3545; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">Reject</button>
+            <div class="fns-vendor-actions">
+              <button class="fns-vendor-action-btn approve">Approve</button>
+              <button class="fns-vendor-action-btn reject">Reject</button>
             </div>
           </div>
         `;
@@ -487,11 +473,11 @@
       let html = '';
       marketplaces.forEach(mp => {
         html += `
-          <a href="${mp.href}" style="display: flex; align-items: center; gap: 12px; padding: 16px; background: #f8f9fa; border: 1.5px solid #dce4f0; border-radius: 8px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.borderColor='${mp.color}'; this.style.background='${mp.color}15'" onmouseout="this.style.borderColor='#dce4f0'; this.style.background='#f8f9fa'">
-            <span style="font-size: 28px;">${mp.icon}</span>
-            <div>
-              <div style="font-size: 14px; font-weight: 600; color: #1a2540;">${mp.name}</div>
-              <div style="font-size: 12px; color: #8090a0;">Browse listings</div>
+          <a href="${mp.href}" class="fns-marketplace-link" style="--mp-color: ${mp.color}">
+            <span class="fns-marketplace-icon">${mp.icon}</span>
+            <div class="fns-marketplace-info">
+              <div class="fns-marketplace-info-title">${mp.name}</div>
+              <div class="fns-marketplace-info-subtitle">Browse listings</div>
             </div>
           </a>
         `;
@@ -503,34 +489,35 @@
     renderMyUploadsList: function(uploads) {
       if (!uploads || uploads.length === 0) {
         return `
-          <div style="text-align: center; padding: 40px 20px; color: #8090a0;">
-            <div style="font-size: 48px; margin-bottom: 12px;">📦</div>
-            <p style="margin: 0;">No uploads yet</p>
-            <button onclick="window.location.href='upload.html'" style="margin-top: 12px; padding: 8px 16px; background: #c9a227; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Upload Item</button>
+          <div class="fns-uploads-empty">
+            <div class="fns-uploads-empty-icon">📦</div>
+            <p>No uploads yet</p>
+            <button onclick="window.location.href='upload.html'" class="fns-uploads-empty-btn">Upload Item</button>
           </div>
         `;
       }
 
-      let html = '<div style="display: flex; flex-direction: column; gap: 12px;">';
+      let html = '<div class="fns-uploads-list">';
       uploads.slice(0, 5).forEach(upload => {
         const image = upload.images && upload.images[0] ? upload.images[0] : 'assets/images/default-product.jpg';
+        const statusClass = upload.status === 'active' ? 'active' : 'pending';
         html += `
-          <div style="display: flex; gap: 12px; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-            <img src="${image}" alt="${upload.title}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
-            <div style="flex: 1;">
-              <div style="font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 4px;">${upload.title}</div>
-              <div style="font-size: 13px; color: #0b3b46; font-weight: 700;">KES ${upload.price.toLocaleString()}</div>
-              <div style="font-size: 12px; color: #8090a0; margin-top: 4px;">${upload.type} • ${upload.category}</div>
+          <div class="fns-upload-item">
+            <img src="${image}" alt="${upload.title}" class="fns-upload-item-image">
+            <div class="fns-upload-item-content">
+              <div class="fns-upload-item-title">${upload.title}</div>
+              <div class="fns-upload-item-price">KES ${upload.price.toLocaleString()}</div>
+              <div class="fns-upload-item-meta">${upload.type} • ${upload.category}</div>
             </div>
             <div style="text-align: right;">
-              <span style="font-size: 11px; background: ${upload.status === 'active' ? '#e8f5e9' : '#fff3e0'}; color: ${upload.status === 'active' ? '#2e7d32' : '#e65100'}; padding: 4px 8px; border-radius: 4px;">${upload.status}</span>
+              <span class="fns-upload-item-status ${statusClass}">${upload.status}</span>
             </div>
           </div>
         `;
       });
       
       if (uploads.length > 5) {
-        html += `<button onclick="window.location.href='upload.html'" style="margin-top: 8px; padding: 8px; background: #fff; color: #1a2540; border: 1.5px solid #dce4f0; border-radius: 6px; cursor: pointer; font-size: 13px;">View all ${uploads.length} uploads</button>`;
+        html += `<button onclick="window.location.href='upload.html'" class="fns-quick-action-btn" style="margin-top: 8px;">View all ${uploads.length} uploads</button>`;
       }
       
       html += '</div>';

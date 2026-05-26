@@ -332,8 +332,8 @@
 }
 
 .fns-marketplace-link:hover {
-  border-color: #c9a227;
-  background: #c9a22715;
+  border-color: var(--mp-color, #c9a227);
+  background: color-mix(in srgb, var(--mp-color, #c9a227) 15%, transparent);
 }
 
 .fns-marketplace-icon {
