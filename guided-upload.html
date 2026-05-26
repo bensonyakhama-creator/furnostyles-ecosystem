@@ -55,12 +55,15 @@
             <div class="step-header">
               <h2>Step 1: Basic Information</h2>
               <p class="step-description">Let's start with the basics. What are you listing?</p>
+              <div class="required-legend">
+                <span class="required-indicator">*</span> = Required field
+              </div>
             </div>
 
             <div class="form-grid">
               <div class="form-group">
-                <label for="listingType" class="form-label">
-                  What type of item are you listing?
+                <label for="listingType" class="form-label required">
+                  What type of item are you listing? <span class="required-indicator">*</span>
                   <span class="form-hint">Choose the category that best describes your item</span>
                 </label>
                 <select id="listingType" name="listingType" class="form-select" required>
@@ -74,8 +77,8 @@
               </div>
 
               <div class="form-group">
-                <label for="listingTitle" class="form-label">
-                  What's the title of your listing?
+                <label for="listingTitle" class="form-label required">
+                  What's the title of your listing? <span class="required-indicator">*</span>
                   <span class="form-hint">Be descriptive but concise (e.g., "Modern Leather Sofa - Brown")</span>
                 </label>
                 <input type="text" id="listingTitle" name="listingTitle" class="form-input" 
@@ -84,8 +87,8 @@
               </div>
 
               <div class="form-group full-width">
-                <label for="listingCategory" class="form-label">
-                  Which category fits best?
+                <label for="listingCategory" class="form-label required">
+                  Which category fits best? <span class="required-indicator">*</span>
                   <span class="form-hint">This helps buyers find your item quickly</span>
                 </label>
                 <select id="listingCategory" name="listingCategory" class="form-select" required>
@@ -113,12 +116,15 @@
             <div class="step-header">
               <h2>Step 2: Detailed Description</h2>
               <p class="step-description">Tell buyers more about your item. The more details, the better!</p>
+              <div class="required-legend">
+                <span class="required-indicator">*</span> = Required field
+              </div>
             </div>
 
             <div class="form-grid">
               <div class="form-group">
-                <label for="itemCondition" class="form-label">
-                  What's the condition of your item?
+                <label for="itemCondition" class="form-label required">
+                  What's the condition of your item? <span class="required-indicator">*</span>
                   <span class="form-hint">Be honest - buyers appreciate accurate descriptions</span>
                 </label>
                 <select id="itemCondition" name="itemCondition" class="form-select" required>
@@ -132,8 +138,8 @@
               </div>
 
               <div class="form-group">
-                <label for="itemAge" class="form-label">
-                  How old is the item?
+                <label for="itemAge" class="form-label optional">
+                  How old is the item? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Approximate age helps buyers assess value</span>
                 </label>
                 <select id="itemAge" name="itemAge" class="form-select">
@@ -149,8 +155,8 @@
               </div>
 
               <div class="form-group">
-                <label for="itemBrand" class="form-label">
-                  What's the brand or manufacturer?
+                <label for="itemBrand" class="form-label optional">
+                  What's the brand or manufacturer? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Leave blank if unknown or unbranded</span>
                 </label>
                 <input type="text" id="itemBrand" name="itemBrand" class="form-input" 
@@ -158,8 +164,8 @@
               </div>
 
               <div class="form-group">
-                <label for="itemModel" class="form-label">
-                  Model number or series (if known)
+                <label for="itemModel" class="form-label optional">
+                  Model number or series <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Helps buyers find exact specifications</span>
                 </label>
                 <input type="text" id="itemModel" name="itemModel" class="form-input" 
@@ -167,8 +173,8 @@
               </div>
 
               <div class="form-group">
-                <label for="itemColor" class="form-label">
-                  What color is your item?
+                <label for="itemColor" class="form-label optional">
+                  What color is your item? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Primary color (e.g., Brown, Black, White)</span>
                 </label>
                 <input type="text" id="itemColor" name="itemColor" class="form-input" 
@@ -176,8 +182,8 @@
               </div>
 
               <div class="form-group">
-                <label for="itemMaterial" class="form-label">
-                  What material is it made of?
+                <label for="itemMaterial" class="form-label optional">
+                  What material is it made of? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">e.g., Solid wood, MDF, Leather, Fabric, Metal</span>
                 </label>
                 <input type="text" id="itemMaterial" name="itemMaterial" class="form-input" 
@@ -186,7 +192,7 @@
 
               <!-- Dimensions Section -->
               <div class="form-group full-width">
-                <label class="form-label">Dimensions (if applicable)</label>
+                <label class="form-label optional">Dimensions <span class="optional-label">(Optional)</span>
                 <div class="dimensions-grid">
                   <div class="dimension-input">
                     <label for="dimLength">Length (cm)</label>
@@ -209,8 +215,8 @@
 
               <!-- Features Section -->
               <div class="form-group full-width">
-                <label class="form-label">
-                  Key Features & Specifications
+                <label class="form-label optional">
+                  Key Features & Specifications <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Select all that apply to your item</span>
                 </label>
                 <div class="features-grid">
@@ -249,8 +255,8 @@
 
               <!-- Condition Details -->
               <div class="form-group full-width">
-                <label for="conditionDetails" class="form-label">
-                  Any flaws, damage, or issues?
+                <label for="conditionDetails" class="form-label optional">
+                  Any flaws, damage, or issues? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Be specific about scratches, tears, stains, missing parts, etc.</span>
                 </label>
                 <textarea id="conditionDetails" name="conditionDetails" class="form-textarea" 
@@ -258,8 +264,8 @@
               </div>
 
               <div class="form-group full-width">
-                <label for="repairHistory" class="form-label">
-                  Has the item been repaired or modified?
+                <label for="repairHistory" class="form-label optional">
+                  Has the item been repaired or modified? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Include any repairs, modifications, or restoration work</span>
                 </label>
                 <textarea id="repairHistory" name="repairHistory" class="form-textarea" 
@@ -268,8 +274,8 @@
 
               <!-- Usage History -->
               <div class="form-group">
-                <label for="usageHistory" class="form-label">
-                  How was the item used?
+                <label for="usageHistory" class="form-label optional">
+                  How was the item used? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">e.g., Daily use, occasional use, display only, stored</span>
                 </label>
                 <select id="usageHistory" name="usageHistory" class="form-select">
@@ -284,8 +290,8 @@
               </div>
 
               <div class="form-group">
-                <label for="reasonSelling" class="form-label">
-                  Why are you selling?
+                <label for="reasonSelling" class="form-label optional">
+                  Why are you selling? <span class="optional-label">(Optional)</span>
                   <span class="form-hint">Buyers often ask this - helps build trust</span>
                 </label>
                 <select id="reasonSelling" name="reasonSelling" class="form-select">
@@ -302,8 +308,8 @@
               </div>
 
               <div class="form-group">
-                <label for="itemLocation" class="form-label">
-                  Where is the item located?
+                <label for="itemLocation" class="form-label required">
+                  Where is the item located? <span class="required-indicator">*</span>
                   <span class="form-hint">City or area for pickup/delivery</span>
                 </label>
                 <input type="text" id="itemLocation" name="itemLocation" class="form-input" 
@@ -311,8 +317,8 @@
               </div>
 
               <div class="form-group">
-                <label for="deliveryOption" class="form-label">
-                  Delivery options available?
+                <label for="deliveryOption" class="form-label required">
+                  Delivery options available? <span class="required-indicator">*</span>
                   <span class="form-hint">How can buyers get the item?</span>
                 </label>
                 <select id="deliveryOption" name="deliveryOption" class="form-select" required>
@@ -326,8 +332,8 @@
 
               <!-- Additional Description -->
               <div class="form-group full-width">
-                <label for="listingDescription" class="form-label">
-                  Additional details or story about the item
+                <label for="listingDescription" class="form-label required">
+                  Additional details or story about the item <span class="required-indicator">*</span>
                   <span class="form-hint">Any other information buyers should know</span>
                 </label>
                 <textarea id="listingDescription" name="listingDescription" class="form-textarea" 
@@ -348,12 +354,15 @@
             <div class="step-header">
               <h2>Step 3: Pricing</h2>
               <p class="step-description">Set a fair price based on condition and market value</p>
+              <div class="required-legend">
+                <span class="required-indicator">*</span> = Required field
+              </div>
             </div>
 
             <div class="form-grid">
               <div class="form-group">
-                <label for="itemPrice" class="form-label">
-                  What's your asking price (KES)?
+                <label for="itemPrice" class="form-label required">
+                  What's your asking price (KES)? <span class="required-indicator">*</span>
                   <span class="form-hint">Research similar items to set a competitive price</span>
                 </label>
                 <div class="price-input-wrapper">
@@ -364,8 +373,8 @@
               </div>
 
               <div class="form-group">
-                <label for="priceNegotiable" class="form-label">
-                  Is the price negotiable?
+                <label for="priceNegotiable" class="form-label required">
+                  Is the price negotiable? <span class="required-indicator">*</span>
                   <span class="form-hint">Let buyers know if you're open to offers</span>
                 </label>
                 <select id="priceNegotiable" name="priceNegotiable" class="form-select" required>
@@ -407,12 +416,15 @@
             <div class="step-header">
               <h2>Step 4: Upload Images</h2>
               <p class="step-description">High-quality photos help your item sell faster</p>
+              <div class="required-legend">
+                <span class="required-indicator">*</span> = Required field
+              </div>
             </div>
 
             <div class="form-grid">
               <div class="form-group full-width">
-                <label class="form-label">
-                  Upload photos of your item
+                <label class="form-label required">
+                  Upload photos of your item <span class="required-indicator">*</span>
                   <span class="form-hint">Minimum 3 photos. Maximum 10. Each photo max 10MB.</span>
                 </label>
                 
@@ -700,6 +712,37 @@
       font-size: 14px;
       font-weight: 600;
       color: #333;
+    }
+
+    .form-label.required {
+      color: #333;
+    }
+
+    .form-label.optional {
+      color: #666;
+    }
+
+    .required-indicator {
+      color: #ff4444;
+      font-weight: 700;
+      margin-left: 2px;
+    }
+
+    .optional-label {
+      color: #999;
+      font-weight: 400;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    .required-legend {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .required-legend .required-indicator {
+      font-size: 14px;
     }
 
     .form-hint {
