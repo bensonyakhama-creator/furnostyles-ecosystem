@@ -12,15 +12,15 @@ window.FurnostylesHeaderData = {
 
   brand: {
     name:    "Furnostyles",
-    tagline: "Personal Luxury. Elevated.",
+    tagline: "Your One-Stop Marketplace",
     href:    "/index.html",
     logo:    "/assets/images/logo.png"
   },
 
   topbar: {
     enabled: true,
-    brandName: "FURNOSTYLES",
-    tagline: "Personal Luxury. Elevated.",
+    brandName: "Furnostyles",
+    tagline: "Your One-Stop Marketplace",
     phone: "+254 713 639 205",
     email: "furnostyles@gmail.com"
   },
@@ -67,10 +67,10 @@ window.FurnostylesHeaderData = {
   promotions: {
     enabled: true,
     items: [
-      { text: "WhatsApp Text To Order", href: "https://wa.me/254713639205", highlight: true },
+      { text: "Marketplace", href: "/marketplace.html", highlight: true },
       { text: "Free Delivery Nationwide", href: "/delivery.html", subtext: "Orders Above KSh 5,000" },
-      { text: "SELL ON FURNOSTYLES", href: "/upload.html", subtext: "Millions Of Visitors" },
-      { text: "Live Now", href: "/flash-sales.html", highlight: true }
+      { text: "Sell on Marketplace", href: "/upload.html", subtext: "Reach Millions Of Buyers" },
+      { text: "Flash Sales", href: "/flash-sales.html", highlight: true }
     ]
   },
 
