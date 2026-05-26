@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Listing | Furnostyles</title>
+  <meta name="description" content="Create a new listing on Furnostyles with our guided upload wizard">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="shared/layout/footer.css">
+</head>
+<body>
+  <div id="fns-topbar-mount"></div>
+  <div id="fns-header-mount"></div>
+
+  <div class="premium-layout">
+    <main class="premium-main">
+      <div class="guided-upload-container">
+        <!-- Progress Header -->
+        <div class="upload-progress-header">
+          <h1>Create Your Listing</h1>
+          <p class="upload-subtitle">Follow the steps below to create a professional listing</p>
+          
+          <div class="progress-steps">
+            <div class="progress-step active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-label">Basic Info</div>
+            </div>
+            <div class="progress-step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-label">Details</div>
+            </div>
+            <div class="progress-step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-label">Pricing</div>
+            </div>
+            <div class="progress-step" data-step="4">
+              <div class="step-number">4</div>
+              <div class="step-label">Images</div>
+            </div>
+            <div class="progress-step" data-step="5">
+              <div class="step-number">5</div>
+              <div class="step-label">Review</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upload Form -->
+        <form id="guidedUploadForm" class="guided-upload-form">
+          
+          <!-- Step 1: Basic Information -->
+          <div class="upload-step active" data-step="1">
+            <div class="step-header">
+              <h2>Step 1: Basic Information</h2>
+              <p class="step-description">Let's start with the basics. What are you listing?</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="listingType" class="form-label">
+                  What type of item are you listing?
+                  <span class="form-hint">Choose the category that best describes your item</span>
+                </label>
+                <select id="listingType" name="listingType" class="form-select" required>
+                  <option value="">Select type...</option>
+                  <option value="product">Product (Furniture, Decor, etc.)</option>
+                  <option value="service">Service (Installation, Repair, etc.)</option>
+                  <option value="property">Property (House, Apartment, Land)</option>
+                  <option value="material">Building Material</option>
+                  <option value="secondhand">Second-hand Item</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="listingTitle" class="form-label">
+                  What's the title of your listing?
+                  <span class="form-hint">Be descriptive but concise (e.g., "Modern Leather Sofa - Brown")</span>
+                </label>
+                <input type="text" id="listingTitle" name="listingTitle" class="form-input" 
+                  placeholder="Enter a clear, descriptive title" required maxlength="100">
+                <div class="char-count"><span id="titleCount">0</span>/100</div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="listingCategory" class="form-label">
+                  Which category fits best?
+                  <span class="form-hint">This helps buyers find your item quickly</span>
+                </label>
+                <select id="listingCategory" name="listingCategory" class="form-select" required>
+                  <option value="">Select category...</option>
+                  <option value="furniture">Furniture</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="materials">Building Materials</option>
+                  <option value="decor">Home Decor</option>
+                  <option value="lighting">Lighting</option>
+                  <option value="kitchen">Kitchen & Dining</option>
+                  <option value="bedroom">Bedroom</option>
+                  <option value="outdoor">Outdoor & Garden</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn next-step" data-next="2">Continue to Details →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Detailed Description -->
+          <div class="upload-step" data-step="2">
+            <div class="step-header">
+              <h2>Step 2: Detailed Description</h2>
+              <p class="step-description">Tell buyers more about your item. The more details, the better!</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="listingDescription" class="form-label">
+                  Describe your item in detail
+                  <span class="form-hint">Include: Condition, age, dimensions, features, any flaws, reason for selling</span>
+                </label>
+                <textarea id="listingDescription" name="listingDescription" class="form-textarea" 
+                  rows="6" placeholder="Example: This modern leather sofa is 2 years old, in excellent condition. Dimensions: 220cm x 90cm x 85cm. Features: 3-seater, removable cushions, solid wood frame. No scratches or tears. Selling because moving to a smaller apartment." 
+                  required minlength="50" maxlength="2000"></textarea>
+                <div class="char-count"><span id="descCount">0</span>/2000</div>
+              </div>
+
+              <div class="form-group">
+                <label for="itemCondition" class="form-label">
+                  What's the condition of your item?
+                  <span class="form-hint">Be honest - buyers appreciate accurate descriptions</span>
+                </label>
+                <select id="itemCondition" name="itemCondition" class="form-select" required>
+                  <option value="">Select condition...</option>
+                  <option value="new">Brand New (Never used)</option>
+                  <option value="like-new">Like New (Used once or twice)</option>
+                  <option value="good">Good (Minor signs of use)</option>
+                  <option value="fair">Fair (Visible wear and tear)</option>
+                  <option value="used">Used (Functional but worn)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="itemBrand" class="form-label">
+                  What's the brand or manufacturer?
+                  <span class="form-hint">Leave blank if unknown or unbranded</span>
+                </label>
+                <input type="text" id="itemBrand" name="itemBrand" class="form-input" 
+                  placeholder="e.g., Ashley Furniture, Samsung, Custom">
+              </div>
+
+              <div class="form-group">
+                <label for="itemColor" class="form-label">
+                  What color is your item?
+                  <span class="form-hint">Primary color (e.g., Brown, Black, White)</span>
+                </label>
+                <input type="text" id="itemColor" name="itemColor" class="form-input" 
+                  placeholder="e.g., Brown, Black, White">
+              </div>
+
+              <div class="form-group">
+                <label for="itemLocation" class="form-label">
+                  Where is the item located?
+                  <span class="form-hint">City or area for pickup/delivery</span>
+                </label>
+                <input type="text" id="itemLocation" name="itemLocation" class="form-input" 
+                  placeholder="e.g., Nairobi, Westlands" required>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn secondary prev-step" data-prev="1">← Back</button>
+              <button type="button" class="btn next-step" data-next="3">Continue to Pricing →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Pricing -->
+          <div class="upload-step" data-step="3">
+            <div class="step-header">
+              <h2>Step 3: Pricing</h2>
+              <p class="step-description">Set a fair price based on condition and market value</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="itemPrice" class="form-label">
+                  What's your asking price (KES)?
+                  <span class="form-hint">Research similar items to set a competitive price</span>
+                </label>
+                <div class="price-input-wrapper">
+                  <span class="currency-symbol">KES</span>
+                  <input type="number" id="itemPrice" name="itemPrice" class="form-input" 
+                    placeholder="0" min="0" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="priceNegotiable" class="form-label">
+                  Is the price negotiable?
+                  <span class="form-hint">Let buyers know if you're open to offers</span>
+                </label>
+                <select id="priceNegotiable" name="priceNegotiable" class="form-select" required>
+                  <option value="yes">Yes, I'm open to reasonable offers</option>
+                  <option value="slightly">Slightly negotiable</option>
+                  <option value="no">No, price is firm</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label class="form-label">
+                  Pricing Tips
+                </label>
+                <div class="pricing-tips">
+                  <div class="tip-item">
+                    <span class="tip-icon">💡</span>
+                    <span class="tip-text">Check prices of similar items on the marketplace</span>
+                  </div>
+                  <div class="tip-item">
+                    <span class="tip-icon">💡</span>
+                    <span class="tip-text">Consider the condition - used items should be priced lower</span>
+                  </div>
+                  <div class="tip-item">
+                    <span class="tip-icon">💡</span>
+                    <span class="tip-text">Round to the nearest 100 or 1000 for cleaner pricing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn secondary prev-step" data-prev="2">← Back</button>
+              <button type="button" class="btn next-step" data-next="4">Continue to Images →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Images -->
+          <div class="upload-step" data-step="4">
+            <div class="step-header">
+              <h2>Step 4: Upload Images</h2>
+              <p class="step-description">High-quality photos help your item sell faster</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">
+                  Upload photos of your item
+                  <span class="form-hint">Minimum 3 photos. Maximum 10. Each photo max 10MB.</span>
+                </label>
+                
+                <div class="upload-area" id="uploadArea">
+                  <div class="upload-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="17 8 12 3 7 8"/>
+                      <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <p class="upload-text">Drag and drop images here</p>
+                    <p class="upload-subtext">or click to browse</p>
+                    <input type="file" id="imageUpload" name="images" multiple accept="image/*" class="hidden">
+                  </div>
+                  
+                  <div class="image-previews" id="imagePreviews"></div>
+                </div>
+
+                <div class="upload-guidelines">
+                  <h4>Photo Guidelines:</h4>
+                  <ul>
+                    <li>Use good lighting - natural light is best</li>
+                    <li>Show all angles - front, back, sides, details</li>
+                    <li>Include a size reference (e.g., ruler or person)</li>
+                    <li>Blur or remove personal information/identifiable items</li>
+                    <li>Avoid blurry or dark photos</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn secondary prev-step" data-prev="3">← Back</button>
+              <button type="button" class="btn next-step" data-next="5">Review Listing →</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Review -->
+          <div class="upload-step" data-step="5">
+            <div class="step-header">
+              <h2>Step 5: Review Your Listing</h2>
+              <p class="step-description">Check everything before publishing</p>
+            </div>
+
+            <div class="review-section">
+              <div class="review-item">
+                <span class="review-label">Type:</span>
+                <span class="review-value" id="reviewType">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Title:</span>
+                <span class="review-value" id="reviewTitle">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Category:</span>
+                <span class="review-value" id="reviewCategory">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Condition:</span>
+                <span class="review-value" id="reviewCondition">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Price:</span>
+                <span class="review-value" id="reviewPrice">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Location:</span>
+                <span class="review-value" id="reviewLocation">-</span>
+              </div>
+              <div class="review-item full-width">
+                <span class="review-label">Description:</span>
+                <span class="review-value" id="reviewDescription">-</span>
+              </div>
+              <div class="review-item full-width">
+                <span class="review-label">Images:</span>
+                <span class="review-value" id="reviewImages">0 images uploaded</span>
+              </div>
+            </div>
+
+            <div class="review-terms">
+              <label class="checkbox-label">
+                <input type="checkbox" id="agreeTerms" required>
+                <span>I agree to the Furnostyles Terms of Service and Listing Policy</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="agreeAccuracy" required>
+                <span>I confirm that all information provided is accurate and honest</span>
+              </label>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn secondary prev-step" data-prev="4">← Back</button>
+              <button type="submit" class="btn primary">Publish Listing</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <div id="fns-footer-mount"></div>
+
+  <!-- Header Data & Render -->
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/topbar-render.js" defer></script>
+  <script src="shared/layout/header-render.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <!-- Footer Data & Render -->
+  <script defer src="shared/layout/footer-data.js"></script>
+  <script defer src="shared/layout/footer-render.js"></script>
+
+  <style>
+    .guided-upload-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    .upload-progress-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .upload-progress-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1a2540;
+      margin: 0 0 8px;
+    }
+
+    .upload-subtitle {
+      font-size: 16px;
+      color: #8090a0;
+      margin: 0 0 32px;
+    }
+
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .progress-step.active {
+      opacity: 1;
+    }
+
+    .progress-step.completed {
+      opacity: 1;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #666;
+      transition: all 0.3s ease;
+    }
+
+    .progress-step.active .step-number {
+      background: #d4af37;
+      color: white;
+    }
+
+    .progress-step.completed .step-number {
+      background: #0b3b46;
+      color: white;
+    }
+
+    .step-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #666;
+    }
+
+    .guided-upload-form {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .upload-step {
+      display: none;
+    }
+
+    .upload-step.active {
+      display: block;
+    }
+
+    .step-header {
+      margin-bottom: 32px;
+    }
+
+    .step-header h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a2540;
+      margin: 0 0 8px;
+    }
+
+    .step-description {
+      font-size: 14px;
+      color: #8090a0;
+      margin: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-hint {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #d4af37;
+    }
+
+    .form-textarea {
+      resize: vertical;
+    }
+
+    .char-count {
+      text-align: right;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .price-input-wrapper {
+      position: relative;
+    }
+
+    .currency-symbol {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 600;
+      color: #666;
+    }
+
+    .price-input-wrapper .form-input {
+      padding-left: 60px;
+    }
+
+    .pricing-tips {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .tip-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .tip-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-icon {
+      font-size: 16px;
+    }
+
+    .tip-text {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .upload-area {
+      border: 2px dashed #ddd;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+
+    .upload-area:hover {
+      border-color: #d4af37;
+    }
+
+    .upload-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .upload-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .upload-subtext {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .image-previews {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .image-preview {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+    }
+
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-preview .remove-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .upload-guidelines {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    .upload-guidelines h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #856404;
+      margin: 0 0 12px;
+    }
+
+    .upload-guidelines ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .upload-guidelines li {
+      font-size: 13px;
+      color: #856404;
+      margin-bottom: 4px;
+    }
+
+    .review-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .review-item {
+      display: flex;
+      padding: 12px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .review-item:last-child {
+      border-bottom: none;
+    }
+
+    .review-item.full-width {
+      flex-direction: column;
+    }
+
+    .review-label {
+      font-weight: 600;
+      color: #333;
+      min-width: 120px;
+    }
+
+    .review-value {
+      color: #666;
+      flex: 1;
+    }
+
+    .review-terms {
+      margin-bottom: 24px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+
+    .checkbox-label span {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .step-actions {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 24px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .progress-steps {
+        gap: 8px;
+      }
+
+      .step-label {
+        font-size: 10px;
+      }
+
+      .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
+
+      .guided-upload-form {
+        padding: 24px;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var currentStep = 1;
+      var uploadedImages = [];
+
+      // Step navigation
+      function goToStep(step) {
+        // Validate current step before moving
+        if (step > currentStep && !validateStep(currentStep)) {
+          return;
+        }
+
+        // Hide current step
+        document.querySelector('.upload-step[data-step="' + currentStep + '"]').classList.remove('active');
+        document.querySelector('.progress-step[data-step="' + currentStep + '"]').classList.remove('active');
+        document.querySelector('.progress-step[data-step="' + currentStep + '"]').classList.add('completed');
+
+        // Show new step
+        currentStep = step;
+        document.querySelector('.upload-step[data-step="' + currentStep + '"]').classList.add('active');
+        document.querySelector('.progress-step[data-step="' + currentStep + '"]').classList.add('active');
+
+        // Update review if on step 5
+        if (currentStep === 5) {
+          updateReview();
+        }
+      }
+
+      // Validate current step
+      function validateStep(step) {
+        var stepEl = document.querySelector('.upload-step[data-step="' + step + '"]');
+        var requiredFields = stepEl.querySelectorAll('[required]');
+        var valid = true;
+
+        requiredFields.forEach(function(field) {
+          if (!field.value.trim()) {
+            field.style.borderColor = '#ff4444';
+            valid = false;
+          } else {
+            field.style.borderColor = '#ddd';
+          }
+        });
+
+        if (!valid) {
+          alert('Please fill in all required fields before continuing.');
+        }
+
+        return valid;
+      }
+
+      // Update review section
+      function updateReview() {
+        document.getElementById('reviewType').textContent = document.getElementById('listingType').value || '-';
+        document.getElementById('reviewTitle').textContent = document.getElementById('listingTitle').value || '-';
+        document.getElementById('reviewCategory').textContent = document.getElementById('listingCategory').value || '-';
+        document.getElementById('reviewCondition').textContent = document.getElementById('itemCondition').value || '-';
+        document.getElementById('reviewPrice').textContent = 'KES ' + (document.getElementById('itemPrice').value || '0');
+        document.getElementById('reviewLocation').textContent = document.getElementById('itemLocation').value || '-';
+        document.getElementById('reviewDescription').textContent = document.getElementById('listingDescription').value || '-';
+        document.getElementById('reviewImages').textContent = uploadedImages.length + ' images uploaded';
+      }
+
+      // Character count
+      document.getElementById('listingTitle').addEventListener('input', function() {
+        document.getElementById('titleCount').textContent = this.value.length;
+      });
+
+      document.getElementById('listingDescription').addEventListener('input', function() {
+        document.getElementById('descCount').textContent = this.value.length;
+      });
+
+      // Step navigation buttons
+      document.querySelectorAll('.next-step').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          goToStep(parseInt(this.dataset.next));
+        });
+      });
+
+      document.querySelectorAll('.prev-step').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          goToStep(parseInt(this.dataset.prev));
+        });
+      });
+
+      // Image upload
+      var uploadArea = document.getElementById('uploadArea');
+      var imageUpload = document.getElementById('imageUpload');
+      var imagePreviews = document.getElementById('imagePreviews');
+
+      uploadArea.addEventListener('click', function() {
+        imageUpload.click();
+      });
+
+      uploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        uploadArea.style.borderColor = '#d4af37';
+      });
+
+      uploadArea.addEventListener('dragleave', function() {
+        uploadArea.style.borderColor = '#ddd';
+      });
+
+      uploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        uploadArea.style.borderColor = '#ddd';
+        handleFiles(e.dataTransfer.files);
+      });
+
+      imageUpload.addEventListener('change', function() {
+        handleFiles(this.files);
+      });
+
+      function handleFiles(files) {
+        if (uploadedImages.length + files.length > 10) {
+          alert('Maximum 10 images allowed.');
+          return;
+        }
+
+        Array.from(files).forEach(function(file) {
+          if (!file.type.startsWith('image/')) {
+            alert('Only image files are allowed.');
+            return;
+          }
+
+          if (file.size > 10 * 1024 * 1024) {
+            alert('Image size must be less than 10MB.');
+            return;
+          }
+
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            uploadedImages.push(file);
+            addImagePreview(e.target.result, uploadedImages.length - 1);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function addImagePreview(src, index) {
+        var preview = document.createElement('div');
+        preview.className = 'image-preview';
+        preview.innerHTML = '<img src="' + src + '" alt="Preview"><button type="button" class="remove-btn" data-index="' + index + '">×</button>';
+        imagePreviews.appendChild(preview);
+
+        preview.querySelector('.remove-btn').addEventListener('click', function(e) {
+          e.stopPropagation();
+          uploadedImages.splice(index, 1);
+          preview.remove();
+          updateImagePreviews();
+        });
+      }
+
+      function updateImagePreviews() {
+        imagePreviews.innerHTML = '';
+        uploadedImages.forEach(function(file, index) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            addImagePreview(e.target.result, index);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      // Form submission
+      document.getElementById('guidedUploadForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (uploadedImages.length < 3) {
+          alert('Please upload at least 3 images.');
+          return;
+        }
+
+        if (!document.getElementById('agreeTerms').checked || !document.getElementById('agreeAccuracy').checked) {
+          alert('Please agree to the terms and confirm accuracy.');
+          return;
+        }
+
+        // Collect form data
+        var formData = {
+          type: document.getElementById('listingType').value,
+          title: document.getElementById('listingTitle').value,
+          category: document.getElementById('listingCategory').value,
+          description: document.getElementById('listingDescription').value,
+          condition: document.getElementById('itemCondition').value,
+          brand: document.getElementById('itemBrand').value,
+          color: document.getElementById('itemColor').value,
+          location: document.getElementById('itemLocation').value,
+          price: document.getElementById('itemPrice').value,
+          negotiable: document.getElementById('priceNegotiable').value,
+          images: uploadedImages
+        };
+
+        console.log('Listing data:', formData);
+        alert('Listing created successfully! (This is a demo - integrate with your backend)');
+        
+        // Here you would integrate with your upload system
+        // e.g., window.FurnostylesSimpleUpload.createListing(formData);
+      });
+
+    })();
+  </script>
+</body>
+</html>
