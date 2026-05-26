@@ -3,34 +3,376 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard | Furnostyles - Unified Account Dashboard</title>
-  <meta name="description" content="Access all your Furnostyles features from one unified dashboard. Switch between customer, vendor, and admin roles seamlessly.">
+  <title>My Account | Furnostyles</title>
+  <meta name="description" content="Manage your Furnostyles account - orders, wishlist, addresses, payments, and more.">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="shared/layout/footer.css">
-  <link rel="stylesheet" href="shared/rendering/marketplace.css">
-  <link rel="stylesheet" href="shared/dashboard/dashboard.css">
-  <script src="shared/dashboard/unified-dashboard.js"></script>
+  <link rel="stylesheet" href="shared/dashboard/dashboard-new.css">
 </head>
 <body>
   <div id="fns-header-mount"></div>
 
-  <div class="premium-layout">
-    <main class="premium-main">
-      <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px;">
-        
-        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-          <span class="section-badge">Unified Dashboard</span>
-          <h1>Your All-in-One Control Center</h1>
-          <p>Switch between roles seamlessly - one account, unlimited possibilities</p>
+  <div class="fns-dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="fns-dashboard-sidebar">
+      <div class="fns-sidebar-user">
+        <div class="fns-user-avatar" id="fnsUserAvatar">U</div>
+        <div class="fns-user-info">
+          <div class="fns-user-name" id="fnsUserName">User</div>
+          <div class="fns-user-email" id="fnsUserEmail">user@example.com</div>
+        </div>
+      </div>
+
+      <nav class="fns-sidebar-nav">
+        <a href="#" class="fns-nav-item active" data-tab="overview">
+          <span class="fns-nav-icon">🏠</span>
+          <span>Overview</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="orders">
+          <span class="fns-nav-icon">📦</span>
+          <span>My Orders</span>
+          <span class="fns-nav-badge" id="fnsOrderCount">0</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="wishlist">
+          <span class="fns-nav-icon">❤️</span>
+          <span>Wishlist</span>
+          <span class="fns-nav-badge" id="fnsWishlistCount">0</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="addresses">
+          <span class="fns-nav-icon">📍</span>
+          <span>Addresses</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="payments">
+          <span class="fns-nav-icon">💳</span>
+          <span>Payment Methods</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="messages">
+          <span class="fns-nav-icon">💬</span>
+          <span>Messages</span>
+          <span class="fns-nav-badge" id="fnsMessageCount">0</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="reviews">
+          <span class="fns-nav-icon">⭐</span>
+          <span>My Reviews</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="uploads">
+          <span class="fns-nav-icon">📤</span>
+          <span>My Uploads</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="settings">
+          <span class="fns-nav-icon">⚙️</span>
+          <span>Account Settings</span>
+        </a>
+        <a href="#" class="fns-nav-item" data-tab="support">
+          <span class="fns-nav-icon">🎫</span>
+          <span>Support Tickets</span>
+        </a>
+      </nav>
+
+      <div class="fns-sidebar-footer">
+        <a href="upload.html" class="fns-sell-btn">
+          <span>📤</span>
+          <span>Sell on Furnostyles</span>
+        </a>
+        <a href="dropshipping-dashboard.html" class="fns-dropship-btn">
+          <span>📦</span>
+          <span>Dropshipping</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="fns-dashboard-main">
+      <!-- Overview Tab -->
+      <div class="fns-tab-content active" id="tab-overview">
+        <div class="fns-tab-header">
+          <h1>Welcome back!</h1>
+          <p>Here's what's happening with your account</p>
         </div>
 
-        <div id="unified-dashboard-container">
-          <!-- Dashboard content will be rendered here -->
+        <div class="fns-stats-grid">
+          <div class="fns-stat-card">
+            <div class="fns-stat-icon">📦</div>
+            <div class="fns-stat-info">
+              <div class="fns-stat-value" id="fnsStatOrders">0</div>
+              <div class="fns-stat-label">Total Orders</div>
+            </div>
+          </div>
+          <div class="fns-stat-card">
+            <div class="fns-stat-icon">❤️</div>
+            <div class="fns-stat-info">
+              <div class="fns-stat-value" id="fnsStatWishlist">0</div>
+              <div class="fns-stat-label">Wishlist Items</div>
+            </div>
+          </div>
+          <div class="fns-stat-card">
+            <div class="fns-stat-icon">📍</div>
+            <div class="fns-stat-info">
+              <div class="fns-stat-value" id="fnsStatAddresses">0</div>
+              <div class="fns-stat-label">Saved Addresses</div>
+            </div>
+          </div>
+          <div class="fns-stat-card">
+            <div class="fns-stat-icon">📤</div>
+            <div class="fns-stat-info">
+              <div class="fns-stat-value" id="fnsStatUploads">0</div>
+              <div class="fns-stat-label">Active Listings</div>
+            </div>
+          </div>
         </div>
 
+        <div class="fns-content-grid">
+          <div class="fns-content-section">
+            <div class="fns-section-header">
+              <h2>Recent Orders</h2>
+              <a href="#" class="fns-view-all" data-tab="orders">View All</a>
+            </div>
+            <div class="fns-orders-list" id="fnsRecentOrders">
+              <div class="fns-empty-state">No recent orders</div>
+            </div>
+          </div>
+
+          <div class="fns-content-section">
+            <div class="fns-section-header">
+              <h2>Quick Actions</h2>
+            </div>
+            <div class="fns-quick-actions">
+              <a href="furniture-marketplace.html" class="fns-quick-action">
+                <span>🛍️</span>
+                <span>Continue Shopping</span>
+              </a>
+              <a href="cart.html" class="fns-quick-action">
+                <span>🛒</span>
+                <span>View Cart</span>
+              </a>
+              <a href="upload.html" class="fns-quick-action">
+                <span>📤</span>
+                <span>Sell Item</span>
+              </a>
+              <a href="#" class="fns-quick-action" data-tab="addresses">
+                <span>📍</span>
+                <span>Add Address</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders Tab -->
+      <div class="fns-tab-content" id="tab-orders">
+        <div class="fns-tab-header">
+          <h1>My Orders</h1>
+          <p>Track and manage your orders</p>
+        </div>
+
+        <div class="fns-orders-filters">
+          <button class="fns-filter-btn active" data-filter="all">All Orders</button>
+          <button class="fns-filter-btn" data-filter="pending">Pending</button>
+          <button class="fns-filter-btn" data-filter="processing">Processing</button>
+          <button class="fns-filter-btn" data-filter="shipped">Shipped</button>
+          <button class="fns-filter-btn" data-filter="delivered">Delivered</button>
+          <button class="fns-filter-btn" data-filter="cancelled">Cancelled</button>
+        </div>
+
+        <div class="fns-orders-list" id="fnsAllOrders">
+          <div class="fns-empty-state">No orders found</div>
+        </div>
+      </div>
+
+      <!-- Wishlist Tab -->
+      <div class="fns-tab-content" id="tab-wishlist">
+        <div class="fns-tab-header">
+          <h1>My Wishlist</h1>
+          <p>Items you've saved for later</p>
+        </div>
+
+        <div class="fns-wishlist-grid" id="fnsWishlistGrid">
+          <div class="fns-empty-state">Your wishlist is empty</div>
+        </div>
+      </div>
+
+      <!-- Addresses Tab -->
+      <div class="fns-tab-content" id="tab-addresses">
+        <div class="fns-tab-header">
+          <h1>My Addresses</h1>
+          <p>Manage your delivery addresses</p>
+        </div>
+
+        <button class="fns-add-btn" id="fnsAddAddressBtn">
+          <span>➕</span>
+          <span>Add New Address</span>
+        </button>
+
+        <div class="fns-addresses-list" id="fnsAddressesList">
+          <div class="fns-empty-state">No addresses saved</div>
+        </div>
+      </div>
+
+      <!-- Payments Tab -->
+      <div class="fns-tab-content" id="tab-payments">
+        <div class="fns-tab-header">
+          <h1>Payment Methods</h1>
+          <p>Manage your payment options</p>
+        </div>
+
+        <button class="fns-add-btn" id="fnsAddPaymentBtn">
+          <span>➕</span>
+          <span>Add Payment Method</span>
+        </button>
+
+        <div class="fns-payments-list" id="fnsPaymentsList">
+          <div class="fns-empty-state">No payment methods saved</div>
+        </div>
+      </div>
+
+      <!-- Messages Tab -->
+      <div class="fns-tab-content" id="tab-messages">
+        <div class="fns-tab-header">
+          <h1>Messages</h1>
+          <p>Communications with sellers and support</p>
+        </div>
+
+        <div class="fns-messages-list" id="fnsMessagesList">
+          <div class="fns-empty-state">No messages</div>
+        </div>
+      </div>
+
+      <!-- Reviews Tab -->
+      <div class="fns-tab-content" id="tab-reviews">
+        <div class="fns-tab-header">
+          <h1>My Reviews</h1>
+          <p>View and manage your product reviews</p>
+        </div>
+
+        <div class="fns-reviews-list" id="fnsReviewsList">
+          <div class="fns-empty-state">No reviews yet</div>
+        </div>
+      </div>
+
+      <!-- Uploads Tab -->
+      <div class="fns-tab-content" id="tab-uploads">
+        <div class="fns-tab-header">
+          <h1>My Uploads</h1>
+          <p>Manage your product listings</p>
+        </div>
+
+        <a href="upload.html" class="fns-add-btn">
+          <span>➕</span>
+          <span>Add New Listing</span>
+        </a>
+
+        <div class="fns-uploads-list" id="fnsUploadsList">
+          <div class="fns-empty-state">No uploads yet</div>
+        </div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div class="fns-tab-content" id="tab-settings">
+        <div class="fns-tab-header">
+          <h1>Account Settings</h1>
+          <p>Manage your account preferences</p>
+        </div>
+
+        <div class="fns-settings-sections">
+          <div class="fns-settings-section">
+            <h2>Profile Information</h2>
+            <form class="fns-settings-form" id="fnsProfileForm">
+              <div class="fns-form-group">
+                <label>Full Name</label>
+                <input type="text" id="fnsFullName" placeholder="Enter your full name">
+              </div>
+              <div class="fns-form-group">
+                <label>Email Address</label>
+                <input type="email" id="fnsEmail" placeholder="Enter your email">
+              </div>
+              <div class="fns-form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="fnsPhone" placeholder="Enter your phone number">
+              </div>
+              <button type="submit" class="fns-save-btn">Save Changes</button>
+            </form>
+          </div>
+
+          <div class="fns-settings-section">
+            <h2>Change Password</h2>
+            <form class="fns-settings-form" id="fnsPasswordForm">
+              <div class="fns-form-group">
+                <label>Current Password</label>
+                <input type="password" id="fnsCurrentPassword" placeholder="Enter current password">
+              </div>
+              <div class="fns-form-group">
+                <label>New Password</label>
+                <input type="password" id="fnsNewPassword" placeholder="Enter new password">
+              </div>
+              <div class="fns-form-group">
+                <label>Confirm New Password</label>
+                <input type="password" id="fnsConfirmPassword" placeholder="Confirm new password">
+              </div>
+              <button type="submit" class="fns-save-btn">Update Password</button>
+            </form>
+          </div>
+
+          <div class="fns-settings-section">
+            <h2>Notification Preferences</h2>
+            <div class="fns-notification-settings">
+              <label class="fns-toggle-item">
+                <input type="checkbox" id="fnsEmailOrders" checked>
+                <span>Order updates via email</span>
+              </label>
+              <label class="fns-toggle-item">
+                <input type="checkbox" id="fnsEmailPromotions" checked>
+                <span>Promotional emails</span>
+              </label>
+              <label class="fns-toggle-item">
+                <input type="checkbox" id="fnsSmsOrders">
+                <span>SMS notifications for orders</span>
+              </label>
+              <label class="fns-toggle-item">
+                <input type="checkbox" id="fnsPushNotifications" checked>
+                <span>Push notifications</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="fns-settings-section">
+            <h2>Privacy Settings</h2>
+            <div class="fns-privacy-settings">
+              <label class="fns-toggle-item">
+                <input type="checkbox" id="fnsProfileVisible" checked>
+                <span>Make profile visible to other users</span>
+              </label>
+              <label class="fns-toggle-item">
+                <input type="checkbox" id="fnsActivityVisible">
+                <span>Show recent activity</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="fns-settings-section danger">
+            <h2>Danger Zone</h2>
+            <button class="fns-danger-btn" id="fnsDeleteAccountBtn">Delete Account</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Tab -->
+      <div class="fns-tab-content" id="tab-support">
+        <div class="fns-tab-header">
+          <h1>Support Tickets</h1>
+          <p>Get help with your orders and account</p>
+        </div>
+
+        <button class="fns-add-btn" id="fnsNewTicketBtn">
+          <span>➕</span>
+          <span>Create New Ticket</span>
+        </button>
+
+        <div class="fns-tickets-list" id="fnsTicketsList">
+          <div class="fns-empty-state">No support tickets</div>
+        </div>
       </div>
     </main>
   </div>
@@ -62,29 +404,7 @@
   <script defer src="shared/layout/footer-data.js"></script>
   <script defer src="shared/layout/footer-render.js"></script>
 
-  <script>
-    (function() {
-      'use strict';
-      document.addEventListener('DOMContentLoaded', function() {
-        // Initialize dashboard if user is logged in
-        const userSession = localStorage.getItem('fns_local_user');
-        if (!userSession) {
-          window.location.href = 'login.html';
-          return;
-        }
-
-        // Initialize unified dashboard
-        if (window.FurnostylesUnifiedDashboard) {
-          try {
-            window.FurnostylesUnifiedDashboard.init();
-          } catch (e) {
-            console.error('Dashboard initialization error:', e);
-          }
-        } else {
-          console.error('FurnostylesUnifiedDashboard not loaded');
-        }
-      });
-    })();
-  </script>
+  <!-- Dashboard Logic -->
+  <script src="shared/dashboard/dashboard-logic.js"></script>
 </body>
 </html>
