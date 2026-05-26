@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart | Furnostyles</title>
-  <meta name="description" content="Your Furnostyles cart — marketplace products, services, sourcing requests and secondhand items.">
+  <meta name="description" content="Your Furnostyles cart - marketplace products, services, sourcing requests and secondhand items.">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -14,16 +14,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Cart | Furnostyles">
-  <meta property="og:description" content="Your Furnostyles cart — marketplace products, services, sourcing requests and secondhand items.">
+  <meta property="og:description" content="Your Furnostyles cart - marketplace products, services, sourcing requests and secondhand items.">
   <meta property="og:url" content="https://furnostyles.com/cart.html">
   <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cart | Furnostyles">
   <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
   <meta name="robots" content="noindex, nofollow">
-
-
-
 </head>
 <body>
 
@@ -40,7 +37,7 @@
       .cart-empty p{font-size:.95rem;margin-bottom:20px}
       .cart-table{width:100%;border-collapse:collapse}
       .cart-table thead tr{border-bottom:2px solid #e8eef5}
-      .cart-table th{text-align:left;padding:10px 12px;font-size:.82rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+      .cart-table th{text-align:left;padding:10px 12px;font-size:.82rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}        
       .cart-table td{padding:14px 12px;border-bottom:1px solid #f4f4f4;vertical-align:middle}
       .cart-item-name{font-size:.95rem;font-weight:600;color:#222}
       .cart-item-cat{font-size:.78rem;color:#999;margin-top:2px}
@@ -79,7 +76,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="72" height="72"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <h2>Your cart is empty</h2>
         <p>Looks like you haven't added anything yet. Start exploring!</p>
-        <a href="marketplace.html" style="display:inline-block;background:#0b3b46;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">Browse Marketplace</a>
+        <a href="furniture-marketplace.html" style="display:inline-block;background:#0b3b46;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">Browse Marketplace</a>
       </div>
 
       <div id="cartContent" style="display:none">
@@ -100,7 +97,7 @@
         <div class="cart-sum-row total"><span>Estimated Total</span><span id="cartSumTotal">KES 0</span></div>
         <p class="cart-sum-note">Delivery fees depend on your location. Free delivery on orders over KES 10,000 within Nairobi.</p>
         <a href="checkout.html" class="cart-checkout-btn" id="cartCheckoutBtn">Proceed to Checkout</a>
-        <a href="marketplace.html" class="cart-continue-btn">Continue Shopping</a>
+        <a href="furniture-marketplace.html" class="cart-continue-btn">Continue Shopping</a>
         <div class="cart-promo">
           <label>Promo / Voucher Code</label>
           <div class="cart-promo-row">
@@ -117,12 +114,15 @@
 
     <script>
     (function () {
-      function cartGet() { try { return JSON.parse(localStorage.getItem('furnostyles_cart') || '[]'); } catch(e) { return []; } }
-      function cartSave(c) { localStorage.setItem('furnostyles_cart', JSON.stringify(c)); }
-      function fmt(n) { return 'KES ' + Number(n).toLocaleString(); }
+      'use strict';
 
       function render() {
-        var cart = cartGet();
+        if (!window.FurnostylesCart) {
+          console.error('FurnostylesCart not loaded');
+          return;
+        }
+
+        var cart = window.FurnostylesCart.getCartItems();
         var empty = document.getElementById('cartEmptyState');
         var content = document.getElementById('cartContent');
         var summary = document.getElementById('cartSummaryPanel');
@@ -145,47 +145,52 @@
           var line = Number(item.price || 0) * Number(item.quantity || 1);
           subtotal += line;
           return '<tr data-row-id="' + item.id + '">' +
-            '<td><div class="cart-item-name">' + (item.title || 'Item') + '</div><div class="cart-item-cat">' + (item.category || '') + '</div></td>' +
-            '<td class="cart-item-price">' + fmt(item.price) + '</td>' +
+            '<td><div class="cart-item-name">' + (item.title || 'Item') + '</div><div class="cart-item-cat">' + (item.category || '') + '</div></td>' +  
+            '<td class="cart-item-price">KES ' + Number(item.price).toLocaleString() + '</td>' +
             '<td><div class="cart-qty-ctrl">' +
               '<button class="qty-minus" data-id="' + item.id + '" data-action="minus">&#8722;</button>' +
               '<span class="cart-qty-val">' + (item.quantity || 1) + '</span>' +
               '<button class="qty-plus" data-id="' + item.id + '" data-action="plus">&#43;</button>' +
             '</div></td>' +
-            '<td class="cart-item-total">' + fmt(line) + '</td>' +
+            '<td class="cart-item-total">KES ' + line.toLocaleString() + '</td>' +
             '<td><button class="cart-item-rmv" data-id="' + item.id + '" title="Remove">&#215;</button></td>' +
           '</tr>';
         }).join('');
 
-        document.getElementById('cartSumSubtotal').textContent = fmt(subtotal);
-        document.getElementById('cartSumTotal').textContent = fmt(subtotal);
+        document.getElementById('cartSumSubtotal').textContent = 'KES ' + subtotal.toLocaleString();
+        document.getElementById('cartSumTotal').textContent = 'KES ' + subtotal.toLocaleString();
 
         /* Wire qty buttons */
         tbody.querySelectorAll('[data-action]').forEach(function(btn) {
           btn.addEventListener('click', function() {
             var id = btn.getAttribute('data-id');
             var act = btn.getAttribute('data-action');
-            var c = cartGet();
-            var idx = -1; c.forEach(function(x,i){ if(x.id===id) idx=i; });
-            if (idx < 0) return;
-            if (act === 'plus') c[idx].quantity = (c[idx].quantity || 1) + 1;
-            else { c[idx].quantity = (c[idx].quantity || 1) - 1; if (c[idx].quantity < 1) c.splice(idx, 1); }
-            cartSave(c); render();
-            if (window.FurnostylesCart) { /* badge refresh */ var b=document.getElementById('fldCartCount'); if(b){var tot=c.reduce(function(s,i){return s+(i.quantity||1);},0);b.textContent=tot;} }
+            var cart = window.FurnostylesCart.getCartItems();
+            var item = cart.find(function(i) { return i.id === id; });
+            if (!item) return;
+            if (act === 'plus') {
+              window.FurnostylesCart.updateQuantity(id, item.quantity + 1);
+            } else {
+              window.FurnostylesCart.updateQuantity(id, item.quantity - 1);
+            }
+            render();
           });
         });
         /* Wire remove buttons */
         tbody.querySelectorAll('.cart-item-rmv').forEach(function(btn) {
           btn.addEventListener('click', function() {
             var id = btn.getAttribute('data-id');
-            cartSave(cartGet().filter(function(i){return i.id!==id;}));
+            window.FurnostylesCart.removeFromCart(id);
             render();
           });
         });
       }
 
       document.getElementById('cartClearBtn').addEventListener('click', function() {
-        if (confirm('Clear all items from your cart?')) { localStorage.removeItem('furnostyles_cart'); render(); }
+        if (confirm('Clear all items from your cart?')) { 
+          window.FurnostylesCart.clearCart();
+          render();
+        }
       });
 
       document.getElementById('promoApplyBtn').addEventListener('click', function() {
@@ -194,7 +199,14 @@
         else { alert('Invalid or expired promo code.'); }
       });
 
-      render();
+      // Wait for FurnostylesCart to load
+      if (window.FurnostylesCart) {
+        render();
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          setTimeout(render, 100);
+        });
+      }
     })();
     </script>
   </main>

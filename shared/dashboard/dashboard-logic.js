@@ -139,27 +139,30 @@
 
   // Update Cart Count in Header
   function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('fns_shopping_cart') || 
-                        localStorage.getItem('furnostyles_cart') || '[]');
-    const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-    
-    // Update floating cart badge
-    const cartBadge = document.querySelector('[data-cart-count]');
-    if (cartBadge) {
-      cartBadge.textContent = cartCount;
-      cartBadge.style.display = cartCount > 0 ? 'inline' : 'none';
-    }
+    if (window.FurnostylesCart) {
+      const cartCount = window.FurnostylesCart.getCartCount();
+      
+      // Update floating cart badge
+      const cartBadge = document.querySelector('[data-cart-count]');
+      if (cartBadge) {
+        cartBadge.textContent = cartCount;
+        cartBadge.style.display = cartCount > 0 ? 'inline' : 'none';
+      }
 
-    // Update header cart icon badge if it exists
-    const headerCartBtn = document.getElementById('fldCartBtn');
-    if (headerCartBtn && cartCount > 0) {
-      if (!headerCartBtn.querySelector('.cart-badge')) {
-        const badge = document.createElement('span');
-        badge.className = 'cart-badge';
-        badge.textContent = cartCount;
-        headerCartBtn.appendChild(badge);
-      } else {
-        headerCartBtn.querySelector('.cart-badge').textContent = cartCount;
+      // Update header cart icon badge if it exists
+      const headerCartBtn = document.getElementById('fldCartBtn');
+      if (headerCartBtn && cartCount > 0) {
+        if (!headerCartBtn.querySelector('.cart-badge')) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = cartCount;
+          headerCartBtn.appendChild(badge);
+        } else {
+          headerCartBtn.querySelector('.cart-badge').textContent = cartCount;
+        }
+      } else if (headerCartBtn && cartCount === 0) {
+        const badge = headerCartBtn.querySelector('.cart-badge');
+        if (badge) badge.remove();
       }
     }
   }
