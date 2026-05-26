@@ -36,6 +36,7 @@ window.FurnostylesHeaderData = {
     { label: "Repairs",     href: "/repairs.html" },
     { label: "Dashboard",  href: "/dashboard.html" },
     { label: "Dropshipping", href: "/dropshipping-dashboard.html" },
+    { label: "Sell",        href: "/upload.html" },
     { label: "Contact",     href: "/contact.html" }
   ],
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Item | Furnostyles</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="shared/layout/header-data.js"></script>
+  <script src="shared/layout/header-render.js"></script>
+  <script src="shared/layout/footer-data.js"></script>
+  <script src="shared/layout/footer-render.js"></script>
+  <script src="shared/upload/simple-upload-system.js"></script>
+</head>
+<body>
+  <div id="header-mount"></div>
+
+  <main style="min-height: 80vh; padding: 40px 24px;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <!-- Page Header -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h1 style="font-size: 36px; font-weight: 700; color: #1a2540; margin: 0 0 12px;">Sell on Furnostyles</h1>
+        <p style="font-size: 16px; color: #8090a0; margin: 0;">List your items, services, or properties in seconds</p>
+      </div>
+
+      <!-- Upload Form Container -->
+      <div id="upload-form-container"></div>
+    </div>
+  </main>
+
+  <div id="footer-mount"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.FurnostylesSimpleUpload) {
+        window.FurnostylesSimpleUpload.renderForm('upload-form-container', {
+          types: ['product', 'service', 'property'],
+          categories: ['Furniture', 'Electronics', 'Materials', 'Construction', 'Home Improvement', 'Decor', 'Other'],
+          conditions: ['New', 'Like New', 'Good', 'Fair', 'Used']
+        });
+      }
+    });
+  </script>
+</body>
+</html>
