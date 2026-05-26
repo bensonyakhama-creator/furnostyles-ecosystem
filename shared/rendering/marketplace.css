@@ -111,19 +111,25 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* PRODUCT GRID - Alibaba Style (7-9 per row)                           */
+/* PRODUCT GRID - Flexible Responsive Grid (1-12 per row)                    */
 /* ------------------------------------------------------------------ */
 
 .mp-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
 }
 
-/* Ultra-compact grid for desktop (7-9 items) */
-@media (min-width: 1400px) {
+/* Ultra-wide screens (up to 12 items) */
+@media (min-width: 1600px) {
   .mp-grid {
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .mp-grid {
+    grid-template-columns: repeat(10, 1fr);
   }
 }
 
@@ -135,7 +141,28 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .mp-grid {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Tablet (4 items) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .mp-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile (2 items) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .mp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small mobile (1 item) */
+@media (max-width: 479px) {
+  .mp-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -178,11 +205,12 @@
   position: relative;
   overflow: hidden;
   background: #f5f7fa;
+  aspect-ratio: 1 / 1;
 }
 
 .mp-card-img {
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -194,7 +222,7 @@
 
 .mp-card-img-placeholder {
   width: 100%;
-  height: 160px;
+  aspect-ratio: 1 / 1;
   background: linear-gradient(135deg, #f0f4ff, #e4eaf5);
   display: flex;
   align-items: center;
@@ -225,7 +253,7 @@
 /* Repair: before/after split */
 .mp-repair-thumbs {
   display: flex;
-  height: 200px;
+  aspect-ratio: 1 / 1;
 }
 
 .mp-repair-thumb {
@@ -636,10 +664,7 @@
   .mp-hero          { padding: 36px 20px 30px; }
   .mp-hero-title    { font-size: 26px; }
   .mp-hero-sub      { font-size: 14px; }
-  .mp-grid          { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-  .mp-card-img,
-  .mp-card-img-placeholder,
-  .mp-repair-thumbs { height: 150px; }
+  .mp-grid          { gap: 12px; }
   
   .mp-category-tabs {
     gap: 6px;
