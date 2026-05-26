@@ -19,8 +19,8 @@ window.FurnostylesHeaderData = {
 
   topbar: {
     enabled: true,
-    left:    "Delivery to all major towns in Kenya and beyond.",
-    right:   "Kasarani, Nairobi &nbsp;&bull;&nbsp; +254 713 639 205 &nbsp;&bull;&nbsp; furnostyles@gmail.com"
+    left:    "🚚 Free delivery in Nairobi • 📦 Nationwide shipping available",
+    right:   "📞 +254 713 639 205 • ✉️ furnostyles@gmail.com"
   },
 
   search: {
