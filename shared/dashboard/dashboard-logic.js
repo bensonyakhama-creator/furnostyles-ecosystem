@@ -6,6 +6,61 @@
 (function() {
   'use strict';
 
+  // Sanitize HTML to prevent XSS
+  function escapeHtml(text) {
+    if (typeof text !== 'string') return text;
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
+
+  // Show alert using modal if available, fallback to native alert
+  function showAlert(message, title) {
+    if (window.FurnostylesModal) {
+      window.FurnostylesModal.alert({
+        title: title || 'Notice',
+        message: message
+      });
+    } else {
+      alert(message);
+    }
+  }
+
+  // Show confirm using modal if available, fallback to native confirm
+  function showConfirm(message, title) {
+    if (window.FurnostylesModal) {
+      return window.FurnostylesModal.confirm({
+        title: title || 'Confirm',
+        message: message,
+        confirmText: 'Yes',
+        cancelText: 'Cancel'
+      });
+    } else {
+      return Promise.resolve(confirm(message));
+    }
+  }
+
+  // Show prompt using modal if available, fallback to native prompt
+  function showPrompt(title, fields, submitText, cancelText) {
+    if (window.FurnostylesModal) {
+      return window.FurnostylesModal.prompt({
+        title: title,
+        fields: fields,
+        submitText: submitText || 'Submit',
+        cancelText: cancelText || 'Cancel'
+      });
+    } else {
+      // Fallback to native prompt for single field
+      if (fields && fields.length === 1) {
+        return Promise.resolve({ [fields[0].name]: prompt(fields[0].label) });
+      }
+      return Promise.resolve(null);
+    }
+  }
+
   // Dashboard State
   const DashboardState = {
     currentUser: null,
@@ -65,29 +120,40 @@
 
   // Load All Data from localStorage
   function loadAllData() {
+    var keys = window.FurnostylesStorageKeys || {
+      ORDERS: 'fns_orders',
+      WISHLIST: 'fns_wishlist',
+      ADDRESSES: 'fns_addresses',
+      PAYMENTS: 'fns_payments',
+      MESSAGES: 'fns_messages',
+      REVIEWS: 'fns_reviews',
+      UPLOADS: 'fns_uploads',
+      TICKETS: 'fns_tickets'
+    };
+
     // Orders
-    DashboardState.orders = JSON.parse(localStorage.getItem('fns_orders') || '[]');
+    DashboardState.orders = JSON.parse(localStorage.getItem(keys.ORDERS) || '[]');
     
     // Wishlist
-    DashboardState.wishlist = JSON.parse(localStorage.getItem('fns_wishlist') || '[]');
+    DashboardState.wishlist = JSON.parse(localStorage.getItem(keys.WISHLIST) || '[]');
     
     // Addresses
-    DashboardState.addresses = JSON.parse(localStorage.getItem('fns_addresses') || '[]');
+    DashboardState.addresses = JSON.parse(localStorage.getItem(keys.ADDRESSES) || '[]');
     
     // Payments
-    DashboardState.payments = JSON.parse(localStorage.getItem('fns_payments') || '[]');
+    DashboardState.payments = JSON.parse(localStorage.getItem(keys.PAYMENTS) || '[]');
     
     // Messages
-    DashboardState.messages = JSON.parse(localStorage.getItem('fns_messages') || '[]');
+    DashboardState.messages = JSON.parse(localStorage.getItem(keys.MESSAGES) || '[]');
     
     // Reviews
-    DashboardState.reviews = JSON.parse(localStorage.getItem('fns_reviews') || '[]');
+    DashboardState.reviews = JSON.parse(localStorage.getItem(keys.REVIEWS) || '[]');
     
     // Uploads
-    DashboardState.uploads = JSON.parse(localStorage.getItem('fns_uploads') || '[]');
+    DashboardState.uploads = JSON.parse(localStorage.getItem(keys.UPLOADS) || '[]');
     
     // Tickets
-    DashboardState.tickets = JSON.parse(localStorage.getItem('fns_tickets') || '[]');
+    DashboardState.tickets = JSON.parse(localStorage.getItem(keys.TICKETS) || '[]');
   }
 
   // Update User Info in Sidebar
@@ -236,13 +302,13 @@
 
     container.innerHTML = DashboardState.wishlist.map(item => `
       <div class="fns-wishlist-item">
-        <img src="${item.image || 'assets/images/default-product.jpg'}" alt="${item.title}" class="fns-wishlist-image">
+        <img src="${escapeHtml(item.image || 'assets/images/default-product.jpg')}" alt="${escapeHtml(item.title)}" class="fns-wishlist-image">
         <div class="fns-wishlist-details">
-          <div class="fns-wishlist-title">${item.title}</div>
+          <div class="fns-wishlist-title">${escapeHtml(item.title)}</div>
           <div class="fns-wishlist-price">KES ${item.price.toLocaleString()}</div>
           <div class="fns-wishlist-actions">
-            <button class="fns-wishlist-btn primary" onclick="addToCart('${item.id}')">Add to Cart</button>
-            <button class="fns-wishlist-btn secondary" onclick="removeFromWishlist('${item.id}')">Remove</button>
+            <button class="fns-wishlist-btn primary" onclick="addToCart('${escapeHtml(String(item.id))}')">Add to Cart</button>
+            <button class="fns-wishlist-btn secondary" onclick="removeFromWishlist('${escapeHtml(String(item.id))}')">Remove</button>
           </div>
         </div>
       </div>
@@ -262,9 +328,9 @@
     container.innerHTML = DashboardState.addresses.map((address, index) => `
       <div class="fns-address-card ${address.default ? 'default' : ''}">
         ${address.default ? '<span class="fns-address-badge">Default</span>' : ''}
-        <div class="fns-address-name">${address.name}</div>
-        <div class="fns-address-text">${address.address}, ${address.city}, ${address.country}</div>
-        <div class="fns-address-phone">${address.phone}</div>
+        <div class="fns-address-name">${escapeHtml(address.name)}</div>
+        <div class="fns-address-text">${escapeHtml(address.address)}, ${escapeHtml(address.city)}, ${escapeHtml(address.country)}</div>
+        <div class="fns-address-phone">${escapeHtml(address.phone)}</div>
         <div class="fns-address-actions">
           <button class="fns-address-btn" onclick="editAddress(${index})">Edit</button>
           <button class="fns-address-btn" onclick="setDefaultAddress(${index})">Set Default</button>
@@ -289,7 +355,7 @@
         <div class="fns-payment-icon">${payment.type === 'card' ? '💳' : payment.type === 'mpesa' ? '📱' : '🏦'}</div>
         <div class="fns-payment-details">
           <div class="fns-payment-type">${payment.type === 'card' ? 'Credit Card' : payment.type === 'mpesa' ? 'M-Pesa' : 'Bank Transfer'}</div>
-          <div class="fns-payment-number">${payment.number || payment.account}</div>
+          <div class="fns-payment-number">${escapeHtml(payment.number || payment.account)}</div>
         </div>
         ${payment.default ? '<span class="fns-payment-default">Default</span>' : ''}
         <div class="fns-payment-actions">
@@ -312,11 +378,11 @@
 
     container.innerHTML = DashboardState.messages.map((message, index) => `
       <div class="fns-message-item ${!message.read ? 'unread' : ''}" onclick="openMessage(${index})">
-        <div class="fns-message-avatar">${message.sender[0]}</div>
+        <div class="fns-message-avatar">${escapeHtml(message.sender[0])}</div>
         <div class="fns-message-details">
-          <div class="fns-message-sender">${message.sender}</div>
-          <div class="fns-message-subject">${message.subject}</div>
-          <div class="fns-message-time">${message.time}</div>
+          <div class="fns-message-sender">${escapeHtml(message.sender)}</div>
+          <div class="fns-message-subject">${escapeHtml(message.subject)}</div>
+          <div class="fns-message-time">${escapeHtml(message.time)}</div>
         </div>
         ${!message.read ? '<div class="fns-message-badge"></div>' : ''}
       </div>
@@ -336,11 +402,11 @@
     container.innerHTML = DashboardState.reviews.map((review, index) => `
       <div class="fns-review-item">
         <div class="fns-review-header">
-          <div class="fns-review-product">${review.product}</div>
+          <div class="fns-review-product">${escapeHtml(review.product)}</div>
           <div class="fns-review-rating">${'⭐'.repeat(review.rating)}</div>
-          <div class="fns-review-date">${review.date}</div>
+          <div class="fns-review-date">${escapeHtml(review.date)}</div>
         </div>
-        <div class="fns-review-text">${review.text}</div>
+        <div class="fns-review-text">${escapeHtml(review.text)}</div>
         <div class="fns-review-actions">
           <button class="fns-address-btn" onclick="editReview(${index})">Edit</button>
           <button class="fns-address-btn" onclick="deleteReview(${index})">Delete</button>
@@ -361,11 +427,11 @@
 
     container.innerHTML = DashboardState.uploads.map((upload, index) => `
       <div class="fns-upload-item">
-        <img src="${upload.images && upload.images[0] ? upload.images[0] : 'assets/images/default-product.jpg'}" alt="${upload.title}" class="fns-upload-image">
+        <img src="${escapeHtml(upload.images && upload.images[0] ? upload.images[0] : 'assets/images/default-product.jpg')}" alt="${escapeHtml(upload.title)}" class="fns-upload-image">
         <div class="fns-upload-details">
-          <div class="fns-upload-title">${upload.title}</div>
+          <div class="fns-upload-title">${escapeHtml(upload.title)}</div>
           <div class="fns-upload-price">KES ${upload.price.toLocaleString()}</div>
-          <span class="fns-upload-status ${upload.status || 'pending'}">${upload.status || 'Pending'}</span>
+          <span class="fns-upload-status ${upload.status || 'pending'}">${escapeHtml(upload.status || 'Pending')}</span>
           <div class="fns-upload-actions">
             <button class="fns-address-btn" onclick="editUpload(${index})">Edit</button>
             <button class="fns-address-btn" onclick="deleteUpload(${index})">Delete</button>
@@ -388,9 +454,9 @@
     container.innerHTML = DashboardState.tickets.map((ticket, index) => `
       <div class="fns-ticket-item">
         <div class="fns-ticket-details">
-          <div class="fns-ticket-id">Ticket #${ticket.id}</div>
-          <div class="fns-ticket-subject">${ticket.subject}</div>
-          <div class="fns-ticket-status ${ticket.status.toLowerCase()}">${ticket.status}</div>
+          <div class="fns-ticket-id">Ticket #${escapeHtml(String(ticket.id))}</div>
+          <div class="fns-ticket-subject">${escapeHtml(ticket.subject)}</div>
+          <div class="fns-ticket-status ${ticket.status.toLowerCase()}">${escapeHtml(ticket.status)}</div>
         </div>
         <div class="fns-ticket-actions">
           <button class="fns-address-btn" onclick="viewTicket(${index})">View</button>
@@ -493,7 +559,7 @@
     const phone = document.getElementById('fnsPhone').value;
 
     if (!fullName || !email) {
-      alert('Please fill in all required fields');
+      showAlert('Please fill in all required fields', 'Error');
       return;
     }
 
@@ -501,10 +567,11 @@
     DashboardState.currentUser.email = email;
     DashboardState.currentUser.phone = phone;
 
-    localStorage.setItem('fns_local_user', JSON.stringify(DashboardState.currentUser));
+    var userKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.LOCAL_USER : 'fns_local_user';
+    localStorage.setItem(userKey, JSON.stringify(DashboardState.currentUser));
     updateUserInfo();
 
-    alert('Profile updated successfully!');
+    showAlert('Profile updated successfully!', 'Success');
   }
 
   // Change Password
@@ -514,17 +581,17 @@
     const confirmPassword = document.getElementById('fnsConfirmPassword').value;
 
     if (!currentPassword || !newPassword || !confirmPassword) {
-      alert('Please fill in all fields');
+      showAlert('Please fill in all fields', 'Error');
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      alert('Passwords do not match');
+      showAlert('Passwords do not match', 'Error');
       return;
     }
 
     // In a real app, this would verify with the backend
-    alert('Password changed successfully!');
+    showAlert('Password changed successfully!', 'Success');
     
     // Clear form
     document.getElementById('fnsPasswordForm').reset();
@@ -532,146 +599,223 @@
 
   // Add Address
   function addAddress() {
-    const name = prompt('Enter address name (e.g., Home, Office):');
-    if (!name) return;
+    if (window.FurnostylesModal) {
+      window.FurnostylesModal.prompt({
+        title: 'Add New Address',
+        fields: [
+          { name: 'name', label: 'Address Name', placeholder: 'e.g., Home, Office', required: true },
+          { name: 'address', label: 'Street Address', placeholder: 'House/Flat number, Street name', required: true },
+          { name: 'city', label: 'City', placeholder: 'e.g., Nairobi', required: true },
+          { name: 'country', label: 'Country', placeholder: 'Kenya', required: true, value: 'Kenya' },
+          { name: 'phone', label: 'Phone Number', placeholder: '07XX XXX XXX', required: true }
+        ],
+        submitText: 'Add Address',
+        cancelText: 'Cancel'
+      }).then(function(result) {
+        if (result) {
+          const newAddress = {
+            name: result.name,
+            address: result.address,
+            city: result.city,
+            country: result.country,
+            phone: result.phone,
+            default: DashboardState.addresses.length === 0
+          };
 
-    const address = prompt('Enter street address:');
-    if (!address) return;
+          var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
+          DashboardState.addresses.push(newAddress);
+          localStorage.setItem(addressKey, JSON.stringify(DashboardState.addresses));
+          renderAddresses();
+          updateStats();
 
-    const city = prompt('Enter city:');
-    if (!city) return;
+          window.FurnostylesModal.alert({
+            title: 'Success',
+            message: 'Address added successfully!'
+          });
+        }
+      });
+    } else {
+      // Fallback to prompt if modal not available
+      const name = prompt('Enter address name (e.g., Home, Office):');
+      if (!name) return;
 
-    const country = prompt('Enter country:');
-    if (!country) return;
+      const address = prompt('Enter street address:');
+      if (!address) return;
 
-    const phone = prompt('Enter phone number:');
-    if (!phone) return;
+      const city = prompt('Enter city:');
+      if (!city) return;
 
-    const newAddress = {
-      name,
-      address,
-      city,
-      country,
-      phone,
-      default: DashboardState.addresses.length === 0
-    };
+      const country = prompt('Enter country:');
+      if (!country) return;
 
-    DashboardState.addresses.push(newAddress);
-    localStorage.setItem('fns_addresses', JSON.stringify(DashboardState.addresses));
-    renderAddresses();
-    updateStats();
+      const phone = prompt('Enter phone number:');
+      if (!phone) return;
 
-    alert('Address added successfully!');
+      const newAddress = {
+        name,
+        address,
+        city,
+        country,
+        phone,
+        default: DashboardState.addresses.length === 0
+      };
+
+      var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
+      DashboardState.addresses.push(newAddress);
+      localStorage.setItem(addressKey, JSON.stringify(DashboardState.addresses));
+      renderAddresses();
+      updateStats();
+
+      showAlert('Address added successfully!', 'Success');
+    }
   }
 
   // Set Default Address
   function setDefaultAddress(index) {
+    var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
     DashboardState.addresses.forEach((addr, i) => {
       addr.default = i === index;
     });
-    localStorage.setItem('fns_addresses', JSON.stringify(DashboardState.addresses));
+    localStorage.setItem(addressKey, JSON.stringify(DashboardState.addresses));
     renderAddresses();
   }
 
   // Delete Address
   function deleteAddress(index) {
-    if (!confirm('Are you sure you want to delete this address?')) return;
-
-    DashboardState.addresses.splice(index, 1);
-    localStorage.setItem('fns_addresses', JSON.stringify(DashboardState.addresses));
-    renderAddresses();
-    updateStats();
+    showConfirm('Are you sure you want to delete this address?', 'Delete Address').then(function(confirmed) {
+      if (confirmed) {
+        var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
+        DashboardState.addresses.splice(index, 1);
+        localStorage.setItem(addressKey, JSON.stringify(DashboardState.addresses));
+        renderAddresses();
+        updateStats();
+      }
+    });
   }
 
   // Add Payment Method
   function addPayment() {
-    const type = prompt('Enter payment type (card/mpesa/bank):');
-    if (!type) return;
+    showPrompt('Add Payment Method', [
+      { 
+        name: 'type', 
+        label: 'Payment Type', 
+        type: 'select',
+        options: [
+          { value: 'card', label: 'Credit/Debit Card' },
+          { value: 'mpesa', label: 'M-Pesa' },
+          { value: 'bank', label: 'Bank Transfer' }
+        ],
+        required: true 
+      },
+      { name: 'number', label: 'Card Number/Account', placeholder: 'Enter details', required: true }
+    ], 'Add Payment', 'Cancel').then(function(result) {
+      if (result) {
+        const newPayment = {
+          type: result.type,
+          number: result.number,
+          default: DashboardState.payments.length === 0
+        };
 
-    const number = prompt('Enter card number/account:');
-    if (!number) return;
+        var paymentKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.PAYMENTS : 'fns_payments';
+        DashboardState.payments.push(newPayment);
+        localStorage.setItem(paymentKey, JSON.stringify(DashboardState.payments));
+        renderPayments();
 
-    const newPayment = {
-      type,
-      number,
-      default: DashboardState.payments.length === 0
-    };
-
-    DashboardState.payments.push(newPayment);
-    localStorage.setItem('fns_payments', JSON.stringify(DashboardState.payments));
-    renderPayments();
-
-    alert('Payment method added successfully!');
+        showAlert('Payment method added successfully!', 'Success');
+      }
+    });
   }
 
   // Set Default Payment
   function setDefaultPayment(index) {
+    var paymentKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.PAYMENTS : 'fns_payments';
     DashboardState.payments.forEach((payment, i) => {
       payment.default = i === index;
     });
-    localStorage.setItem('fns_payments', JSON.stringify(DashboardState.payments));
+    localStorage.setItem(paymentKey, JSON.stringify(DashboardState.payments));
     renderPayments();
   }
 
   // Delete Payment
   function deletePayment(index) {
-    if (!confirm('Are you sure you want to remove this payment method?')) return;
-
-    DashboardState.payments.splice(index, 1);
-    localStorage.setItem('fns_payments', JSON.stringify(DashboardState.payments));
-    renderPayments();
+    showConfirm('Are you sure you want to remove this payment method?', 'Remove Payment Method').then(function(confirmed) {
+      if (confirmed) {
+        var paymentKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.PAYMENTS : 'fns_payments';
+        DashboardState.payments.splice(index, 1);
+        localStorage.setItem(paymentKey, JSON.stringify(DashboardState.payments));
+        renderPayments();
+      }
+    });
   }
 
   // Create Support Ticket
   function createTicket() {
-    const subject = prompt('Enter ticket subject:');
-    if (!subject) return;
+    showPrompt('Create Support Ticket', [
+      { name: 'subject', label: 'Subject', placeholder: 'Brief description of your issue', required: true },
+      { name: 'description', label: 'Description', type: 'textarea', placeholder: 'Describe your issue in detail', required: true }
+    ], 'Create Ticket', 'Cancel').then(function(result) {
+      if (result) {
+        const newTicket = {
+          id: Date.now(),
+          subject: result.subject,
+          description: result.description,
+          status: 'Open',
+          createdAt: new Date().toISOString()
+        };
 
-    const description = prompt('Describe your issue:');
-    if (!description) return;
+        var ticketKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.TICKETS : 'fns_tickets';
+        DashboardState.tickets.push(newTicket);
+        localStorage.setItem(ticketKey, JSON.stringify(DashboardState.tickets));
+        renderTickets();
 
-    const newTicket = {
-      id: Date.now(),
-      subject,
-      description,
-      status: 'Open',
-      createdAt: new Date().toISOString()
-    };
-
-    DashboardState.tickets.push(newTicket);
-    localStorage.setItem('fns_tickets', JSON.stringify(DashboardState.tickets));
-    renderTickets();
-
-    alert('Support ticket created successfully!');
+        showAlert('Support ticket created successfully!', 'Success');
+      }
+    });
   }
 
   // Delete Account
   function deleteAccount() {
-    if (!confirm('Are you sure you want to delete your account? This action cannot be undone.')) return;
+    showConfirm('Are you sure you want to delete your account? This action cannot be undone.', 'Delete Account').then(function(confirmed) {
+      if (confirmed) {
+        showConfirm('This will permanently delete all your data. Are you absolutely sure?', 'Confirm Deletion').then(function(finalConfirmed) {
+          if (finalConfirmed) {
+            var keys = window.FurnostylesStorageKeys || {
+              LOCAL_USER: 'fns_local_user',
+              ORDERS: 'fns_orders',
+              WISHLIST: 'fns_wishlist',
+              ADDRESSES: 'fns_addresses',
+              PAYMENTS: 'fns_payments',
+              MESSAGES: 'fns_messages',
+              REVIEWS: 'fns_reviews',
+              UPLOADS: 'fns_uploads',
+              TICKETS: 'fns_tickets'
+            };
+            // Clear all data
+            localStorage.removeItem(keys.LOCAL_USER);
+            localStorage.removeItem(keys.ORDERS);
+            localStorage.removeItem(keys.WISHLIST);
+            localStorage.removeItem(keys.ADDRESSES);
+            localStorage.removeItem(keys.PAYMENTS);
+            localStorage.removeItem(keys.MESSAGES);
+            localStorage.removeItem(keys.REVIEWS);
+            localStorage.removeItem(keys.UPLOADS);
+            localStorage.removeItem(keys.TICKETS);
 
-    if (!confirm('This will permanently delete all your data. Are you absolutely sure?')) return;
-
-    // Clear all data
-    localStorage.removeItem('fns_local_user');
-    localStorage.removeItem('fns_orders');
-    localStorage.removeItem('fns_wishlist');
-    localStorage.removeItem('fns_addresses');
-    localStorage.removeItem('fns_payments');
-    localStorage.removeItem('fns_messages');
-    localStorage.removeItem('fns_reviews');
-    localStorage.removeItem('fns_uploads');
-    localStorage.removeItem('fns_tickets');
-
-    alert('Account deleted successfully');
-    window.location.href = 'index.html';
+            showAlert('Your account has been deleted successfully.', 'Account Deleted').then(function() {
+              window.location.href = 'index.html';
+            });
+          }
+        });
+      }
+    });
   }
 
   // Global functions for inline onclick handlers
   window.addToCart = function(id) {
     const item = DashboardState.wishlist.find(w => w.id === id);
     if (item) {
-      const cart = JSON.parse(localStorage.getItem('fns_shopping_cart') || 
-                          localStorage.getItem('furnostyles_cart') || '[]');
+      var cartKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.CART : 'furnostyles_cart';
+      const cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
       const existing = cart.find(c => c.id === id);
       
       if (existing) {
@@ -686,21 +830,21 @@
         });
       }
       
-      localStorage.setItem('fns_shopping_cart', JSON.stringify(cart));
-      localStorage.setItem('furnostyles_cart', JSON.stringify(cart));
-      alert('Added to cart!');
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+      showAlert('Added to cart!', 'Success');
     }
   };
 
   window.removeFromWishlist = function(id) {
     DashboardState.wishlist = DashboardState.wishlist.filter(w => w.id !== id);
-    localStorage.setItem('fns_wishlist', JSON.stringify(DashboardState.wishlist));
+    var wishlistKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.WISHLIST : 'fns_wishlist';
+    localStorage.setItem(wishlistKey, JSON.stringify(DashboardState.wishlist));
     renderWishlist();
     updateStats();
   };
 
   window.editAddress = function(index) {
-    alert('Edit address functionality - implement modal for editing');
+    showAlert('Edit address functionality - implement modal for editing', 'Info');
   };
 
   window.setDefaultAddress = setDefaultAddress;
@@ -711,21 +855,26 @@
 
   window.openMessage = function(index) {
     DashboardState.messages[index].read = true;
-    localStorage.setItem('fns_messages', JSON.stringify(DashboardState.messages));
+    var messagesKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.MESSAGES : 'fns_messages';
+    localStorage.setItem(messagesKey, JSON.stringify(DashboardState.messages));
     renderMessages();
     updateStats();
-    alert(DashboardState.messages[index].text);
+    showAlert(DashboardState.messages[index].text, 'Message');
   };
 
   window.editReview = function(index) {
-    alert('Edit review functionality - implement modal for editing');
+    showAlert('Edit review functionality - implement modal for editing', 'Info');
   };
 
   window.deleteReview = function(index) {
-    if (!confirm('Delete this review?')) return;
-    DashboardState.reviews.splice(index, 1);
-    localStorage.setItem('fns_reviews', JSON.stringify(DashboardState.reviews));
-    renderReviews();
+    showConfirm('Delete this review?').then(function(confirmed) {
+      if (confirmed) {
+        DashboardState.reviews.splice(index, 1);
+        var reviewsKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.REVIEWS : 'fns_reviews';
+        localStorage.setItem(reviewsKey, JSON.stringify(DashboardState.reviews));
+        renderReviews();
+      }
+    });
   };
 
   window.editUpload = function(index) {
@@ -733,16 +882,20 @@
   };
 
   window.deleteUpload = function(index) {
-    if (!confirm('Delete this listing?')) return;
-    DashboardState.uploads.splice(index, 1);
-    localStorage.setItem('fns_uploads', JSON.stringify(DashboardState.uploads));
-    renderUploads();
-    updateStats();
+    showConfirm('Delete this listing?').then(function(confirmed) {
+      if (confirmed) {
+        DashboardState.uploads.splice(index, 1);
+        var uploadsKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.UPLOADS : 'fns_uploads';
+        localStorage.setItem(uploadsKey, JSON.stringify(DashboardState.uploads));
+        renderUploads();
+        updateStats();
+      }
+    });
   };
 
   window.viewTicket = function(index) {
     const ticket = DashboardState.tickets[index];
-    alert(`Ticket #${ticket.id}\nSubject: ${ticket.subject}\nStatus: ${ticket.status}\n\n${ticket.description}`);
+    showAlert('Ticket #' + ticket.id + '\nSubject: ' + ticket.subject + '\nStatus: ' + ticket.status + '\n\n' + ticket.description, 'Ticket Details');
   };
 
   // Initialize on DOM ready

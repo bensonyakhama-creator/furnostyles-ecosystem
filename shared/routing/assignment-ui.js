@@ -10,6 +10,18 @@
     return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  // Show alert using modal if available, fallback to native alert
+  function showAlert(message, title) {
+    if (window.FurnostylesModal) {
+      window.FurnostylesModal.alert({
+        title: title || 'Notice',
+        message: message
+      });
+    } else {
+      alert(message);
+    }
+  }
+
   function renderSuccess(container, reqId, category, urgency) {
     if (!container) return;
 
@@ -71,7 +83,7 @@
       var engine = window.FurnostylesRoutingEngine;
 
       if (!bridge || !engine) {
-        alert('Ecosystem routing engines are not available. Please retry in a few moments.');
+        showAlert('Ecosystem routing engines are not available. Please retry in a few moments.', 'Error');
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Submit Request';
@@ -100,11 +112,11 @@
           if (res && res.success) {
             renderSuccess(container, res.id, category, payload.urgency);
           } else {
-            alert('Request registering failed. Please try again.');
+            showAlert('Request registering failed. Please try again.', 'Error');
           }
         })
         .catch(function (err) {
-          alert('Error: ' + err.message);
+          showAlert('Error: ' + err.message, 'Error');
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Submit Request';

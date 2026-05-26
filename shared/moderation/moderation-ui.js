@@ -28,6 +28,23 @@
       .replace(/"/g, '&quot;');
   }
 
+  function showPrompt(title, fields, submitText, cancelText) {
+    if (window.FurnostylesModal) {
+      return window.FurnostylesModal.prompt({
+        title: title,
+        fields: fields,
+        submitText: submitText || 'Submit',
+        cancelText: cancelText || 'Cancel'
+      });
+    } else {
+      // Fallback to native prompt for single field
+      if (fields && fields.length === 1) {
+        return Promise.resolve({ [fields[0].name]: prompt(fields[0].label) });
+      }
+      return Promise.resolve(null);
+    }
+  }
+
   function _fmt(iso) {
     if (!iso) return '\u2014';
     try {
@@ -204,7 +221,38 @@
         /* Ask for reason if needed */
         var reason = '';
         if (REASON_PROMPTS[action]) {
-          reason = window.prompt(REASON_PROMPTS[action]) || '';
+          showPrompt('Moderation Action', [
+            { name: 'reason', label: REASON_PROMPTS[action], placeholder: 'Enter reason...', required: false }
+          ], 'Submit', 'Cancel').then(function(result) {
+            reason = result ? (result.reason || '') : '';
+            /* Disable buttons */
+            buttons.forEach(function (b) { b.disabled = true; b.style.opacity = '0.5'; });
+            if (feedbackEl) { feedbackEl.textContent = 'Saving\u2026'; feedbackEl.style.color = '#4c5e80'; }
+
+            modSvc[action](collection, id, reason)
+              .then(function () {
+                /* Update badge */
+                var badge = card.querySelector('.mdr-status-badge');
+                if (badge && modStatus) {
+                  badge.textContent = newStatus;
+                  badge.setAttribute('style', modStatus.styleFor(newStatus));
+                }
+                /* Dim card to signal it's been actioned */
+                card.style.opacity = '0.65';
+                if (feedbackEl) {
+                  feedbackEl.textContent = '\u2713 ' + (ACTION_LABELS[action] || action);
+                  feedbackEl.style.color = action === 'approve' ? '#1a6e3a' : '#8a2020';
+                }
+              })
+              .catch(function (err) {
+                buttons.forEach(function (b) { b.disabled = false; b.style.opacity = '1'; });
+                if (feedbackEl) {
+                  feedbackEl.textContent = 'Error: ' + err.message;
+                  feedbackEl.style.color = '#cc1a1a';
+                }
+              });
+          });
+          return; // Exit early since we're handling async
         }
 
         /* Disable buttons */

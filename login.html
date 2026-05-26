@@ -61,6 +61,10 @@
   <script src="shared/firebase/firebase-init.js"></script>
   <!-- Firebase Bridge -->
   <script src="shared/firebase/firebase-bridge.js"></script>
+  <!-- Security Modules -->
+  <script src="shared/auth/rate-limiter.js"></script>
+  <script src="shared/storage/storage-keys.js"></script>
+  <script src="shared/dashboard/modal-helper.js"></script>
   <!-- Auth, Firestore, Session -->
   <script src="assets/js/firestore.js"></script>
   <script src="assets/js/session.js"></script>
@@ -92,11 +96,25 @@
       }
 
       function showErr(msg) {
-        alert(msg);
+        if (window.FurnostylesModal) {
+          window.FurnostylesModal.alert({
+            title: 'Error',
+            message: msg
+          });
+        } else {
+          alert(msg);
+        }
       }
 
       function showSuc(msg) {
-        alert(msg);
+        if (window.FurnostylesModal) {
+          window.FurnostylesModal.alert({
+            title: 'Success',
+            message: msg
+          });
+        } else {
+          alert(msg);
+        }
       }
 
       function getRedirect() {
@@ -105,7 +123,8 @@
       }
 
       function saveLocalUser(user) {
-        localStorage.setItem('fns_local_user', JSON.stringify(user));
+        var userKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.LOCAL_USER : 'fns_local_user';
+        localStorage.setItem(userKey, JSON.stringify(user));
       }
 
       // Email/password login
@@ -119,16 +138,39 @@
           return;
         }
 
+        // Check rate limit
+        if (window.FurnostylesRateLimiter) {
+          var limitCheck = window.FurnostylesRateLimiter.checkLimit('login', email);
+          
+          if (!limitCheck.allowed) {
+            var lockoutMinutes = Math.ceil(limitCheck.lockedUntil / 60);
+            showErr('Too many failed attempts. Please try again in ' + lockoutMinutes + ' minutes.');
+            return;
+          }
+
+          if (limitCheck.remainingAttempts <= 2) {
+            showErr('Warning: ' + limitCheck.remainingAttempts + ' attempts remaining before lockout.');
+          }
+        }
+
         setLoading(true);
 
         if (window.FurnostylesAuth) {
           window.FurnostylesAuth.signIn(email, password)
             .then(function(user) {
+              // Record successful attempt
+              if (window.FurnostylesRateLimiter) {
+                window.FurnostylesRateLimiter.recordAttempt('login', email, true);
+              }
               showSuc('Login successful! Redirecting...');
               setTimeout(function() { location.href = getRedirect(); }, 700);
             })
             .catch(function(err) {
               setLoading(false);
+              // Record failed attempt
+              if (window.FurnostylesRateLimiter) {
+                window.FurnostylesRateLimiter.recordAttempt('login', email, false);
+              }
               showErr('Login failed: ' + err.message);
             });
         } else {

@@ -77,6 +77,10 @@
   <script src="shared/firebase/firebase-init.js"></script>
   <!-- Firebase Bridge -->
   <script src="shared/firebase/firebase-bridge.js"></script>
+  <!-- Security Modules -->
+  <script src="shared/auth/rate-limiter.js"></script>
+  <script src="shared/storage/storage-keys.js"></script>
+  <script src="shared/dashboard/modal-helper.js"></script>
   <!-- Auth, Firestore, Session -->
   <script src="assets/js/firestore.js"></script>
   <script src="assets/js/session.js"></script>
@@ -111,11 +115,25 @@
       }
 
       function showErr(msg) {
-        alert(msg);
+        if (window.FurnostylesModal) {
+          window.FurnostylesModal.alert({
+            title: 'Error',
+            message: msg
+          });
+        } else {
+          alert(msg);
+        }
       }
 
       function showSuc(msg) {
-        alert(msg);
+        if (window.FurnostylesModal) {
+          window.FurnostylesModal.alert({
+            title: 'Success',
+            message: msg
+          });
+        } else {
+          alert(msg);
+        }
       }
 
       form.addEventListener('submit', function(e) {
@@ -142,6 +160,15 @@
           return;
         }
 
+        // Check rate limiting
+        if (window.FurnostylesRateLimiter) {
+          var rateCheck = window.FurnostylesRateLimiter.checkAttempt(email, 'register');
+          if (!rateCheck.allowed) {
+            showErr('Too many registration attempts. Please try again in ' + Math.ceil(rateCheck.lockoutTime / 60000) + ' minutes.');
+            return;
+          }
+        }
+
         setLoading(true);
 
         if (window.FurnostylesAuth) {
@@ -151,6 +178,10 @@
             role: role
           })
             .then(function(user) {
+              // Clear rate limit on successful registration
+              if (window.FurnostylesRateLimiter) {
+                window.FurnostylesRateLimiter.clearAttempts(email, 'register');
+              }
               showSuc('Account created successfully!');
               
               // Redirect based on role
@@ -164,6 +195,10 @@
             })
             .catch(function(err) {
               setLoading(false);
+              // Record failed attempt
+              if (window.FurnostylesRateLimiter) {
+                window.FurnostylesRateLimiter.recordAttempt(email, 'register');
+              }
               showErr('Registration failed: ' + err.message);
             });
         } else {

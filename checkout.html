@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout | Furnostyles</title>
-  <meta name="description" content="Complete your Furnostyles order � delivery details, payment method and order confirmation.">
+  <meta name="description" content="Secure checkout with multiple payment options including M-Pesa, Card, and Cash on Delivery.">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -14,304 +14,584 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
   <meta property="og:title" content="Checkout | Furnostyles">
-  <meta property="og:description" content="Complete your Furnostyles order � delivery details, payment method and order confirmation.">
+  <meta property="og:description" content="Secure checkout with multiple payment options including M-Pesa, Card, and Cash on Delivery.">
   <meta property="og:url" content="https://furnostyles.com/checkout.html">
   <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Checkout | Furnostyles">
   <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
   <meta name="robots" content="noindex, nofollow">
-
-
-
 </head>
 <body>
+
+  <!-- HEADER MOUNT: rendered by header-render.js -->
   <div id="fns-header-mount"></div>
+
   <main class="fns-main">
     <style>
-      .co-wrap{max-width:1080px;margin:0 auto;padding:40px 20px 80px;display:grid;grid-template-columns:1fr 340px;gap:36px}
-      .co-wrap h1{font-size:1.4rem;color:#0b3b46;margin:0 0 24px;grid-column:1/-1}
-      .co-steps{display:flex;gap:0;margin-bottom:28px;border-radius:10px;overflow:hidden;border:1.5px solid #e8eef5}
-      .co-step{flex:1;padding:10px;text-align:center;font-size:.82rem;font-weight:600;color:#aaa;background:#fafafa;border-right:1.5px solid #e8eef5}
-      .co-step:last-child{border-right:0}
-      .co-step.active{background:#0b3b46;color:#fff}
-      .co-step.done{background:#e8f4f7;color:#1a7d9a}
-      /* Form */
-      .co-card{background:#fff;border:1.5px solid #e8eef5;border-radius:14px;padding:24px;margin-bottom:20px}
-      .co-card h2{font-size:1rem;color:#0b3b46;margin:0 0 18px;font-weight:700}
-      .co-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-      .co-field{margin-bottom:14px}
-      .co-field label{display:block;font-size:.8rem;color:#555;font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.03em}
-      .co-field input,.co-field select,.co-field textarea{width:100%;padding:10px 13px;border:1.5px solid #d0e0e8;border-radius:8px;font-size:.9rem;color:#222;background:#fff;outline:none;box-sizing:border-box;transition:border-color .15s}
-      .co-field input:focus,.co-field select:focus,.co-field textarea:focus{border-color:#0b3b46}
-      .co-field.required label::after{content:" *";color:#c0392b}
-      /* Payment */
-      .co-pay-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:0}
-      .co-pay-opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid #d0e0e8;border-radius:10px;cursor:pointer;transition:border-color .15s,background .15s}
-      .co-pay-opt:hover{border-color:#0b3b46;background:#f7fbfc}
-      .co-pay-opt.selected{border-color:#0b3b46;background:#f0f8fa}
-      .co-pay-opt input[type=radio]{accent-color:#0b3b46;width:17px;height:17px}
-      .co-pay-opt-info{flex:1}
-      .co-pay-opt-name{font-size:.9rem;font-weight:700;color:#0b3b46}
-      .co-pay-opt-desc{font-size:.78rem;color:#888;margin-top:2px}
-      .co-pay-opt-icon{font-size:1.5rem}
-      .co-mpesa-detail{display:none;margin-top:14px;background:#f7fbfc;border-radius:8px;padding:14px;font-size:.85rem;color:#333;line-height:1.7}
-      .co-mpesa-detail.show{display:block}
-      /* Summary */
-      .co-summary{background:#f7fbfc;border-radius:14px;padding:24px;height:fit-content;position:sticky;top:90px}
-      .co-summary h2{font-size:1rem;color:#0b3b46;margin:0 0 18px;font-weight:700}
-      .co-sum-item{display:flex;justify-content:space-between;font-size:.85rem;color:#444;margin-bottom:8px;gap:12px}
-      .co-sum-item span:first-child{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .co-sum-divider{border:0;border-top:1.5px solid #e8eef5;margin:14px 0}
-      .co-sum-row{display:flex;justify-content:space-between;font-size:.88rem;color:#555;margin-bottom:8px}
-      .co-sum-total{display:flex;justify-content:space-between;font-size:1.05rem;font-weight:700;color:#0b3b46;margin-top:8px;padding-top:12px;border-top:2px solid #e8eef5}
-      .co-place-btn{display:block;width:100%;margin-top:18px;padding:14px;background:#0b3b46;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;text-align:center;cursor:pointer}
-      .co-place-btn:hover{background:#1a5c6e}
-      .co-place-btn:disabled{background:#aaa;cursor:not-allowed}
-      .co-secure{display:flex;gap:6px;align-items:center;font-size:.75rem;color:#bbb;margin-top:12px;justify-content:center}
-      /* Success screen */
-      .co-success{display:none;text-align:center;padding:60px 24px;grid-column:1/-1}
-      .co-success.show{display:block}
-      .co-success-icon{font-size:4rem;margin-bottom:16px}
-      .co-success h2{color:#0b3b46;font-size:1.6rem;margin-bottom:10px}
-      .co-success p{color:#555;font-size:1rem;margin-bottom:24px}
-      .co-empty{text-align:center;padding:60px 20px;color:#aaa;grid-column:1/-1}
-      @media(max-width:760px){.co-wrap{grid-template-columns:1fr}.co-summary{position:static}.co-field-row{grid-template-columns:1fr}}
+      .checkout-wrap{max-width:1200px;margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1fr 380px;gap:32px}
+      .checkout-main h1{font-size:1.5rem;color:#0b3b46;margin:0 0 24px}
+      .checkout-empty{text-align:center;padding:64px 20px;color:#aaa;grid-column:1/-1}
+      .checkout-empty svg{margin-bottom:16px;opacity:.35}
+      .checkout-empty h2{color:#0b3b46;margin-bottom:8px}
+      .checkout-section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+      .checkout-section h2{font-size:1.1rem;color:#0b3b46;margin:0 0 20px;font-weight:700;display:flex;align-items:center;gap:8px}
+      .checkout-section h2 .step{background:#0b3b46;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+      .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+      .form-group{margin-bottom:16px}
+      .form-group label{display:block;font-size:.85rem;font-weight:600;color:#1a2540;margin-bottom:6px}
+      .form-group label .required{color:#dc3545}
+      .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:.9rem;transition:border-color .2s}
+      .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#0b3b46}
+      .form-group textarea{resize:vertical;min-height:80px}
+      .address-card{border:2px solid #e0e0e0;border-radius:8px;padding:16px;margin-bottom:12px;cursor:pointer;transition:all .2s}
+      .address-card:hover{border-color:#0b3b46}
+      .address-card.selected{border-color:#0b3b46;background:#f8f9fa}
+      .address-card-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+      .address-card-name{font-weight:600;color:#1a2540}
+      .address-card-default{background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:600}
+      .address-card-text{font-size:.85rem;color:#666;line-height:1.5}
+      .add-address-btn{width:100%;padding:12px;background:#f8f9fa;border:2px dashed #e0e0e0;border-radius:8px;color:#0b3b46;font-weight:600;cursor:pointer;transition:all .2s}
+      .add-address-btn:hover{background:#0b3b46;color:#fff;border-color:#0b3b46}
+      /* Payment Options */
+      .payment-options{display:grid;gap:12px}
+      .payment-option{border:2px solid #e0e0e0;border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:16px}
+      .payment-option:hover{border-color:#0b3b46}
+      .payment-option.selected{border-color:#0b3b46;background:#f8f9fa}
+      .payment-option-icon{font-size:2rem}
+      .payment-option-info{flex:1}
+      .payment-option-name{font-weight:600;color:#1a2540;margin-bottom:4px}
+      .payment-option-desc{font-size:.8rem;color:#666}
+      .payment-option-badge{background:#e8a020;color:#fff;padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:600}
+      .mpesa-instructions{background:#f0f8ff;border-left:4px solid #007bff;padding:16px;margin-top:16px;border-radius:8px;font-size:.85rem}
+      .mpesa-instructions strong{color:#007bff}
+      /* Order Summary */
+      .checkout-summary{background:#f7fbfc;border-radius:14px;padding:24px;height:fit-content;position:sticky;top:90px}
+      .checkout-summary h2{font-size:1.05rem;color:#0b3b46;margin:0 0 20px;font-weight:700}
+      .summary-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e8eef5}
+      .summary-item:last-child{border-bottom:none}
+      .summary-item-image{width:60px;height:60px;object-fit:cover;border-radius:6px}
+      .summary-item-details{flex:1}
+      .summary-item-title{font-size:.85rem;font-weight:600;color:#1a2540;margin-bottom:4px}
+      .summary-item-qty{font-size:.75rem;color:#666}
+      .summary-item-price{font-weight:700;color:#0b3b46}
+      .summary-row{display:flex;justify-content:space-between;font-size:.9rem;color:#555;margin-bottom:10px}
+      .summary-row.total{font-size:1.1rem;font-weight:700;color:#0b3b46;border-top:2px solid #e8eef5;padding-top:14px;margin-top:14px}
+      .summary-note{font-size:.78rem;color:#aaa;margin-bottom:16px;line-height:1.5}
+      .place-order-btn{display:block;width:100%;padding:16px;background:#0b3b46;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;text-align:center;cursor:pointer;margin-bottom:12px;transition:background .2s}
+      .place-order-btn:hover{background:#1a5c6e}
+      .place-order-btn:disabled{background:#ccc;cursor:not-allowed}
+      .edit-cart-btn{display:block;width:100%;padding:12px;background:transparent;color:#0b3b46;border:1.5px solid #0b3b46;border-radius:10px;font-size:.9rem;font-weight:600;text-align:center;text-decoration:none;cursor:pointer}
+      .promo-section{margin-top:16px;border-top:1px solid #e8eef5;padding-top:16px}
+      .promo-section label{font-size:.82rem;color:#555;display:block;margin-bottom:6px}
+      .promo-row{display:flex;gap:8px}
+      .promo-row input{flex:1;padding:10px 12px;border:1.5px solid #d0e0e8;border-radius:8px;font-size:.88rem;outline:none}
+      .promo-row button{padding:10px 16px;background:#e8a020;color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer}
+      .secure-badge{display:flex;gap:8px;align-items:center;margin-top:16px;font-size:.78rem;color:#aaa}
+      /* Success State */
+      .checkout-success{text-align:center;padding:48px 20px;background:#fff;border-radius:12px}
+      .checkout-success svg{width:80px;height:80px;color:#2e7d32;margin-bottom:16px}
+      .checkout-success h2{color:#0b3b46;margin:0 0 8px}
+      .checkout-success p{color:#666;margin-bottom:24px}
+      .checkout-success .order-id{font-size:1.2rem;font-weight:700;color:#0b3b46;margin-bottom:24px}
+      .success-actions{display:flex;gap:12px;justify-content:center}
+      .success-btn{padding:12px 24px;border-radius:8px;font-weight:600;text-decoration:none;cursor:pointer}
+      .success-btn.primary{background:#0b3b46;color:#fff}
+      .success-btn.secondary{background:#f8f9fa;color:#1a2540;border:1px solid #e0e0e0}
+      @media(max-width:768px){.checkout-wrap{grid-template-columns:1fr}.checkout-summary{position:static}.form-row{grid-template-columns:1fr}}
     </style>
 
-    <div class="co-wrap">
-      <h1>Checkout</h1>
-
-      <!-- Empty cart state -->
-      <div class="co-empty" id="coEmptyState" style="display:none">
-        <p style="font-size:1.1rem;margin-bottom:16px">Your cart is empty.</p>
-        <a href="marketplace.html" style="background:#0b3b46;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">Browse Marketplace</a>
-      </div>
-
-      <!-- Success screen -->
-      <div class="co-success" id="coSuccess">
-        <div class="co-success-icon">&#10003;</div>
-        <h2>Order Placed Successfully!</h2>
-        <p>Thank you for your order. We will contact you shortly to confirm delivery details.<br>A summary has been sent to your email / WhatsApp.</p>
-        <a href="marketplace.html" style="display:inline-block;background:#0b3b46;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;margin-right:10px">Continue Shopping</a>
-        <a href="alerts.html" style="display:inline-block;background:transparent;border:1.5px solid #0b3b46;color:#0b3b46;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">View Notifications</a>
+    <div class="checkout-wrap" id="checkoutPageWrap">
+      <!-- Empty State -->
+      <div class="checkout-empty" id="checkoutEmptyState" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="72" height="72"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <h2>Your cart is empty</h2>
+        <p>Add items to your cart before checkout</p>
+        <a href="furniture-marketplace.html" style="display:inline-block;background:#0b3b46;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">Browse Marketplace</a>
       </div>
 
       <!-- Checkout Form -->
-      <div id="coFormSection">
-        <div class="co-steps">
-          <div class="co-step done">1. Cart</div>
-          <div class="co-step active">2. Delivery</div>
-          <div class="co-step">3. Payment</div>
-          <div class="co-step">4. Confirm</div>
-        </div>
+      <div id="checkoutFormSection" style="display:none">
+        <div class="checkout-main">
+          <h1>Checkout</h1>
 
-        <!-- Delivery details -->
-        <div class="co-card">
-          <h2>&#128205; Delivery Details</h2>
-          <div class="co-field-row">
-            <div class="co-field required"><label>First Name</label><input type="text" id="coFirstName" placeholder="e.g. James"></div>
-            <div class="co-field required"><label>Last Name</label><input type="text" id="coLastName" placeholder="e.g. Mwangi"></div>
-          </div>
-          <div class="co-field-row">
-            <div class="co-field required"><label>Phone / WhatsApp</label><input type="tel" id="coPhone" placeholder="+254 7XX XXX XXX"></div>
-            <div class="co-field"><label>Email</label><input type="email" id="coEmail" placeholder="your@email.com"></div>
-          </div>
-          <div class="co-field required"><label>Delivery Address</label><input type="text" id="coAddress" placeholder="Street, Estate, Building name"></div>
-          <div class="co-field-row">
-            <div class="co-field required">
-              <label>Town / City</label>
-              <select id="coCity">
-                <option value="">Select town...</option>
-                <option value="Nairobi">Nairobi</option>
-                <option value="Mombasa">Mombasa</option>
-                <option value="Kisumu">Kisumu</option>
-                <option value="Nakuru">Nakuru</option>
-                <option value="Eldoret">Eldoret</option>
-                <option value="Thika">Thika</option>
-                <option value="Kitengela">Kitengela</option>
-                <option value="Machakos">Machakos</option>
-                <option value="Other">Other (specify in notes)</option>
-              </select>
+          <!-- Shipping Address -->
+          <div class="checkout-section">
+            <h2><span class="step">1</span> Shipping Address</h2>
+            <div id="savedAddresses"></div>
+            <button class="add-address-btn" id="addNewAddressBtn">+ Add New Address</button>
+            <div id="newAddressForm" style="display:none;margin-top:16px">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name <span class="required">*</span></label>
+                  <input type="text" id="checkoutFirstName" placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                  <label>Last Name <span class="required">*</span></label>
+                  <input type="text" id="checkoutLastName" placeholder="Enter last name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Phone Number <span class="required">*</span></label>
+                <input type="tel" id="checkoutPhone" placeholder="07XX XXX XXX">
+              </div>
+              <div class="form-group">
+                <label>Email Address <span class="required">*</span></label>
+                <input type="email" id="checkoutEmail" placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label>Street Address <span class="required">*</span></label>
+                <input type="text" id="checkoutAddress" placeholder="House/Flat number, Street name">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>City <span class="required">*</span></label>
+                  <select id="checkoutCity">
+                    <option value="">Select city</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Mombasa">Mombasa</option>
+                    <option value="Kisumu">Kisumu</option>
+                    <option value="Nakuru">Nakuru</option>
+                    <option value="Eldoret">Eldoret</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Postal Code</label>
+                  <input type="text" id="checkoutPostalCode" placeholder="e.g., 00100">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Delivery Instructions (Optional)</label>
+                <textarea id="checkoutInstructions" placeholder="Landmarks, gate code, etc."></textarea>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" id="saveAddress"> Save this address for future orders
+                </label>
+              </div>
             </div>
-            <div class="co-field"><label>Postcode / Area</label><input type="text" id="coPostcode" placeholder="e.g. 00100"></div>
           </div>
-          <div class="co-field">
-            <label>Delivery Notes (optional)</label>
-            <textarea id="coNotes" rows="2" placeholder="Gate colour, nearest landmark, preferred delivery time..."></textarea>
+
+          <!-- Payment Method -->
+          <div class="checkout-section">
+            <h2><span class="step">2</span> Payment Method</h2>
+            <div class="payment-options">
+              <label class="payment-option selected" data-payment="mpesa">
+                <input type="radio" name="paymentMethod" value="mpesa" checked>
+                <span class="payment-option-icon">📱</span>
+                <div class="payment-option-info">
+                  <div class="payment-option-name">M-Pesa</div>
+                  <div class="payment-option-desc">Instant mobile payment via Safaricom</div>
+                </div>
+                <span class="payment-option-badge">Popular</span>
+              </label>
+              <label class="payment-option" data-payment="card">
+                <input type="radio" name="paymentMethod" value="card">
+                <span class="payment-option-icon">💳</span>
+                <div class="payment-option-info">
+                  <div class="payment-option-name">Credit/Debit Card</div>
+                  <div class="payment-option-desc">Visa, Mastercard, American Express</div>
+                </div>
+              </label>
+              <label class="payment-option" data-payment="cod">
+                <input type="radio" name="paymentMethod" value="cod">
+                <span class="payment-option-icon">💵</span>
+                <div class="payment-option-info">
+                  <div class="payment-option-name">Cash on Delivery</div>
+                  <div class="payment-option-desc">Pay when your order arrives (Nairobi only)</div>
+                </div>
+              </label>
+              <label class="payment-option" data-payment="bank">
+                <input type="radio" name="paymentMethod" value="bank">
+                <span class="payment-option-icon">🏦</span>
+                <div class="payment-option-info">
+                  <div class="payment-option-name">Bank Transfer</div>
+                  <div class="payment-option-desc">Direct bank deposit or EFT transfer</div>
+                </div>
+              </label>
+            </div>
+            <div class="mpesa-instructions" id="mpesaInstructions">
+              <strong>M-Pesa Payment Instructions:</strong><br>
+              1. Go to M-Pesa menu on your phone<br>
+              2. Select Lipa na M-Pesa > Buy Goods and Services<br>
+              3. Enter Paybill: <strong>174379</strong><br>
+              4. Enter Account: <strong>Your Phone Number</strong><br>
+              5. Enter Amount: <strong id="mpesaAmount">KES 0</strong><br>
+              6. Enter your M-Pesa PIN and confirm<br>
+              7. You'll receive an SMS confirmation
+            </div>
+          </div>
+
+          <!-- Order Notes -->
+          <div class="checkout-section">
+            <h2><span class="step">3</span> Order Notes (Optional)</h2>
+            <div class="form-group">
+              <textarea id="orderNotes" placeholder="Any special requests or instructions for your order..."></textarea>
+            </div>
           </div>
         </div>
 
-        <!-- Payment method -->
-        <div class="co-card">
-          <h2>&#128179; Payment Method</h2>
-          <div class="co-pay-opts" id="coPayOpts">
-            <label class="co-pay-opt selected" id="coPayMpesa">
-              <input type="radio" name="coPayment" value="mpesa" checked>
-              <span class="co-pay-opt-icon">&#128247;</span>
-              <div class="co-pay-opt-info">
-                <div class="co-pay-opt-name">M-Pesa</div>
-                <div class="co-pay-opt-desc">Pay via M-Pesa Paybill or Till Number</div>
-              </div>
-            </label>
-            <label class="co-pay-opt" id="coPayBank">
-              <input type="radio" name="coPayment" value="bank">
-              <span class="co-pay-opt-icon">&#127981;</span>
-              <div class="co-pay-opt-info">
-                <div class="co-pay-opt-name">Bank Transfer</div>
-                <div class="co-pay-opt-desc">Direct bank deposit or EFT transfer</div>
-              </div>
-            </label>
-            <label class="co-pay-opt" id="coPayCOD">
-              <input type="radio" name="coPayment" value="cod">
-              <span class="co-pay-opt-icon">&#128181;</span>
-              <div class="co-pay-opt-info">
-                <div class="co-pay-opt-name">Cash on Delivery</div>
-                <div class="co-pay-opt-desc">Pay cash when your order arrives (Nairobi only)</div>
-              </div>
-            </label>
-            <label class="co-pay-opt" id="coPayWhatsApp">
-              <input type="radio" name="coPayment" value="whatsapp">
-              <span class="co-pay-opt-icon">&#128172;</span>
-              <div class="co-pay-opt-info">
-                <div class="co-pay-opt-name">WhatsApp Order</div>
-                <div class="co-pay-opt-desc">Send order details via WhatsApp and pay on agreement</div>
-              </div>
-            </label>
+        <!-- Order Summary -->
+        <div class="checkout-summary" id="checkoutSummary">
+          <h2>Order Summary</h2>
+          <div id="summaryItems"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal">KES 0</span></div>
+          <div class="summary-row"><span>Shipping</span><span id="summaryShipping">KES 0</span></div>
+          <div class="summary-row"><span>Discount</span><span id="summaryDiscount">-KES 0</span></div>
+          <div class="summary-row total"><span>Total</span><span id="summaryTotal">KES 0</span></div>
+          <p class="summary-note">Free delivery on orders over KES 10,000 within Nairobi. Delivery fees calculated based on location.</p>
+          <button class="place-order-btn" id="placeOrderBtn">Place Order</button>
+          <a href="cart.html" class="edit-cart-btn">← Edit Cart</a>
+          <div class="promo-section">
+            <label>Promo Code</label>
+            <div class="promo-row">
+              <input type="text" id="promoCode" placeholder="Enter code">
+              <button id="applyPromoBtn">Apply</button>
+            </div>
           </div>
-          <div class="co-mpesa-detail" id="coMpesaDetail">
-            <strong>M-Pesa Payment Instructions:</strong><br>
-            Paybill: <strong>XXXXXX</strong> &nbsp; Account: Your phone number<br>
-            Till: <strong>XXXXXX</strong><br>
-            After payment, send your M-Pesa confirmation SMS screenshot to <a href="https://wa.me/254713639205">+254 713 639 205</a> on WhatsApp.
+          <div class="secure-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secure checkout &nbsp;&bull;&nbsp; Buyer Protected
           </div>
         </div>
       </div>
 
-      <!-- Order Summary sidebar -->
-      <div class="co-summary" id="coSummary">
-        <h2>Order Summary</h2>
-        <div id="coSummaryItems"></div>
-        <hr class="co-sum-divider">
-        <div class="co-sum-row"><span>Subtotal</span><span id="coSumSub">KES 0</span></div>
-        <div class="co-sum-row"><span>Delivery</span><span id="coSumDel">TBD</span></div>
-        <div class="co-sum-total"><span>Total</span><span id="coSumTotal">KES 0</span></div>
-        <button class="co-place-btn" id="coPlaceBtn">Place Order</button>
-        <div class="co-secure">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Secure &amp; Buyer Protected
+      <!-- Success State -->
+      <div class="checkout-success" id="checkoutSuccess" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="80" height="80"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h2>Order Placed Successfully!</h2>
+        <p>Thank you for your order. We'll send you an email with order details and tracking information.</p>
+        <div class="order-id">Order ID: <span id="successOrderId"></span></div>
+        <div class="success-actions">
+          <a href="dashboard.html" class="success-btn primary">View Order</a>
+          <a href="furniture-marketplace.html" class="success-btn secondary">Continue Shopping</a>
         </div>
-        <div style="margin-top:12px;text-align:center"><a href="cart.html" style="font-size:.8rem;color:#1a7d9a">&larr; Edit Cart</a></div>
       </div>
     </div>
 
     <script>
     (function () {
-      function cartGet() { try { return JSON.parse(localStorage.getItem('furnostyles_cart') || '[]'); } catch(e) { return []; } }
-      function fmt(n) { return 'KES ' + Number(n).toLocaleString(); }
+      'use strict';
 
-      var cart = cartGet();
+      var cart = [];
+      var selectedAddress = null;
+      var discount = 0;
+      var shippingCost = 0;
 
-      /* Redirect to cart if empty */
-      if (!cart.length) {
-        document.getElementById('coEmptyState').style.display = '';
-        document.getElementById('coFormSection').style.display = 'none';
-        document.getElementById('coSummary').style.display = 'none';
-        document.getElementById('coSuccess').style.display = 'none';
-      } else {
-        document.getElementById('coEmptyState').style.display = 'none';
-        document.getElementById('coSuccess').style.display = 'none';
-
-        /* Render summary items */
-        var sub = 0;
-        var html = cart.map(function(item) {
-          var line = Number(item.price || 0) * Number(item.quantity || 1);
-          sub += line;
-          return '<div class="co-sum-item"><span>' + (item.title || 'Item') + ' �' + (item.quantity || 1) + '</span><span>' + fmt(line) + '</span></div>';
-        }).join('');
-        document.getElementById('coSummaryItems').innerHTML = html;
-        document.getElementById('coSumSub').textContent = fmt(sub);
-        document.getElementById('coSumTotal').textContent = fmt(sub);
-      }
-
-      /* Payment option selection */
-      document.querySelectorAll('.co-pay-opt').forEach(function(opt) {
-        opt.addEventListener('click', function() {
-          document.querySelectorAll('.co-pay-opt').forEach(function(o) { o.classList.remove('selected'); });
-          opt.classList.add('selected');
-          var val = opt.querySelector('input[type=radio]').value;
-          document.getElementById('coMpesaDetail').classList.toggle('show', val === 'mpesa');
-        });
-      });
-      /* Show M-Pesa by default */
-      document.getElementById('coMpesaDetail').classList.add('show');
-
-      /* Place order */
-      document.getElementById('coPlaceBtn').addEventListener('click', function() {
-        var fn = document.getElementById('coFirstName').value.trim();
-        var ln = document.getElementById('coLastName').value.trim();
-        var ph = document.getElementById('coPhone').value.trim();
-        var addr = document.getElementById('coAddress').value.trim();
-        var city = document.getElementById('coCity').value;
-        if (!fn || !ln || !ph || !addr || !city) {
-          alert('Please fill in all required delivery fields (marked with *).');
+      function init() {
+        if (!window.FurnostylesCart) {
+          console.error('FurnostylesCart not loaded');
           return;
         }
-        var method = document.querySelector('input[name="coPayment"]:checked').value;
-        var btn = document.getElementById('coPlaceBtn');
-        btn.disabled = true; btn.textContent = 'Placing order...';
 
-        /* Save order to localStorage (bridge for demo / Firestore in live) */
+        cart = window.FurnostylesCart.getCartItems();
+
+        if (cart.length === 0) {
+          document.getElementById('checkoutEmptyState').style.display = '';
+          document.getElementById('checkoutFormSection').style.display = 'none';
+          return;
+        }
+
+        document.getElementById('checkoutEmptyState').style.display = 'none';
+        document.getElementById('checkoutFormSection').style.display = '';
+
+        loadSavedAddresses();
+        renderSummary();
+        setupEventListeners();
+        calculateShipping();
+      }
+
+      function loadSavedAddresses() {
+        var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
+        var addresses = JSON.parse(localStorage.getItem(addressKey) || '[]');
+        var container = document.getElementById('savedAddresses');
+
+        if (addresses.length === 0) {
+          document.getElementById('addNewAddressBtn').click();
+          return;
+        }
+
+        container.innerHTML = addresses.map(function(addr, index) {
+          return '<div class="address-card' + (addr.default ? ' selected' : '') + '" data-index="' + index + '">' +
+            '<div class="address-card-header">' +
+              '<span class="address-card-name">' + addr.name + '</span>' +
+              (addr.default ? '<span class="address-card-default">Default</span>' : '') +
+            '</div>' +
+            '<div class="address-card-text">' + addr.address + ', ' + addr.city + ', ' + (addr.country || 'Kenya') + '</div>' +
+            '<div class="address-card-text">📞 ' + addr.phone + '</div>' +
+          '</div>';
+        }).join('');
+
+        container.querySelectorAll('.address-card').forEach(function(card) {
+          card.addEventListener('click', function() {
+            container.querySelectorAll('.address-card').forEach(function(c) { c.classList.remove('selected'); });
+            card.classList.add('selected');
+            selectedAddress = addresses[parseInt(card.dataset.index)];
+            fillAddressForm(selectedAddress);
+            calculateShipping();
+          });
+        });
+
+        // Select default address
+        var defaultAddr = addresses.find(function(a) { return a.default; });
+        if (defaultAddr) {
+          selectedAddress = defaultAddr;
+          fillAddressForm(defaultAddr);
+        }
+      }
+
+      function fillAddressForm(addr) {
+        document.getElementById('checkoutFirstName').value = addr.name ? addr.name.split(' ')[0] : '';
+        document.getElementById('checkoutLastName').value = addr.name ? addr.name.split(' ').slice(1).join(' ') : '';
+        document.getElementById('checkoutPhone').value = addr.phone || '';
+        document.getElementById('checkoutAddress').value = addr.address || '';
+        document.getElementById('checkoutCity').value = addr.city || '';
+      }
+
+      function renderSummary() {
+        var container = document.getElementById('summaryItems');
+        var subtotal = 0;
+
+        container.innerHTML = cart.map(function(item) {
+          var line = Number(item.price || 0) * Number(item.quantity || 1);
+          subtotal += line;
+          return '<div class="summary-item">' +
+            '<img src="' + (item.image || 'assets/images/default-product.jpg') + '" alt="' + item.title + '" class="summary-item-image">' +
+            '<div class="summary-item-details">' +
+              '<div class="summary-item-title">' + item.title + '</div>' +
+              '<div class="summary-item-qty">Qty: ' + item.quantity + '</div>' +
+            '</div>' +
+            '<div class="summary-item-price">KES ' + line.toLocaleString() + '</div>' +
+          '</div>';
+        }).join('');
+
+        updateTotals(subtotal);
+      }
+
+      function calculateShipping() {
+        var city = document.getElementById('checkoutCity').value;
+        var subtotal = window.FurnostylesCart.getCartSubtotal();
+
+        // Free shipping for orders over 10,000 in Nairobi
+        if (city === 'Nairobi' && subtotal >= 10000) {
+          shippingCost = 0;
+        } else if (city === 'Nairobi') {
+          shippingCost = 300;
+        } else if (city === 'Mombasa' || city === 'Kisumu') {
+          shippingCost = 500;
+        } else {
+          shippingCost = 800;
+        }
+
+        updateTotals(subtotal);
+      }
+
+      function updateTotals(subtotal) {
+        var total = subtotal + shippingCost - discount;
+        document.getElementById('summarySubtotal').textContent = 'KES ' + subtotal.toLocaleString();
+        document.getElementById('summaryShipping').textContent = shippingCost === 0 ? 'FREE' : 'KES ' + shippingCost.toLocaleString();
+        document.getElementById('summaryDiscount').textContent = discount > 0 ? '-KES ' + discount.toLocaleString() : '-KES 0';
+        document.getElementById('summaryTotal').textContent = 'KES ' + total.toLocaleString();
+        document.getElementById('mpesaAmount').textContent = 'KES ' + total.toLocaleString();
+      }
+
+      function setupEventListeners() {
+        // Add new address
+        document.getElementById('addNewAddressBtn').addEventListener('click', function() {
+          document.getElementById('newAddressForm').style.display = 'block';
+          this.style.display = 'none';
+        });
+
+        // City change - recalculate shipping
+        document.getElementById('checkoutCity').addEventListener('change', calculateShipping);
+
+        // Payment option selection
+        document.querySelectorAll('.payment-option').forEach(function(opt) {
+          opt.addEventListener('click', function() {
+            document.querySelectorAll('.payment-option').forEach(function(o) { o.classList.remove('selected'); });
+            opt.classList.add('selected');
+            opt.querySelector('input[type=radio]').checked = true;
+            document.getElementById('mpesaInstructions').style.display = opt.dataset.payment === 'mpesa' ? 'block' : 'none';
+          });
+        });
+
+        // Apply promo code
+        document.getElementById('applyPromoBtn').addEventListener('click', function() {
+          var code = document.getElementById('promoCode').value.trim().toUpperCase();
+          var subtotal = window.FurnostylesCart.getCartSubtotal();
+          
+          if (window.FurnostylesOrderValidator) {
+            var validation = window.FurnostylesOrderValidator.validatePromoCode(code, subtotal);
+            if (validation.valid) {
+              discount = validation.discount;
+              alert('Discount of KES ' + discount.toFixed(2) + ' applied!');
+            } else {
+              alert(validation.error || 'Invalid promo code');
+              discount = 0;
+            }
+          } else {
+            // Fallback to hardcoded validation
+            if (code === 'FURNO10') {
+              discount = subtotal * 0.1;
+              alert('10% discount applied!');
+            } else if (code === 'FURNO20') {
+              discount = subtotal * 0.2;
+              alert('20% discount applied!');
+            } else {
+              alert('Invalid promo code');
+              discount = 0;
+            }
+          }
+          
+          updateTotals(subtotal);
+        });
+
+        // Place order
+        document.getElementById('placeOrderBtn').addEventListener('click', placeOrder);
+      }
+
+      function placeOrder() {
+        var firstName = document.getElementById('checkoutFirstName').value.trim();
+        var lastName = document.getElementById('checkoutLastName').value.trim();
+        var phone = document.getElementById('checkoutPhone').value.trim();
+        var email = document.getElementById('checkoutEmail').value.trim();
+        var address = document.getElementById('checkoutAddress').value.trim();
+        var city = document.getElementById('checkoutCity').value;
+
+        if (!firstName || !lastName || !phone || !email || !address || !city) {
+          alert('Please fill in all required fields');
+          return;
+        }
+
+        // Validate email and phone if validator available
+        if (window.FurnostylesOrderValidator) {
+          if (!window.FurnostylesOrderValidator.validateEmail(email)) {
+            alert('Please enter a valid email address');
+            return;
+          }
+          if (!window.FurnostylesOrderValidator.validatePhone(phone)) {
+            alert('Please enter a valid phone number (e.g., 07XX XXX XXX or +2547XX XXX XXX)');
+            return;
+          }
+        }
+
+        var paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+        var btn = document.getElementById('placeOrderBtn');
+        btn.disabled = true;
+        btn.textContent = 'Processing...';
+
         var order = {
           id: 'ORD-' + Date.now(),
-          customer: { firstName: fn, lastName: ln, phone: ph, address: addr, city: city, email: document.getElementById('coEmail').value.trim(), notes: document.getElementById('coNotes').value.trim() },
-          items: cartGet(),
-          paymentMethod: method,
+          customer: {
+            firstName: window.FurnostylesOrderValidator ? window.FurnostylesOrderValidator.sanitizeInput(firstName) : firstName,
+            lastName: window.FurnostylesOrderValidator ? window.FurnostylesOrderValidator.sanitizeInput(lastName) : lastName,
+            phone: phone,
+            email: email,
+            address: window.FurnostylesOrderValidator ? window.FurnostylesOrderValidator.sanitizeInput(address) : address,
+            city: city,
+            postalCode: document.getElementById('checkoutPostalCode').value,
+            instructions: document.getElementById('checkoutInstructions').value
+          },
+          items: cart,
+          paymentMethod: paymentMethod,
+          subtotal: window.FurnostylesCart.getCartSubtotal(),
+          shipping: shippingCost,
+          discount: discount,
+          total: window.FurnostylesCart.getCartSubtotal() + shippingCost - discount,
+          notes: document.getElementById('orderNotes').value,
           status: 'pending',
           createdAt: new Date().toISOString()
         };
 
-        /* Try Firebase, fall back to localStorage */
-        var bridge = window.FurnostylesFirebase;
-        var saveP = (bridge && bridge.save) ? bridge.save('orders', order) : Promise.resolve(order.id);
-
-        saveP.then(function(orderId) {
-          /* Add success alert */
-          var alerts = [];
-          try { alerts = JSON.parse(localStorage.getItem('furnostyles_alerts') || '[]'); } catch(e) {}
-          alerts.unshift({ id: orderId, text: 'Your order ' + order.id + ' has been placed successfully!', time: 'Just now', read: false });
-          localStorage.setItem('furnostyles_alerts', JSON.stringify(alerts));
-
-          /* Clear cart */
-          localStorage.removeItem('furnostyles_cart');
-          if (window.FurnostylesCart) window.FurnostylesCart.clear();
-
-          /* If WhatsApp method, open WhatsApp with order details */
-          if (method === 'whatsapp') {
-            var msg = 'Hello Furnostyles! I would like to place an order:\n\n';
-            msg += 'Name: ' + fn + ' ' + ln + '\nPhone: ' + ph + '\nAddress: ' + addr + ', ' + city + '\n\nItems:\n';
-            cartGet().forEach(function(i) { msg += '- ' + i.title + ' x' + i.quantity + ' @ KES ' + i.price + '\n'; });
-            window.open('https://wa.me/254713639205?text=' + encodeURIComponent(msg), '_blank');
+        // Validate order if validator available
+        if (window.FurnostylesOrderValidator) {
+          var validation = window.FurnostylesOrderValidator.validateOrder(order);
+          if (!validation.valid) {
+            btn.disabled = false;
+            btn.textContent = 'Place Order';
+            alert('Order validation failed:\n' + validation.errors.join('\n'));
+            return;
           }
+        }
 
-          /* Show success */
-          document.getElementById('coFormSection').style.display = 'none';
-          document.getElementById('coSummary').style.display = 'none';
-          document.getElementById('coSuccess').classList.add('show');
-        }).catch(function(err) {
-          btn.disabled = false; btn.textContent = 'Place Order';
-          alert('Could not place order. Please try again or contact us on WhatsApp.');
+        // Save order
+        var ordersKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ORDERS : 'fns_orders';
+        var orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+        orders.unshift(order);
+        localStorage.setItem(ordersKey, JSON.stringify(orders));
+
+        // Add alert
+        var alertsKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ALERTS : 'furnostyles_alerts';
+        var alerts = JSON.parse(localStorage.getItem(alertsKey) || '[]');
+        alerts.unshift({
+          id: order.id,
+          text: 'Order ' + order.id + ' placed successfully!',
+          time: 'Just now',
+          read: false
         });
-      });
+        localStorage.setItem(alertsKey, JSON.stringify(alerts));
+
+        // Save address if checked
+        if (document.getElementById('saveAddress').checked) {
+          var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
+          var addresses = JSON.parse(localStorage.getItem(addressKey) || '[]');
+          addresses.push({
+            name: firstName + ' ' + lastName,
+            phone: phone,
+            address: address,
+            city: city,
+            country: 'Kenya',
+            default: addresses.length === 0
+          });
+          localStorage.setItem(addressKey, JSON.stringify(addresses));
+        }
+
+        // Clear cart
+        window.FurnostylesCart.clearCart();
+
+        // Show success
+        document.getElementById('checkoutFormSection').style.display = 'none';
+        document.getElementById('checkoutSuccess').style.display = '';
+        document.getElementById('successOrderId').textContent = order.id;
+
+        // WhatsApp for COD orders
+        if (paymentMethod === 'cod') {
+          var msg = 'Hello Furnostyles! I placed order ' + order.id + '\n\n';
+          msg += 'Name: ' + firstName + ' ' + lastName + '\n';
+          msg += 'Phone: ' + phone + '\n';
+          msg += 'Address: ' + address + ', ' + city + '\n\n';
+          msg += 'Items:\n';
+          cart.forEach(function(item) {
+            msg += '- ' + item.title + ' x' + item.quantity + ' @ KES ' + item.price + '\n';
+          });
+          msg += '\nTotal: KES ' + order.total.toLocaleString();
+          window.open('https://wa.me/254713639205?text=' + encodeURIComponent(msg), '_blank');
+        }
+      }
+
+      // Initialize
+      if (window.FurnostylesCart) {
+        init();
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          setTimeout(init, 100);
+        });
+      }
     })();
     </script>
   </main>
+
+  <!-- FOOTER MOUNT: rendered by footer-render.js -->
   <div id="fld-footer-mount"></div>
+
   <script src="shared/firebase/firebase-config.js"></script>
   <script src="shared/firebase/firebase-bridge.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/layout-loader.js" defer></script>
   <script src="assets/js/cart.js" defer></script>
+  <script src="shared/storage/storage-keys.js" defer></script>
+  <script src="shared/validation/order-validator.js" defer></script>
   <script src="shared/layout/header-data.js" defer></script>
   <script src="shared/layout/header-render.js" defer></script>
   <script src="shared/layout/footer-data.js" defer></script>

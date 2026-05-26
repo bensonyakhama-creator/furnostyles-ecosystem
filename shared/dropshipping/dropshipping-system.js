@@ -6,6 +6,29 @@
 (function() {
   'use strict';
 
+  // Sanitize HTML to prevent XSS
+  function escapeHtml(text) {
+    if (typeof text !== 'string') return text;
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
+
+  // Show alert using modal if available, fallback to native alert
+  function showAlert(message, title) {
+    if (window.FurnostylesModal) {
+      window.FurnostylesModal.alert({
+        title: title || 'Notice',
+        message: message
+      });
+    } else {
+      alert(message);
+    }
+  }
+
   window.FurnostylesDropshipping = {
     dropshipProducts: [],
     orders: [],
@@ -20,7 +43,8 @@
     },
 
     loadDropshipProducts: function() {
-      const stored = localStorage.getItem('fns_dropship_products');
+      var productKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_PRODUCTS : 'fns_dropship_products';
+      const stored = localStorage.getItem(productKey);
       if (stored) {
         this.dropshipProducts = JSON.parse(stored);
       } else {
@@ -147,33 +171,39 @@
     },
 
     saveDropshipProducts: function() {
-      localStorage.setItem('fns_dropship_products', JSON.stringify(this.dropshipProducts));
+      var productKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_PRODUCTS : 'fns_dropship_products';
+      localStorage.setItem(productKey, JSON.stringify(this.dropshipProducts));
     },
 
     loadOrders: function() {
-      const stored = localStorage.getItem('fns_dropship_orders');
+      var orderKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_ORDERS : 'fns_dropship_orders';
+      const stored = localStorage.getItem(orderKey);
       if (stored) {
         this.orders = JSON.parse(stored);
       }
     },
 
     saveOrders: function() {
-      localStorage.setItem('fns_dropship_orders', JSON.stringify(this.orders));
+      var orderKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_ORDERS : 'fns_dropship_orders';
+      localStorage.setItem(orderKey, JSON.stringify(this.orders));
     },
 
     loadCommissions: function() {
-      const stored = localStorage.getItem('fns_dropship_commissions');
+      var commissionKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_COMMISSIONS : 'fns_dropship_commissions';
+      const stored = localStorage.getItem(commissionKey);
       if (stored) {
         this.commissions = JSON.parse(stored);
       }
     },
 
     saveCommissions: function() {
-      localStorage.setItem('fns_dropship_commissions', JSON.stringify(this.commissions));
+      var commissionKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_COMMISSIONS : 'fns_dropship_commissions';
+      localStorage.setItem(commissionKey, JSON.stringify(this.commissions));
     },
 
     loadSuppliers: function() {
-      const stored = localStorage.getItem('fns_dropship_suppliers');
+      var supplierKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_SUPPLIERS : 'fns_dropship_suppliers';
+      const stored = localStorage.getItem(supplierKey);
       if (stored) {
         this.suppliers = JSON.parse(stored);
       } else {
@@ -330,7 +360,8 @@
     },
 
     saveSuppliers: function() {
-      localStorage.setItem('fns_dropship_suppliers', JSON.stringify(this.suppliers));
+      var supplierKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.DROPSHIP_SUPPLIERS : 'fns_dropship_suppliers';
+      localStorage.setItem(supplierKey, JSON.stringify(this.suppliers));
     },
 
     addDropshipProduct: function(product) {
@@ -533,51 +564,48 @@
         const platform = supplier ? supplier.platform : 'Unknown';
         const platformColor = platform === 'Alibaba' ? '#ff6a00' : '#ff4747';
         
-        html += `
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; overflow: hidden; transition: all 0.3s;">
-            <div style="position: relative;">
-              <img src="${product.image}" alt="${product.title}" style="width: 100%; height: 200px; object-fit: cover;">
-              <div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 8px;">
-                <span style="background: ${platformColor}; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;">${platform}</span>
-                <span style="background: #c9a227; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;">${product.commissionRate}% Commission</span>
-              </div>
-            </div>
-            <div style="padding: 16px;">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <span style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 11px;">${product.supplierCountry}</span>
-                <span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 11px;">${product.shippingTime}</span>
-                <span style="background: #e3f2fd; color: #1976d2; padding: 4px 8px; border-radius: 4px; font-size: 11px;">MOQ: ${product.moq}</span>
-              </div>
-              <h3 style="font-size: 16px; font-weight: 700; color: #1a2540; margin: 0 0 8px; line-height: 1.4;">${product.title}</h3>
-              <p style="font-size: 13px; color: #8090a0; margin: 0 0 12px; line-height: 1.5;">${product.description}</p>
-              
-              <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
-                <div style="font-size: 12px; color: #8090a0; margin-bottom: 4px;">Supplier: ${product.supplierName}</div>
-                <div style="display: flex; gap: 16px; font-size: 12px;">
-                  <span>⭐ ${product.supplierRating || 'N/A'}</span>
-                  <span>📦 ${product.supplierStock ? product.supplierStock.toLocaleString() + ' in stock' : 'N/A'}</span>
-                  <span>💬 ${product.supplierResponseRate || 'N/A'}% response</span>
-                </div>
-              </div>
-              
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <div>
-                  <div style="font-size: 18px; font-weight: 700; color: #0b3b46;">KES ${product.retailPrice.toLocaleString()}</div>
-                  <div style="font-size: 12px; color: #8090a0;">Supplier: KES ${product.supplierPrice.toLocaleString()}</div>
-                </div>
-                <div style="text-align: right;">
-                  <div style="font-size: 14px; font-weight: 700; color: #2e7d32;">+KES ${profit.toLocaleString()}</div>
-                  <div style="font-size: 11px; color: #8090a0;">${profitMargin}% margin</div>
-                </div>
-              </div>
-              <div style="display: flex; gap: 8px;">
-                <button onclick="window.FurnostylesDropship.editProduct('${product.id}')" style="flex: 1; padding: 10px; background: #0b3b46; color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Edit</button>
-                <button onclick="window.FurnostylesDropship.viewSupplierProduct('${product.id}')" style="padding: 10px 16px; background: ${platformColor}; color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">View Source</button>
-                <button onclick="window.FurnostylesDropship.toggleProduct('${product.id}')" style="padding: 10px 16px; background: #f0f0f0; color: #1a2540; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">${product.isActive ? 'Pause' : 'Activate'}</button>
-              </div>
-            </div>
-          </div>
-        `;
+        html +=
+          '<div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; overflow: hidden; transition: all 0.3s;">' +
+            '<div style="position: relative;">' +
+              '<img src="' + escapeHtml(product.image) + '" alt="' + escapeHtml(product.title) + '" style="width: 100%; height: 200px; object-fit: cover;">' +
+              '<div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 8px;">' +
+                '<span style="background: ' + platformColor + '; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;">' + escapeHtml(platform) + '</span>' +
+                '<span style="background: #c9a227; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;">' + product.commissionRate + '% Commission</span>' +
+              '</div>' +
+            '</div>' +
+            '<div style="padding: 16px;">' +
+              '<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">' +
+                '<span style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 11px;">' + escapeHtml(product.supplierCountry) + '</span>' +
+                '<span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 11px;">' + escapeHtml(product.shippingTime) + '</span>' +
+                '<span style="background: #e3f2fd; color: #1976d2; padding: 4px 8px; border-radius: 4px; font-size: 11px;">MOQ: ' + product.moq + '</span>' +
+              '</div>' +
+              '<h3 style="font-size: 16px; font-weight: 700; color: #1a2540; margin: 0 0 8px; line-height: 1.4;">' + escapeHtml(product.title) + '</h3>' +
+              '<p style="font-size: 13px; color: #8090a0; margin: 0 0 12px; line-height: 1.5;">' + escapeHtml(product.description) + '</p>' +
+              '<div style="background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 12px;">' +
+                '<div style="font-size: 12px; color: #8090a0; margin-bottom: 4px;">Supplier: ' + escapeHtml(product.supplierName) + '</div>' +
+                '<div style="display: flex; gap: 16px; font-size: 12px;">' +
+                  '<span>⭐ ' + (product.supplierRating || 'N/A') + '</span>' +
+                  '<span>📦 ' + (product.supplierStock ? product.supplierStock.toLocaleString() + ' in stock' : 'N/A') + '</span>' +
+                  '<span>💬 ' + (product.supplierResponseRate || 'N/A') + '% response</span>' +
+                '</div>' +
+              '</div>' +
+              '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">' +
+                '<div>' +
+                  '<div style="font-size: 18px; font-weight: 700; color: #0b3b46;">KES ' + product.retailPrice.toLocaleString() + '</div>' +
+                  '<div style="font-size: 12px; color: #8090a0;">Supplier: KES ' + product.supplierPrice.toLocaleString() + '</div>' +
+                '</div>' +
+                '<div style="text-align: right;">' +
+                  '<div style="font-size: 14px; font-weight: 700; color: #2e7d32;">+KES ' + profit.toLocaleString() + '</div>' +
+                  '<div style="font-size: 11px; color: #8090a0;">' + profitMargin + '% margin</div>' +
+                '</div>' +
+              '</div>' +
+              '<div style="display: flex; gap: 8px;">' +
+                '<button onclick="window.FurnostylesDropship.editProduct(\'' + escapeHtml(String(product.id)) + '\')" style="flex: 1; padding: 10px; background: #0b3b46; color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Edit</button>' +
+                '<button onclick="window.FurnostylesDropship.viewSupplierProduct(\'' + escapeHtml(String(product.id)) + '\')" style="padding: 10px 16px; background: ' + platformColor + '; color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">View Source</button>' +
+                '<button onclick="window.FurnostylesDropship.toggleProduct(\'' + escapeHtml(String(product.id)) + '\')" style="padding: 10px 16px; background: #f0f0f0; color: #1a2540; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">' + (product.isActive ? 'Pause' : 'Activate') + '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
       });
       
       html += '</div>';
@@ -589,7 +617,7 @@
       if (!product) return;
       
       // Open edit modal (to be implemented)
-      alert('Edit product: ' + product.title);
+      showAlert('Edit product: ' + product.title, 'Info');
     },
 
     viewSupplierProduct: function(productId) {

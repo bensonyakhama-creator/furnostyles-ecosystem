@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart | Furnostyles</title>
-  <meta name="description" content="Your Furnostyles cart - marketplace products, services, sourcing requests and secondhand items.">
+  <title>Shopping Cart | Furnostyles</title>
+  <meta name="description" content="Your Furnostyles shopping cart - manage items, save for later, and checkout securely.">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -13,12 +13,12 @@
   <link rel="canonical" href="https://furnostyles.com/cart.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Furnostyles">
-  <meta property="og:title" content="Cart | Furnostyles">
-  <meta property="og:description" content="Your Furnostyles cart - marketplace products, services, sourcing requests and secondhand items.">
+  <meta property="og:title" content="Shopping Cart | Furnostyles">
+  <meta property="og:description" content="Your Furnostyles shopping cart - manage items, save for later, and checkout securely.">
   <meta property="og:url" content="https://furnostyles.com/cart.html">
   <meta property="og:image" content="https://furnostyles.com/assets/images/hero.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cart | Furnostyles">
+  <meta name="twitter:title" content="Shopping Cart | Furnostyles">
   <meta name="twitter:image" content="https://furnostyles.com/assets/images/hero.jpg">
   <meta name="robots" content="noindex, nofollow">
 </head>
@@ -29,8 +29,9 @@
 
   <main class="fns-main">
     <style>
-      .cart-wrap{max-width:1100px;margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1fr 320px;gap:32px}
-      .cart-main h1{font-size:1.5rem;color:#0b3b46;margin:0 0 24px}
+      .cart-wrap{max-width:1200px;margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1fr 350px;gap:32px}
+      .cart-main h1{font-size:1.5rem;color:#0b3b46;margin:0 0 24px;display:flex;align-items:center;gap:12px}
+      .cart-main h1 span{font-size:1rem;color:#aaa;font-weight:400}
       .cart-empty{text-align:center;padding:64px 20px;color:#aaa;grid-column:1/-1}
       .cart-empty svg{margin-bottom:16px;opacity:.35}
       .cart-empty h2{color:#0b3b46;margin-bottom:8px}
@@ -39,9 +40,13 @@
       .cart-table thead tr{border-bottom:2px solid #e8eef5}
       .cart-table th{text-align:left;padding:10px 12px;font-size:.82rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}        
       .cart-table td{padding:14px 12px;border-bottom:1px solid #f4f4f4;vertical-align:middle}
+      .cart-item-select{width:18px;height:18px;cursor:pointer}
       .cart-item-name{font-size:.95rem;font-weight:600;color:#222}
       .cart-item-cat{font-size:.78rem;color:#999;margin-top:2px}
       .cart-item-price{font-size:.9rem;color:#0b3b46;font-weight:700}
+      .cart-item-original-price{font-size:.78rem;color:#999;text-decoration:line-through;margin-top:2px}
+      .cart-item-delivery{font-size:.75rem;color:#666;margin-top:4px}
+      .cart-item-notes{font-size:.75rem;color:#666;margin-top:4px;font-style:italic}
       .cart-qty-ctrl{display:flex;align-items:center;gap:8px}
       .cart-qty-ctrl button{width:28px;height:28px;border:1.5px solid #d0e0e8;border-radius:6px;background:#fff;cursor:pointer;font-size:1rem;line-height:1;color:#0b3b46;display:flex;align-items:center;justify-content:center}
       .cart-qty-ctrl button:hover{background:#0b3b46;color:#fff;border-color:#0b3b46}
@@ -52,6 +57,23 @@
       .cart-clear-row{padding:12px 0;text-align:right}
       .cart-clear-btn{background:none;border:none;color:#999;font-size:.85rem;cursor:pointer;text-decoration:underline}
       .cart-clear-btn:hover{color:#c0392b}
+      .cart-bulk-actions{display:flex;gap:8px;margin-bottom:16px}
+      .cart-bulk-btn{padding:8px 16px;background:#f8f9fa;border:1px solid #e0e0e0;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;color:#1a2540}
+      .cart-bulk-btn:hover{background:#0b3b46;color:#fff;border-color:#0b3b46}
+      .cart-item-actions{display:flex;gap:4px}
+      .cart-action-btn{background:none;border:none;cursor:pointer;font-size:1.1rem;padding:4px;border-radius:4px;transition:all .2s}
+      .cart-action-btn:hover{background:#f0f0f0}
+      /* Saved for Later */
+      .saved-later-section{margin-top:32px;padding:20px;background:#f8f9fa;border-radius:12px}
+      .saved-later-section h3{font-size:1.1rem;color:#0b3b46;margin:0 0 16px}
+      .saved-item{display:flex;gap:12px;padding:12px;background:#fff;border-radius:8px;margin-bottom:8px;align-items:center}
+      .saved-item-image{width:60px;height:60px;object-fit:cover;border-radius:6px}
+      .saved-item-details{flex:1}
+      .saved-item-title{font-size:.9rem;font-weight:600;color:#1a2540;margin-bottom:4px}
+      .saved-item-price{font-size:.85rem;color:#0b3b46;font-weight:700}
+      .saved-item-actions{display:flex;gap:8px}
+      .saved-action-btn{padding:6px 12px;background:#0b3b46;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600}
+      .saved-action-btn:hover{background:#0a2e35}
       /* Summary */
       .cart-summary{background:#f7fbfc;border-radius:14px;padding:24px;height:fit-content;position:sticky;top:90px}
       .cart-summary h2{font-size:1.05rem;color:#0b3b46;margin:0 0 20px;font-weight:700}
@@ -67,33 +89,57 @@
       .cart-promo-row input{flex:1;padding:9px 12px;border:1.5px solid #d0e0e8;border-radius:8px;font-size:.88rem;outline:none}
       .cart-promo-row button{padding:9px 14px;background:#e8a020;color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer}
       .cart-secure{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:.78rem;color:#aaa}
+      /* Notifications */
+      .cart-notification{position:fixed;top:20px;right:20px;background:#fff;border-left:4px solid #2e7d32;padding:16px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:10000;animation:slideIn .3s ease}
+      .cart-notification.price-drop{border-left-color:#e65100}
+      .cart-notification-content{display:flex;align-items:center;gap:12px}
+      .cart-notification-icon{font-size:1.2rem}
+      .cart-notification-text{font-size:.9rem;color:#1a2540}
+      .cart-notification-close{background:none;border:none;cursor:pointer;font-size:1.2rem;color:#999;padding:0 4px}
+      .cart-notification-close:hover{color:#333}
+      @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
       @media(max-width:760px){.cart-wrap{grid-template-columns:1fr}.cart-summary{position:static}.cart-table th:nth-child(3){display:none}.cart-table td:nth-child(3){display:none}}
     </style>
 
     <div class="cart-wrap" id="cartPageWrap">
-      <!-- Populated by JS -->
+      <!-- Empty State -->
       <div class="cart-empty" id="cartEmptyState" style="display:none">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="72" height="72"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <h2>Your cart is empty</h2>
-        <p>Looks like you haven't added anything yet. Start exploring!</p>
+        <p>Looks like you haven't added anything yet. Start exploring our marketplace!</p>
         <a href="furniture-marketplace.html" style="display:inline-block;background:#0b3b46;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">Browse Marketplace</a>
       </div>
 
+      <!-- Cart Content -->
       <div id="cartContent" style="display:none">
         <div class="cart-main">
-          <h1>My Cart <span id="cartItemCountLabel" style="font-size:1rem;color:#aaa;font-weight:400"></span></h1>
+          <h1>My Cart <span id="cartItemCountLabel"></span></h1>
+          
+          <!-- Bulk Actions -->
+          <div class="cart-bulk-actions">
+            <button class="cart-bulk-btn" onclick="selectAllItems()">Select All</button>
+            <button class="cart-bulk-btn" onclick="deselectAllItems()">Deselect All</button>
+            <button class="cart-bulk-btn" onclick="bulkRemoveSelected()">Remove Selected</button>
+            <button class="cart-bulk-btn" onclick="bulkSaveForLater()">Save Selected for Later</button>
+          </div>
+
           <table class="cart-table">
-            <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th></th></tr></thead>
+            <thead><tr><th></th><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th>Actions</th></tr></thead>
             <tbody id="cartTableBody"></tbody>
           </table>
+          
           <div class="cart-clear-row"><button class="cart-clear-btn" id="cartClearBtn">Clear cart</button></div>
         </div>
+
+        <!-- Saved for Later -->
+        <div class="saved-later-section" id="saved-later-container" style="display:none"></div>
       </div>
 
+      <!-- Order Summary -->
       <div class="cart-summary" id="cartSummaryPanel" style="display:none">
         <h2>Order Summary</h2>
         <div class="cart-sum-row"><span>Subtotal</span><span id="cartSumSubtotal">KES 0</span></div>
-        <div class="cart-sum-row"><span>Delivery</span><span id="cartSumDelivery">Calculated at checkout</span></div>
+        <div class="cart-sum-row"><span>Shipping</span><span id="cartSumShipping">KES 0</span></div>
         <div class="cart-sum-row total"><span>Estimated Total</span><span id="cartSumTotal">KES 0</span></div>
         <p class="cart-sum-note">Delivery fees depend on your location. Free delivery on orders over KES 10,000 within Nairobi.</p>
         <a href="checkout.html" class="cart-checkout-btn" id="cartCheckoutBtn">Proceed to Checkout</a>
@@ -112,9 +158,49 @@
       </div>
     </div>
 
+    <script src="shared/storage/storage-keys.js"></script>
+    <script src="shared/validation/order-validator.js"></script>
+    <script src="shared/dashboard/modal-helper.js"></script>
     <script>
     (function () {
       'use strict';
+
+      // Sanitize HTML to prevent XSS
+      function escapeHtml(text) {
+        if (typeof text !== 'string') return text;
+        return text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#x27;');
+      }
+
+      // Show alert using modal if available, fallback to native alert
+      function showAlert(message, title) {
+        if (window.FurnostylesModal) {
+          window.FurnostylesModal.alert({
+            title: title || 'Notice',
+            message: message
+          });
+        } else {
+          alert(message);
+        }
+      }
+
+      // Show confirm using modal if available, fallback to native confirm
+      function showConfirm(message, title) {
+        if (window.FurnostylesModal) {
+          return window.FurnostylesModal.confirm({
+            title: title || 'Confirm',
+            message: message,
+            confirmText: 'Yes',
+            cancelText: 'Cancel'
+          });
+        } else {
+          return Promise.resolve(confirm(message));
+        }
+      }
 
       function render() {
         if (!window.FurnostylesCart) {
@@ -128,6 +214,7 @@
         var summary = document.getElementById('cartSummaryPanel');
         var tbody = document.getElementById('cartTableBody');
         var label = document.getElementById('cartItemCountLabel');
+        var savedLaterContainer = document.getElementById('saved-later-container');
 
         if (!cart.length) {
           empty.style.display = '';
@@ -141,24 +228,57 @@
         if (label) label.textContent = '(' + cart.length + ' item' + (cart.length > 1 ? 's' : '') + ')';
 
         var subtotal = 0;
+        var shipping = 0;
         tbody.innerHTML = cart.map(function(item) {
           var line = Number(item.price || 0) * Number(item.quantity || 1);
           subtotal += line;
-          return '<tr data-row-id="' + item.id + '">' +
-            '<td><div class="cart-item-name">' + (item.title || 'Item') + '</div><div class="cart-item-cat">' + (item.category || '') + '</div></td>' +  
+          shipping += Number(item.shipping || 0);
+          return '<tr data-row-id="' + escapeHtml(String(item.id)) + '">' +
+            '<td><input type="checkbox" class="cart-item-select" data-id="' + escapeHtml(String(item.id)) + '" checked></td>' +
+            '<td><div class="cart-item-name">' + escapeHtml(item.title || 'Item') + '</div><div class="cart-item-cat">' + escapeHtml(item.category || '') + ' • ' + escapeHtml(item.marketplace || '') + ' • ' + escapeHtml(item.seller || '') + '</div>' +
+            (item.originalPrice > item.price ? '<div class="cart-item-original-price">Was: KES ' + Number(item.originalPrice).toLocaleString() + '</div>' : '') +
+            (item.estimatedDelivery ? '<div class="cart-item-delivery">📦 ' + escapeHtml(item.estimatedDelivery) + '</div>' : '') +
+            (item.notes ? '<div class="cart-item-notes">📝 ' + escapeHtml(item.notes) + '</div>' : '') + '</td>' +  
             '<td class="cart-item-price">KES ' + Number(item.price).toLocaleString() + '</td>' +
             '<td><div class="cart-qty-ctrl">' +
-              '<button class="qty-minus" data-id="' + item.id + '" data-action="minus">&#8722;</button>' +
+              '<button class="qty-minus" data-id="' + escapeHtml(String(item.id)) + '" data-action="minus">&#8722;</button>' +
               '<span class="cart-qty-val">' + (item.quantity || 1) + '</span>' +
-              '<button class="qty-plus" data-id="' + item.id + '" data-action="plus">&#43;</button>' +
+              '<button class="qty-plus" data-id="' + escapeHtml(String(item.id)) + '" data-action="plus">&#43;</button>' +
             '</div></td>' +
             '<td class="cart-item-total">KES ' + line.toLocaleString() + '</td>' +
-            '<td><button class="cart-item-rmv" data-id="' + item.id + '" title="Remove">&#215;</button></td>' +
+            '<td><div class="cart-item-actions">' +
+              '<button class="cart-action-btn" onclick="window.FurnostylesCart.saveForLater(\'' + escapeHtml(String(item.id)) + '\')" title="Save for Later">🔖</button>' +
+              '<button class="cart-action-btn" onclick="window.FurnostylesCart.moveToWishlist(\'' + escapeHtml(String(item.id)) + '\')" title="Move to Wishlist">❤️</button>' +
+              '<button class="cart-item-rmv" data-id="' + escapeHtml(String(item.id)) + '" title="Remove">&#215;</button>' +
+            '</div></td>' +
           '</tr>';
         }).join('');
 
         document.getElementById('cartSumSubtotal').textContent = 'KES ' + subtotal.toLocaleString();
-        document.getElementById('cartSumTotal').textContent = 'KES ' + subtotal.toLocaleString();
+        document.getElementById('cartSumShipping').textContent = 'KES ' + shipping.toLocaleString();
+        document.getElementById('cartSumTotal').textContent = 'KES ' + (subtotal + shipping).toLocaleString();
+
+        // Render saved for later
+        var savedLater = window.FurnostylesCart.getSavedForLater();
+        if (savedLater.length > 0) {
+          savedLaterContainer.style.display = 'block';
+          savedLaterContainer.innerHTML = '<h3>Saved for Later (' + savedLater.length + ')</h3>' +
+            savedLater.map(function(item) {
+              return '<div class="saved-item" data-id="' + escapeHtml(String(item.id)) + '">' +
+                '<img src="' + escapeHtml(item.image || 'assets/images/default-product.jpg') + '" alt="' + escapeHtml(item.title) + '" class="saved-item-image">' +
+                '<div class="saved-item-details">' +
+                  '<div class="saved-item-title">' + escapeHtml(item.title) + '</div>' +
+                  '<div class="saved-item-price">KES ' + Number(item.price).toLocaleString() + '</div>' +
+                '</div>' +
+                '<div class="saved-item-actions">' +
+                  '<button class="saved-action-btn" onclick="window.FurnostylesCart.moveToCart(\'' + escapeHtml(String(item.id)) + '\')">Move to Cart</button>' +
+                  '<button class="saved-action-btn" onclick="window.FurnostylesCart.removeFromSavedLater(\'' + escapeHtml(String(item.id)) + '\')">Remove</button>' +
+                '</div>' +
+              '</div>';
+            }).join('');
+        } else {
+          savedLaterContainer.style.display = 'none';
+        }
 
         /* Wire qty buttons */
         tbody.querySelectorAll('[data-action]').forEach(function(btn) {
@@ -186,17 +306,59 @@
         });
       }
 
+      // Bulk actions
+      function selectAllItems() {
+        document.querySelectorAll('.cart-item-select').forEach(function(cb) { cb.checked = true; });
+      }
+
+      function deselectAllItems() {
+        document.querySelectorAll('.cart-item-select').forEach(function(cb) { cb.checked = false; });
+      }
+
+      function bulkRemoveSelected() {
+        var selected = Array.from(document.querySelectorAll('.cart-item-select:checked')).map(function(cb) { return cb.getAttribute('data-id'); });
+        if (selected.length === 0) return showAlert('Please select items to remove');
+        showConfirm('Remove ' + selected.length + ' selected items?').then(function(confirmed) {
+          if (confirmed) {
+            window.FurnostylesCart.bulkRemoveItems(selected);
+            render();
+          }
+        });
+      }
+
+      function bulkSaveForLater() {
+        var selected = Array.from(document.querySelectorAll('.cart-item-select:checked')).map(function(cb) { return cb.getAttribute('data-id'); });
+        if (selected.length === 0) return showAlert('Please select items to save');
+        selected.forEach(function(id) { window.FurnostylesCart.saveForLater(id); });
+        render();
+      }
+
       document.getElementById('cartClearBtn').addEventListener('click', function() {
-        if (confirm('Clear all items from your cart?')) { 
-          window.FurnostylesCart.clearCart();
-          render();
-        }
+        showConfirm('Clear all items from your cart?').then(function(confirmed) {
+          if (confirmed) {
+            window.FurnostylesCart.clearCart();
+            render();
+          }
+        });
       });
 
       document.getElementById('promoApplyBtn').addEventListener('click', function() {
         var code = document.getElementById('promoInput').value.trim().toUpperCase();
-        if (code === 'FURNO10') { alert('Promo code FURNO10 applied! 10% discount will be applied at checkout.'); }
-        else { alert('Invalid or expired promo code.'); }
+        var subtotal = window.FurnostylesCart.getCartTotal();
+        
+        // Use order validator if available
+        if (window.FurnostylesOrderValidator) {
+          var validation = window.FurnostylesOrderValidator.validatePromoCode(code, subtotal);
+          if (validation.valid) {
+            showAlert('Promo code applied! Discount: KES ' + validation.discount.toLocaleString(), 'Success');
+          } else {
+            showAlert(validation.error || 'Invalid or expired promo code.', 'Error');
+          }
+        } else {
+          // Fallback to hardcoded validation
+          if (code === 'FURNO10') { showAlert('Promo code FURNO10 applied! 10% discount will be applied at checkout.', 'Success'); }
+          else { showAlert('Invalid or expired promo code.', 'Error'); }
+        }
       });
 
       // Wait for FurnostylesCart to load

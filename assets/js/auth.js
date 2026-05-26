@@ -47,6 +47,60 @@
   };
 
   /* ============================================================
+     PASSWORD VALIDATION
+     ============================================================ */
+
+  /**
+   * Validate password strength
+   * Requirements:
+   * - Minimum 8 characters
+   * - At least one uppercase letter
+   * - At least one lowercase letter
+   * - At least one number
+   * - At least one special character
+   * @param {string} password - Password to validate
+   * @returns {object} - { valid: boolean, error: string }
+   */
+  function validatePassword(password) {
+    if (!password || typeof password !== 'string') {
+      return { valid: false, error: 'Password is required' };
+    }
+
+    if (password.length < 8) {
+      return { valid: false, error: 'Password must be at least 8 characters long' };
+    }
+
+    if (password.length > 128) {
+      return { valid: false, error: 'Password must not exceed 128 characters' };
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      return { valid: false, error: 'Password must contain at least one uppercase letter' };
+    }
+
+    if (!/[a-z]/.test(password)) {
+      return { valid: false, error: 'Password must contain at least one lowercase letter' };
+    }
+
+    if (!/[0-9]/.test(password)) {
+      return { valid: false, error: 'Password must contain at least one number' };
+    }
+
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+      return { valid: false, error: 'Password must contain at least one special character (!@#$%^&* etc.)' };
+    }
+
+    // Check for common weak passwords
+    var commonPasswords = ['password', '12345678', 'qwerty', 'abc123', 'letmein', 'welcome', 'admin123'];
+    var lowerPassword = password.toLowerCase();
+    if (commonPasswords.some(function(common) { return lowerPassword.includes(common); })) {
+      return { valid: false, error: 'Password is too common. Please choose a stronger password.' };
+    }
+
+    return { valid: true };
+  }
+
+  /* ============================================================
      GET FIREBASE INSTANCES
      ============================================================ */
 
@@ -144,9 +198,10 @@
     var auth = getAuth();
     if (!auth) return Promise.reject(new Error('Auth not available'));
 
-    // Validate password
-    if (!password || password.length < 6) {
-      return Promise.reject(new Error('Password must be at least 6 characters'));
+    // Validate password with strengthened requirements
+    var passwordValidation = validatePassword(password);
+    if (!passwordValidation.valid) {
+      return Promise.reject(new Error(passwordValidation.error));
     }
 
     // Set default role if not provided

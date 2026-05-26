@@ -7,6 +7,74 @@
 (function() {
   'use strict';
 
+  // Sanitize HTML to prevent XSS
+  function escapeHtml(text) {
+    if (typeof text !== 'string') return text;
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
+
+  // Show alert using modal if available, fallback to native alert
+  function showAlert(message, title) {
+    if (window.FurnostylesModal) {
+      window.FurnostylesModal.alert({
+        title: title || 'Notice',
+        message: message
+      });
+    } else {
+      alert(message);
+    }
+  }
+
+  // File validation helpers
+  function validateFile(file) {
+    if (!file || typeof file !== 'object') {
+      return { valid: false, error: 'Invalid file' };
+    }
+
+    // Check file type
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+      return { valid: false, error: 'Only JPEG, PNG, GIF, and WebP images are allowed' };
+    }
+
+    // Check file size (max 10MB)
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    if (file.size > maxSize) {
+      return { valid: false, error: 'File size must be less than 10MB' };
+    }
+
+    // Check file size (min 1KB)
+    if (file.size < 1024) {
+      return { valid: false, error: 'File is too small' };
+    }
+
+    return { valid: true };
+  }
+
+  function validateFileName(fileName) {
+    if (!fileName || typeof fileName !== 'string') {
+      return { valid: false, error: 'Invalid file name' };
+    }
+
+    // Check for dangerous characters
+    const dangerousChars = /[<>:"|?*]/;
+    if (dangerousChars.test(fileName)) {
+      return { valid: false, error: 'File name contains invalid characters' };
+    }
+
+    // Check length
+    if (fileName.length > 255) {
+      return { valid: false, error: 'File name is too long' };
+    }
+
+    return { valid: true };
+  }
+
   window.FurnostylesSimpleUpload = {
     uploads: [],
 
@@ -15,7 +83,8 @@
     },
 
     loadUploads: function() {
-      const stored = localStorage.getItem('fns_uploads');
+      var uploadKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.UPLOADS : 'fns_uploads';
+      const stored = localStorage.getItem(uploadKey);
       if (stored) {
         this.uploads = JSON.parse(stored);
       }
@@ -23,10 +92,11 @@
 
     saveUploads: function() {
       try {
-        localStorage.setItem('fns_uploads', JSON.stringify(this.uploads));
+        var uploadKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.UPLOADS : 'fns_uploads';
+        localStorage.setItem(uploadKey, JSON.stringify(this.uploads));
       } catch (e) {
         console.error('localStorage quota exceeded:', e);
-        alert('Storage full. Please clear some uploads or use a different browser.');
+        showAlert('Storage full. Please clear some uploads or use a different browser.', 'Error');
       }
     },
 
@@ -38,9 +108,17 @@
           return;
         }
 
-        // Check if it's an image
-        if (!file.type.startsWith('image/')) {
-          reject(new Error('Please upload an image file'));
+        // Validate file
+        const fileValidation = validateFile(file);
+        if (!fileValidation.valid) {
+          reject(new Error(fileValidation.error));
+          return;
+        }
+
+        // Validate file name
+        const nameValidation = validateFileName(file.name);
+        if (!nameValidation.valid) {
+          reject(new Error(nameValidation.error));
           return;
         }
 
@@ -270,22 +348,32 @@
       const preview = document.getElementById('image-preview');
       const maxImages = 5;
 
-      for (let i = 0; i < Math.min(files.length, maxImages - this.uploadedImages.length); i++) {
+      // Validate files array
+      if (!files || !Array.from) {
+        console.error('Invalid files object');
+        return;
+      }
+
+      const fileArray = Array.from(files);
+      if (fileArray.length === 0) {
+        return;
+      }
+
+      for (let i = 0; i < Math.min(fileArray.length, maxImages - this.uploadedImages.length); i++) {
         try {
-          const dataUrl = await this.uploadImage(files[i]);
+          const dataUrl = await this.uploadImage(fileArray[i]);
           this.uploadedImages.push(dataUrl);
 
           // Add preview
           const img = document.createElement('div');
           img.style.cssText = 'position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden;';
-          img.innerHTML = `
-            <img src="${dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
-            <button type="button" onclick="window.FurnostylesSimpleUpload.removeImage(${this.uploadedImages.length - 1})" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>
-          `;
+          img.innerHTML =
+            '<img src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 100%; object-fit: cover;">' +
+            '<button type="button" onclick="window.FurnostylesSimpleUpload.removeImage(' + (this.uploadedImages.length - 1) + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';
           preview.appendChild(img);
         } catch (error) {
           console.error('Upload error:', error);
-          alert(error.message);
+          showAlert(error.message, 'Error');
         }
       }
     },
@@ -297,10 +385,9 @@
       this.uploadedImages.forEach((dataUrl, i) => {
         const img = document.createElement('div');
         img.style.cssText = 'position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden;';
-        img.innerHTML = `
-          <img src="${dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
-          <button type="button" onclick="window.FurnostylesSimpleUpload.removeImage(${i})" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>
-        `;
+        img.innerHTML =
+          '<img src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 100%; object-fit: cover;">' +
+          '<button type="button" onclick="window.FurnostylesSimpleUpload.removeImage(' + i + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';
         preview.appendChild(img);
       });
     },
@@ -369,13 +456,12 @@
       const uploads = this.getAllUploads();
 
       if (uploads.length === 0) {
-        container.innerHTML = `
-          <div style="text-align: center; padding: 48px 24px; color: #8090a0;">
-            <div style="font-size: 48px; margin-bottom: 16px;">📦</div>
-            <p style="font-size: 16px; font-weight: 600; color: #1a2540; margin: 0 0 8px;">No listings yet</p>
-            <p style="font-size: 14px; margin: 0;">Upload your first item to get started.</p>
-          </div>
-        `;
+        container.innerHTML =
+          '<div style="text-align: center; padding: 48px 24px; color: #8090a0;">' +
+            '<div style="font-size: 48px; margin-bottom: 16px;">📦</div>' +
+            '<p style="font-size: 16px; font-weight: 600; color: #1a2540; margin: 0 0 8px;">No listings yet</p>' +
+            '<p style="font-size: 14px; margin: 0;">Upload your first item to get started.</p>' +
+          '</div>';
         return;
       }
 
@@ -383,22 +469,21 @@
       
       uploads.forEach(upload => {
         const image = upload.images[0] || 'assets/images/default-product.jpg';
-        html += `
-          <div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; overflow: hidden;">
-            <img src="${image}" alt="${upload.title}" style="width: 100%; height: 200px; object-fit: cover;">
-            <div style="padding: 16px;">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <span style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 11px;">${upload.type}</span>
-                <span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 11px;">${upload.status}</span>
-              </div>
-              <h3 style="font-size: 16px; font-weight: 700; color: #1a2540; margin: 0 0 8px;">${upload.title}</h3>
-              <p style="font-size: 14px; font-weight: 700; color: #0b3b46; margin: 0 0 12px;">KES ${upload.price.toLocaleString()}</p>
-              <div style="display: flex; gap: 8px;">
-                <button onclick="window.FurnostylesSimpleUpload.deleteUpload('${upload.id}'); window.location.reload()" style="flex: 1; padding: 8px; background: #f0f0f0; color: #1a2540; border: none; border-radius: 6px; font-size: 12px; cursor: pointer;">Delete</button>
-              </div>
-            </div>
-          </div>
-        `;
+        html +=
+          '<div style="background: #fff; border: 1.5px solid #dce4f0; border-radius: 12px; overflow: hidden;">' +
+            '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(upload.title) + '" style="width: 100%; height: 200px; object-fit: cover;">' +
+            '<div style="padding: 16px;">' +
+              '<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">' +
+                '<span style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 11px;">' + escapeHtml(upload.type) + '</span>' +
+                '<span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 11px;">' + escapeHtml(upload.status) + '</span>' +
+              '</div>' +
+              '<h3 style="font-size: 16px; font-weight: 700; color: #1a2540; margin: 0 0 8px;">' + escapeHtml(upload.title) + '</h3>' +
+              '<p style="font-size: 14px; font-weight: 700; color: #0b3b46; margin: 0 0 12px;">KES ' + upload.price.toLocaleString() + '</p>' +
+              '<div style="display: flex; gap: 8px;">' +
+                '<button onclick="window.FurnostylesSimpleUpload.deleteUpload(\'' + escapeHtml(String(upload.id)) + '\'); window.location.reload()" style="flex: 1; padding: 8px; background: #f0f0f0; color: #1a2540; border: none; border-radius: 6px; font-size: 12px; cursor: pointer;">Delete</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
       });
       
       html += '</div>';

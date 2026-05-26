@@ -26,9 +26,14 @@
      STORAGE KEYS
      ============================================================ */
 
-  var SESSION_KEY = 'furnostyles_session';
-  var USER_KEY = 'furnostyles_user';
-  var ROLE_KEY = 'furnostyles_role';
+  function getStorageKeys() {
+    return window.FurnostylesStorageKeys || {
+      SESSION: 'furnostyles_session',
+      USER: 'furnostyles_user',
+      ROLE: 'furnostyles_role',
+      LOCAL_USER: 'fns_local_user'
+    };
+  }
 
   /* ============================================================
      SESSION STATE
@@ -56,9 +61,10 @@
     sessionState.role = role || 'client';
 
     try {
+      var keys = getStorageKeys();
       // Save to localStorage
       if (user) {
-        localStorage.setItem(USER_KEY, JSON.stringify({
+        localStorage.setItem(keys.USER, JSON.stringify({
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
@@ -68,11 +74,11 @@
       }
 
       if (userData) {
-        localStorage.setItem(SESSION_KEY, JSON.stringify(userData));
+        localStorage.setItem(keys.SESSION, JSON.stringify(userData));
       }
 
       if (role) {
-        localStorage.setItem(ROLE_KEY, role);
+        localStorage.setItem(keys.ROLE, role);
       }
 
       console.log('[Session] Session saved');
@@ -91,12 +97,13 @@
    */
   function get() {
     try {
-      var userDataStr = localStorage.getItem(SESSION_KEY);
-      var userStr = localStorage.getItem(USER_KEY);
-      var roleStr = localStorage.getItem(ROLE_KEY);
+      var keys = getStorageKeys();
+      var userDataStr = localStorage.getItem(keys.SESSION);
+      var userStr = localStorage.getItem(keys.USER);
+      var roleStr = localStorage.getItem(keys.ROLE);
 
-      // Also check for fns_local_user for compatibility with login.html
-      var fnsLocalUser = localStorage.getItem('fns_local_user');
+      // Also check for LOCAL_USER for compatibility with login.html
+      var fnsLocalUser = localStorage.getItem(keys.LOCAL_USER);
 
       if (userDataStr) {
         sessionState.userData = JSON.parse(userDataStr);
@@ -105,10 +112,10 @@
       if (userStr) {
         sessionState.user = JSON.parse(userStr);
       } else if (fnsLocalUser) {
-        // Migrate from fns_local_user to standard keys
+        // Migrate from LOCAL_USER to standard keys
         var localUser = JSON.parse(fnsLocalUser);
         sessionState.user = localUser;
-        localStorage.setItem(USER_KEY, JSON.stringify(localUser));
+        localStorage.setItem(keys.USER, JSON.stringify(localUser));
       }
 
       if (roleStr) {
@@ -117,7 +124,7 @@
         // Set default role if migrating
         var localUser = JSON.parse(fnsLocalUser);
         sessionState.role = localUser.activeRole || localUser.roles?.[0] || 'customer';
-        localStorage.setItem(ROLE_KEY, sessionState.role);
+        localStorage.setItem(keys.ROLE, sessionState.role);
       }
 
       return {
@@ -148,9 +155,10 @@
     sessionState.role = null;
 
     try {
-      localStorage.removeItem(SESSION_KEY);
-      localStorage.removeItem(USER_KEY);
-      localStorage.removeItem(ROLE_KEY);
+      var keys = getStorageKeys();
+      localStorage.removeItem(keys.SESSION);
+      localStorage.removeItem(keys.USER);
+      localStorage.removeItem(keys.ROLE);
       console.log('[Session] Session cleared');
     } catch (error) {
       console.error('[Session] Failed to clear session:', error);
@@ -258,7 +266,8 @@
     sessionState.userData = Object.assign({}, sessionState.userData, userData);
 
     try {
-      localStorage.setItem(SESSION_KEY, JSON.stringify(sessionState.userData));
+      var keys = getStorageKeys();
+      localStorage.setItem(keys.SESSION, JSON.stringify(sessionState.userData));
       console.log('[Session] User data updated');
     } catch (error) {
       console.error('[Session] Failed to update user data:', error);

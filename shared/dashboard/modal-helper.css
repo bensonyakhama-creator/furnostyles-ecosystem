@@ -1,0 +1,182 @@
+/**
+ * FURNOSTYLES — MODAL HELPER STYLES
+ * =================================
+ * File: shared/dashboard/modal-helper.css
+ * Purpose: Styles for modal dialog system
+ */
+
+.fns-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fns-modal {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fns-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e8eef5;
+}
+
+.fns-modal-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #0b3b46;
+  font-weight: 600;
+}
+
+.fns-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.fns-modal-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.fns-modal-body {
+  padding: 24px;
+}
+
+.fns-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fns-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fns-form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a2540;
+}
+
+.fns-form-group .required {
+  color: #dc3545;
+}
+
+.fns-form-group input,
+.fns-form-group select {
+  padding: 10px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.fns-form-group input:focus,
+.fns-form-group select:focus {
+  outline: none;
+  border-color: #0b3b46;
+}
+
+.fns-modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  border-top: 1px solid #e8eef5;
+}
+
+.fns-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.fns-btn-primary {
+  background: #0b3b46;
+  color: #fff;
+}
+
+.fns-btn-primary:hover {
+  background: #1a5c6e;
+}
+
+.fns-btn-secondary {
+  background: #f8f9fa;
+  color: #1a2540;
+  border: 1.5px solid #e0e0e0;
+}
+
+.fns-btn-secondary:hover {
+  background: #e0e0e0;
+}
+
+@media (max-width: 600px) {
+  .fns-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .fns-modal-header,
+  .fns-modal-body,
+  .fns-modal-footer {
+    padding: 16px;
+  }
+
+  .fns-modal-footer {
+    flex-direction: column;
+  }
+
+  .fns-btn {
+    width: 100%;
+  }
+}
