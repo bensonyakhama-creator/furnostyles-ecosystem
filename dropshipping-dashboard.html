@@ -98,8 +98,14 @@
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
           <div>
-            <label style="display: block; font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 8px;">Supplier Name</label>
-            <input type="text" name="supplierName" required style="width: 100%; padding: 10px; border: 1.5px solid #dce4f0; border-radius: 6px; font-size: 14px;">
+            <label style="display: block; font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 8px;">Platform</label>
+            <select name="platform" required style="width: 100%; padding: 10px; border: 1.5px solid #dce4f0; border-radius: 6px; font-size: 14px;">
+              <option value="Alibaba">Alibaba</option>
+              <option value="AliExpress">AliExpress</option>
+              <option value="DHgate">DHgate</option>
+              <option value="Made-in-China">Made-in-China</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
           <div>
             <label style="display: block; font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 8px;">Supplier Country</label>
@@ -107,8 +113,12 @@
           </div>
         </div>
         <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 8px;">Supplier Name</label>
+          <input type="text" name="supplierName" required style="width: 100%; padding: 10px; border: 1.5px solid #dce4f0; border-radius: 6px; font-size: 14px;">
+        </div>
+        <div style="margin-bottom: 16px;">
           <label style="display: block; font-size: 14px; font-weight: 600; color: #1a2540; margin-bottom: 8px;">Supplier Product URL</label>
-          <input type="url" name="supplierUrl" required style="width: 100%; padding: 10px; border: 1.5px solid #dce4f0; border-radius: 6px; font-size: 14px;">
+          <input type="url" name="supplierUrl" required placeholder="https://alibaba.com/product/..." style="width: 100%; padding: 10px; border: 1.5px solid #dce4f0; border-radius: 6px; font-size: 14px;">
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
           <div>
@@ -202,6 +212,7 @@
       const product = {
         title: formData.get('title'),
         description: formData.get('description'),
+        platform: formData.get('platform'),
         supplierName: formData.get('supplierName'),
         supplierCountry: formData.get('supplierCountry'),
         supplierUrl: formData.get('supplierUrl'),
