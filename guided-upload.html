@@ -116,17 +116,6 @@
             </div>
 
             <div class="form-grid">
-              <div class="form-group full-width">
-                <label for="listingDescription" class="form-label">
-                  Describe your item in detail
-                  <span class="form-hint">Include: Condition, age, dimensions, features, any flaws, reason for selling</span>
-                </label>
-                <textarea id="listingDescription" name="listingDescription" class="form-textarea" 
-                  rows="6" placeholder="Example: This modern leather sofa is 2 years old, in excellent condition. Dimensions: 220cm x 90cm x 85cm. Features: 3-seater, removable cushions, solid wood frame. No scratches or tears. Selling because moving to a smaller apartment." 
-                  required minlength="50" maxlength="2000"></textarea>
-                <div class="char-count"><span id="descCount">0</span>/2000</div>
-              </div>
-
               <div class="form-group">
                 <label for="itemCondition" class="form-label">
                   What's the condition of your item?
@@ -143,12 +132,38 @@
               </div>
 
               <div class="form-group">
+                <label for="itemAge" class="form-label">
+                  How old is the item?
+                  <span class="form-hint">Approximate age helps buyers assess value</span>
+                </label>
+                <select id="itemAge" name="itemAge" class="form-select">
+                  <option value="">Select age...</option>
+                  <option value="new">Brand New</option>
+                  <option value="less-1">Less than 1 year</option>
+                  <option value="1-2">1-2 years</option>
+                  <option value="3-5">3-5 years</option>
+                  <option value="5-10">5-10 years</option>
+                  <option value="10-plus">More than 10 years</option>
+                  <option value="unknown">Not sure</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label for="itemBrand" class="form-label">
                   What's the brand or manufacturer?
                   <span class="form-hint">Leave blank if unknown or unbranded</span>
                 </label>
                 <input type="text" id="itemBrand" name="itemBrand" class="form-input" 
                   placeholder="e.g., Ashley Furniture, Samsung, Custom">
+              </div>
+
+              <div class="form-group">
+                <label for="itemModel" class="form-label">
+                  Model number or series (if known)
+                  <span class="form-hint">Helps buyers find exact specifications</span>
+                </label>
+                <input type="text" id="itemModel" name="itemModel" class="form-input" 
+                  placeholder="e.g., Model XYZ-123">
               </div>
 
               <div class="form-group">
@@ -161,12 +176,164 @@
               </div>
 
               <div class="form-group">
+                <label for="itemMaterial" class="form-label">
+                  What material is it made of?
+                  <span class="form-hint">e.g., Solid wood, MDF, Leather, Fabric, Metal</span>
+                </label>
+                <input type="text" id="itemMaterial" name="itemMaterial" class="form-input" 
+                  placeholder="e.g., Solid oak, Genuine leather, Steel">
+              </div>
+
+              <!-- Dimensions Section -->
+              <div class="form-group full-width">
+                <label class="form-label">Dimensions (if applicable)</label>
+                <div class="dimensions-grid">
+                  <div class="dimension-input">
+                    <label for="dimLength">Length (cm)</label>
+                    <input type="number" id="dimLength" name="dimLength" class="form-input" placeholder="0">
+                  </div>
+                  <div class="dimension-input">
+                    <label for="dimWidth">Width (cm)</label>
+                    <input type="number" id="dimWidth" name="dimWidth" class="form-input" placeholder="0">
+                  </div>
+                  <div class="dimension-input">
+                    <label for="dimHeight">Height (cm)</label>
+                    <input type="number" id="dimHeight" name="dimHeight" class="form-input" placeholder="0">
+                  </div>
+                  <div class="dimension-input">
+                    <label for="dimWeight">Weight (kg)</label>
+                    <input type="number" id="dimWeight" name="dimWeight" class="form-input" placeholder="0">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Features Section -->
+              <div class="form-group full-width">
+                <label class="form-label">
+                  Key Features & Specifications
+                  <span class="form-hint">Select all that apply to your item</span>
+                </label>
+                <div class="features-grid">
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="waterproof"> Waterproof
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="foldable"> Foldable/Portable
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="assembly-required"> Assembly Required
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="wheels"> Has Wheels/Casters
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="storage"> Has Storage
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="adjustable"> Adjustable
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="removable-covers"> Removable Covers
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="original-packaging"> Original Packaging
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="manual-included"> Manual Included
+                  </label>
+                  <label class="feature-checkbox">
+                    <input type="checkbox" name="features" value="warranty"> Has Warranty
+                  </label>
+                </div>
+              </div>
+
+              <!-- Condition Details -->
+              <div class="form-group full-width">
+                <label for="conditionDetails" class="form-label">
+                  Any flaws, damage, or issues?
+                  <span class="form-hint">Be specific about scratches, tears, stains, missing parts, etc.</span>
+                </label>
+                <textarea id="conditionDetails" name="conditionDetails" class="form-textarea" 
+                  rows="3" placeholder="e.g., Small scratch on left arm, minor stain on cushion (see photo 3), one screw missing from back"></textarea>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="repairHistory" class="form-label">
+                  Has the item been repaired or modified?
+                  <span class="form-hint">Include any repairs, modifications, or restoration work</span>
+                </label>
+                <textarea id="repairHistory" name="repairHistory" class="form-textarea" 
+                  rows="2" placeholder="e.g., Replaced foam in cushions 1 year ago, reinforced frame"></textarea>
+              </div>
+
+              <!-- Usage History -->
+              <div class="form-group">
+                <label for="usageHistory" class="form-label">
+                  How was the item used?
+                  <span class="form-hint">e.g., Daily use, occasional use, display only, stored</span>
+                </label>
+                <select id="usageHistory" name="usageHistory" class="form-select">
+                  <option value="">Select usage...</option>
+                  <option value="daily">Daily use</option>
+                  <option value="weekly">Weekly use</option>
+                  <option value="occasional">Occasional use</option>
+                  <option value="display">Display only</option>
+                  <option value="stored">Stored/unused</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="reasonSelling" class="form-label">
+                  Why are you selling?
+                  <span class="form-hint">Buyers often ask this - helps build trust</span>
+                </label>
+                <select id="reasonSelling" name="reasonSelling" class="form-select">
+                  <option value="">Select reason...</option>
+                  <option value="upgrading">Upgrading to newer model</option>
+                  <option value="moving">Moving/relocating</option>
+                  <option value="downsizing">Downsizing</option>
+                  <option value="no-longer-needed">No longer needed</option>
+                  <option value="extra-space">Need extra space</option>
+                  <option value="duplicate">Have duplicate</option>
+                  <option value="not-using">Not using anymore</option>
+                  <option value="other">Other reason</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label for="itemLocation" class="form-label">
                   Where is the item located?
                   <span class="form-hint">City or area for pickup/delivery</span>
                 </label>
                 <input type="text" id="itemLocation" name="itemLocation" class="form-input" 
                   placeholder="e.g., Nairobi, Westlands" required>
+              </div>
+
+              <div class="form-group">
+                <label for="deliveryOption" class="form-label">
+                  Delivery options available?
+                  <span class="form-hint">How can buyers get the item?</span>
+                </label>
+                <select id="deliveryOption" name="deliveryOption" class="form-select" required>
+                  <option value="">Select option...</option>
+                  <option value="pickup">Pickup only</option>
+                  <option value="delivery-local">Local delivery available</option>
+                  <option value="delivery-country">Country-wide delivery</option>
+                  <option value="shipping">Can be shipped</option>
+                </select>
+              </div>
+
+              <!-- Additional Description -->
+              <div class="form-group full-width">
+                <label for="listingDescription" class="form-label">
+                  Additional details or story about the item
+                  <span class="form-hint">Any other information buyers should know</span>
+                </label>
+                <textarea id="listingDescription" name="listingDescription" class="form-textarea" 
+                  rows="4" placeholder="Add any other details: Where you bought it, special features, history, or anything else that makes this item unique. This will help your item stand out!" 
+                  required minlength="50" maxlength="2000"></textarea>
+                <div class="char-count"><span id="descCount">0</span>/2000</div>
               </div>
             </div>
 
@@ -308,12 +475,56 @@
                 <span class="review-value" id="reviewCondition">-</span>
               </div>
               <div class="review-item">
+                <span class="review-label">Age:</span>
+                <span class="review-value" id="reviewAge">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Brand:</span>
+                <span class="review-value" id="reviewBrand">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Model:</span>
+                <span class="review-value" id="reviewModel">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Color:</span>
+                <span class="review-value" id="reviewColor">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Material:</span>
+                <span class="review-value" id="reviewMaterial">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Dimensions:</span>
+                <span class="review-value" id="reviewDimensions">-</span>
+              </div>
+              <div class="review-item">
                 <span class="review-label">Price:</span>
                 <span class="review-value" id="reviewPrice">-</span>
               </div>
               <div class="review-item">
                 <span class="review-label">Location:</span>
                 <span class="review-value" id="reviewLocation">-</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Delivery:</span>
+                <span class="review-value" id="reviewDelivery">-</span>
+              </div>
+              <div class="review-item full-width">
+                <span class="review-label">Features:</span>
+                <span class="review-value" id="reviewFeatures">-</span>
+              </div>
+              <div class="review-item full-width">
+                <span class="review-label">Condition Details:</span>
+                <span class="review-value" id="reviewConditionDetails">-</span>
+              </div>
+              <div class="review-item full-width">
+                <span class="review-label">Usage:</span>
+                <span class="review-value" id="reviewUsage">-</span>
+              </div>
+              <div class="review-item full-width">
+                <span class="review-label">Reason for Selling:</span>
+                <span class="review-value" id="reviewReason">-</span>
               </div>
               <div class="review-item full-width">
                 <span class="review-label">Description:</span>
@@ -519,6 +730,44 @@
 
     .form-textarea {
       resize: vertical;
+    }
+
+    .dimensions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .dimension-input {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dimension-input label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #666;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .feature-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .feature-checkbox input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
     }
 
     .char-count {
@@ -735,6 +984,14 @@
         grid-template-columns: 1fr;
       }
 
+      .dimensions-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .progress-steps {
         gap: 8px;
       }
@@ -813,8 +1070,38 @@
         document.getElementById('reviewTitle').textContent = document.getElementById('listingTitle').value || '-';
         document.getElementById('reviewCategory').textContent = document.getElementById('listingCategory').value || '-';
         document.getElementById('reviewCondition').textContent = document.getElementById('itemCondition').value || '-';
+        document.getElementById('reviewAge').textContent = document.getElementById('itemAge').value || '-';
+        document.getElementById('reviewBrand').textContent = document.getElementById('itemBrand').value || '-';
+        document.getElementById('reviewModel').textContent = document.getElementById('itemModel').value || '-';
+        document.getElementById('reviewColor').textContent = document.getElementById('itemColor').value || '-';
+        document.getElementById('reviewMaterial').textContent = document.getElementById('itemMaterial').value || '-';
+        
+        // Dimensions
+        var length = document.getElementById('dimLength').value;
+        var width = document.getElementById('dimWidth').value;
+        var height = document.getElementById('dimHeight').value;
+        var weight = document.getElementById('dimWeight').value;
+        var dimensions = [];
+        if (length) dimensions.push(length + 'cm L');
+        if (width) dimensions.push(width + 'cm W');
+        if (height) dimensions.push(height + 'cm H');
+        if (weight) dimensions.push(weight + 'kg');
+        document.getElementById('reviewDimensions').textContent = dimensions.length > 0 ? dimensions.join(' x ') : '-';
+        
         document.getElementById('reviewPrice').textContent = 'KES ' + (document.getElementById('itemPrice').value || '0');
         document.getElementById('reviewLocation').textContent = document.getElementById('itemLocation').value || '-';
+        document.getElementById('reviewDelivery').textContent = document.getElementById('deliveryOption').value || '-';
+        
+        // Features
+        var featureCheckboxes = document.querySelectorAll('input[name="features"]:checked');
+        var features = Array.from(featureCheckboxes).map(function(cb) {
+          return cb.parentElement.textContent.trim();
+        });
+        document.getElementById('reviewFeatures').textContent = features.length > 0 ? features.join(', ') : '-';
+        
+        document.getElementById('reviewConditionDetails').textContent = document.getElementById('conditionDetails').value || '-';
+        document.getElementById('reviewUsage').textContent = document.getElementById('usageHistory').value || '-';
+        document.getElementById('reviewReason').textContent = document.getElementById('reasonSelling').value || '-';
         document.getElementById('reviewDescription').textContent = document.getElementById('listingDescription').value || '-';
         document.getElementById('reviewImages').textContent = uploadedImages.length + ' images uploaded';
       }
