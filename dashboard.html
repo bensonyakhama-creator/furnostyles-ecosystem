@@ -69,6 +69,18 @@
         const userSession = localStorage.getItem('fns_local_user');
         if (!userSession) {
           window.location.href = 'login.html';
+          return;
+        }
+
+        // Initialize unified dashboard
+        if (window.FurnostylesUnifiedDashboard) {
+          try {
+            window.FurnostylesUnifiedDashboard.init();
+          } catch (e) {
+            console.error('Dashboard initialization error:', e);
+          }
+        } else {
+          console.error('FurnostylesUnifiedDashboard not loaded');
         }
       });
     })();

@@ -22,10 +22,15 @@
     },
 
     saveUploads: function() {
-      localStorage.setItem('fns_uploads', JSON.stringify(this.uploads));
+      try {
+        localStorage.setItem('fns_uploads', JSON.stringify(this.uploads));
+      } catch (e) {
+        console.error('localStorage quota exceeded:', e);
+        alert('Storage full. Please clear some uploads or use a different browser.');
+      }
     },
 
-    // Simple image upload - converts to data URL
+    // Simple image upload - converts to compressed data URL
     uploadImage: function(file) {
       return new Promise((resolve, reject) => {
         if (!file) {
@@ -39,11 +44,41 @@
           return;
         }
 
-        // No file size limit - removed for better user experience
-
+        // Compress image before storing to avoid localStorage quota
         const reader = new FileReader();
         reader.onload = (e) => {
-          resolve(e.target.result);
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Resize to max 800px width/height to reduce size
+            const maxDimension = 800;
+            let width = img.width;
+            let height = img.height;
+            
+            if (width > maxDimension || height > maxDimension) {
+              if (width > height) {
+                height = (height / width) * maxDimension;
+                width = maxDimension;
+              } else {
+                width = (width / height) * maxDimension;
+                height = maxDimension;
+              }
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0, width, height);
+            
+            // Compress to JPEG with 0.7 quality
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+            resolve(compressedDataUrl);
+          };
+          img.onerror = () => {
+            reject(new Error('Failed to process image'));
+          };
+          img.src = e.target.result;
         };
         reader.onerror = () => {
           reject(new Error('Failed to read image'));
