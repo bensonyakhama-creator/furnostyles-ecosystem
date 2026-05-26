@@ -12,9 +12,9 @@
  *   3. <script src="shared/layout/footer-render.js"></script>
  *
  * Mount point in HTML body:
- *   <div id="fld-footer-mount"></div>
+ *   <div id="fns-footer-mount"></div>
  *
- *   If #fld-footer-mount is not found, the footer is appended to <body>.
+ *   If #fns-footer-mount is not found, the footer is appended to <body>.
  *
  * Public API (after init):
  *   window.FurnostylesFooter.init()              — manual re-init
@@ -513,7 +513,7 @@
     }
 
     var html       = buildFooter(data);
-    var mountPoint = document.getElementById('fld-footer-mount');
+    var mountPoint = document.getElementById('fns-footer-mount');
 
     if (mountPoint) {
       var temp   = document.createElement('div');
