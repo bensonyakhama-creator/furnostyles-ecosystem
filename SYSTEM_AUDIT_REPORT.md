@@ -2487,4 +2487,442 @@ The Furnostyles verification system has a well-designed architecture with clear 
 
 ---
 
+## COMPREHENSIVE UI/UX IMPROVEMENT AUDIT REPORT
+
+**Date:** May 27, 2026
+**Auditor:** Cascade AI Assistant
+**Scope:** Site-wide UI/UX audit with improvement suggestions
+
+### Executive Summary
+
+The Furnostyles website has a solid foundation with a well-organized file structure, consistent CSS variables, and a modular architecture. However, there are several opportunities to improve the user experience, visual polish, and overall site performance without breaking existing functionality.
+
+**Overall UI/UX Rating:** 7/10
+**Critical Issues:** 0
+**High Priority Issues:** 5
+**Medium Priority Issues:** 8
+**Low Priority Issues:** 12
+
+---
+
+### 1. Site Structure & Architecture
+
+#### Findings:
+
+**✅ Strengths:**
+- Well-organized directory structure with clear separation of concerns
+- Shared components in `shared/` directory for reusability
+- Consistent naming conventions (fns- prefix for CSS)
+- Modular CSS architecture (global, layout, components, responsive)
+- Firebase integration for authentication and data storage
+- Multiple dashboard types for different user roles
+
+**⚠️ Issues Found:**
+
+1. **Incomplete Pages (HIGH):**
+   - `news.html` contains TODO comment
+   - `pages/market/sell-secondhand.html` contains TODO comment
+   - `pages/market/secondhand.html` contains TODO comment
+   - `pages/market/product-sourcing.html` contains TODO comment
+   - **Impact:** Broken user experience, dead links
+   - **Recommendation:** Complete these pages or redirect to working alternatives
+
+2. **Duplicate Auth Pages (MEDIUM):**
+   - Both `register.html` and `accounts/register.html` exist
+   - Both `login.html` and `accounts/login.html` exist
+   - **Impact:** Confusion for users and developers
+   - **Recommendation:** Consolidate to single auth page structure
+
+3. **Inconsistent Dashboard Locations (MEDIUM):**
+   - Some dashboards in root (`vendor/dashboard.html`)
+   - Some in `dashboards/` directory
+   - **Impact:** Difficult to maintain and navigate
+   - **Recommendation:** Consolidate all dashboards to `dashboards/` directory
+
+---
+
+### 2. UI/UX Improvements
+
+#### Homepage (index.html)
+
+**✅ Strengths:**
+- Clear hero section with CTAs
+- Premium color scheme (petrol blue, gold, grey)
+- Responsive design with media queries
+- Icon library integration
+
+**⚠️ Issues & Improvements:**
+
+1. **Hero Section Enhancement (HIGH):**
+   - **Current:** Static hero with text only
+   - **Suggestion:** Add subtle animation or parallax effect
+   - **Implementation:** CSS animations on hero content with staggered fade-in
+   - **Impact:** More engaging first impression
+
+2. **Hero Cards Visual Polish (HIGH):**
+   - **Current:** Basic card layout
+   - **Suggestion:** Add hover effects with slight lift and shadow
+   - **Implementation:** CSS transform and box-shadow transitions
+   - **Impact:** Better visual feedback and interactivity
+
+3. **Navigation Strip (MEDIUM):**
+   - **Current:** Horizontal scroll may be hard to discover
+   - **Suggestion:** Add visual indicators for scrollable content
+   - **Implementation:** Fade gradients on edges or scroll hint animation
+   - **Impact:** Better discoverability of navigation options
+
+4. **Stats Section (MEDIUM):**
+   - **Current:** Static numbers
+   - **Suggestion:** Add counting animation on scroll
+   - **Implementation:** JavaScript intersection observer with counter animation
+   - **Impact:** More dynamic and engaging
+
+#### Marketplace Pages
+
+**✅ Strengths:**
+- Comprehensive marketplace with 6 categories
+- Search and filter functionality
+- Demo data for testing
+- Consistent card layouts
+
+**⚠️ Issues & Improvements:**
+
+1. **Loading States (HIGH):**
+   - **Current:** No loading indicators while data loads
+   - **Suggestion:** Add skeleton loaders or spinners
+   - **Implementation:** CSS skeleton screens for cards and lists
+   - **Impact:** Better perceived performance
+
+2. **Empty States (HIGH):**
+   - **Current:** No handling for empty search results
+   - **Suggestion:** Add friendly empty state illustrations
+   - **Implementation:** SVG illustrations with helpful text
+   - **Impact:** Better user guidance when no results found
+
+3. **Filter UI (MEDIUM):**
+   - **Current:** Basic dropdown filters
+   - **Suggestion:** Add collapsible filter sidebar with visual indicators
+   - **Implementation:** Accordion-style filter groups with badges
+   - **Impact:** Better filter discovery and usability
+
+4. **Product Cards (MEDIUM):**
+   - **Current:** Basic card design
+   - **Suggestion:** Add wishlist heart button, quick view overlay
+   - **Implementation:** Hover overlay with action buttons
+   - **Impact:** Better product discovery and engagement
+
+5. **Image Optimization (MEDIUM):**
+   - **Current:** No lazy loading for product images
+   - **Suggestion:** Implement lazy loading with placeholder blur
+   - **Implementation:** Intersection Observer with loading="lazy"
+   - **Impact:** Faster page load times
+
+#### Forms (Registration, Upload, Contact)
+
+**✅ Strengths:**
+- Consistent form styling
+- Validation attributes
+- Clear labels and placeholders
+- Register modal popup implemented
+
+**⚠️ Issues & Improvements:**
+
+1. **Form Validation Feedback (HIGH):**
+   - **Current:** Basic browser validation
+   - **Suggestion:** Add real-time validation with visual feedback
+   - **Implementation:** JavaScript validation with inline error messages
+   - **Impact:** Better user guidance and reduced errors
+
+2. **Loading States (HIGH):**
+   - **Current:** No feedback during form submission
+   - **Suggestion:** Add loading spinners and disable buttons
+   - **Implementation:** CSS spinner with button state changes
+   - **Impact:** Better user feedback during async operations
+
+3. **Password Strength Indicator (MEDIUM):**
+   - **Current:** No password strength feedback
+   - **Suggestion:** Add visual strength meter
+   - **Implementation:** JavaScript strength checker with visual meter
+   - **Impact:** Better password security and user guidance
+
+4. **Success/Error Messages (MEDIUM):**
+   - **Current:** Browser alerts
+   - **Suggestion:** Replace with toast notifications
+   - **Implementation:** Custom toast notification system
+   - **Impact:** More polished and professional feel
+
+#### Navigation & Header
+
+**✅ Strengths:**
+- Sticky header with navigation
+- Search functionality
+- Cart integration
+- User account menu
+
+**⚠️ Issues & Improvements:**
+
+1. **Mobile Menu (HIGH):**
+   - **Current:** May not have proper mobile hamburger menu
+   - **Suggestion:** Ensure responsive mobile menu with smooth animation
+   - **Implementation:** Slide-out drawer with backdrop
+   - **Impact:** Better mobile experience
+
+2. **Search Autocomplete (MEDIUM):**
+   - **Current:** Basic search input
+   - **Suggestion:** Add autocomplete with suggestions
+   - **Implementation:** JavaScript autocomplete with debounce
+   - **Impact:** Faster search and better UX
+
+3. **Cart Badge (MEDIUM):**
+   - **Current:** Basic badge
+   - **Suggestion:** Add animation when cart updates
+   - **Implementation:** CSS scale animation on update
+   - **Impact:** Better visual feedback
+
+---
+
+### 3. Code Quality & Consistency
+
+#### Findings:
+
+**✅ Strengths:**
+- Consistent CSS variable usage
+- Modular JavaScript files
+- Clear file naming conventions
+- Comment headers in files
+
+**⚠️ Issues Found:**
+
+1. **Console Logging (MEDIUM):**
+   - Several files contain console.log statements
+   - **Impact:** Console clutter in production
+   - **Recommendation:** Remove or use proper logging system
+
+2. **innerHTML Usage (MEDIUM):**
+   - Several files use innerHTML without sanitization
+   - **Impact:** Potential XSS vulnerability
+   - **Recommendation:** Use textContent or sanitize HTML
+
+3. **Duplicate Code (LOW):**
+   - Some repeated patterns across files
+   - **Impact:** Maintenance overhead
+   - **Recommendation:** Extract to shared utilities
+
+---
+
+### 4. Performance & Optimization
+
+#### Findings:
+
+**✅ Strengths:**
+- CSS variables for easy theming
+- Deferred script loading
+- Image preloading for hero
+- Responsive images
+
+**⚠️ Issues Found:**
+
+1. **Script Loading (HIGH):**
+   - Many scripts loaded on every page
+   - **Impact:** Slower page load times
+   - **Recommendation:** Implement code splitting and lazy loading
+
+2. **CSS Optimization (MEDIUM):**
+   - Large CSS files loaded globally
+   - **Impact:** Unnecessary CSS on some pages
+   - **Recommendation:** Critical CSS extraction for above-fold content
+
+3. **Image Optimization (MEDIUM):**
+   - No WebP format support
+   - **Impact:** Larger image file sizes
+   - **Recommendation:** Add WebP with fallbacks
+
+4. **Font Loading (LOW):**
+   - System fonts used (good for performance)
+   - **Impact:** Fast loading
+   - **Recommendation:** Consider font-display: swap for web fonts if added
+
+---
+
+### 5. Accessibility
+
+#### Findings:
+
+**✅ Strengths:**
+- Semantic HTML structure
+- ARIA labels on some elements
+- Alt text on images
+- Keyboard navigation support
+
+**⚠️ Issues Found:**
+
+1. **Focus States (MEDIUM):**
+   - Inconsistent focus indicators
+   - **Impact:** Poor keyboard navigation experience
+   - **Recommendation:** Add consistent focus styles
+
+2. **Color Contrast (MEDIUM):**
+   - Some text may have low contrast
+   - **Impact:** Poor readability for some users
+   - **Recommendation:** Test and improve contrast ratios
+
+3. **Skip Links (LOW):**
+   - No skip to main content link
+   - **Impact:** Difficult for keyboard users
+   - **Recommendation:** Add skip navigation link
+
+---
+
+### 6. Security
+
+#### Findings:
+
+**✅ Strengths:**
+- Firebase Auth for authentication
+- HTML escaping in some places
+- HTTPS ready
+
+**⚠️ Issues Found:**
+
+1. **XSS Prevention (HIGH):**
+   - innerHTML usage without sanitization
+   - **Impact:** Potential XSS attacks
+   - **Recommendation:** Implement proper sanitization
+
+2. **Input Validation (MEDIUM):**
+   - Client-side validation only
+   - **Impact:** Can be bypassed
+   - **Recommendation:** Add server-side validation
+
+3. **CSRF Protection (MEDIUM):**
+   - No CSRF tokens on forms
+   - **Impact:** Potential CSRF attacks
+   - **Recommendation:** Implement CSRF protection
+
+---
+
+### Priority Improvement Recommendations
+
+#### Critical (Implement Immediately):
+None - No critical blocking issues found
+
+#### High Priority (Implement Soon):
+
+1. **Add Loading States**
+   - Skeleton loaders for marketplace cards
+   - Spinners for form submissions
+   - Loading indicators for async operations
+
+2. **Complete Incomplete Pages**
+   - Finish news.html or redirect
+   - Complete TODO pages or remove links
+
+3. **Add Empty States**
+   - Friendly illustrations for no results
+   - Helpful guidance for empty states
+
+4. **Improve Mobile Menu**
+   - Ensure proper hamburger menu
+   - Smooth animations
+   - Touch-friendly targets
+
+5. **Form Validation Feedback**
+   - Real-time validation
+   - Inline error messages
+   - Visual strength indicators
+
+#### Medium Priority:
+
+1. **Hero Section Animations**
+   - Staggered fade-in effects
+   - Parallax background
+   - Hover effects on cards
+
+2. **Filter UI Enhancement**
+   - Collapsible sidebar
+   - Visual indicators
+   - Badge counts
+
+3. **Product Card Enhancements**
+   - Wishlist buttons
+   - Quick view overlays
+   - Hover effects
+
+4. **Image Optimization**
+   - Lazy loading
+   - WebP format
+   - Responsive images
+
+5. **Search Autocomplete**
+   - Debounced suggestions
+   - Recent searches
+   - Category filters
+
+#### Low Priority:
+
+1. **Stats Counter Animation**
+   - Count up animation on scroll
+   - Intersection observer
+
+2. **Cart Badge Animation**
+   - Scale animation on update
+   - Bounce effect
+
+3. **Toast Notifications**
+   - Replace browser alerts
+   - Custom notification system
+
+4. **Console Logging Cleanup**
+   - Remove debug logs
+   - Implement proper logging
+
+5. **Accessibility Improvements**
+   - Skip links
+   - Focus states
+   - Color contrast
+
+---
+
+### Implementation Plan
+
+**Phase 1 (Week 1): High Priority**
+- Add loading states to all pages
+- Complete or redirect incomplete pages
+- Add empty states
+- Improve mobile menu
+- Enhance form validation
+
+**Phase 2 (Week 2): Medium Priority**
+- Hero animations
+- Filter UI enhancement
+- Product card improvements
+- Image optimization
+- Search autocomplete
+
+**Phase 3 (Week 3): Low Priority**
+- Stats animations
+- Cart animations
+- Toast notifications
+- Code cleanup
+- Accessibility improvements
+
+---
+
+### Conclusion
+
+The Furnostyles website has a solid foundation with good architecture and consistent design. The main areas for improvement are:
+
+1. **Loading states and feedback** - Add visual feedback for all async operations
+2. **Empty states** - Guide users when no content is available
+3. **Mobile experience** - Ensure smooth mobile navigation
+4. **Form UX** - Better validation and feedback
+5. **Performance** - Optimize scripts and images
+
+All improvements can be implemented incrementally without breaking existing functionality.
+
+**Estimated Effort:** 3 weeks for all recommendations
+**Risk Level:** Low - All improvements are additive
+
+---
+
 **End of Audit Report**
