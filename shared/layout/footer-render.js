@@ -283,13 +283,13 @@
     if (!sa.enabled || !Array.isArray(sa.areas) || !sa.areas.length) return '';
     var tags = sa.areas.map(function (area) {
       /* FUTURE: Replace <span> with <a href="/services/[area-slug]"> when local pages exist */
-      return '<span class="fld-footer__area-tag">' + safe(area) + '</span>';
+      return '<span class="fld-footer__area-tag" style="background: rgba(0, 0, 0, 0.35) !important; border: 1px solid rgba(212, 175, 55, 0.5) !important; color: #ffffff !important;">' + safe(area) + '</span>';
     }).join('');
     return (
-      '<section class="fld-footer__areas" aria-label="Service Areas">' +
-        '<h4 class="fld-footer__areas-heading">' + safe(sa.heading || 'Areas We Serve') + '</h4>' +
-        '<div class="fld-footer__areas-tags">' + tags + '</div>' +
-        when(sa.note, '<p class="fld-footer__areas-note">' + safe(sa.note) + '</p>') +
+      '<section class="fld-footer__areas" style="background: #063B46 !important; padding: 8px 28px 16px 28px !important; border: none !important; margin: 0 !important; border-top: none !important; border-bottom: none !important; position: relative !important; overflow: hidden !important;" aria-label="Service Areas">' +
+        '<h4 class="fld-footer__areas-heading" style="color: #d4af37 !important; font-size: 12px !important; font-weight: 900 !important; text-transform: uppercase !important; letter-spacing: 0.09em !important; margin: 0 0 14px !important; position: relative !important; z-index: 1 !important;">' + safe(sa.heading || 'Areas We Serve') + '</h4>' +
+        '<div class="fld-footer__areas-tags" style="display: flex !important; flex-wrap: wrap !important; gap: 10px !important; margin-bottom: 12px !important; position: relative !important; z-index: 1 !important;">' + tags + '</div>' +
+        when(sa.note, '<p class="fld-footer__areas-note" style="color: #d4af37 !important; font-size: 12px !important; margin: 0 !important; font-style: normal !important; font-weight: 600 !important; position: relative !important; z-index: 1 !important;">' + safe(sa.note) + '</p>') +
       '</section>'
     );
   }

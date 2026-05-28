@@ -55,10 +55,10 @@
   /* Warm White */
   --fns-warm-white: #fafafa;
 
-  /* Text Colors */
+  /* Text Colors - Updated for better contrast */
   --fns-text-primary: #1a1a1a;
   --fns-text-secondary: #2d2d2d;
-  --fns-text-muted: #6b7280;
+  --fns-text-muted: #52616b;
   --fns-text-light: #E8EAED;
   --fns-text-lighter: #ffffff;
   --fns-text-dark: #333333;
@@ -127,6 +127,14 @@
   /* Container */
   --fns-container-max: 1400px;
   --fns-container-padding: 28px;
+
+  /* Additional Readable Color Variables */
+  --petrol: #003c4c;
+  --petrol-dark: #062f3a;
+  --charcoal: #1f2933;
+  --muted: #52616b;
+  --gold: #d7b83f;
+  --light-bg: #f7f8f8;
 }
 
 /* ============================================================
@@ -152,11 +160,712 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--fns-font-family);
-  color: var(--fns-charcoal);
-  background: #FFFFFF;
+  color: var(--charcoal);
+  background: #ffffff;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   ALTERNATING SECTION BACKGROUNDS
+   Creates visual rhythm with alternating white/grey sections
+============================================================ */
+
+section:nth-of-type(even) {
+  background: #eef2f3;
+  padding: 100px 24px;
+}
+
+section:nth-of-type(odd) {
+  background: #ffffff;
+  padding: 100px 24px;
+}
+
+/* ============================================================
+   STRONG READABLE DEFAULTS
+   Ensures text visibility across all sections and cards
+============================================================ */
+
+section,
+.card,
+.service-card,
+.advantage-card,
+.feature-card,
+.info-card,
+.blog-card,
+.product-card,
+.premium-card,
+.fns-card,
+.premium-stat-card,
+.premium-ecosystem-card,
+.premium-service-box,
+.fns-feature-card,
+.fns-solution-card,
+.fns-trust-card,
+.fns-contact-option-card,
+.fns-contact-info-card,
+.fns-contact-method-card,
+.fns-project-complete-card,
+.fns-portfolio-detail-card,
+.fns-portfolio-challenge-card,
+.fns-portfolio-deliverable-card,
+.fns-resource-card,
+.fns-additional-service-card,
+.fns-repair-category-link {
+  color: var(--charcoal);
+}
+
+/* ============================================================
+   PREMIUM LAYERED CARD SYSTEM
+   Creates visual hierarchy with layered backgrounds
+============================================================ */
+
+.card,
+.service-card,
+.advantage-card,
+.feature-card,
+.info-card,
+.value-card,
+.trust-card,
+.blog-card,
+.product-card,
+.content-card,
+.premium-card,
+.fns-card,
+.premium-stat-card,
+.premium-service-box,
+.fns-feature-card,
+.fns-solution-card,
+.fns-trust-card,
+.fns-contact-option-card,
+.fns-contact-info-card,
+.fns-contact-method-card,
+.fns-project-complete-card,
+.fns-portfolio-detail-card,
+.fns-portfolio-challenge-card,
+.fns-portfolio-deliverable-card,
+.fns-resource-card,
+.fns-additional-service-card,
+.fns-repair-category-link,
+.premium-ecosystem-card {
+  background: #eef1f2 !important;
+  border: 1px solid rgba(0, 60, 76, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 60, 76, 0.06);
+  padding: 42px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover,
+.service-card:hover,
+.advantage-card:hover,
+.feature-card:hover,
+.info-card:hover,
+.value-card:hover,
+.trust-card:hover,
+.blog-card:hover,
+.product-card:hover,
+.content-card:hover,
+.premium-card:hover,
+.fns-card:hover,
+.premium-stat-card:hover,
+.premium-service-box:hover,
+.fns-feature-card:hover,
+.fns-solution-card:hover,
+.fns-trust-card:hover,
+.fns-contact-option-card:hover,
+.fns-contact-info-card:hover,
+.fns-contact-method-card:hover,
+.fns-project-complete-card:hover,
+.fns-portfolio-detail-card:hover,
+.fns-portfolio-challenge-card:hover,
+.fns-portfolio-deliverable-card:hover,
+.fns-resource-card:hover,
+.fns-additional-service-card:hover,
+.fns-repair-category-link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 60, 76, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Cards inside grey sections become white */
+section:nth-of-type(even) .card,
+section:nth-of-type(even) .service-card,
+section:nth-of-type(even) .advantage-card,
+section:nth-of-type(even) .feature-card,
+section:nth-of-type(even) .info-card,
+section:nth-of-type(even) .value-card,
+section:nth-of-type(even) .trust-card,
+section:nth-of-type(even) .blog-card,
+section:nth-of-type(even) .product-card,
+section:nth-of-type(even) .content-card,
+section:nth-of-type(even) .premium-card,
+section:nth-of-type(even) .fns-card,
+section:nth-of-type(even) .premium-stat-card,
+section:nth-of-type(even) .premium-service-box,
+section:nth-of-type(even) .fns-feature-card,
+section:nth-of-type(even) .fns-solution-card,
+section:nth-of-type(even) .fns-trust-card,
+section:nth-of-type(even) .fns-contact-option-card,
+section:nth-of-type(even) .fns-contact-info-card,
+section:nth-of-type(even) .fns-contact-method-card,
+section:nth-of-type(even) .fns-project-complete-card,
+section:nth-of-type(even) .fns-portfolio-detail-card,
+section:nth-of-type(even) .fns-portfolio-challenge-card,
+section:nth-of-type(even) .fns-portfolio-deliverable-card,
+section:nth-of-type(even) .fns-resource-card,
+section:nth-of-type(even) .fns-additional-service-card,
+section:nth-of-type(even) .fns-repair-category-link,
+section:nth-of-type(even) .premium-ecosystem-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 60, 76, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 60, 76, 0.08);
+}
+
+/* ============================================================
+   PREMIUM BULLET LISTS
+   Elegant checkmark bullets with proper spacing
+============================================================ */
+
+section ul,
+.card ul,
+.service-card ul,
+.advantage-card ul,
+.feature-card ul,
+.info-card ul,
+.blog-card ul,
+.product-card ul,
+.premium-card ul,
+.fns-card ul,
+.premium-stat-card ul,
+.premium-service-box ul,
+.fns-feature-card ul,
+.fns-solution-card ul,
+.fns-trust-card ul,
+.fns-contact-option-card ul,
+.fns-contact-info-card ul,
+.fns-contact-method-card ul,
+.fns-project-complete-card ul,
+.fns-portfolio-detail-card ul,
+.fns-portfolio-challenge-card ul,
+.fns-portfolio-deliverable-card ul,
+.fns-resource-card ul,
+.fns-additional-service-card ul,
+.fns-repair-category-link ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0 0;
+}
+
+section ul li,
+.card ul li,
+.service-card ul li,
+.advantage-card ul li,
+.feature-card ul li,
+.info-card ul li,
+.blog-card ul li,
+.product-card ul li,
+.premium-card ul li,
+.fns-card ul li,
+.premium-stat-card ul li,
+.premium-service-box ul li,
+.fns-feature-card ul li,
+.fns-solution-card ul li,
+.fns-trust-card ul li,
+.fns-contact-option-card ul li,
+.fns-contact-info-card ul li,
+.fns-contact-method-card ul li,
+.fns-project-complete-card ul li,
+.fns-portfolio-detail-card ul li,
+.fns-portfolio-challenge-card ul li,
+.fns-portfolio-deliverable-card ul li,
+.fns-resource-card ul li,
+.fns-additional-service-card ul li,
+.fns-repair-category-link ul li {
+  padding: 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #667085;
+  font-size: 16px;
+  line-height: 1.7;
+  border-bottom: 1px solid rgba(0, 60, 76, 0.08);
+}
+
+section ul li:last-child,
+.card ul li:last-child,
+.service-card ul li:last-child,
+.advantage-card ul li:last-child,
+.feature-card ul li:last-child,
+.info-card ul li:last-child,
+.blog-card ul li:last-child,
+.product-card ul li:last-child,
+.premium-card ul li:last-child,
+.fns-card ul li:last-child,
+.premium-stat-card ul li:last-child,
+.premium-service-box ul li:last-child,
+.fns-feature-card ul li:last-child,
+.fns-solution-card ul li:last-child,
+.fns-trust-card ul li:last-child,
+.fns-contact-option-card ul li:last-child,
+.fns-contact-info-card ul li:last-child,
+.fns-contact-method-card ul li:last-child,
+.fns-project-complete-card ul li:last-child,
+.fns-portfolio-detail-card ul li:last-child,
+.fns-portfolio-challenge-card ul li:last-child,
+.fns-portfolio-deliverable-card ul li:last-child,
+.fns-resource-card ul li:last-child,
+.fns-additional-service-card ul li:last-child,
+.fns-repair-category-link ul li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+section ul li::before,
+.card ul li::before,
+.service-card ul li::before,
+.advantage-card ul li::before,
+.feature-card ul li::before,
+.info-card ul li::before,
+.blog-card ul li::before,
+.product-card ul li::before,
+.premium-card ul li::before,
+.fns-card ul li::before,
+.premium-stat-card ul li::before,
+.premium-service-box ul li::before,
+.fns-feature-card ul li::before,
+.fns-solution-card ul li::before,
+.fns-trust-card ul li::before,
+.fns-contact-option-card ul li::before,
+.fns-contact-info-card ul li::before,
+.fns-contact-method-card ul li::before,
+.fns-project-complete-card ul li::before,
+.fns-portfolio-detail-card ul li::before,
+.fns-portfolio-challenge-card ul li::before,
+.fns-portfolio-deliverable-card ul li::before,
+.fns-resource-card ul li::before,
+.fns-additional-service-card ul li::before,
+.fns-repair-category-link ul li::before {
+  content: '✓';
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+section p,
+section li,
+.card p,
+.card li,
+.service-card p,
+.service-card li,
+.advantage-card p,
+.advantage-card li,
+.feature-card p,
+.feature-card li,
+.info-card p,
+.info-card li,
+.blog-card p,
+.blog-card li,
+.product-card p,
+.product-card li,
+.premium-card p,
+.premium-card li,
+.fns-card p,
+.fns-card li,
+.premium-stat-card p,
+.premium-stat-card li,
+.premium-ecosystem-card p,
+.premium-ecosystem-card li,
+.premium-service-box p,
+.premium-service-box li,
+.fns-feature-card p,
+.fns-feature-card li,
+.fns-solution-card p,
+.fns-solution-card li,
+.fns-trust-card p,
+.fns-trust-card li,
+.fns-contact-option-card p,
+.fns-contact-option-card li,
+.fns-contact-info-card p,
+.fns-contact-info-card li,
+.fns-contact-method-card p,
+.fns-contact-method-card li,
+.fns-project-complete-card p,
+.fns-project-complete-card li,
+.fns-portfolio-detail-card p,
+.fns-portfolio-detail-card li,
+.fns-portfolio-challenge-card p,
+.fns-portfolio-challenge-card li,
+.fns-portfolio-deliverable-card p,
+.fns-portfolio-deliverable-card li,
+.fns-resource-card p,
+.fns-resource-card li,
+.fns-additional-service-card p,
+.fns-additional-service-card li,
+.fns-repair-category-link p,
+.fns-repair-category-link li {
+  color: #344054;
+}
+
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6,
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.service-card h1,
+.service-card h2,
+.service-card h3,
+.service-card h4,
+.service-card h5,
+.service-card h6,
+.advantage-card h1,
+.advantage-card h2,
+.advantage-card h3,
+.advantage-card h4,
+.advantage-card h5,
+.advantage-card h6,
+.feature-card h1,
+.feature-card h2,
+.feature-card h3,
+.feature-card h4,
+.feature-card h5,
+.feature-card h6,
+.info-card h1,
+.info-card h2,
+.info-card h3,
+.info-card h4,
+.info-card h5,
+.info-card h6,
+.blog-card h1,
+.blog-card h2,
+.blog-card h3,
+.blog-card h4,
+.blog-card h5,
+.blog-card h6,
+.product-card h1,
+.product-card h2,
+.product-card h3,
+.product-card h4,
+.product-card h5,
+.product-card h6,
+.premium-card h1,
+.premium-card h2,
+.premium-card h3,
+.premium-card h4,
+.premium-card h5,
+.premium-card h6,
+.fns-card h1,
+.fns-card h2,
+.fns-card h3,
+.fns-card h4,
+.fns-card h5,
+.fns-card h6,
+.premium-stat-card h1,
+.premium-stat-card h2,
+.premium-stat-card h3,
+.premium-stat-card h4,
+.premium-stat-card h5,
+.premium-stat-card h6,
+.premium-ecosystem-card h1,
+.premium-ecosystem-card h2,
+.premium-ecosystem-card h3,
+.premium-ecosystem-card h4,
+.premium-ecosystem-card h5,
+.premium-ecosystem-card h6,
+.premium-service-box h1,
+.premium-service-box h2,
+.premium-service-box h3,
+.premium-service-box h4,
+.premium-service-box h5,
+.premium-service-box h6,
+.fns-feature-card h1,
+.fns-feature-card h2,
+.fns-feature-card h3,
+.fns-feature-card h4,
+.fns-feature-card h5,
+.fns-feature-card h6,
+.fns-solution-card h1,
+.fns-solution-card h2,
+.fns-solution-card h3,
+.fns-solution-card h4,
+.fns-solution-card h5,
+.fns-solution-card h6,
+.fns-trust-card h1,
+.fns-trust-card h2,
+.fns-trust-card h3,
+.fns-trust-card h4,
+.fns-trust-card h5,
+.fns-trust-card h6,
+.fns-contact-option-card h1,
+.fns-contact-option-card h2,
+.fns-contact-option-card h3,
+.fns-contact-option-card h4,
+.fns-contact-option-card h5,
+.fns-contact-option-card h6,
+.fns-contact-info-card h1,
+.fns-contact-info-card h2,
+.fns-contact-info-card h3,
+.fns-contact-info-card h4,
+.fns-contact-info-card h5,
+.fns-contact-info-card h6,
+.fns-contact-method-card h1,
+.fns-contact-method-card h2,
+.fns-contact-method-card h3,
+.fns-contact-method-card h4,
+.fns-contact-method-card h5,
+.fns-contact-method-card h6,
+.fns-project-complete-card h1,
+.fns-project-complete-card h2,
+.fns-project-complete-card h3,
+.fns-project-complete-card h4,
+.fns-project-complete-card h5,
+.fns-project-complete-card h6,
+.fns-portfolio-detail-card h1,
+.fns-portfolio-detail-card h2,
+.fns-portfolio-detail-card h3,
+.fns-portfolio-detail-card h4,
+.fns-portfolio-detail-card h5,
+.fns-portfolio-detail-card h6,
+.fns-portfolio-challenge-card h1,
+.fns-portfolio-challenge-card h2,
+.fns-portfolio-challenge-card h3,
+.fns-portfolio-challenge-card h4,
+.fns-portfolio-challenge-card h5,
+.fns-portfolio-challenge-card h6,
+.fns-portfolio-deliverable-card h1,
+.fns-portfolio-deliverable-card h2,
+.fns-portfolio-deliverable-card h3,
+.fns-portfolio-deliverable-card h4,
+.fns-portfolio-deliverable-card h5,
+.fns-portfolio-deliverable-card h6,
+.fns-resource-card h1,
+.fns-resource-card h2,
+.fns-resource-card h3,
+.fns-resource-card h4,
+.fns-resource-card h5,
+.fns-resource-card h6,
+.fns-additional-service-card h1,
+.fns-additional-service-card h2,
+.fns-additional-service-card h3,
+.fns-additional-service-card h4,
+.fns-additional-service-card h5,
+.fns-additional-service-card h6,
+.fns-repair-category-link h1,
+.fns-repair-category-link h2,
+.fns-repair-category-link h3,
+.fns-repair-category-link h4,
+.fns-repair-category-link h5,
+.fns-repair-category-link h6 {
+  color: #003c4c;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+/* Dark sections keep white text */
+.dark-section,
+.dark-section p,
+.dark-section li,
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4,
+.dark-section h5,
+.dark-section h6,
+.section-dark,
+.section-dark p,
+.section-dark li,
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6,
+.premium-dark-section,
+.premium-dark-section p,
+.premium-dark-section li,
+.premium-dark-section h1,
+.premium-dark-section h2,
+.premium-dark-section h3,
+.premium-dark-section h4,
+.premium-dark-section h5,
+.premium-dark-section h6,
+.fns-advantage-section,
+.fns-advantage-section p,
+.fns-advantage-section li,
+.fns-advantage-section h1,
+.fns-advantage-section h2,
+.fns-advantage-section h3,
+.fns-advantage-section h4,
+.fns-advantage-section h5,
+.fns-advantage-section h6,
+.fns-process-section,
+.fns-process-section p,
+.fns-process-section li,
+.fns-process-section h1,
+.fns-process-section h2,
+.fns-process-section h3,
+.fns-process-section h4,
+.fns-process-section h5,
+.fns-process-section h6,
+.fns-faq-section,
+.fns-faq-section p,
+.fns-faq-section li,
+.fns-faq-section h1,
+.fns-faq-section h2,
+.fns-faq-section h3,
+.fns-faq-section h4,
+.fns-faq-section h5,
+.fns-faq-section h6,
+.fns-emergency-section,
+.fns-emergency-section p,
+.fns-emergency-section li,
+.fns-emergency-section h1,
+.fns-emergency-section h2,
+.fns-emergency-section h3,
+.fns-emergency-section h4,
+.fns-emergency-section h5,
+.fns-emergency-section h6,
+.fns-portfolio-categories-section,
+.fns-portfolio-categories-section p,
+.fns-portfolio-categories-section li,
+.fns-portfolio-categories-section h1,
+.fns-portfolio-categories-section h2,
+.fns-portfolio-categories-section h3,
+.fns-portfolio-categories-section h4,
+.fns-portfolio-categories-section h5,
+.fns-portfolio-categories-section h6,
+.fns-blog-categories-section,
+.fns-blog-categories-section p,
+.fns-blog-categories-section li,
+.fns-blog-categories-section h1,
+.fns-blog-categories-section h2,
+.fns-blog-categories-section h3,
+.fns-blog-categories-section h4,
+.fns-blog-categories-section h5,
+.fns-blog-categories-section h6 {
+  color: var(--fns-white);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS FOR CARDS
+   Ensures cards stack beautifully on mobile
+============================================================ */
+
+@media (max-width: 768px) {
+  section:nth-of-type(even),
+  section:nth-of-type(odd) {
+    padding: 70px 20px;
+  }
+
+  .card,
+  .service-card,
+  .advantage-card,
+  .feature-card,
+  .info-card,
+  .value-card,
+  .trust-card,
+  .blog-card,
+  .product-card,
+  .content-card,
+  .premium-card,
+  .fns-card,
+  .premium-stat-card,
+  .premium-service-box,
+  .fns-feature-card,
+  .fns-solution-card,
+  .fns-trust-card,
+  .fns-contact-option-card,
+  .fns-contact-info-card,
+  .fns-contact-method-card,
+  .fns-project-complete-card,
+  .fns-portfolio-detail-card,
+  .fns-portfolio-challenge-card,
+  .fns-portfolio-deliverable-card,
+  .fns-resource-card,
+  .fns-additional-service-card,
+  .fns-repair-category-link,
+  .premium-ecosystem-card {
+    padding: 32px;
+    border-radius: 20px;
+  }
+
+  section ul li,
+  .card ul li,
+  .service-card ul li,
+  .advantage-card ul li,
+  .feature-card ul li,
+  .info-card ul li,
+  .blog-card ul li,
+  .product-card ul li,
+  .premium-card ul li,
+  .fns-card ul li,
+  .premium-stat-card ul li,
+  .premium-service-box ul li,
+  .fns-feature-card ul li,
+  .fns-solution-card ul li,
+  .fns-trust-card ul li,
+  .fns-contact-option-card ul li,
+  .fns-contact-info-card ul li,
+  .fns-contact-method-card ul li,
+  .fns-project-complete-card ul li,
+  .fns-portfolio-detail-card ul li,
+  .fns-portfolio-challenge-card ul li,
+  .fns-portfolio-deliverable-card ul li,
+  .fns-resource-card ul li,
+  .fns-additional-service-card ul li,
+  .fns-repair-category-link ul li {
+    font-size: 15px;
+    padding: 14px 0;
+  }
+
+  section ul li::before,
+  .card ul li::before,
+  .service-card ul li::before,
+  .advantage-card ul li::before,
+  .feature-card ul li::before,
+  .info-card ul li::before,
+  .blog-card ul li::before,
+  .product-card ul li::before,
+  .premium-card ul li::before,
+  .fns-card ul li::before,
+  .premium-stat-card ul li::before,
+  .premium-service-box ul li::before,
+  .fns-feature-card ul li::before,
+  .fns-solution-card ul li::before,
+  .fns-trust-card ul li::before,
+  .fns-contact-option-card ul li::before,
+  .fns-contact-info-card ul li::before,
+  .fns-contact-method-card ul li::before,
+  .fns-project-complete-card ul li::before,
+  .fns-portfolio-detail-card ul li::before,
+  .fns-portfolio-challenge-card ul li::before,
+  .fns-portfolio-deliverable-card ul li::before,
+  .fns-resource-card ul li::before,
+  .fns-additional-service-card ul li::before,
+  .fns-repair-category-link ul li::before {
+    font-size: 18px;
+  }
+}
+
+/* ============================================================
+   FOOTER DELIVERY AREAS OVERRIDE
+   Ensures delivery areas section is visible
+============================================================ */
+
+.fld-footer__areas {
+  background: #063B46 !important;
 }
 
 /* ============================================================
@@ -261,7 +970,7 @@ img {
 .fns-body-large {
   font-size: 18px;
   line-height: 1.7;
-  color: var(--fns-text-secondary);
+  color: var(--muted);
 }
 
 .fns-body-small {
