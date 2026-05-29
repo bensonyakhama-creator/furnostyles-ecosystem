@@ -32,7 +32,7 @@ window.FurnostylesHeaderData = {
       { label: "Sell on Furnostyles", href: "/upload.html", highlight: true },
       { label: "Sign In", href: "/login.html" },
       { label: "Create Account", action: "openRegisterModal" },
-      { label: "My Account", href: "/dashboard.html" },
+      { label: "My Account", href: "/dashboards/client/index.html" },
       { label: "Orders", href: "/orders.html" },
       { label: "Wishlist", href: "/wishlist.html" },
       { label: "Shipping", href: "/shipping.html" },

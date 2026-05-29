@@ -42,8 +42,12 @@
   var sessionState = {
     user: null,
     userData: null,
-    role: null
+    role: null,
+    createdAt: null,
+    expiresAt: null
   };
+
+  var SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
   /* ============================================================
      SAVE SESSION
@@ -56,32 +60,52 @@
    * @param {string} role - User role
    */
   function set(user, userData, role) {
+    var now = Date.now();
     sessionState.user = user;
     sessionState.userData = userData;
     sessionState.role = role || 'client';
+    sessionState.createdAt = now;
+    sessionState.expiresAt = now + SESSION_DURATION;
 
     try {
       var keys = getStorageKeys();
-      // Save to localStorage
+      // Save to localStorage with expiration and optional encryption
       if (user) {
-        localStorage.setItem(keys.USER, JSON.stringify({
+        var userDataToStore = {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
           emailVerified: user.emailVerified,
           photoURL: user.photoURL
-        }));
+        };
+        
+        // Use obfuscation for basic protection (not full encryption)
+        if (window.FurnostylesCrypto) {
+          localStorage.setItem(keys.USER, window.FurnostylesCrypto.obfuscate(JSON.stringify(userDataToStore)));
+        } else {
+          localStorage.setItem(keys.USER, JSON.stringify(userDataToStore));
+        }
       }
 
       if (userData) {
-        localStorage.setItem(keys.SESSION, JSON.stringify(userData));
+        var sessionData = {
+          data: userData,
+          expiresAt: sessionState.expiresAt
+        };
+        
+        // Use obfuscation for session data
+        if (window.FurnostylesCrypto) {
+          localStorage.setItem(keys.SESSION, window.FurnostylesCrypto.obfuscate(JSON.stringify(sessionData)));
+        } else {
+          localStorage.setItem(keys.SESSION, JSON.stringify(sessionData));
+        }
       }
 
       if (role) {
         localStorage.setItem(keys.ROLE, role);
       }
 
-      console.log('[Session] Session saved');
+      console.log('[Session] Session saved. Expires at:', new Date(sessionState.expiresAt));
     } catch (error) {
       console.error('[Session] Failed to save session:', error);
     }
@@ -106,11 +130,50 @@
       var fnsLocalUser = localStorage.getItem(keys.LOCAL_USER);
 
       if (userDataStr) {
-        sessionState.userData = JSON.parse(userDataStr);
+        // Try to de-obfuscate first
+        var parsedData;
+        if (window.FurnostylesCrypto) {
+          try {
+            parsedData = JSON.parse(window.FurnostylesCrypto.deobfuscate(userDataStr));
+          } catch (e) {
+            // Fall back to plain JSON if de-obfuscation fails
+            parsedData = JSON.parse(userDataStr);
+          }
+        } else {
+          parsedData = JSON.parse(userDataStr);
+        }
+
+        // Check if session has expiration
+        if (parsedData.expiresAt) {
+          var now = Date.now();
+          if (now > parsedData.expiresAt) {
+            console.log('[Session] Session expired. Clearing...');
+            clear();
+            return {
+              user: null,
+              userData: null,
+              role: null,
+              expired: true
+            };
+          }
+          sessionState.userData = parsedData.data;
+          sessionState.expiresAt = parsedData.expiresAt;
+        } else {
+          sessionState.userData = parsedData;
+        }
       }
 
       if (userStr) {
-        sessionState.user = JSON.parse(userStr);
+        // Try to de-obfuscate first
+        if (window.FurnostylesCrypto) {
+          try {
+            sessionState.user = JSON.parse(window.FurnostylesCrypto.deobfuscate(userStr));
+          } catch (e) {
+            sessionState.user = JSON.parse(userStr);
+          }
+        } else {
+          sessionState.user = JSON.parse(userStr);
+        }
       } else if (fnsLocalUser) {
         // Migrate from LOCAL_USER to standard keys
         var localUser = JSON.parse(fnsLocalUser);
@@ -130,7 +193,8 @@
       return {
         user: sessionState.user,
         userData: sessionState.userData,
-        role: sessionState.role
+        role: sessionState.role,
+        expiresAt: sessionState.expiresAt
       };
     } catch (error) {
       console.error('[Session] Failed to load session:', error);

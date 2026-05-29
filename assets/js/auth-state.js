@@ -40,11 +40,15 @@
 
   /* Get dashboard URL based on role */
   function getDashboardUrl(role) {
-    if (role === 'vendor') return 'vendor/dashboard.html';
-    if (role === 'admin') return 'admin/dashboard.html';
-    if (role === 'landlord') return 'property-owner/dashboard.html';
-    if (role === 'provider') return 'provider/dashboard.html';
-    return 'client/dashboard.html';
+    if (role === 'vendor') return 'dashboards/vendor/index.html';
+    if (role === 'admin') return 'dashboards/admin/index.html';
+    if (role === 'super-admin') return 'dashboards/super-admin/index.html';
+    if (role === 'landlord') return 'dashboards/property-owner/index.html';
+    if (role === 'property-owner') return 'dashboards/property-owner/index.html';
+    if (role === 'provider') return 'dashboards/provider/index.html';
+    if (role === 'contractor') return 'dashboards/contractor/index.html';
+    if (role === 'agent') return 'dashboards/agent/index.html';
+    return 'dashboards/client/index.html';
   }
 
   /* Update header UI based on auth state */

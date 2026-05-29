@@ -22,96 +22,96 @@
    */
   var RoleRouteMappings = {
     client: {
-      dashboard: 'client/dashboard.html',
-      savedItems: 'client/saved-items.html',
-      inquiries: 'client/inquiries.html',
-      orders: 'client/orders.html',
-      profile: 'client/profile.html',
-      default: 'client/dashboard.html'
+      dashboard: 'dashboards/client/index.html',
+      savedItems: 'dashboards/client/saved-items.html',
+      inquiries: 'dashboards/client/inquiries.html',
+      orders: 'dashboards/client/orders.html',
+      profile: 'dashboards/client/profile.html',
+      default: 'dashboards/client/index.html'
     },
-    
+
     vendor: {
-      dashboard: 'vendor/dashboard.html',
-      products: 'vendor/products.html',
-      services: 'vendor/services.html',
-      inquiries: 'vendor/inquiries.html',
-      orders: 'vendor/orders.html',
-      reviews: 'vendor/reviews.html',
-      analytics: 'vendor/analytics.html',
-      settings: 'vendor/settings.html',
-      default: 'vendor/dashboard.html'
+      dashboard: 'dashboards/vendor/index.html',
+      products: 'dashboards/vendor/products.html',
+      services: 'dashboards/vendor/services.html',
+      inquiries: 'dashboards/vendor/inquiries.html',
+      orders: 'dashboards/vendor/orders.html',
+      reviews: 'dashboards/vendor/reviews.html',
+      analytics: 'dashboards/vendor/analytics.html',
+      settings: 'dashboards/vendor/settings.html',
+      default: 'dashboards/vendor/index.html'
     },
-    
+
     provider: {
-      dashboard: 'provider/dashboard.html',
-      services: 'provider/services.html',
-      inquiries: 'provider/inquiries.html',
-      orders: 'provider/orders.html',
-      reviews: 'provider/reviews.html',
-      portfolio: 'provider/portfolio.html',
-      profile: 'provider/profile.html',
-      default: 'provider/dashboard.html'
+      dashboard: 'dashboards/provider/index.html',
+      services: 'dashboards/provider/services.html',
+      inquiries: 'dashboards/provider/inquiries.html',
+      orders: 'dashboards/provider/orders.html',
+      reviews: 'dashboards/provider/reviews.html',
+      portfolio: 'dashboards/provider/portfolio.html',
+      profile: 'dashboards/provider/profile.html',
+      default: 'dashboards/provider/index.html'
     },
-    
+
     contractor: {
-      dashboard: 'provider/dashboard.html',
-      services: 'provider/services.html',
-      inquiries: 'provider/inquiries.html',
-      orders: 'provider/orders.html',
-      reviews: 'provider/reviews.html',
-      portfolio: 'provider/portfolio.html',
-      profile: 'provider/profile.html',
-      default: 'provider/dashboard.html'
+      dashboard: 'dashboards/contractor/index.html',
+      services: 'dashboards/contractor/services.html',
+      inquiries: 'dashboards/contractor/inquiries.html',
+      orders: 'dashboards/contractor/orders.html',
+      reviews: 'dashboards/contractor/reviews.html',
+      portfolio: 'dashboards/contractor/portfolio.html',
+      profile: 'dashboards/contractor/profile.html',
+      default: 'dashboards/contractor/index.html'
     },
-    
+
     'property-owner': {
-      dashboard: 'property-owner/dashboard.html',
-      properties: 'property-owner/properties.html',
-      inquiries: 'property-owner/inquiries.html',
-      orders: 'property-owner/orders.html',
-      reviews: 'property-owner/reviews.html',
-      profile: 'property-owner/profile.html',
-      default: 'property-owner/dashboard.html'
+      dashboard: 'dashboards/property-owner/index.html',
+      properties: 'dashboards/property-owner/properties.html',
+      inquiries: 'dashboards/property-owner/inquiries.html',
+      orders: 'dashboards/property-owner/orders.html',
+      reviews: 'dashboards/property-owner/reviews.html',
+      profile: 'dashboards/property-owner/profile.html',
+      default: 'dashboards/property-owner/index.html'
     },
-    
+
     agent: {
-      dashboard: 'agent/dashboard.html',
-      properties: 'agent/properties.html',
-      inquiries: 'agent/inquiries.html',
-      orders: 'agent/orders.html',
-      reviews: 'agent/reviews.html',
-      profile: 'agent/profile.html',
-      default: 'agent/dashboard.html'
+      dashboard: 'dashboards/agent/index.html',
+      properties: 'dashboards/agent/properties.html',
+      inquiries: 'dashboards/agent/inquiries.html',
+      orders: 'dashboards/agent/orders.html',
+      reviews: 'dashboards/agent/reviews.html',
+      profile: 'dashboards/agent/profile.html',
+      default: 'dashboards/agent/index.html'
     },
-    
+
     admin: {
-      dashboard: 'admin/dashboard.html',
-      users: 'admin/users.html',
-      vendors: 'admin/vendors.html',
-      products: 'admin/products.html',
-      services: 'admin/services.html',
-      properties: 'admin/properties.html',
-      inquiries: 'admin/inquiries.html',
-      orders: 'admin/orders.html',
-      reports: 'admin/reports.html',
-      settings: 'admin/settings.html',
-      default: 'admin/dashboard.html'
+      dashboard: 'dashboards/admin/index.html',
+      users: 'dashboards/admin/users.html',
+      vendors: 'dashboards/admin/vendors.html',
+      products: 'dashboards/admin/products.html',
+      services: 'dashboards/admin/services.html',
+      properties: 'dashboards/admin/properties.html',
+      inquiries: 'dashboards/admin/inquiries.html',
+      orders: 'dashboards/admin/orders.html',
+      reports: 'dashboards/admin/reports.html',
+      settings: 'dashboards/admin/settings.html',
+      default: 'dashboards/admin/index.html'
     },
-    
+
     'super-admin': {
-      dashboard: 'admin/dashboard.html',
-      users: 'admin/users.html',
-      vendors: 'admin/vendors.html',
-      products: 'admin/products.html',
-      services: 'admin/services.html',
-      properties: 'admin/properties.html',
-      inquiries: 'admin/inquiries.html',
-      orders: 'admin/orders.html',
-      reports: 'admin/reports.html',
-      settings: 'admin/settings.html',
-      admins: 'admin/admins.html',
-      system: 'admin/system.html',
-      default: 'admin/dashboard.html'
+      dashboard: 'dashboards/super-admin/index.html',
+      users: 'dashboards/admin/users.html',
+      vendors: 'dashboards/admin/vendors.html',
+      products: 'dashboards/admin/products.html',
+      services: 'dashboards/admin/services.html',
+      properties: 'dashboards/admin/properties.html',
+      inquiries: 'dashboards/admin/inquiries.html',
+      orders: 'dashboards/admin/orders.html',
+      reports: 'dashboards/admin/reports.html',
+      settings: 'dashboards/admin/settings.html',
+      admins: 'dashboards/admin/admins.html',
+      system: 'dashboards/admin/system.html',
+      default: 'dashboards/super-admin/index.html'
     }
   };
 
@@ -122,57 +122,68 @@
   var RouteProtectionStrategy = {
     /**
      * Protected routes by role
+     * Modern dashboards/ structure
      */
     protectedRoutes: {
-      'client/dashboard.html': ['client'],
-      'client/saved-items.html': ['client'],
-      'client/inquiries.html': ['client'],
-      'client/orders.html': ['client'],
-      'client/profile.html': ['client'],
-      
-      'vendor/dashboard.html': ['vendor'],
-      'vendor/products.html': ['vendor'],
-      'vendor/services.html': ['vendor'],
-      'vendor/inquiries.html': ['vendor'],
-      'vendor/orders.html': ['vendor'],
-      'vendor/reviews.html': ['vendor'],
-      'vendor/analytics.html': ['vendor'],
-      'vendor/settings.html': ['vendor'],
-      
-      'provider/dashboard.html': ['provider', 'contractor'],
-      'provider/services.html': ['provider', 'contractor'],
-      'provider/inquiries.html': ['provider', 'contractor'],
-      'provider/orders.html': ['provider', 'contractor'],
-      'provider/reviews.html': ['provider', 'contractor'],
-      'provider/portfolio.html': ['provider', 'contractor'],
-      'provider/profile.html': ['provider', 'contractor'],
-      
-      'property-owner/dashboard.html': ['property-owner'],
-      'property-owner/properties.html': ['property-owner'],
-      'property-owner/inquiries.html': ['property-owner'],
-      'property-owner/orders.html': ['property-owner'],
-      'property-owner/reviews.html': ['property-owner'],
-      'property-owner/profile.html': ['property-owner'],
-      
-      'agent/dashboard.html': ['agent'],
-      'agent/properties.html': ['agent'],
-      'agent/inquiries.html': ['agent'],
-      'agent/orders.html': ['agent'],
-      'agent/reviews.html': ['agent'],
-      'agent/profile.html': ['agent'],
-      
-      'admin/dashboard.html': ['admin', 'super-admin'],
-      'admin/users.html': ['admin', 'super-admin'],
-      'admin/vendors.html': ['admin', 'super-admin'],
-      'admin/products.html': ['admin', 'super-admin'],
-      'admin/services.html': ['admin', 'super-admin'],
-      'admin/properties.html': ['admin', 'super-admin'],
-      'admin/inquiries.html': ['admin', 'super-admin'],
-      'admin/orders.html': ['admin', 'super-admin'],
-      'admin/reports.html': ['admin', 'super-admin'],
-      'admin/settings.html': ['admin', 'super-admin'],
-      'admin/admins.html': ['super-admin'],
-      'admin/system.html': ['super-admin']
+      'dashboards/client/index.html': ['client'],
+      'dashboards/client/saved-items.html': ['client'],
+      'dashboards/client/inquiries.html': ['client'],
+      'dashboards/client/orders.html': ['client'],
+      'dashboards/client/profile.html': ['client'],
+
+      'dashboards/vendor/index.html': ['vendor'],
+      'dashboards/vendor/products.html': ['vendor'],
+      'dashboards/vendor/services.html': ['vendor'],
+      'dashboards/vendor/inquiries.html': ['vendor'],
+      'dashboards/vendor/orders.html': ['vendor'],
+      'dashboards/vendor/reviews.html': ['vendor'],
+      'dashboards/vendor/analytics.html': ['vendor'],
+      'dashboards/vendor/settings.html': ['vendor'],
+
+      'dashboards/provider/index.html': ['provider'],
+      'dashboards/provider/services.html': ['provider'],
+      'dashboards/provider/inquiries.html': ['provider'],
+      'dashboards/provider/orders.html': ['provider'],
+      'dashboards/provider/reviews.html': ['provider'],
+      'dashboards/provider/portfolio.html': ['provider'],
+      'dashboards/provider/profile.html': ['provider'],
+
+      'dashboards/contractor/index.html': ['contractor'],
+      'dashboards/contractor/services.html': ['contractor'],
+      'dashboards/contractor/inquiries.html': ['contractor'],
+      'dashboards/contractor/orders.html': ['contractor'],
+      'dashboards/contractor/reviews.html': ['contractor'],
+      'dashboards/contractor/portfolio.html': ['contractor'],
+      'dashboards/contractor/profile.html': ['contractor'],
+
+      'dashboards/property-owner/index.html': ['property-owner'],
+      'dashboards/property-owner/properties.html': ['property-owner'],
+      'dashboards/property-owner/inquiries.html': ['property-owner'],
+      'dashboards/property-owner/orders.html': ['property-owner'],
+      'dashboards/property-owner/reviews.html': ['property-owner'],
+      'dashboards/property-owner/profile.html': ['property-owner'],
+
+      'dashboards/agent/index.html': ['agent'],
+      'dashboards/agent/properties.html': ['agent'],
+      'dashboards/agent/inquiries.html': ['agent'],
+      'dashboards/agent/orders.html': ['agent'],
+      'dashboards/agent/reviews.html': ['agent'],
+      'dashboards/agent/profile.html': ['agent'],
+
+      'dashboards/admin/index.html': ['admin', 'super-admin'],
+      'dashboards/admin/users.html': ['admin', 'super-admin'],
+      'dashboards/admin/vendors.html': ['admin', 'super-admin'],
+      'dashboards/admin/products.html': ['admin', 'super-admin'],
+      'dashboards/admin/services.html': ['admin', 'super-admin'],
+      'dashboards/admin/properties.html': ['admin', 'super-admin'],
+      'dashboards/admin/inquiries.html': ['admin', 'super-admin'],
+      'dashboards/admin/orders.html': ['admin', 'super-admin'],
+      'dashboards/admin/reports.html': ['admin', 'super-admin'],
+      'dashboards/admin/settings.html': ['admin', 'super-admin'],
+      'dashboards/admin/admins.html': ['super-admin'],
+      'dashboards/admin/system.html': ['super-admin'],
+
+      'dashboards/super-admin/index.html': ['super-admin']
     },
     
     /**

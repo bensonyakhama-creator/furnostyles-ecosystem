@@ -22,39 +22,39 @@
    */
   var DashboardAccessConfig = {
     client: {
-      path: 'client/dashboard.html',
+      path: 'dashboards/client/index.html',
       accessLevel: 'basic',
       sections: ['overview', 'saved-items', 'inquiries', 'orders', 'profile'],
       features: ['view', 'save', 'inquire', 'track'],
       restrictions: ['no-admin', 'no-vendor-features']
     },
-    
+
     vendor: {
-      path: 'vendor/dashboard.html',
+      path: 'dashboards/vendor/index.html',
       accessLevel: 'full',
       sections: ['overview', 'products', 'services', 'inquiries', 'orders', 'reviews', 'analytics', 'settings'],
       features: ['view', 'create', 'update', 'delete', 'respond', 'analyze'],
       restrictions: ['no-admin-features']
     },
-    
+
     provider: {
-      path: 'provider/dashboard.html',
+      path: 'dashboards/provider/index.html',
       accessLevel: 'full',
       sections: ['overview', 'services', 'inquiries', 'orders', 'reviews', 'portfolio', 'profile'],
       features: ['view', 'create', 'update', 'delete', 'respond', 'showcase'],
       restrictions: ['no-admin-features']
     },
-    
+
     contractor: {
-      path: 'provider/dashboard.html',
+      path: 'dashboards/provider/index.html',
       accessLevel: 'full',
       sections: ['overview', 'services', 'inquiries', 'orders', 'reviews', 'portfolio', 'profile'],
       features: ['view', 'create', 'update', 'delete', 'respond', 'showcase'],
       restrictions: ['no-admin-features']
     },
-    
+
     'property-owner': {
-      path: 'property-owner/dashboard.html',
+      path: 'dashboards/property-owner/index.html',
       accessLevel: 'full',
       sections: ['overview', 'properties', 'inquiries', 'orders', 'reviews', 'profile'],
       features: ['view', 'create', 'update', 'delete', 'respond'],
@@ -62,23 +62,23 @@
     },
     
     agent: {
-      path: 'agent/dashboard.html',
+      path: 'dashboards/agent/index.html',
       accessLevel: 'full',
       sections: ['overview', 'properties', 'inquiries', 'orders', 'reviews', 'profile'],
       features: ['view', 'create', 'update', 'delete', 'respond'],
       restrictions: ['no-admin-features']
     },
-    
+
     admin: {
-      path: 'admin/dashboard.html',
+      path: 'dashboards/admin/index.html',
       accessLevel: 'admin',
       sections: ['overview', 'users', 'vendors', 'products', 'services', 'properties', 'inquiries', 'orders', 'reports', 'settings'],
       features: ['view', 'create', 'update', 'delete', 'moderate', 'manage', 'verify'],
       restrictions: ['no-super-admin-features']
     },
-    
+
     'super-admin': {
-      path: 'admin/dashboard.html',
+      path: 'dashboards/admin/index.html',
       accessLevel: 'super-admin',
       sections: ['overview', 'users', 'vendors', 'products', 'services', 'properties', 'inquiries', 'orders', 'reports', 'settings', 'admins', 'system'],
       features: ['view', 'create', 'update', 'delete', 'moderate', 'manage', 'verify', 'system'],

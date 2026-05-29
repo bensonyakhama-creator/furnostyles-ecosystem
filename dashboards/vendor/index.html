@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
   
-</head>
+  <link rel="stylesheet" href="assets/css/site-fix.css"></head>
 <body>
 
   <div id="fns-header-mount"></div>
@@ -219,9 +219,9 @@
         /* Render quick actions */
         var actionsData = [
           { label: 'Add Listing',  icon: '?', onClick: function () { window.location.href = 'add-listing.html'; } },
-          { label: 'My Listings',  icon: '—', onClick: function () { window.location.href = 'listings.html'; } },
-          { label: 'View Inquiries', icon: '—', onClick: function () { console.log('Inquiries — coming soon'); } },
-          { label: 'Update Profile', icon: '—', onClick: function () { console.log('Profile — coming soon'); } }
+          { label: 'My Listings',  icon: '?', onClick: function () { window.location.href = 'listings.html'; } },
+          { label: 'View Inquiries', icon: '?', onClick: function () { console.log('Inquiries ? coming soon'); } },
+          { label: 'Update Profile', icon: '?', onClick: function () { console.log('Profile ? coming soon'); } }
         ];
         window.FurnostylesDashboardComponents.renderQuickActions(quickActions, actionsData);
 
@@ -317,6 +317,13 @@
 
       /* Initialize dashboard on page load */
       function initDashboard() {
+        // Show loading state
+        metricsGrid.innerHTML = '<div class="loading-spinner">Loading dashboard...</div>';
+        quickActions.innerHTML = '<div class="loading-spinner">Loading...</div>';
+        productList.innerHTML = '<div class="loading-spinner">Loading...</div>';
+        inquiryList.innerHTML = '<div class="loading-spinner">Loading...</div>';
+        performanceList.innerHTML = '<div class="loading-spinner">Loading...</div>';
+
         loadUserInfo();
         renderDashboard();
       }
@@ -329,5 +336,23 @@
 
     }());
   </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase Config & Init -->
+  <script src="../shared/firebase/firebase-config.js"></script>
+  <script src="../shared/firebase/firebase-init.js"></script>
+  <!-- Firebase Bridge -->
+  <script src="../shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Auth, Firestore, Session -->
+  <script src="../assets/js/firestore.js" defer></script>
+  <script src="../assets/js/session.js" defer></script>
+  <script src="../assets/js/auth.js" defer></script>
+    <!-- Auth Guard -->
+  <script src="../assets/js/auth-guard.js" data-required-role="vendor"></script>
 </body>
 </html>
+
+
+

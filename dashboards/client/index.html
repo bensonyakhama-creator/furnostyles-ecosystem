@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../shared/layout/footer.css">
   <link rel="stylesheet" href="../shared/dashboard-layout.css">
   
-</head>
+  <link rel="stylesheet" href="assets/css/site-fix.css"></head>
 <body>
 
   <div id="fns-header-mount"></div>
@@ -106,10 +106,44 @@
       var activityList = document.getElementById('activityList');
       var servicesList = document.getElementById('servicesList');
 
-      /* Auth guard: require authentication */
-      if (window.FurnostylesAuthGuards) {
-        window.FurnostylesAuthGuards.requireAuth();
+      /* Auth guard: require authentication and verify role */
+      function checkAuthAndRole() {
+        // Get user from localStorage
+        var userKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.LOCAL_USER : 'fns_local_user';
+        var userSession = localStorage.getItem(userKey);
+        
+        if (!userSession) {
+          window.location.href = '../../login.html?redirect=dashboards/client/index.html';
+          return false;
+        }
+
+        try {
+          var user = JSON.parse(userSession);
+          
+          // Verify user has client role
+          if (user.role !== 'client' && user.role !== 'individual-seller' && user.role !== 'individual-landlord') {
+            // Redirect to appropriate dashboard based on role
+            var redirectMap = {
+              'vendor': '../../dashboards/vendor/index.html',
+              'provider': '../../dashboards/provider/index.html',
+              'admin': '../../dashboards/admin/index.html',
+              'property-owner': '../../dashboards/property-owner/index.html'
+            };
+            var redirectUrl = redirectMap[user.role] || '../../index.html';
+            window.location.href = redirectUrl;
+            return false;
+          }
+
+          return user;
+        } catch (e) {
+          console.error('Failed to parse user session:', e);
+          window.location.href = '../../login.html?redirect=dashboards/client/index.html';
+          return false;
+        }
       }
+
+      var currentUser = checkAuthAndRole();
+      if (!currentUser) return;
 
       /* Load user info */
       function loadUserInfo() {
@@ -197,6 +231,13 @@
 
       /* Initialize dashboard on page load */
       function initDashboard() {
+        // Show loading state
+        metricsGrid.innerHTML = '<div class="loading-spinner">Loading dashboard...</div>';
+        quickActions.innerHTML = '<div class="loading-spinner">Loading...</div>';
+        inquiryList.innerHTML = '<div class="loading-spinner">Loading...</div>';
+        activityList.innerHTML = '<div class="loading-spinner">Loading...</div>';
+        servicesList.innerHTML = '<div class="loading-spinner">Loading...</div>';
+
         loadUserInfo();
         renderDashboard();
       }
@@ -209,5 +250,23 @@
 
     }());
   </script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase Config & Init -->
+  <script src="../shared/firebase/firebase-config.js"></script>
+  <script src="../shared/firebase/firebase-init.js"></script>
+  <!-- Firebase Bridge -->
+  <script src="../shared/firebase/firebase-bridge.js" defer></script>
+  <!-- Auth, Firestore, Session -->
+  <script src="../assets/js/firestore.js" defer></script>
+  <script src="../assets/js/session.js" defer></script>
+  <script src="../assets/js/auth.js" defer></script>
+    <!-- Auth Guard -->
+  <script src="../assets/js/auth-guard.js" data-required-role="client"></script>
 </body>
 </html>
+
+
+

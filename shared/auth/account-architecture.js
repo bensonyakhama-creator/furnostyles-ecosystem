@@ -34,7 +34,7 @@
         'view:own-inquiries',
         'track:own-orders'
       ],
-      dashboard: 'client/dashboard.html',
+      dashboard: 'dashboards/client/index.html',
       features: ['saved-items', 'inquiries', 'orders', 'profile'],
       verificationLevel: 'none'
     },
@@ -54,7 +54,7 @@
         'view:own-orders',
         'update:own-profile'
       ],
-      dashboard: 'vendor/dashboard.html',
+      dashboard: 'dashboards/vendor/index.html',
       features: ['products', 'inquiries', 'orders', 'reviews', 'profile'],
       verificationLevel: 'basic',
       verificationRequirements: ['phone', 'id'],
@@ -75,7 +75,7 @@
         'view:own-orders',
         'update:own-profile'
       ],
-      dashboard: 'property-owner/dashboard.html',
+      dashboard: 'dashboards/property-owner/index.html',
       features: ['properties', 'inquiries', 'orders', 'reviews', 'profile'],
       verificationLevel: 'basic',
       verificationRequirements: ['phone', 'id'],
@@ -99,12 +99,12 @@
         'view:own-inquiries',
         'view:own-orders'
       ],
-      dashboard: 'vendor/dashboard.html',
+      dashboard: 'dashboards/vendor/index.html',
       features: ['products', 'services', 'inquiries', 'orders', 'reviews', 'profile', 'analytics'],
       verificationLevel: 'full',
       verificationRequirements: ['phone', 'id', 'business-license', 'tax-registration', 'bank-account']
     },
-    
+
     PROVIDER: {
       id: 'provider',
       name: 'Service Provider',
@@ -119,7 +119,7 @@
         'view:own-inquiries',
         'view:own-orders'
       ],
-      dashboard: 'provider/dashboard.html',
+      dashboard: 'dashboards/provider/index.html',
       features: ['services', 'inquiries', 'orders', 'reviews', 'profile', 'portfolio'],
       verificationLevel: 'full',
       verificationRequirements: ['phone', 'id', 'business-license', 'tax-registration', 'bank-account']
@@ -138,12 +138,12 @@
         'view:own-inquiries',
         'view:own-orders'
       ],
-      dashboard: 'property-owner/dashboard.html',
+      dashboard: 'dashboards/property-owner/index.html',
       features: ['properties', 'inquiries', 'orders', 'reviews', 'profile'],
       verificationLevel: 'full',
       verificationRequirements: ['phone', 'id', 'business-license', 'tax-registration', 'bank-account']
     },
-    
+
     ADMIN: {
       id: 'admin',
       name: 'Admin',
@@ -160,7 +160,7 @@
         'view:reports',
         'manage:settings'
       ],
-      dashboard: 'admin/dashboard.html',
+      dashboard: 'dashboards/admin/index.html',
       features: ['users', 'vendors', 'products', 'services', 'properties', 'inquiries', 'orders', 'reports', 'settings'],
       verificationLevel: 'none'
     }

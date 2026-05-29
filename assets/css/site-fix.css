@@ -1,0 +1,323 @@
+/* =========================================================
+   FURNOSTYLES SITE-WIDE PREMIUM FIX
+   Load last on all pages
+   ========================================================= */
+
+:root {
+  --fs-white: #ffffff;
+  --fs-card: #eef1f3;
+  --fs-card-2: #e5eaee;
+  --fs-petrol: #0b3b46;
+  --fs-petrol-2: #123d4a;
+  --fs-gold: #d4af37;
+  --fs-text: #1f2933;
+  --fs-muted: #5f6b76;
+}
+
+/* PAGE BACKGROUND */
+body,
+main,
+.premium-main,
+.fns-main {
+  background: var(--fs-white) !important;
+  color: var(--fs-text) !important;
+}
+
+/* SECTION SPACING */
+section,
+.content-section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+/* LIGHT SECTIONS */
+.section-light,
+.content-section:not(.section-premium) {
+  background: var(--fs-white) !important;
+}
+
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.content-section:not(.section-premium) h1,
+.content-section:not(.section-premium) h2,
+.content-section:not(.section-premium) h3 {
+  color: var(--fs-petrol) !important;
+  -webkit-text-fill-color: var(--fs-petrol) !important;
+}
+
+.section-light p,
+.content-section:not(.section-premium) p {
+  color: var(--fs-muted) !important;
+  -webkit-text-fill-color: var(--fs-muted) !important;
+}
+
+/* DARK PREMIUM SECTIONS */
+.section-premium,
+.home-trust-strip,
+.premium-repair-ad,
+.contact-cta-section {
+  background: linear-gradient(135deg, #062f38, #0b3b46 55%, #0f5261) !important;
+  color: #ffffff !important;
+}
+
+.section-premium h1,
+.section-premium h2,
+.section-premium h3,
+.section-premium h4,
+.section-premium p,
+.section-premium span,
+.home-trust-strip h4,
+.home-trust-strip p,
+.premium-repair-ad h2,
+.premium-repair-ad p,
+.contact-cta-section h2,
+.contact-cta-section p {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* BADGES */
+.section-badge,
+.hero-badge,
+.badge-premium,
+.section-header > span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--fs-gold) !important;
+  color: var(--fs-petrol) !important;
+  -webkit-text-fill-color: var(--fs-petrol) !important;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* CARDS */
+.card-light,
+.fns-card,
+.premium-service-box,
+.premium-product-card,
+.blog-card,
+.marketplace-card,
+.project-card,
+.ecosystem-card,
+.category-card,
+.request-category-card,
+.repair-card,
+.model-card,
+.testimonial-card,
+.contact-cta-card {
+  background: var(--fs-card) !important;
+  border: 1px solid rgba(11, 59, 70, 0.12) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 18px 45px rgba(11, 59, 70, 0.08) !important;
+  overflow: hidden !important;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease !important;
+}
+
+/* CARD HOVER GOLD STROKE */
+.card-light:hover,
+.fns-card:hover,
+.premium-service-box:hover,
+.premium-product-card:hover,
+.blog-card:hover,
+.marketplace-card:hover,
+.project-card:hover,
+.ecosystem-card:hover,
+.category-card:hover,
+.request-category-card:hover,
+.repair-card:hover,
+.model-card:hover,
+.testimonial-card:hover,
+.contact-cta-card:hover {
+  transform: translateY(-6px) !important;
+  border-color: rgba(212, 175, 55, 0.55) !important;
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 55, 0.30),
+    0 28px 70px rgba(11, 59, 70, 0.13) !important;
+}
+
+/* IMAGE CARDS */
+.premium-service-box,
+.premium-product-card,
+.blog-card,
+.request-category-card,
+.marketplace-card,
+.project-card,
+.category-card,
+.repair-card {
+  padding: 0 !important;
+}
+
+.premium-service-box img,
+.premium-product-card img,
+.blog-card img,
+.request-category-card img,
+.marketplace-card img,
+.project-card img,
+.category-card img,
+.repair-card img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  transition: transform .45s ease, filter .45s ease !important;
+}
+
+.premium-service-box:hover img,
+.premium-product-card:hover img,
+.blog-card:hover img,
+.request-category-card:hover img,
+.marketplace-card:hover img,
+.project-card:hover img,
+.category-card:hover img,
+.repair-card:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* CARD CONTENT */
+.premium-service-content,
+.premium-product-info,
+.blog-content,
+.marketplace-content,
+.project-content,
+.category-content,
+.repair-content {
+  padding: 22px 26px 26px !important;
+}
+
+/* LINKS */
+main a:not(.btn):not(.fns-header-btn) {
+  color: var(--fs-gold) !important;
+  text-decoration: none !important;
+  font-weight: 800;
+}
+
+main a:not(.btn):hover {
+  color: #e8c558 !important;
+}
+
+/* BUTTONS */
+.btn,
+.fns-btn,
+button[type="submit"],
+.contact-cta-actions a {
+  border-radius: 999px !important;
+  transition: transform .35s ease, box-shadow .35s ease, background .35s ease !important;
+}
+
+.btn:hover,
+.fns-btn:hover,
+button[type="submit"]:hover,
+.contact-cta-actions a:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* GOLD BUTTON */
+.btn-gold,
+.btn-primary,
+.fns-btn-primary {
+  background: linear-gradient(145deg, #d4af37, #e0bc4f) !important;
+  color: #0b3b46 !important;
+  -webkit-text-fill-color: #0b3b46 !important;
+  border: none !important;
+  font-weight: 900 !important;
+}
+
+/* GLASS / OUTLINE BUTTON */
+.btn-glass,
+.btn-outline,
+.fns-btn-outline {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* FORMS / DASHBOARDS */
+input,
+select,
+textarea {
+  border-radius: 14px !important;
+  border: 1px solid rgba(11,59,70,.16) !important;
+}
+
+.dashboard-card,
+.admin-card,
+.account-card,
+.vendor-card,
+.panel,
+.form-card {
+  background: var(--fs-card) !important;
+  border: 1px solid rgba(11,59,70,.12) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 16px 40px rgba(11,59,70,.08) !important;
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+  section,
+  .content-section {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  .premium-service-box img,
+  .premium-product-card img,
+  .blog-card img,
+  .request-category-card img,
+  .marketplace-card img,
+  .project-card img,
+  .category-card img,
+  .repair-card img {
+    height: 190px !important;
+  }
+
+  h1 { font-size: 36px !important; }
+  h2 { font-size: 30px !important; }
+}
+
+.marketplace-hero,
+.marketplace-search-section {
+    display: block !important;
+    min-height: auto !important;
+}
+
+.marketplace-hero::before,
+.marketplace-search-section::before {
+    display: none !important;
+}
+
+.marketplace-card,
+.marketplace-preview-card,
+.market-card {
+    height: auto !important;
+    min-height: unset !important;
+}
+
+.marketplace-card a,
+.marketplace-preview-card a,
+.market-card a {
+
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 24px !important;
+
+    background: #0b3b46 !important;
+    color: #fff !important;
+
+    border-radius: 999px !important;
+
+    text-decoration: none !important;
+
+    font-weight: 700;
+}

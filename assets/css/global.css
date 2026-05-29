@@ -170,694 +170,40 @@ body {
 /* ============================================================
    ALTERNATING SECTION BACKGROUNDS
    Creates visual rhythm with alternating white/grey sections
+   REMOVED: Too global - replaced with utility classes below
 ============================================================ */
-
-section:nth-of-type(even) {
-  background: #eef2f3;
-  padding: 100px 24px;
-}
-
-section:nth-of-type(odd) {
-  background: #ffffff;
-  padding: 100px 24px;
-}
 
 /* ============================================================
    STRONG READABLE DEFAULTS
    Ensures text visibility across all sections and cards
+   REMOVED: Too global - replaced with utility classes below
 ============================================================ */
-
-section,
-.card,
-.service-card,
-.advantage-card,
-.feature-card,
-.info-card,
-.blog-card,
-.product-card,
-.premium-card,
-.fns-card,
-.premium-stat-card,
-.premium-ecosystem-card,
-.premium-service-box,
-.fns-feature-card,
-.fns-solution-card,
-.fns-trust-card,
-.fns-contact-option-card,
-.fns-contact-info-card,
-.fns-contact-method-card,
-.fns-project-complete-card,
-.fns-portfolio-detail-card,
-.fns-portfolio-challenge-card,
-.fns-portfolio-deliverable-card,
-.fns-resource-card,
-.fns-additional-service-card,
-.fns-repair-category-link {
-  color: var(--charcoal);
-}
 
 /* ============================================================
    PREMIUM LAYERED CARD SYSTEM
    Creates visual hierarchy with layered backgrounds
+   REMOVED: Too global - replaced with utility classes below
 ============================================================ */
 
-.card,
-.service-card,
-.advantage-card,
-.feature-card,
-.info-card,
-.value-card,
-.trust-card,
-.blog-card,
-.product-card,
-.content-card,
-.premium-card,
-.fns-card,
-.premium-stat-card,
-.premium-service-box,
-.fns-feature-card,
-.fns-solution-card,
-.fns-trust-card,
-.fns-contact-option-card,
-.fns-contact-info-card,
-.fns-contact-method-card,
-.fns-project-complete-card,
-.fns-portfolio-detail-card,
-.fns-portfolio-challenge-card,
-.fns-portfolio-deliverable-card,
-.fns-resource-card,
-.fns-additional-service-card,
-.fns-repair-category-link,
-.premium-ecosystem-card {
-  background: #eef1f2 !important;
-  border: 1px solid rgba(0, 60, 76, 0.12);
-  border-radius: 28px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 60, 76, 0.06);
-  padding: 42px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* REMOVED: Global card hover states - replaced with utility classes below */
 
-.card:hover,
-.service-card:hover,
-.advantage-card:hover,
-.feature-card:hover,
-.info-card:hover,
-.value-card:hover,
-.trust-card:hover,
-.blog-card:hover,
-.product-card:hover,
-.content-card:hover,
-.premium-card:hover,
-.fns-card:hover,
-.premium-stat-card:hover,
-.premium-service-box:hover,
-.fns-feature-card:hover,
-.fns-solution-card:hover,
-.fns-trust-card:hover,
-.fns-contact-option-card:hover,
-.fns-contact-info-card:hover,
-.fns-contact-method-card:hover,
-.fns-project-complete-card:hover,
-.fns-portfolio-detail-card:hover,
-.fns-portfolio-challenge-card:hover,
-.fns-portfolio-deliverable-card:hover,
-.fns-resource-card:hover,
-.fns-additional-service-card:hover,
-.fns-repair-category-link:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 60, 76, 0.1);
-  border-color: rgba(212, 175, 55, 0.3);
-}
-
-/* Cards inside grey sections become white */
-section:nth-of-type(even) .card,
-section:nth-of-type(even) .service-card,
-section:nth-of-type(even) .advantage-card,
-section:nth-of-type(even) .feature-card,
-section:nth-of-type(even) .info-card,
-section:nth-of-type(even) .value-card,
-section:nth-of-type(even) .trust-card,
-section:nth-of-type(even) .blog-card,
-section:nth-of-type(even) .product-card,
-section:nth-of-type(even) .content-card,
-section:nth-of-type(even) .premium-card,
-section:nth-of-type(even) .fns-card,
-section:nth-of-type(even) .premium-stat-card,
-section:nth-of-type(even) .premium-service-box,
-section:nth-of-type(even) .fns-feature-card,
-section:nth-of-type(even) .fns-solution-card,
-section:nth-of-type(even) .fns-trust-card,
-section:nth-of-type(even) .fns-contact-option-card,
-section:nth-of-type(even) .fns-contact-info-card,
-section:nth-of-type(even) .fns-contact-method-card,
-section:nth-of-type(even) .fns-project-complete-card,
-section:nth-of-type(even) .fns-portfolio-detail-card,
-section:nth-of-type(even) .fns-portfolio-challenge-card,
-section:nth-of-type(even) .fns-portfolio-deliverable-card,
-section:nth-of-type(even) .fns-resource-card,
-section:nth-of-type(even) .fns-additional-service-card,
-section:nth-of-type(even) .fns-repair-category-link,
-section:nth-of-type(even) .premium-ecosystem-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 60, 76, 0.15);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 60, 76, 0.08);
-}
+/* REMOVED: Cards inside grey sections - replaced with utility classes below */
 
 /* ============================================================
    PREMIUM BULLET LISTS
    Elegant checkmark bullets with proper spacing
+   REMOVED: Too global - replaced with utility classes below
 ============================================================ */
 
-section ul,
-.card ul,
-.service-card ul,
-.advantage-card ul,
-.feature-card ul,
-.info-card ul,
-.blog-card ul,
-.product-card ul,
-.premium-card ul,
-.fns-card ul,
-.premium-stat-card ul,
-.premium-service-box ul,
-.fns-feature-card ul,
-.fns-solution-card ul,
-.fns-trust-card ul,
-.fns-contact-option-card ul,
-.fns-contact-info-card ul,
-.fns-contact-method-card ul,
-.fns-project-complete-card ul,
-.fns-portfolio-detail-card ul,
-.fns-portfolio-challenge-card ul,
-.fns-portfolio-deliverable-card ul,
-.fns-resource-card ul,
-.fns-additional-service-card ul,
-.fns-repair-category-link ul {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 0 0;
-}
+/* REMOVED: Global bullet list styling - replaced with utility classes below */
 
-section ul li,
-.card ul li,
-.service-card ul li,
-.advantage-card ul li,
-.feature-card ul li,
-.info-card ul li,
-.blog-card ul li,
-.product-card ul li,
-.premium-card ul li,
-.fns-card ul li,
-.premium-stat-card ul li,
-.premium-service-box ul li,
-.fns-feature-card ul li,
-.fns-solution-card ul li,
-.fns-trust-card ul li,
-.fns-contact-option-card ul li,
-.fns-contact-info-card ul li,
-.fns-contact-method-card ul li,
-.fns-project-complete-card ul li,
-.fns-portfolio-detail-card ul li,
-.fns-portfolio-challenge-card ul li,
-.fns-portfolio-deliverable-card ul li,
-.fns-resource-card ul li,
-.fns-additional-service-card ul li,
-.fns-repair-category-link ul li {
-  padding: 16px 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  color: #667085;
-  font-size: 16px;
-  line-height: 1.7;
-  border-bottom: 1px solid rgba(0, 60, 76, 0.08);
-}
+/* REMOVED: Global text color selectors - replaced with utility classes below */
 
-section ul li:last-child,
-.card ul li:last-child,
-.service-card ul li:last-child,
-.advantage-card ul li:last-child,
-.feature-card ul li:last-child,
-.info-card ul li:last-child,
-.blog-card ul li:last-child,
-.product-card ul li:last-child,
-.premium-card ul li:last-child,
-.fns-card ul li:last-child,
-.premium-stat-card ul li:last-child,
-.premium-service-box ul li:last-child,
-.fns-feature-card ul li:last-child,
-.fns-solution-card ul li:last-child,
-.fns-trust-card ul li:last-child,
-.fns-contact-option-card ul li:last-child,
-.fns-contact-info-card ul li:last-child,
-.fns-contact-method-card ul li:last-child,
-.fns-project-complete-card ul li:last-child,
-.fns-portfolio-detail-card ul li:last-child,
-.fns-portfolio-challenge-card ul li:last-child,
-.fns-portfolio-deliverable-card ul li:last-child,
-.fns-resource-card ul li:last-child,
-.fns-additional-service-card ul li:last-child,
-.fns-repair-category-link ul li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
+/* REMOVED: Global heading color selectors - replaced with utility classes below */
 
-section ul li::before,
-.card ul li::before,
-.service-card ul li::before,
-.advantage-card ul li::before,
-.feature-card ul li::before,
-.info-card ul li::before,
-.blog-card ul li::before,
-.product-card ul li::before,
-.premium-card ul li::before,
-.fns-card ul li::before,
-.premium-stat-card ul li::before,
-.premium-service-box ul li::before,
-.fns-feature-card ul li::before,
-.fns-solution-card ul li::before,
-.fns-trust-card ul li::before,
-.fns-contact-option-card ul li::before,
-.fns-contact-info-card ul li::before,
-.fns-contact-method-card ul li::before,
-.fns-project-complete-card ul li::before,
-.fns-portfolio-detail-card ul li::before,
-.fns-portfolio-challenge-card ul li::before,
-.fns-portfolio-deliverable-card ul li::before,
-.fns-resource-card ul li::before,
-.fns-additional-service-card ul li::before,
-.fns-repair-category-link ul li::before {
-  content: '✓';
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
+/* REMOVED: Global dark section text selectors - replaced with utility classes below */
 
-section p,
-section li,
-.card p,
-.card li,
-.service-card p,
-.service-card li,
-.advantage-card p,
-.advantage-card li,
-.feature-card p,
-.feature-card li,
-.info-card p,
-.info-card li,
-.blog-card p,
-.blog-card li,
-.product-card p,
-.product-card li,
-.premium-card p,
-.premium-card li,
-.fns-card p,
-.fns-card li,
-.premium-stat-card p,
-.premium-stat-card li,
-.premium-ecosystem-card p,
-.premium-ecosystem-card li,
-.premium-service-box p,
-.premium-service-box li,
-.fns-feature-card p,
-.fns-feature-card li,
-.fns-solution-card p,
-.fns-solution-card li,
-.fns-trust-card p,
-.fns-trust-card li,
-.fns-contact-option-card p,
-.fns-contact-option-card li,
-.fns-contact-info-card p,
-.fns-contact-info-card li,
-.fns-contact-method-card p,
-.fns-contact-method-card li,
-.fns-project-complete-card p,
-.fns-project-complete-card li,
-.fns-portfolio-detail-card p,
-.fns-portfolio-detail-card li,
-.fns-portfolio-challenge-card p,
-.fns-portfolio-challenge-card li,
-.fns-portfolio-deliverable-card p,
-.fns-portfolio-deliverable-card li,
-.fns-resource-card p,
-.fns-resource-card li,
-.fns-additional-service-card p,
-.fns-additional-service-card li,
-.fns-repair-category-link p,
-.fns-repair-category-link li {
-  color: #344054;
-}
-
-section h1,
-section h2,
-section h3,
-section h4,
-section h5,
-section h6,
-.card h1,
-.card h2,
-.card h3,
-.card h4,
-.card h5,
-.card h6,
-.service-card h1,
-.service-card h2,
-.service-card h3,
-.service-card h4,
-.service-card h5,
-.service-card h6,
-.advantage-card h1,
-.advantage-card h2,
-.advantage-card h3,
-.advantage-card h4,
-.advantage-card h5,
-.advantage-card h6,
-.feature-card h1,
-.feature-card h2,
-.feature-card h3,
-.feature-card h4,
-.feature-card h5,
-.feature-card h6,
-.info-card h1,
-.info-card h2,
-.info-card h3,
-.info-card h4,
-.info-card h5,
-.info-card h6,
-.blog-card h1,
-.blog-card h2,
-.blog-card h3,
-.blog-card h4,
-.blog-card h5,
-.blog-card h6,
-.product-card h1,
-.product-card h2,
-.product-card h3,
-.product-card h4,
-.product-card h5,
-.product-card h6,
-.premium-card h1,
-.premium-card h2,
-.premium-card h3,
-.premium-card h4,
-.premium-card h5,
-.premium-card h6,
-.fns-card h1,
-.fns-card h2,
-.fns-card h3,
-.fns-card h4,
-.fns-card h5,
-.fns-card h6,
-.premium-stat-card h1,
-.premium-stat-card h2,
-.premium-stat-card h3,
-.premium-stat-card h4,
-.premium-stat-card h5,
-.premium-stat-card h6,
-.premium-ecosystem-card h1,
-.premium-ecosystem-card h2,
-.premium-ecosystem-card h3,
-.premium-ecosystem-card h4,
-.premium-ecosystem-card h5,
-.premium-ecosystem-card h6,
-.premium-service-box h1,
-.premium-service-box h2,
-.premium-service-box h3,
-.premium-service-box h4,
-.premium-service-box h5,
-.premium-service-box h6,
-.fns-feature-card h1,
-.fns-feature-card h2,
-.fns-feature-card h3,
-.fns-feature-card h4,
-.fns-feature-card h5,
-.fns-feature-card h6,
-.fns-solution-card h1,
-.fns-solution-card h2,
-.fns-solution-card h3,
-.fns-solution-card h4,
-.fns-solution-card h5,
-.fns-solution-card h6,
-.fns-trust-card h1,
-.fns-trust-card h2,
-.fns-trust-card h3,
-.fns-trust-card h4,
-.fns-trust-card h5,
-.fns-trust-card h6,
-.fns-contact-option-card h1,
-.fns-contact-option-card h2,
-.fns-contact-option-card h3,
-.fns-contact-option-card h4,
-.fns-contact-option-card h5,
-.fns-contact-option-card h6,
-.fns-contact-info-card h1,
-.fns-contact-info-card h2,
-.fns-contact-info-card h3,
-.fns-contact-info-card h4,
-.fns-contact-info-card h5,
-.fns-contact-info-card h6,
-.fns-contact-method-card h1,
-.fns-contact-method-card h2,
-.fns-contact-method-card h3,
-.fns-contact-method-card h4,
-.fns-contact-method-card h5,
-.fns-contact-method-card h6,
-.fns-project-complete-card h1,
-.fns-project-complete-card h2,
-.fns-project-complete-card h3,
-.fns-project-complete-card h4,
-.fns-project-complete-card h5,
-.fns-project-complete-card h6,
-.fns-portfolio-detail-card h1,
-.fns-portfolio-detail-card h2,
-.fns-portfolio-detail-card h3,
-.fns-portfolio-detail-card h4,
-.fns-portfolio-detail-card h5,
-.fns-portfolio-detail-card h6,
-.fns-portfolio-challenge-card h1,
-.fns-portfolio-challenge-card h2,
-.fns-portfolio-challenge-card h3,
-.fns-portfolio-challenge-card h4,
-.fns-portfolio-challenge-card h5,
-.fns-portfolio-challenge-card h6,
-.fns-portfolio-deliverable-card h1,
-.fns-portfolio-deliverable-card h2,
-.fns-portfolio-deliverable-card h3,
-.fns-portfolio-deliverable-card h4,
-.fns-portfolio-deliverable-card h5,
-.fns-portfolio-deliverable-card h6,
-.fns-resource-card h1,
-.fns-resource-card h2,
-.fns-resource-card h3,
-.fns-resource-card h4,
-.fns-resource-card h5,
-.fns-resource-card h6,
-.fns-additional-service-card h1,
-.fns-additional-service-card h2,
-.fns-additional-service-card h3,
-.fns-additional-service-card h4,
-.fns-additional-service-card h5,
-.fns-additional-service-card h6,
-.fns-repair-category-link h1,
-.fns-repair-category-link h2,
-.fns-repair-category-link h3,
-.fns-repair-category-link h4,
-.fns-repair-category-link h5,
-.fns-repair-category-link h6 {
-  color: #003c4c;
-  font-weight: 700;
-  margin-bottom: 24px;
-  line-height: 1.3;
-}
-
-/* Dark sections keep white text */
-.dark-section,
-.dark-section p,
-.dark-section li,
-.dark-section h1,
-.dark-section h2,
-.dark-section h3,
-.dark-section h4,
-.dark-section h5,
-.dark-section h6,
-.section-dark,
-.section-dark p,
-.section-dark li,
-.section-dark h1,
-.section-dark h2,
-.section-dark h3,
-.section-dark h4,
-.section-dark h5,
-.section-dark h6,
-.premium-dark-section,
-.premium-dark-section p,
-.premium-dark-section li,
-.premium-dark-section h1,
-.premium-dark-section h2,
-.premium-dark-section h3,
-.premium-dark-section h4,
-.premium-dark-section h5,
-.premium-dark-section h6,
-.fns-advantage-section,
-.fns-advantage-section p,
-.fns-advantage-section li,
-.fns-advantage-section h1,
-.fns-advantage-section h2,
-.fns-advantage-section h3,
-.fns-advantage-section h4,
-.fns-advantage-section h5,
-.fns-advantage-section h6,
-.fns-process-section,
-.fns-process-section p,
-.fns-process-section li,
-.fns-process-section h1,
-.fns-process-section h2,
-.fns-process-section h3,
-.fns-process-section h4,
-.fns-process-section h5,
-.fns-process-section h6,
-.fns-faq-section,
-.fns-faq-section p,
-.fns-faq-section li,
-.fns-faq-section h1,
-.fns-faq-section h2,
-.fns-faq-section h3,
-.fns-faq-section h4,
-.fns-faq-section h5,
-.fns-faq-section h6,
-.fns-emergency-section,
-.fns-emergency-section p,
-.fns-emergency-section li,
-.fns-emergency-section h1,
-.fns-emergency-section h2,
-.fns-emergency-section h3,
-.fns-emergency-section h4,
-.fns-emergency-section h5,
-.fns-emergency-section h6,
-.fns-portfolio-categories-section,
-.fns-portfolio-categories-section p,
-.fns-portfolio-categories-section li,
-.fns-portfolio-categories-section h1,
-.fns-portfolio-categories-section h2,
-.fns-portfolio-categories-section h3,
-.fns-portfolio-categories-section h4,
-.fns-portfolio-categories-section h5,
-.fns-portfolio-categories-section h6,
-.fns-blog-categories-section,
-.fns-blog-categories-section p,
-.fns-blog-categories-section li,
-.fns-blog-categories-section h1,
-.fns-blog-categories-section h2,
-.fns-blog-categories-section h3,
-.fns-blog-categories-section h4,
-.fns-blog-categories-section h5,
-.fns-blog-categories-section h6 {
-  color: var(--fns-white);
-}
-
-/* ============================================================
-   MOBILE RESPONSIVENESS FOR CARDS
-   Ensures cards stack beautifully on mobile
-============================================================ */
-
-@media (max-width: 768px) {
-  section:nth-of-type(even),
-  section:nth-of-type(odd) {
-    padding: 70px 20px;
-  }
-
-  .card,
-  .service-card,
-  .advantage-card,
-  .feature-card,
-  .info-card,
-  .value-card,
-  .trust-card,
-  .blog-card,
-  .product-card,
-  .content-card,
-  .premium-card,
-  .fns-card,
-  .premium-stat-card,
-  .premium-service-box,
-  .fns-feature-card,
-  .fns-solution-card,
-  .fns-trust-card,
-  .fns-contact-option-card,
-  .fns-contact-info-card,
-  .fns-contact-method-card,
-  .fns-project-complete-card,
-  .fns-portfolio-detail-card,
-  .fns-portfolio-challenge-card,
-  .fns-portfolio-deliverable-card,
-  .fns-resource-card,
-  .fns-additional-service-card,
-  .fns-repair-category-link,
-  .premium-ecosystem-card {
-    padding: 32px;
-    border-radius: 20px;
-  }
-
-  section ul li,
-  .card ul li,
-  .service-card ul li,
-  .advantage-card ul li,
-  .feature-card ul li,
-  .info-card ul li,
-  .blog-card ul li,
-  .product-card ul li,
-  .premium-card ul li,
-  .fns-card ul li,
-  .premium-stat-card ul li,
-  .premium-service-box ul li,
-  .fns-feature-card ul li,
-  .fns-solution-card ul li,
-  .fns-trust-card ul li,
-  .fns-contact-option-card ul li,
-  .fns-contact-info-card ul li,
-  .fns-contact-method-card ul li,
-  .fns-project-complete-card ul li,
-  .fns-portfolio-detail-card ul li,
-  .fns-portfolio-challenge-card ul li,
-  .fns-portfolio-deliverable-card ul li,
-  .fns-resource-card ul li,
-  .fns-additional-service-card ul li,
-  .fns-repair-category-link ul li {
-    font-size: 15px;
-    padding: 14px 0;
-  }
-
-  section ul li::before,
-  .card ul li::before,
-  .service-card ul li::before,
-  .advantage-card ul li::before,
-  .feature-card ul li::before,
-  .info-card ul li::before,
-  .blog-card ul li::before,
-  .product-card ul li::before,
-  .premium-card ul li::before,
-  .fns-card ul li::before,
-  .premium-stat-card ul li::before,
-  .premium-service-box ul li::before,
-  .fns-feature-card ul li::before,
-  .fns-solution-card ul li::before,
-  .fns-trust-card ul li::before,
-  .fns-contact-option-card ul li::before,
-  .fns-contact-info-card ul li::before,
-  .fns-contact-method-card ul li::before,
-  .fns-project-complete-card ul li::before,
-  .fns-portfolio-detail-card ul li::before,
-  .fns-portfolio-challenge-card ul li::before,
-  .fns-portfolio-deliverable-card ul li::before,
-  .fns-resource-card ul li::before,
-  .fns-additional-service-card ul li::before,
-  .fns-repair-category-link ul li::before {
-    font-size: 18px;
-  }
-}
+/* REMOVED: Global mobile responsiveness - replaced with utility classes below */
 
 /* ============================================================
    FOOTER DELIVERY AREAS OVERRIDE
@@ -998,4 +344,985 @@ img {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* =========================================================
+   GLOBAL CONTRAST + COLOR HIERARCHY FIX
+   ========================================================= */
+
+/* Safe Global Color System Variables */
+:root {
+  /* Body and Main Backgrounds */
+  --contrast-body-bg: #eef1f3;
+  --contrast-main-bg: #ffffff;
+  --contrast-section-bg: #e8ecef;
+  --contrast-card-bg: #ffffff;
+  
+  /* Border Colors */
+  --contrast-card-border: rgba(11, 47, 58, 0.16);
+  
+  /* Text Colors */
+  --contrast-text-primary: #1f2933;
+  --contrast-text-heading: #0b2f3a;
+  --contrast-text-muted: #4b5563;
+  --contrast-text-on-dark: #ffffff;
+  
+  /* Brand Colors */
+  --contrast-petrol: #0b2f3a;
+  --contrast-gold: #d4af37;
+  
+  /* Section Backgrounds - Dark */
+  --contrast-dark-section-bg: #0b2f3a;
+  --contrast-dark-section-bg-alt: #062e37;
+}
+
+/* Body Background Override */
+body {
+  background: var(--contrast-body-bg) !important;
+}
+
+/* Main Content Container Background */
+.premium-main,
+main {
+  background: var(--contrast-main-bg) !important;
+}
+
+/* Section Backgrounds - Safe Override for All Content Sections */
+main section,
+section.content-section,
+section.premium-services-section,
+section.premium-showcase,
+section.premium-market-preview,
+section.premium-realestate-section,
+section.testimonials-section,
+section.blog-section,
+section.contact-cta-section,
+section.request-category-section,
+section.ecosystem-recommendations-section,
+section.home-stats,
+section.hero-cards,
+.home-section,
+.services-section,
+.portfolio-section {
+  background: var(--contrast-section-bg) !important;
+}
+
+/* Cards Inside Sections - White Background with Proper Border and Shadow */
+section .card,
+section .service-card,
+section .advantage-card,
+section .feature-card,
+section .info-card,
+section .value-card,
+section .trust-card,
+section .blog-card,
+section .product-card,
+section .premium-card,
+section .fns-card,
+section .premium-stat-card,
+section .premium-service-box,
+section .fns-feature-card,
+section .fns-solution-card,
+section .fns-trust-card,
+section .fns-contact-option-card,
+section .fns-contact-info-card,
+section .fns-contact-method-card,
+section .fns-project-complete-card,
+section .fns-portfolio-detail-card,
+section .fns-portfolio-challenge-card,
+section .fns-portfolio-deliverable-card,
+section .fns-resource-card,
+section .fns-additional-service-card,
+section .fns-repair-category-link,
+section .premium-ecosystem-card,
+section .ecosystem-card,
+section .hero-card,
+section .testimonial-card,
+section .contact-cta-card,
+section .request-category-card,
+section .model-card,
+section .premium-product-card,
+section .premium-project-card,
+section .marketplace-ecosystem-card {
+  background: var(--contrast-card-bg) !important;
+  border: 1px solid var(--contrast-card-border) !important;
+  box-shadow: 0 18px 45px rgba(11, 47, 58, 0.10) !important;
+}
+
+/* Card Headings - Dark Petrol Blue */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.service-card h1, .service-card h2, .service-card h3, .service-card h4, .service-card h5, .service-card h6,
+.advantage-card h1, .advantage-card h2, .advantage-card h3, .advantage-card h4, .advantage-card h5, .advantage-card h6,
+.feature-card h1, .feature-card h2, .feature-card h3, .feature-card h4, .feature-card h5, .feature-card h6,
+.info-card h1, .info-card h2, .info-card h3, .info-card h4, .info-card h5, .info-card h6,
+.value-card h1, .value-card h2, .value-card h3, .value-card h4, .value-card h5, .value-card h6,
+.trust-card h1, .trust-card h2, .trust-card h3, .trust-card h4, .trust-card h5, .trust-card h6,
+.blog-card h1, .blog-card h2, .blog-card h3, .blog-card h4, .blog-card h5, .blog-card h6,
+.product-card h1, .product-card h2, .product-card h3, .product-card h4, .product-card h5, .product-card h6,
+.premium-card h1, .premium-card h2, .premium-card h3, .premium-card h4, .premium-card h5, .premium-card h6,
+.fns-card h1, .fns-card h2, .fns-card h3, .fns-card h4, .fns-card h5, .fns-card h6,
+.premium-stat-card h1, .premium-stat-card h2, .premium-stat-card h3, .premium-stat-card h4, .premium-stat-card h5, .premium-stat-card h6,
+.premium-service-box h1, .premium-service-box h2, .premium-service-box h3, .premium-service-box h4, .premium-service-box h5, .premium-service-box h6,
+.fns-feature-card h1, .fns-feature-card h2, .fns-feature-card h3, .fns-feature-card h4, .fns-feature-card h5, .fns-feature-card h6,
+.fns-solution-card h1, .fns-solution-card h2, .fns-solution-card h3, .fns-solution-card h4, .fns-solution-card h5, .fns-solution-card h6,
+.fns-trust-card h1, .fns-trust-card h2, .fns-trust-card h3, .fns-trust-card h4, .fns-trust-card h5, .fns-trust-card h6,
+.fns-contact-option-card h1, .fns-contact-option-card h2, .fns-contact-option-card h3, .fns-contact-option-card h4, .fns-contact-option-card h5, .fns-contact-option-card h6,
+.fns-contact-info-card h1, .fns-contact-info-card h2, .fns-contact-info-card h3, .fns-contact-info-card h4, .fns-contact-info-card h5, .fns-contact-info-card h6,
+.fns-contact-method-card h1, .fns-contact-method-card h2, .fns-contact-method-card h3, .fns-contact-method-card h4, .fns-contact-method-card h5, .fns-contact-method-card h6,
+.fns-project-complete-card h1, .fns-project-complete-card h2, .fns-project-complete-card h3, .fns-project-complete-card h4, .fns-project-complete-card h5, .fns-project-complete-card h6,
+.fns-portfolio-detail-card h1, .fns-portfolio-detail-card h2, .fns-portfolio-detail-card h3, .fns-portfolio-detail-card h4, .fns-portfolio-detail-card h5, .fns-portfolio-detail-card h6,
+.fns-portfolio-challenge-card h1, .fns-portfolio-challenge-card h2, .fns-portfolio-challenge-card h3, .fns-portfolio-challenge-card h4, .fns-portfolio-challenge-card h5, .fns-portfolio-challenge-card h6,
+.fns-portfolio-deliverable-card h1, .fns-portfolio-deliverable-card h2, .fns-portfolio-deliverable-card h3, .fns-portfolio-deliverable-card h4, .fns-portfolio-deliverable-card h5, .fns-portfolio-deliverable-card h6,
+.fns-resource-card h1, .fns-resource-card h2, .fns-resource-card h3, .fns-resource-card h4, .fns-resource-card h5, .fns-resource-card h6,
+.fns-additional-service-card h1, .fns-additional-service-card h2, .fns-additional-service-card h3, .fns-additional-service-card h4, .fns-additional-service-card h5, .fns-additional-service-card h6,
+.fns-repair-category-link h1, .fns-repair-category-link h2, .fns-repair-category-link h3, .fns-repair-category-link h4, .fns-repair-category-link h5, .fns-repair-category-link h6,
+.premium-ecosystem-card h1, .premium-ecosystem-card h2, .premium-ecosystem-card h3, .premium-ecosystem-card h4, .premium-ecosystem-card h5, .premium-ecosystem-card h6,
+.ecosystem-card h1, .ecosystem-card h2, .ecosystem-card h3, .ecosystem-card h4, .ecosystem-card h5, .ecosystem-card h6,
+.hero-card h1, .hero-card h2, .hero-card h3, .hero-card h4, .hero-card h5, .hero-card h6,
+.testimonial-card h1, .testimonial-card h2, .testimonial-card h3, .testimonial-card h4, .testimonial-card h5, .testimonial-card h6,
+.contact-cta-card h1, .contact-cta-card h2, .contact-cta-card h3, .contact-cta-card h4, .contact-cta-card h5, .contact-cta-card h6,
+.request-category-card h1, .request-category-card h2, .request-category-card h3, .request-category-card h4, .request-category-card h5, .request-category-card h6,
+.model-card h1, .model-card h2, .model-card h3, .model-card h4, .model-card h5, .model-card h6,
+.premium-product-card h1, .premium-product-card h2, .premium-product-card h3, .premium-product-card h4, .premium-product-card h5, .premium-product-card h6,
+.premium-project-card h1, .premium-project-card h2, .premium-project-card h3, .premium-project-card h4, .premium-project-card h5, .premium-project-card h6,
+.marketplace-ecosystem-card h1, .marketplace-ecosystem-card h2, .marketplace-ecosystem-card h3, .marketplace-ecosystem-card h4, .marketplace-ecosystem-card h5, .marketplace-ecosystem-card h6 {
+  color: var(--contrast-text-heading) !important;
+}
+
+/* Card Paragraphs - Muted Grey */
+.card p, .card li,
+.service-card p, .service-card li,
+.advantage-card p, .advantage-card li,
+.feature-card p, .feature-card li,
+.info-card p, .info-card li,
+.value-card p, .value-card li,
+.trust-card p, .trust-card li,
+.blog-card p, .blog-card li,
+.product-card p, .product-card li,
+.premium-card p, .premium-card li,
+.fns-card p, .fns-card li,
+.premium-stat-card p, .premium-stat-card li,
+.premium-service-box p, .premium-service-box li,
+.fns-feature-card p, .fns-feature-card li,
+.fns-solution-card p, .fns-solution-card li,
+.fns-trust-card p, .fns-trust-card li,
+.fns-contact-option-card p, .fns-contact-option-card li,
+.fns-contact-info-card p, .fns-contact-info-card li,
+.fns-contact-method-card p, .fns-contact-method-card li,
+.fns-project-complete-card p, .fns-project-complete-card li,
+.fns-portfolio-detail-card p, .fns-portfolio-detail-card li,
+.fns-portfolio-challenge-card p, .fns-portfolio-challenge-card li,
+.fns-portfolio-deliverable-card p, .fns-portfolio-deliverable-card li,
+.fns-resource-card p, .fns-resource-card li,
+.fns-additional-service-card p, .fns-additional-service-card li,
+.fns-repair-category-link p, .fns-repair-category-link li,
+.premium-ecosystem-card p, .premium-ecosystem-card li,
+.ecosystem-card p, .ecosystem-card li,
+.hero-card p, .hero-card li,
+.testimonial-card p, .testimonial-card li,
+.contact-cta-card p, .contact-cta-card li,
+.request-category-card p, .request-category-card li,
+.model-card p, .model-card li,
+.premium-product-card p, .premium-product-card li,
+.premium-project-card p, .premium-project-card li,
+.marketplace-ecosystem-card p, .marketplace-ecosystem-card li {
+  color: var(--contrast-text-muted) !important;
+}
+
+/* Hero Sections - Premium Luxury Overlay */
+.hero-banner {
+  background: url("../images/hero.jpg") center/cover no-repeat !important;
+  position: relative;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(11, 47, 58, 0.92) 0%, rgba(11, 47, 58, 0.75) 40%, rgba(11, 47, 58, 0.5) 70%, transparent 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding-left: 0;
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #ffffff !important;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.hero-content h1 .gold-highlight {
+  color: #d4af37 !important;
+  display: inline-block;
+  position: relative;
+}
+
+.hero-content h1 .gold-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #d4af37;
+  border-radius: 2px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero-buttons .btn.primary {
+  background: #0b2f3a !important;
+  border-color: #0b2f3a !important;
+  color: #ffffff !important;
+}
+
+.hero-buttons .btn.primary:hover {
+  background: #123d4a !important;
+  border-color: #123d4a !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(11, 47, 58, 0.3);
+}
+
+.hero-buttons .btn.secondary {
+  background: #d4af37 !important;
+  border-color: #d4af37 !important;
+  color: #0b2f3a !important;
+}
+
+.hero-buttons .btn.secondary:hover {
+  background: #c9a227 !important;
+  border-color: #c9a227 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+}
+
+.hero-buttons .btn.dark-btn {
+  background: transparent !important;
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+.hero-buttons .btn.dark-btn:hover {
+  background: #ffffff !important;
+  color: #0b2f3a !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Hero Text - White Only When Hero Has Dark Overlay */
+.hero-content h1,
+.hero-content h2,
+.hero-content h3,
+.hero-content p,
+.hero-content {
+  color: var(--contrast-text-on-dark) !important;
+}
+
+/* Hero Cards - White Background with Dark Text */
+.hero-card {
+  background: var(--contrast-card-bg) !important;
+  border: 1px solid var(--contrast-card-border) !important;
+}
+
+.hero-card h3,
+.hero-card p,
+.hero-card a {
+  color: var(--contrast-text-primary) !important;
+}
+
+/* Dark Sections - Petrol/Charcoal Background with White Text */
+.dark-section,
+.section-dark,
+.premium-dark-section,
+.fns-advantage-section,
+.fns-process-section,
+.fns-faq-section,
+.fns-emergency-section,
+.fns-portfolio-categories-section,
+.fns-blog-categories-section,
+.repair-ad {
+  background: var(--contrast-dark-section-bg) !important;
+}
+
+.dark-section p,
+.dark-section li,
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4,
+.dark-section h5,
+.dark-section h6,
+.section-dark p,
+.section-dark li,
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6,
+.premium-dark-section p,
+.premium-dark-section li,
+.premium-dark-section h1,
+.premium-dark-section h2,
+.premium-dark-section h3,
+.premium-dark-section h4,
+.premium-dark-section h5,
+.premium-dark-section h6,
+.fns-advantage-section p,
+.fns-advantage-section li,
+.fns-advantage-section h1,
+.fns-advantage-section h2,
+.fns-advantage-section h3,
+.fns-advantage-section h4,
+.fns-advantage-section h5,
+.fns-advantage-section h6,
+.fns-process-section p,
+.fns-process-section li,
+.fns-process-section h1,
+.fns-process-section h2,
+.fns-process-section h3,
+.fns-process-section h4,
+.fns-process-section h5,
+.fns-process-section h6,
+.fns-faq-section p,
+.fns-faq-section li,
+.fns-faq-section h1,
+.fns-faq-section h2,
+.fns-faq-section h3,
+.fns-faq-section h4,
+.fns-faq-section h5,
+.fns-faq-section h6,
+.fns-emergency-section p,
+.fns-emergency-section li,
+.fns-emergency-section h1,
+.fns-emergency-section h2,
+.fns-emergency-section h3,
+.fns-emergency-section h4,
+.fns-emergency-section h5,
+.fns-emergency-section h6,
+.fns-portfolio-categories-section p,
+.fns-portfolio-categories-section li,
+.fns-portfolio-categories-section h1,
+.fns-portfolio-categories-section h2,
+.fns-portfolio-categories-section h3,
+.fns-portfolio-categories-section h4,
+.fns-portfolio-categories-section h5,
+.fns-portfolio-categories-section h6,
+.fns-blog-categories-section p,
+.fns-blog-categories-section li,
+.fns-blog-categories-section h1,
+.fns-blog-categories-section h2,
+.fns-blog-categories-section h3,
+.fns-blog-categories-section h4,
+.fns-blog-categories-section h5,
+.fns-blog-categories-section h6,
+.repair-ad p,
+.repair-ad h1,
+.repair-ad h2,
+.repair-ad h3,
+.repair-ad h4,
+.repair-ad h5,
+.repair-ad h6 {
+  color: var(--contrast-text-on-dark) !important;
+}
+
+/* Repair Ad Section - Dark Background */
+.repair-ad {
+  background: var(--contrast-dark-section-bg) !important;
+}
+
+.repair-text h2,
+.repair-text p,
+.repair-text {
+  color: var(--contrast-text-on-dark) !important;
+}
+
+/* Marketplace Ecosystem Section - Dark Background with Gradient */
+.premium-marketplace-ecosystem {
+  background: linear-gradient(135deg, var(--contrast-dark-section-bg) 0%, var(--contrast-dark-section-bg-alt) 100%) !important;
+}
+
+.premium-marketplace-ecosystem h2,
+.premium-marketplace-ecosystem p,
+.premium-marketplace-ecosystem h3,
+.premium-marketplace-ecosystem span {
+  color: var(--contrast-text-on-dark) !important;
+}
+
+/* Marketplace Ecosystem Cards - White Background on Dark Section */
+.premium-marketplace-ecosystem .marketplace-ecosystem-card {
+  background: var(--contrast-card-bg) !important;
+  border: 1px solid var(--contrast-card-border-strong) !important;
+}
+
+.premium-marketplace-ecosystem .marketplace-ecosystem-card h3,
+.premium-marketplace-ecosystem .marketplace-ecosystem-card p,
+.premium-marketplace-ecosystem .marketplace-ecosystem-card span {
+  color: var(--contrast-text-primary) !important;
+}
+
+/* Premium Ecosystem Card - Use Memory Color */
+.premium-ecosystem-card {
+  background: #d0d0d0 !important;
+  border: 1px solid var(--contrast-card-border) !important;
+  box-shadow: 0 18px 45px rgba(11, 47, 58, 0.10) !important;
+}
+
+.premium-ecosystem-card h1,
+.premium-ecosystem-card h2,
+.premium-ecosystem-card h3,
+.premium-ecosystem-card h4,
+.premium-ecosystem-card h5,
+.premium-ecosystem-card h6 {
+  color: var(--contrast-text-heading) !important;
+}
+
+.premium-ecosystem-card p,
+.premium-ecosystem-card li {
+  color: var(--contrast-text-muted) !important;
+}
+
+/* Section Headers - Dark Text on Light Background */
+.section-header h1,
+.section-header h2,
+.section-header h3,
+.section-header p,
+.section-header span {
+  color: var(--contrast-text-primary) !important;
+}
+
+/* Fix White Text on White Background - General Override */
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) h1,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) h2,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) h3,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) h4,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) h5,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) h6,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) p,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) li {
+  color: var(--contrast-text-primary) !important;
+}
+
+/* Buttons - Keep Premium Petrol/Gold Styling */
+.btn.primary,
+.btn.secondary,
+.btn.dark-btn {
+  color: var(--contrast-text-on-dark) !important;
+}
+
+.btn.primary {
+  background: var(--contrast-petrol) !important;
+  border-color: var(--contrast-petrol) !important;
+}
+
+.btn.secondary {
+  background: var(--contrast-gold) !important;
+  border-color: var(--contrast-gold) !important;
+  color: var(--contrast-petrol) !important;
+}
+
+/* Stats Section - Light Background */
+.home-stats {
+  background: var(--contrast-section-bg) !important;
+}
+
+.home-stats h3,
+.home-stats p {
+  color: var(--contrast-text-primary) !important;
+}
+
+/* Hero Cards Section - Light Background */
+.hero-cards {
+  background: var(--contrast-section-bg) !important;
+}
+
+/* Marketplace Link Strip - White Background */
+.marketplace-link-strip {
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f3 100%) !important;
+}
+
+.marketplace-link-strip a {
+  color: var(--contrast-text-primary) !important;
+}
+
+.marketplace-link-strip a.active {
+  color: var(--contrast-petrol) !important;
+}
+
+/* Fix for any remaining white text on light backgrounds - Targeted Override */
+body,
+.premium-main,
+main,
+section:not(.dark-section):not(.section-dark):not(.premium-dark-section):not(.fns-advantage-section):not(.fns-process-section):not(.fns-faq-section):not(.fns-emergency-section):not(.fns-portfolio-categories-section):not(.fns-blog-categories-section):not(.repair-ad):not(.premium-marketplace-ecosystem) {
+  color: var(--contrast-text-primary) !important;
+}
+
+/* Override specific elements that should keep white text */
+.hero-banner,
+.hero-content,
+.dark-section,
+.section-dark,
+.premium-dark-section,
+.fns-advantage-section,
+.fns-process-section,
+.fns-faq-section,
+.fns-emergency-section,
+.fns-portfolio-categories-section,
+.fns-blog-categories-section,
+.repair-ad,
+.premium-marketplace-ecosystem {
+  color: var(--contrast-text-on-dark) !important;
+}
+
+/* =========================================================
+   PREMIUM LUXURY UTILITY CLASSES
+   Safe, scoped utility classes for premium color hierarchy
+============================================================ */
+
+/* Section Utilities */
+.section-light {
+  background: #ffffff;
+  color: #1f2933;
+}
+
+.section-premium {
+  background: #0b2f3a;
+  color: #ffffff;
+}
+
+.section-premium h1,
+.section-premium h2,
+.section-premium h3,
+.section-premium h4,
+.section-premium h5,
+.section-premium h6,
+.section-premium p,
+.section-premium li,
+.section-premium span {
+  color: #ffffff;
+}
+
+/* Card Utilities */
+.card-light {
+  background: #eef1f3;
+  border: 1px solid rgba(11, 47, 58, 0.12);
+  box-shadow: 0 18px 40px rgba(11, 47, 58, 0.08);
+  border-radius: 28px;
+  padding: 42px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-light:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px rgba(11, 47, 58, 0.12);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.card-premium {
+  background: #123d4a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(11, 47, 58, 0.15);
+  border-radius: 28px;
+  padding: 42px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px rgba(11, 47, 58, 0.2);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.card-premium h1,
+.card-premium h2,
+.card-premium h3,
+.card-premium h4,
+.card-premium h5,
+.card-premium h6,
+.card-premium p,
+.card-premium li,
+.card-premium span {
+  color: #ffffff;
+}
+
+.card-featured {
+  background: #eef1f3;
+  border: 1px solid rgba(11, 47, 58, 0.12);
+  border-top: 3px solid #d4af37;
+  box-shadow: 0 18px 40px rgba(11, 47, 58, 0.08);
+  border-radius: 28px;
+  padding: 42px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-featured:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px rgba(11, 47, 58, 0.12);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* Text Utilities */
+.text-light {
+  color: #ffffff;
+}
+
+.text-dark {
+  color: #1f2933;
+}
+
+.text-muted {
+  color: #5f6b76;
+}
+
+.text-petrol {
+  color: #0b2f3a;
+}
+
+.text-gold {
+  color: #d4af37;
+}
+
+/* Hero Gradient Overlay */
+.hero-gradient-overlay {
+  background: linear-gradient(135deg, rgba(11, 47, 58, 0.85) 0%, rgba(18, 61, 74, 0.75) 100%);
+}
+
+/* Premium Badge */
+.badge-premium {
+  background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+  color: #0b2f3a;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.badge-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Button Styles - Premium */
+.btn-premium {
+  background: #0b2f3a;
+  color: #ffffff;
+  border: 1px solid #0b2f3a;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(11, 47, 58, 0.2);
+}
+
+.btn-premium:hover {
+  background: #d4af37;
+  color: #0b2f3a;
+  border-color: #d4af37;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Luxury Spacing */
+.spacing-luxury {
+  padding: 120px 32px;
+}
+
+.spacing-luxury-compact {
+  padding: 90px 32px;
+}
+
+/* Premium Typography Improvements */
+.section-header {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.section-header span,
+.section-header .section-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #d4af37;
+  margin-bottom: 16px;
+  padding: 8px 20px;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 25px;
+}
+
+.section-header h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #0b2f3a;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  font-size: 18px;
+  color: #5f6b76;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Card Typography */
+.card-light h3,
+.card-premium h3,
+.card-featured h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0b2f3a;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.card-premium h3 {
+  color: #ffffff;
+}
+
+.card-light p,
+.card-premium p,
+.card-featured p {
+  font-size: 16px;
+  color: #5f6b76;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.card-premium p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.card-light a,
+.card-premium a,
+.card-featured a {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0b2f3a;
+  transition: all 0.3s ease;
+}
+
+.card-premium a {
+  color: #d4af37;
+}
+
+.card-light a:hover,
+.card-featured a:hover {
+  color: #d4af37;
+}
+
+.card-premium a:hover {
+  color: #ffffff;
+}
+
+/* Premium Ecosystem Card - Memory Color */
+.premium-ecosystem-card {
+  background: #d0d0d0;
+  border: 1px solid rgba(11, 47, 58, 0.16);
+  box-shadow: 0 18px 45px rgba(11, 47, 58, 0.10);
+  border-radius: 28px;
+  padding: 42px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-ecosystem-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px rgba(11, 47, 58, 0.15);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.premium-ecosystem-card h1,
+.premium-ecosystem-card h2,
+.premium-ecosystem-card h3,
+.premium-ecosystem-card h4,
+.premium-ecosystem-card h5,
+.premium-ecosystem-card h6 {
+  color: #0b2f3a;
+}
+
+.premium-ecosystem-card p,
+.premium-ecosystem-card li {
+  color: #5f6b76;
+}
+
+/* Mobile Responsiveness for Utility Classes */
+@media (max-width: 768px) {
+  .card-light,
+  .card-premium,
+  .card-featured,
+  .premium-ecosystem-card {
+    padding: 32px;
+    border-radius: 20px;
+  }
+
+  .spacing-luxury {
+    padding: 80px 20px;
+  }
+
+  .spacing-luxury-compact {
+    padding: 60px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .hero-buttons .btn {
+    padding: 14px 32px;
+    font-size: 14px;
+  }
+
+  .section-header h2 {
+    font-size: 32px;
+  }
+
+  .section-header p {
+    font-size: 16px;
+  }
+
+  .card-light h3,
+  .card-premium h3,
+  .card-featured h3 {
+    font-size: 20px;
+  }
+}
+
+/* Premium Grid Layouts */
+.premium-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.premium-grid-2 {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.premium-grid-3 {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.premium-grid-4 {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .premium-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .premium-grid,
+  .premium-grid-2,
+  .premium-grid-3,
+  .premium-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Feature Strip */
+.feature-strip {
+  background: linear-gradient(135deg, #0b2f3a 0%, #123d4a 100%);
+  padding: 60px 32px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 40px 0;
+}
+
+.feature-strip-content {
+  flex: 1;
+}
+
+.feature-strip-content h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.feature-strip-content p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+.feature-strip-cta {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .feature-strip {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .feature-strip-cta {
+    width: 100%;
+  }
+
+  .feature-strip-cta .btn {
+    width: 100%;
+  }
 }

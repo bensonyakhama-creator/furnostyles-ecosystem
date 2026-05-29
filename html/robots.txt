@@ -1,0 +1,25 @@
+# Furnostyles Robots.txt
+# Allow all crawlers to access the site
+
+User-agent: *
+Allow: /
+
+# Disallow development and test directories
+Disallow: /docs/
+Disallow: /dashboards/
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /client/
+Disallow: /vendor/
+Disallow: /provider/
+Disallow: /property-owner/
+
+# Disallow test pages
+Disallow: /*-test.html
+
+# Disallow environment files
+Disallow: /.env
+Disallow: /.env.example
+
+# Sitemap location
+Sitemap: https://furnostyles.com/sitemap.xml

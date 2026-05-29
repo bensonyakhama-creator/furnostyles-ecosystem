@@ -78,11 +78,21 @@
     // Redirect to appropriate dashboard based on user's role
     var userRole = window.FurnostylesAuth.getCurrentUserRole();
     if (userRole === 'admin') {
-      window.location.href = 'admin/admin-dashboard.html';
+      window.location.href = 'dashboards/admin/index.html';
+    } else if (userRole === 'super-admin') {
+      window.location.href = 'dashboards/super-admin/index.html';
     } else if (userRole === 'vendor') {
-      window.location.href = 'vendor/vendor-dashboard.html';
+      window.location.href = 'dashboards/vendor/index.html';
+    } else if (userRole === 'provider') {
+      window.location.href = 'dashboards/provider/index.html';
+    } else if (userRole === 'contractor') {
+      window.location.href = 'dashboards/contractor/index.html';
+    } else if (userRole === 'property-owner') {
+      window.location.href = 'dashboards/property-owner/index.html';
+    } else if (userRole === 'agent') {
+      window.location.href = 'dashboards/agent/index.html';
     } else {
-      window.location.href = 'client/dashboard.html';
+      window.location.href = 'dashboards/client/index.html';
     }
   }
 

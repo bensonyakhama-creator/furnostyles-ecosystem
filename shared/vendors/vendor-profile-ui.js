@@ -7,6 +7,18 @@
 (function () {
   'use strict';
 
+  /**
+   * HTML escaping function to prevent XSS attacks
+   * Escapes &, <, >, " characters to HTML entities
+   */
+  function escapeHtml(text) {
+    if (text === null || text === undefined) return '';
+    return String(text).replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   function getParam(name) {
     var m = window.location.search.match(
       new RegExp('[?&]' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=([^&]*)')
@@ -16,6 +28,7 @@
 
   function renderLoading(container) {
     if (!container) return;
+    // XSS MITIGATION: This is static HTML for loading skeleton - no user input
     container.innerHTML =
       '<div class="vnd-skel-header">' +
         '<div class="vnd-header-grid">' +
@@ -48,6 +61,7 @@
   function renderNotFound(container, type) {
     if (!container) return;
     var label = type === 'supplier' ? 'Supplier' : 'Vendor';
+    // XSS MITIGATION: label is controlled (only 'Supplier' or 'Vendor'), static HTML otherwise
     container.innerHTML =
       '<div style="text-align:center;padding:80px 24px;">' +
         '<div style="font-size:64px;margin-bottom:20px;">\uD83D\uDEAF</div>' +
@@ -64,12 +78,13 @@
 
   function renderError(container, message) {
     if (!container) return;
+    // XSS MITIGATION: message parameter is now escaped using escapeHtml() function
     container.innerHTML =
       '<div style="text-align:center;padding:72px 24px;">' +
         '<div style="font-size:48px;margin-bottom:16px;">\u26A0</div>' +
         '<h2 style="font-size:20px;font-weight:800;color:#cc1a1a;margin:0 0 10px;">Connection Interrupted</h2>' +
         '<p style="font-size:14px;color:#8090a0;margin:0 0 24px;">' +
-          (message || 'An unexpected error occurred while loading this vendor profile.') +
+          escapeHtml(message || 'An unexpected error occurred while loading this vendor profile.') +
         '</p>' +
         '<button onclick="window.location.reload()" style="background:#0b3b46;color:#fff;border:none;' +
           'padding:12px 32px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;' +

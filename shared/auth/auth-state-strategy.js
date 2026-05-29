@@ -224,12 +224,16 @@
      */
     isProtectedRoute: function (route) {
       var protectedRoutes = [
-        'client/dashboard.html',
-        'vendor/dashboard.html',
-        'provider/dashboard.html',
-        'admin/dashboard.html'
+        'dashboards/client/index.html',
+        'dashboards/vendor/index.html',
+        'dashboards/provider/index.html',
+        'dashboards/contractor/index.html',
+        'dashboards/property-owner/index.html',
+        'dashboards/agent/index.html',
+        'dashboards/admin/index.html',
+        'dashboards/super-admin/index.html'
       ];
-      
+
       return protectedRoutes.some(function (protectedRoute) {
         return route.includes(protectedRoute);
       });
