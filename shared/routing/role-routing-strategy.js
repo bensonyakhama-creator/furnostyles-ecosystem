@@ -23,40 +23,41 @@
   var RouteProtectionStrategy = {
     /**
      * Protected routes configuration
+     * Modern dashboards/ structure
      */
     protectedRoutes: {
-      'client/dashboard.html': ['client'],
-      'client/saved-items.html': ['client'],
-      'client/inquiries.html': ['client'],
-      'client/orders.html': ['client'],
-      'client/profile.html': ['client'],
+      'dashboards/client/index.html': ['client'],
+      'dashboards/client/saved-items.html': ['client'],
+      'dashboards/client/inquiries.html': ['client'],
+      'dashboards/client/orders.html': ['client'],
+      'dashboards/client/profile.html': ['client'],
       
-      'vendor/dashboard.html': ['vendor'],
-      'vendor/products.html': ['vendor'],
-      'vendor/services.html': ['vendor'],
-      'vendor/inquiries.html': ['vendor'],
-      'vendor/orders.html': ['vendor'],
-      'vendor/reviews.html': ['vendor'],
-      'vendor/analytics.html': ['vendor'],
-      'vendor/settings.html': ['vendor'],
+      'dashboards/vendor/index.html': ['vendor'],
+      'dashboards/vendor/products.html': ['vendor'],
+      'dashboards/vendor/services.html': ['vendor'],
+      'dashboards/vendor/inquiries.html': ['vendor'],
+      'dashboards/vendor/orders.html': ['vendor'],
+      'dashboards/vendor/reviews.html': ['vendor'],
+      'dashboards/vendor/analytics.html': ['vendor'],
+      'dashboards/vendor/settings.html': ['vendor'],
       
-      'provider/dashboard.html': ['provider'],
-      'provider/services.html': ['provider'],
-      'provider/inquiries.html': ['provider'],
-      'provider/orders.html': ['provider'],
-      'provider/reviews.html': ['provider'],
-      'provider/portfolio.html': ['provider'],
-      'provider/profile.html': ['provider'],
+      'dashboards/provider/index.html': ['provider'],
+      'dashboards/provider/services.html': ['provider'],
+      'dashboards/provider/inquiries.html': ['provider'],
+      'dashboards/provider/orders.html': ['provider'],
+      'dashboards/provider/reviews.html': ['provider'],
+      'dashboards/provider/portfolio.html': ['provider'],
+      'dashboards/provider/profile.html': ['provider'],
       
-      'admin/dashboard.html': ['admin'],
-      'admin/users.html': ['admin'],
-      'admin/vendors.html': ['admin'],
-      'admin/products.html': ['admin'],
-      'admin/services.html': ['admin'],
-      'admin/inquiries.html': ['admin'],
-      'admin/orders.html': ['admin'],
-      'admin/reports.html': ['admin'],
-      'admin/settings.html': ['admin']
+      'dashboards/admin/index.html': ['admin'],
+      'dashboards/admin/users.html': ['admin'],
+      'dashboards/admin/vendors.html': ['admin'],
+      'dashboards/admin/products.html': ['admin'],
+      'dashboards/admin/services.html': ['admin'],
+      'dashboards/admin/inquiries.html': ['admin'],
+      'dashboards/admin/orders.html': ['admin'],
+      'dashboards/admin/reports.html': ['admin'],
+      'dashboards/admin/settings.html': ['admin']
     },
     
     /**
@@ -112,10 +113,14 @@
      */
     getRedirectRoute: function (userRole) {
       var redirects = {
-        'client': 'client/dashboard.html',
-        'vendor': 'vendor/dashboard.html',
-        'provider': 'provider/dashboard.html',
-        'admin': 'admin/dashboard.html',
+        'client': 'dashboards/client/index.html',
+        'vendor': 'dashboards/vendor/index.html',
+        'provider': 'dashboards/provider/index.html',
+        'contractor': 'dashboards/contractor/index.html',
+        'property-owner': 'dashboards/property-owner/index.html',
+        'agent': 'dashboards/agent/index.html',
+        'admin': 'dashboards/admin/index.html',
+        'super-admin': 'dashboards/super-admin/index.html',
         'guest': 'index.html'
       };
       return redirects[userRole] || redirects['guest'];
@@ -129,12 +134,17 @@
   var DashboardRoutingStrategy = {
     /**
      * Dashboard paths by role
+     * Modern dashboards/ structure
      */
     dashboardPaths: {
-      'client': 'client/dashboard.html',
-      'vendor': 'vendor/dashboard.html',
-      'provider': 'provider/dashboard.html',
-      'admin': 'admin/dashboard.html'
+      'client': 'dashboards/client/index.html',
+      'vendor': 'dashboards/vendor/index.html',
+      'provider': 'dashboards/provider/index.html',
+      'contractor': 'dashboards/contractor/index.html',
+      'property-owner': 'dashboards/property-owner/index.html',
+      'agent': 'dashboards/agent/index.html',
+      'admin': 'dashboards/admin/index.html',
+      'super-admin': 'dashboards/super-admin/index.html'
     },
     
     /**

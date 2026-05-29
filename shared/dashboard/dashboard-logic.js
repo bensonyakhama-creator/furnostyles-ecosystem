@@ -118,7 +118,7 @@
     console.log('Dashboard initialized');
   }
 
-  // Load All Data from localStorage
+  // Load All Data from localStorage with validation
   function loadAllData() {
     var keys = window.FurnostylesStorageKeys || {
       ORDERS: 'fns_orders',
@@ -131,29 +131,47 @@
       TICKETS: 'fns_tickets'
     };
 
+    // Helper function to safely parse JSON
+    function safeParse(key, defaultValue) {
+      try {
+        var data = localStorage.getItem(key);
+        if (!data) return defaultValue;
+        var parsed = JSON.parse(data);
+        // Validate it's an array
+        if (!Array.isArray(parsed)) {
+          console.warn('[Dashboard] Invalid data format for', key, '- expected array');
+          return defaultValue;
+        }
+        return parsed;
+      } catch (e) {
+        console.error('[Dashboard] Failed to parse data for', key, ':', e);
+        return defaultValue;
+      }
+    }
+
     // Orders
-    DashboardState.orders = JSON.parse(localStorage.getItem(keys.ORDERS) || '[]');
+    DashboardState.orders = safeParse(keys.ORDERS, []);
     
     // Wishlist
-    DashboardState.wishlist = JSON.parse(localStorage.getItem(keys.WISHLIST) || '[]');
+    DashboardState.wishlist = safeParse(keys.WISHLIST, []);
     
     // Addresses
-    DashboardState.addresses = JSON.parse(localStorage.getItem(keys.ADDRESSES) || '[]');
+    DashboardState.addresses = safeParse(keys.ADDRESSES, []);
     
     // Payments
-    DashboardState.payments = JSON.parse(localStorage.getItem(keys.PAYMENTS) || '[]');
+    DashboardState.payments = safeParse(keys.PAYMENTS, []);
     
     // Messages
-    DashboardState.messages = JSON.parse(localStorage.getItem(keys.MESSAGES) || '[]');
+    DashboardState.messages = safeParse(keys.MESSAGES, []);
     
     // Reviews
-    DashboardState.reviews = JSON.parse(localStorage.getItem(keys.REVIEWS) || '[]');
+    DashboardState.reviews = safeParse(keys.REVIEWS, []);
     
     // Uploads
-    DashboardState.uploads = JSON.parse(localStorage.getItem(keys.UPLOADS) || '[]');
+    DashboardState.uploads = safeParse(keys.UPLOADS, []);
     
     // Tickets
-    DashboardState.tickets = JSON.parse(localStorage.getItem(keys.TICKETS) || '[]');
+    DashboardState.tickets = safeParse(keys.TICKETS, []);
   }
 
   // Update User Info in Sidebar
@@ -635,38 +653,33 @@
         }
       });
     } else {
-      // Fallback to prompt if modal not available
-      const name = prompt('Enter address name (e.g., Home, Office):');
-      if (!name) return;
+      // Fallback to showPrompt function
+      showPrompt('Add Address', [
+        { name: 'name', label: 'Address name (e.g., Home, Office)', type: 'text', required: true },
+        { name: 'address', label: 'Street address', type: 'text', required: true },
+        { name: 'city', label: 'City', type: 'text', required: true },
+        { name: 'country', label: 'Country', type: 'text', required: true },
+        { name: 'phone', label: 'Phone number', type: 'tel', required: true }
+      ], 'Add Address', 'Cancel').then(function(result) {
+        if (!result) return;
 
-      const address = prompt('Enter street address:');
-      if (!address) return;
+        const newAddress = {
+          name: result.name,
+          address: result.address,
+          city: result.city,
+          country: result.country,
+          phone: result.phone,
+          default: DashboardState.addresses.length === 0
+        };
 
-      const city = prompt('Enter city:');
-      if (!city) return;
+        var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
+        DashboardState.addresses.push(newAddress);
+        localStorage.setItem(addressKey, JSON.stringify(DashboardState.addresses));
+        renderAddresses();
+        updateStats();
 
-      const country = prompt('Enter country:');
-      if (!country) return;
-
-      const phone = prompt('Enter phone number:');
-      if (!phone) return;
-
-      const newAddress = {
-        name,
-        address,
-        city,
-        country,
-        phone,
-        default: DashboardState.addresses.length === 0
-      };
-
-      var addressKey = window.FurnostylesStorageKeys ? window.FurnostylesStorageKeys.ADDRESSES : 'fns_addresses';
-      DashboardState.addresses.push(newAddress);
-      localStorage.setItem(addressKey, JSON.stringify(DashboardState.addresses));
-      renderAddresses();
-      updateStats();
-
-      showAlert('Address added successfully!', 'Success');
+        showAlert('Address added successfully!', 'Success');
+      });
     }
   }
 

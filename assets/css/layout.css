@@ -69,7 +69,7 @@ body.hide-topbar .fns-topbar {
 }
 
 .fns-topbar-tagline {
-  color: #bebcbc;
+  color: #faf4f4;
   font-size: 8px;
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -132,10 +132,10 @@ body.hide-topbar .fns-topbar {
   background: #ffffff;
 }
 
-/* Top Navigation Bar (Jumia-style) */
+/* Top Navigation Bar  */
 .fns-header-top-nav {
   background: #0b3b46;
-  padding: 8px 40px;
+  padding: 8px 36px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -157,10 +157,10 @@ body.hide-topbar .fns-topbar {
 }
 
 .fns-header-top-nav-link.fns-highlight {
-  background: #c9a227;
-  color: #0b3b46;
+  background: #e93b3b;
+  color: #000000;
   padding: 4px 12px;
-  border-radius: 4px;
+  border-radius: 24px;
   font-weight: 600;
 }
 
@@ -168,14 +168,14 @@ body.hide-topbar .fns-topbar {
   background: #d4af37;
 }
 
-/* Category Navigation (Jumia-style) */
+/* Category Navigation*/
 .fns-header-categories {
-  background: #ffffff;
+  background: #e7e7e7;
   padding: 12px 40px;
   display: flex;
   align-items: center;
   gap: 32px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 3px solid #d3d3d3;
   overflow-x: auto;
 }
 
@@ -192,13 +192,13 @@ body.hide-topbar .fns-topbar {
   color: #c9a227;
 }
 
-/* Promotional Banners (Jumia-style) */
+/* Promotional Banners */
 .fns-header-promotions {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  padding: 10px 40px;
+  background: linear-gradient(135deg, #e5e5e6 0%, #f6f6f7 100%);
+  padding: 10px 30px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 64px;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -206,17 +206,17 @@ body.hide-topbar .fns-topbar {
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .fns-promo-text {
-  font-size: 13px;
+  font-size: 5px;
   font-weight: 600;
   color: #0b3b46;
 }
 
 .fns-promo-subtext {
-  font-size: 11px;
+  font-size: 2px;
   color: #666;
 }
 
@@ -230,7 +230,7 @@ body.hide-topbar .fns-topbar {
 
 /* Delivery Hooks */
 .fns-header-delivery {
-  background: #f8f9fa;
+  background: #e6e6e6;
   padding: 8px 40px;
   display: flex;
   align-items: center;
@@ -370,13 +370,13 @@ body.hide-topbar .fns-topbar {
 }
 
 .fns-header-search input::placeholder {
-  color: #656565;
+  color: #cccbcb;
   font-weight: 400;
 }
 
 .fns-header-search button {
   padding: 0 24px;
-  height: 48px;
+  height: 54px;
   background: #0b3b46;
   border: 1px solid #0b3b46;
   border-left: none;
@@ -430,103 +430,8 @@ body.hide-topbar .fns-topbar {
   border-color: transparent;
 }
 
-.fns-header-btn svg {
-  transition: transform 0.3s ease;
-}
 
-.fns-header-btn:hover svg {
-  transform: scale(1.1);
-}
 
-.fns-header-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 800;
-  padding: 4px 8px;
-  border-radius: 12px;
-  min-width: 20px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(201, 162, 39, 0.4);
-  border: 2px solid #ffffff;
-}
-
-@media (max-width: 768px) {
-  .fns-header-top-nav {
-    padding: 8px 16px;
-    gap: 16px;
-    font-size: 12px;
-  }
-
-  .fns-header-categories {
-    padding: 10px 16px;
-    gap: 20px;
-  }
-
-  .fns-header-promotions {
-    padding: 8px 16px;
-    gap: 16px;
-  }
-
-  .fns-header-delivery {
-    padding: 8px 16px;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .fns-delivery-locations {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .fns-header-main {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 16px;
-  }
-
-  .fns-header-brand-logo {
-    height: 44px;
-  }
-
-  .fns-header-brand-name {
-    font-size: 22px;
-  }
-
-  .fns-header-brand-tagline {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-  }
-
-  .fns-header-search {
-    width: 100%;
-    margin: 0;
-    max-width: none;
-  }
-
-  .fns-header-search input {
-    padding: 12px 16px;
-    font-size: 14px;
-  }
-
-  .fns-header-search button {
-    padding: 12px 20px;
-    font-size: 13px;
-  }
-
-  .fns-header-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .fns-header-btn {
-    width: 48px;
-    height: 48px;
-  }
-}
 
 /* ============================================================
    ORDERS PAGE STYLING

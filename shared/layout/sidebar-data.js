@@ -21,9 +21,9 @@ window.FurnostylesSidebarData = {
     client: {
       label: "Client",
       nav: [
-        { label: "Dashboard",      href: "/client/dashboard.html",   icon: "\uD83C\uDFE0" },
-        { label: "My Orders",      href: "/client/dashboard.html",   icon: "\uD83D\uDCE6" },
-        { label: "Saved Items",    href: "/client/dashboard.html",   icon: "\u2665" },
+        { label: "Dashboard",      href: "/dashboards/client/index.html",   icon: "\uD83C\uDFE0" },
+        { label: "My Orders",      href: "/dashboards/client/orders.html",   icon: "\uD83D\uDCE6" },
+        { label: "Saved Items",    href: "/dashboards/client/saved-items.html",   icon: "\u2665" },
         { label: "Marketplace",    href: "/marketplace.html",        icon: "\uD83D\uDED2" },
         { label: "Services",       href: "/services.html",           icon: "\uD83D\uDD27" },
         { label: "Cart",           href: "/cart.html",               icon: "\uD83D\uDED2" }
@@ -32,19 +32,19 @@ window.FurnostylesSidebarData = {
     vendor: {
       label: "Vendor / Supplier",
       nav: [
-        { label: "Vendor Dashboard", href: "/vendor/dashboard.html", icon: "\uD83C\uDFEA" },
+        { label: "Vendor Dashboard", href: "/dashboards/vendor/index.html", icon: "\uD83C\uDFEA" },
         { label: "Upload Product",   href: "/vendor/upload.html",    icon: "\uD83D\uDCE4" },
-        { label: "Orders",           href: "/vendor/dashboard.html", icon: "\uD83D\uDCE6" },
+        { label: "Orders",           href: "/dashboards/vendor/orders.html", icon: "\uD83D\uDCE6" },
         { label: "Marketplace",      href: "/marketplace.html",      icon: "\uD83D\uDED2" }
       ]
     },
     admin: {
       label: "Admin",
       nav: [
-        { label: "Admin Panel",    href: "/admin/dashboard.html",    icon: "\uD83D\uDEE1" },
-        { label: "Users",          href: "/admin/dashboard.html",    icon: "\uD83D\uDC65" },
-        { label: "Products",       href: "/admin/dashboard.html",    icon: "\uD83D\uDCE6" },
-        { label: "Orders",         href: "/admin/dashboard.html",    icon: "\uD83D\uDCCB" },
+        { label: "Admin Panel",    href: "/dashboards/admin/index.html",    icon: "\uD83D\uDEE1" },
+        { label: "Users",          href: "/dashboards/admin/users.html",    icon: "\uD83D\uDC65" },
+        { label: "Products",       href: "/dashboards/admin/products.html",    icon: "\uD83D\uDCE6" },
+        { label: "Orders",         href: "/dashboards/admin/orders.html",    icon: "\uD83D\uDCCB" },
         { label: "Marketplace",    href: "/marketplace.html",        icon: "\uD83D\uDED2" }
       ]
     }

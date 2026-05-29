@@ -9,6 +9,18 @@
   'use strict';
 
   /**
+   * HTML escaping function to prevent XSS attacks
+   * Escapes &, <, >, " characters to HTML entities
+   */
+  function escapeHtml(text) {
+    if (text === null || text === undefined) return '';
+    return String(text).replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /**
    * Placeholder inquiry data for shell display
    */
   var PLACEHOLDER_INQUIRIES = [
@@ -145,6 +157,8 @@
       return '<option value="' + p.value + '">' + p.label + '</option>';
     }).join('');
 
+    // XSS MITIGATION: typeOptions, statusOptions, pageOptions are from controlled configuration
+    // This HTML rendering is for static filter UI structure
     container.innerHTML = '\
       <div class="fns-inquiry-filter-bar">\
         <div class="fns-filter-group">\
@@ -309,6 +323,7 @@
     var data = inquiries || PLACEHOLDER_INQUIRIES;
 
     if (data.length === 0) {
+      // XSS MITIGATION: Static HTML for empty state - no user input
       container.innerHTML = '\
         <div class="fns-empty-state">\
           <div class="fns-empty-icon">📭</div>\
@@ -318,24 +333,26 @@
       return;
     }
 
+    // XSS MITIGATION: All user data fields are now escaped using escapeHtml() function
     var rows = data.map(function (inq) {
       return '\
-        <tr class="fns-inquiry-row" data-id="' + inq.id + '">\
-          <td class="fns-td fns-td-id"><code>' + inq.id + '</code></td>\
+        <tr class="fns-inquiry-row" data-id="' + escapeHtml(inq.id) + '">\
+          <td class="fns-td fns-td-id"><code>' + escapeHtml(inq.id) + '</code></td>\
           <td class="fns-td">' + renderTypeBadge(inq.inquiryType) + '</td>\
           <td class="fns-td fns-td-name">\
-            <div class="fns-td-primary">' + inq.fullName + '</div>\
-            <div class="fns-td-secondary">' + inq.email + '</div>\
+            <div class="fns-td-primary">' + escapeHtml(inq.fullName) + '</div>\
+            <div class="fns-td-secondary">' + escapeHtml(inq.email) + '</div>\
           </td>\
-          <td class="fns-td fns-td-phone">' + inq.phone + '</td>\
-          <td class="fns-td fns-td-location">' + inq.location + '</td>\
-          <td class="fns-td fns-td-page">' + (inq.relatedPage || '—') + '</td>\
+          <td class="fns-td fns-td-phone">' + escapeHtml(inq.phone) + '</td>\
+          <td class="fns-td fns-td-location">' + escapeHtml(inq.location) + '</td>\
+          <td class="fns-td fns-td-page">' + escapeHtml(inq.relatedPage || '—') + '</td>\
           <td class="fns-td">' + renderStatusBadge(inq.status) + '</td>\
           <td class="fns-td fns-td-date">' + formatDate(inq.createdAt) + '</td>\
           <td class="fns-td fns-td-actions">' + renderRowActions(inq) + '</td>\
         </tr>';
     }).join('');
 
+    // XSS MITIGATION: rows now contains escaped user data - safe for HTML rendering
     container.innerHTML = '\
       <div class="fns-inquiry-table-wrap">\
         <table class="fns-inquiry-table">\
@@ -434,10 +451,11 @@
     var modal = document.createElement('div');
     modal.id = 'fnsInquiryDetailModal';
     modal.className = 'fns-modal-overlay';
+    // XSS MITIGATION: All user data fields are now escaped using escapeHtml() function
     modal.innerHTML = '\
       <div class="fns-modal">\
         <div class="fns-modal-header">\
-          <h3 class="fns-modal-title">Inquiry Details &mdash; ' + inquiry.id + '</h3>\
+          <h3 class="fns-modal-title">Inquiry Details &mdash; ' + escapeHtml(inquiry.id) + '</h3>\
           <button class="fns-modal-close" id="closeInquiryModal">&times;</button>\
         </div>\
         <div class="fns-modal-body">\
@@ -451,27 +469,27 @@
           </div>\
           <div class="fns-detail-row">\
             <span class="fns-detail-label">Full Name</span>\
-            <span class="fns-detail-value">' + inquiry.fullName + '</span>\
+            <span class="fns-detail-value">' + escapeHtml(inquiry.fullName) + '</span>\
           </div>\
           <div class="fns-detail-row">\
             <span class="fns-detail-label">Email</span>\
-            <span class="fns-detail-value">' + inquiry.email + '</span>\
+            <span class="fns-detail-value">' + escapeHtml(inquiry.email) + '</span>\
           </div>\
           <div class="fns-detail-row">\
             <span class="fns-detail-label">Phone</span>\
-            <span class="fns-detail-value">' + inquiry.phone + '</span>\
+            <span class="fns-detail-value">' + escapeHtml(inquiry.phone) + '</span>\
           </div>\
           <div class="fns-detail-row">\
             <span class="fns-detail-label">Location</span>\
-            <span class="fns-detail-value">' + inquiry.location + '</span>\
+            <span class="fns-detail-value">' + escapeHtml(inquiry.location) + '</span>\
           </div>\
           <div class="fns-detail-row">\
             <span class="fns-detail-label">Source Page</span>\
-            <span class="fns-detail-value">' + (inquiry.relatedPage || '—') + '</span>\
+            <span class="fns-detail-value">' + escapeHtml(inquiry.relatedPage || '—') + '</span>\
           </div>\
           <div class="fns-detail-row">\
             <span class="fns-detail-label">Related Category</span>\
-            <span class="fns-detail-value">' + (inquiry.relatedCategory || '—') + '</span>\
+            <span class="fns-detail-value">' + escapeHtml(inquiry.relatedCategory || '—') + '</span>\
           </div>\
           <div class="fns-detail-row">\
             <span class="fns-detail-label">Date Submitted</span>\
@@ -479,7 +497,7 @@
           </div>\
           <div class="fns-detail-row fns-detail-message">\
             <span class="fns-detail-label">Message</span>\
-            <span class="fns-detail-value">' + inquiry.message + '</span>\
+            <span class="fns-detail-value">' + escapeHtml(inquiry.message) + '</span>\
           </div>\
         </div>\
         <div class="fns-modal-footer">\
@@ -547,6 +565,7 @@
       }
     });
 
+    // XSS MITIGATION: counts are numeric values from system data - safe
     container.innerHTML = '\
       <div class="fns-metrics-grid">\
         <div><div class="fns-metric-card"><div class="fns-metric-icon">📋</div><div class="fns-metric-content"><div class="fns-metric-label">Total Inquiries</div><div class="fns-metric-value">' + counts.total + '</div></div></div></div>\

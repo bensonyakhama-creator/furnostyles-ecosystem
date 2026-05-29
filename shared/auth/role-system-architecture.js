@@ -26,7 +26,7 @@
       name: 'Client',
       description: 'Regular users who browse, save items, and make inquiries',
       level: 1,
-      dashboard: 'client/dashboard.html',
+      dashboard: 'dashboards/client/index.html',
       permissions: [
         'view:products',
         'view:services',
@@ -46,7 +46,7 @@
       name: 'Individual Seller',
       description: 'Non-business individuals selling secondhand items (minimal verification)',
       level: 2,
-      dashboard: 'vendor/dashboard.html',
+      dashboard: 'dashboards/vendor/index.html',
       permissions: [
         'view:products',
         'view:services',
@@ -67,7 +67,7 @@
       name: 'Individual Landlord',
       description: 'Individual property owners without business registration (minimal verification)',
       level: 2,
-      dashboard: 'property-owner/dashboard.html',
+      dashboard: 'dashboards/property-owner/index.html',
       permissions: [
         'view:properties',
         'create:properties',
@@ -87,7 +87,7 @@
       name: 'Vendor',
       description: 'Business product and service providers with full verification',
       level: 3,
-      dashboard: 'vendor/dashboard.html',
+      dashboard: 'dashboards/vendor/index.html',
       permissions: [
         'view:products',
         'view:services',
@@ -105,13 +105,13 @@
       features: ['products', 'services', 'inquiries', 'orders', 'reviews', 'profile', 'analytics'],
       canUpgradeTo: []
     },
-    
+
     PROVIDER: {
       id: 'provider',
       name: 'Service Provider',
       description: 'Professional service providers (contractors, designers, etc.)',
       level: 3,
-      dashboard: 'provider/dashboard.html',
+      dashboard: 'dashboards/provider/index.html',
       permissions: [
         'view:products',
         'view:services',
@@ -132,7 +132,7 @@
       name: 'Contractor',
       description: 'Construction and renovation contractors',
       level: 3,
-      dashboard: 'provider/dashboard.html',
+      dashboard: 'dashboards/contractor/index.html',
       permissions: [
         'view:products',
         'view:services',
@@ -153,7 +153,7 @@
       name: 'Property Owner',
       description: 'Business property owners with full verification',
       level: 3,
-      dashboard: 'property-owner/dashboard.html',
+      dashboard: 'dashboards/property-owner/index.html',
       permissions: [
         'view:properties',
         'create:properties',
@@ -173,7 +173,7 @@
       name: 'Real Estate Agent',
       description: 'Real estate agents and brokers',
       level: 3,
-      dashboard: 'agent/dashboard.html',
+      dashboard: 'dashboards/agent/index.html',
       permissions: [
         'view:properties',
         'create:properties',
@@ -193,7 +193,7 @@
       name: 'Admin',
       description: 'Platform administrators with full access',
       level: 3,
-      dashboard: 'admin/dashboard.html',
+      dashboard: 'dashboards/admin/index.html',
       permissions: [
         'view:all',
         'create:all',
@@ -209,13 +209,13 @@
       features: ['users', 'vendors', 'products', 'services', 'properties', 'inquiries', 'orders', 'reports', 'settings'],
       canUpgradeTo: ['super-admin']
     },
-    
+
     SUPER_ADMIN: {
       id: 'super-admin',
       name: 'Super Admin',
       description: 'Super administrators with full system access',
       level: 4,
-      dashboard: 'admin/dashboard.html',
+      dashboard: 'dashboards/super-admin/index.html',
       permissions: [
         'view:all',
         'create:all',

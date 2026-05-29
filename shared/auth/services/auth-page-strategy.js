@@ -261,11 +261,14 @@
       var redirectTarget = pageConfig.redirectAfter;
       
       if (redirectTarget === 'dashboard') {
-        if (userRole === 'admin') return 'admin/dashboard.html';
-        if (userRole === 'vendor') return 'vendor/dashboard.html';
-        if (userRole === 'provider') return 'provider/dashboard.html';
-        if (userRole === 'property-owner') return 'property-owner/dashboard.html';
-        return 'client/dashboard.html';
+        if (userRole === 'admin') return 'dashboards/admin/index.html';
+        if (userRole === 'super-admin') return 'dashboards/super-admin/index.html';
+        if (userRole === 'vendor') return 'dashboards/vendor/index.html';
+        if (userRole === 'provider') return 'dashboards/provider/index.html';
+        if (userRole === 'contractor') return 'dashboards/contractor/index.html';
+        if (userRole === 'property-owner') return 'dashboards/property-owner/index.html';
+        if (userRole === 'agent') return 'dashboards/agent/index.html';
+        return 'dashboards/client/index.html';
       }
       
       if (redirectTarget === 'onboarding') {

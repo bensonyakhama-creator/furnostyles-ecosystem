@@ -13,9 +13,10 @@
  *   - admin
  *
  * Dashboard Redirects:
- *   - client  → client/dashboard.html
- *   - vendor  → vendor/vendor-dashboard.html
- *   - admin   → admin/admin-dashboard.html
+ *   - client  → dashboards/client/index.html
+ *   - vendor  → dashboards/vendor/index.html
+ *   - admin   → dashboards/admin/index.html
+ *   - provider → dashboards/provider/index.html
  *
  * Dependencies:
  *   - Firebase SDK (must be loaded before this file)
@@ -45,6 +46,54 @@
     userData: null,
     role: null
   };
+
+  /* ============================================================
+     ERROR MESSAGE SANITIZATION
+     ============================================================ */
+
+  /**
+   * Sanitize Firebase error messages to avoid exposing internal details
+   * @param {Error} error - Firebase error object
+   * @returns {string} - Sanitized error message
+   */
+  function sanitizeError(error) {
+    if (!error) return 'An unknown error occurred';
+
+    var message = error.message || error.toString();
+
+    // Map Firebase error codes to user-friendly messages
+    var errorMap = {
+      'auth/email-already-in-use': 'An account with this email already exists',
+      'auth/invalid-email': 'Please enter a valid email address',
+      'auth/user-disabled': 'This account has been disabled',
+      'auth/user-not-found': 'No account found with this email',
+      'auth/wrong-password': 'Incorrect password',
+      'auth/weak-password': 'Password is too weak',
+      'auth/too-many-requests': 'Too many attempts. Please try again later',
+      'auth/popup-closed-by-user': 'Sign in was cancelled',
+      'auth/invalid-credential': 'Invalid credentials',
+      'auth/operation-not-allowed': 'This operation is not allowed',
+      'auth/expired-action-code': 'This link has expired',
+      'auth/invalid-action-code': 'Invalid action code',
+      'auth/invalid-verification-code': 'Invalid verification code'
+    };
+
+    // Check if error code matches
+    if (error.code && errorMap[error.code]) {
+      return errorMap[error.code];
+    }
+
+    // Generic fallback messages for common patterns
+    if (message.indexOf('network') !== -1) {
+      return 'Network error. Please check your connection';
+    }
+    if (message.indexOf('timeout') !== -1) {
+      return 'Request timed out. Please try again';
+    }
+
+    // Return generic message for unknown errors
+    return 'An error occurred. Please try again';
+  }
 
   /* ============================================================
      PASSWORD VALIDATION
@@ -105,6 +154,11 @@
      ============================================================ */
 
   function getAuth() {
+    // Try Firebase compat SDK first (standard pattern)
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+      return firebase.auth();
+    }
+    // Fallback to FurnostylesFirebase pattern
     if (window.FurnostylesFirebase && window.FurnostylesFirebase.auth) {
       return window.FurnostylesFirebase.auth;
     }
@@ -113,6 +167,11 @@
   }
 
   function getFirestore() {
+    // Try Firebase compat SDK first (standard pattern)
+    if (typeof firebase !== 'undefined' && firebase.firestore) {
+      return firebase.firestore();
+    }
+    // Fallback to FurnostylesFirebase pattern
     if (window.FurnostylesFirebase && window.FurnostylesFirebase.db) {
       return window.FurnostylesFirebase.db;
     }
@@ -152,7 +211,7 @@
       })
       .catch(function (error) {
         console.error('[Auth] Failed to save user data:', error);
-        throw error;
+        throw new Error(sanitizeError(error));
       });
   }
 
@@ -213,6 +272,16 @@
       .then(function (userCredential) {
         var user = userCredential.user;
 
+        // Log successful registration
+        if (window.FurnostylesAuditLog) {
+          window.FurnostylesAuditLog.logEvent('register', {
+            email: email,
+            userId: user.uid,
+            role: userData.role,
+            success: true
+          });
+        }
+
         // Update display name
         if (userData.fullName) {
           return user.updateProfile({
@@ -235,8 +304,17 @@
         });
       })
       .catch(function (error) {
+        // Log failed registration
+        if (window.FurnostylesAuditLog) {
+          window.FurnostylesAuditLog.logEvent('register', {
+            email: email,
+            role: userData.role,
+            success: false,
+            error: error.code
+          });
+        }
         console.error('[Auth] Sign up failed:', error);
-        throw error;
+        throw new Error(sanitizeError(error));
       });
   }
 
@@ -258,6 +336,15 @@
       .then(function (userCredential) {
         var user = userCredential.user;
 
+        // Log successful login
+        if (window.FurnostylesAuditLog) {
+          window.FurnostylesAuditLog.logEvent('login', {
+            email: email,
+            userId: user.uid,
+            success: true
+          });
+        }
+
         // Load user data from Firestore
         return loadUserFromFirestore(user.uid).then(function (userData) {
           authState.currentUser = user;
@@ -278,8 +365,16 @@
         });
       })
       .catch(function (error) {
+        // Log failed login
+        if (window.FurnostylesAuditLog) {
+          window.FurnostylesAuditLog.logEvent('login', {
+            email: email,
+            success: false,
+            error: error.code
+          });
+        }
         console.error('[Auth] Sign in failed:', error);
-        throw error;
+        throw new Error(sanitizeError(error));
       });
   }
 
@@ -356,7 +451,7 @@
       })
       .catch(function (error) {
         console.error('[Auth] Google sign-in failed:', error);
-        throw error;
+        throw new Error(sanitizeError(error));
       });
   }
 
@@ -372,8 +467,19 @@
     var auth = getAuth();
     if (!auth) return Promise.reject(new Error('Auth not available'));
 
+    var currentUser = authState.currentUser;
+
     return auth.signOut()
       .then(function () {
+        // Log successful logout
+        if (window.FurnostylesAuditLog && currentUser) {
+          window.FurnostylesAuditLog.logEvent('logout', {
+            userId: currentUser.uid,
+            email: currentUser.email,
+            success: true
+          });
+        }
+
         // Clear auth state
         authState.currentUser = null;
         authState.userData = null;
@@ -457,14 +563,17 @@
     var dashboardUrl;
     switch (role) {
       case 'vendor':
-        dashboardUrl = 'vendor/vendor-dashboard.html';
+        dashboardUrl = 'dashboards/vendor/index.html';
         break;
       case 'admin':
-        dashboardUrl = 'admin/admin-dashboard.html';
+        dashboardUrl = 'dashboards/admin/index.html';
+        break;
+      case 'provider':
+        dashboardUrl = 'dashboards/provider/index.html';
         break;
       case 'client':
       default:
-        dashboardUrl = 'client/dashboard.html';
+        dashboardUrl = 'dashboards/client/index.html';
         break;
     }
 

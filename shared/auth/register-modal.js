@@ -376,7 +376,7 @@
       window.FurnostylesAuth.signInWithGoogle()
         .then(function () {
           close();
-          window.location.href = 'dashboard.html';
+          window.location.href = 'dashboards/client/index.html';
         })
         .catch(function (error) {
           alert('Google sign-in failed: ' + error.message);
@@ -392,14 +392,18 @@
 
   function getDashboardForRole(role) {
     var dashboards = {
-      'client': 'dashboard.html',
-      'individual-seller': 'vendor/dashboard.html',
+      'client': 'dashboards/client/index.html',
+      'individual-seller': 'dashboards/vendor/index.html',
       'individual-landlord': 'dashboards/property-owner/index.html',
-      'vendor': 'vendor/dashboard.html',
+      'vendor': 'dashboards/vendor/index.html',
       'provider': 'dashboards/provider/index.html',
-      'property-owner': 'dashboards/property-owner/index.html'
+      'contractor': 'dashboards/contractor/index.html',
+      'property-owner': 'dashboards/property-owner/index.html',
+      'agent': 'dashboards/agent/index.html',
+      'admin': 'dashboards/admin/index.html',
+      'super-admin': 'dashboards/super-admin/index.html'
     };
-    return dashboards[role] || 'dashboard.html';
+    return dashboards[role] || 'dashboards/client/index.html';
   }
 
   /* ============================================================

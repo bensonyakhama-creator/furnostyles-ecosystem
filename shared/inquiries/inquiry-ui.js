@@ -124,7 +124,8 @@
     formHtml += 'Contact us on WhatsApp <span class="fns-whatsapp-icon">💬</span></a></p>';
     formHtml += '</div>';
 
-    // Render form
+    // XSS MITIGATION: formHtml is generated from controlled configuration and static strings
+    // No user input is directly inserted into the HTML structure
     container.innerHTML = formHtml;
 
     // Attach form handler

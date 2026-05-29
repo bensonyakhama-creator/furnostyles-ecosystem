@@ -354,6 +354,7 @@
         </div>
       `;
 
+      // XSS MITIGATION: This is static HTML form structure - no user input
       container.innerHTML = html;
       this.uploadedImages = [];
       this.uploadedVideos = [];
@@ -414,6 +415,7 @@
           // Add preview
           const img = document.createElement('div');
           img.style.cssText = 'position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden;';
+          // XSS MITIGATION: dataUrl is escaped using escapeHtml() function
           img.innerHTML =
             '<img src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 100%; object-fit: cover;">' +
             '<button type="button" onclick="window.FurnostylesSimpleUpload.removeImage(' + (this.uploadedImages.length - 1) + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';
@@ -448,6 +450,7 @@
           // Add video preview
           const videoContainer = document.createElement('div');
           videoContainer.style.cssText = 'position: relative; border-radius: 8px; overflow: hidden; background: #000;';
+          // XSS MITIGATION: dataUrl is escaped using escapeHtml() function
           videoContainer.innerHTML =
             '<video src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 150px; object-fit: cover;" controls></video>' +
             '<button type="button" onclick="window.FurnostylesSimpleUpload.removeVideo(' + (this.uploadedVideos.length - 1) + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';
@@ -466,6 +469,7 @@
       this.uploadedVideos.forEach((dataUrl, i) => {
         const videoContainer = document.createElement('div');
         videoContainer.style.cssText = 'position: relative; border-radius: 8px; overflow: hidden; background: #000;';
+        // XSS MITIGATION: dataUrl is escaped using escapeHtml() function
         videoContainer.innerHTML =
           '<video src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 150px; object-fit: cover;" controls></video>' +
           '<button type="button" onclick="window.FurnostylesSimpleUpload.removeVideo(' + i + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';
@@ -480,6 +484,7 @@
       this.uploadedImages.forEach((dataUrl, i) => {
         const img = document.createElement('div');
         img.style.cssText = 'position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden;';
+        // XSS MITIGATION: dataUrl is escaped using escapeHtml() function
         img.innerHTML =
           '<img src="' + escapeHtml(dataUrl) + '" style="width: 100%; height: 100%; object-fit: cover;">' +
           '<button type="button" onclick="window.FurnostylesSimpleUpload.removeImage(' + i + ')" style="position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 14px;">×</button>';

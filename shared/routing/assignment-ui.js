@@ -32,6 +32,8 @@
       property_support: 'Property Support Package'
     };
 
+    // XSS MITIGATION: User input (reqId, category) is escaped using _esc() function
+    // This HTML rendering is for static UI structure only - no user-controlled HTML
     container.innerHTML =
       '<div class="rtg-success-box">' +
         '<div class="rtg-success-icon">\u2709\uFE0F</div>' +
